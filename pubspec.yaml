@@ -8,8 +8,6 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  yh_design_system:
-    path: ../
   flutter:
     sdk: flutter
 
