@@ -11,7 +11,7 @@ class YHPaperBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage('images/background.png'), // 배경 이미지

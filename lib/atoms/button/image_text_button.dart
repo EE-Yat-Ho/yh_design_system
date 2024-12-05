@@ -4,7 +4,7 @@ import 'package:yh_design_system/components/text/text.dart';
 import 'package:yh_design_system/fonts.dart';
 import 'package:yh_design_system/images.dart';
 
-class YHImageTextButton extends StatefulWidget {
+class YHImageTextButton extends StatelessWidget {
   const YHImageTextButton({
     super.key,
     required this.text,
@@ -21,17 +21,12 @@ class YHImageTextButton extends StatefulWidget {
   final YHColor? textColor;
 
   @override
-  State<YHImageTextButton> createState() => _YHImageTextButtonState();
-}
-
-class _YHImageTextButtonState extends State<YHImageTextButton> {
-  @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: widget.onPressed,
+        onPressed: onPressed,
         style: TextButton.styleFrom(
           minimumSize: Size.zero,
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
         child: child());
@@ -40,15 +35,15 @@ class _YHImageTextButtonState extends State<YHImageTextButton> {
   Widget child() {
     List<Widget> list = [];
 
-    if (widget.image != null) {
-      list.add(widget.image!.icon(width: 18, height: 18));
-    } else if (widget.iconData != null) {
-      list.add(Icon(widget.iconData));
+    if (image != null) {
+      list.add(image!.icon(width: 18, height: 18));
+    } else if (iconData != null) {
+      list.add(Icon(iconData));
     }
     list.add(YHText(
-        text: widget.text,
+        text: text,
         font: YHFont.regular16,
-        color: widget.textColor ?? YHColor.primary));
+        color: textColor ?? YHColor.primary));
 
     return Row(children: list);
   }

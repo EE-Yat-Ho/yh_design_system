@@ -5,7 +5,8 @@ import 'package:yh_design_system/colors.dart';
 import 'package:yh_design_system/components/text/text.dart';
 
 class YHButton extends StatelessWidget {
-  YHButton({
+  const YHButton({
+    super.key,
     this.text,
     this.leftIcon,
     this.rightIcon,
@@ -46,52 +47,10 @@ class YHButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var children = <Widget>[];
 
-    // If a left icon is provided, add it to the button
-    // if (leftIcon != null) {
-    //   children.add(Padding(
-    //     padding: EdgeInsets.only(
-    //       right: removePaddings
-    //           ? 0
-    //           : text != null
-    //               ? (size == YHButtonSize.LARGE
-    //                   ? 18
-    //                   : size == YHButtonSize.MEDIUM
-    //                       ? 14
-    //                       : 9)
-    //               : rightIcon != null
-    //                   ? (size == YHButtonSize.SMALL ? 5 : 10)
-    //                   : 0,
-    //     ),
-    //     child: leftIcon!,
-    //   ));
-    // }
-
-    // If text is provided, add it to the button
     if (text != null) {
       children.add(text!);
     }
 
-    // If a right icon is provided, add it to the button
-    // if (rightIcon != null) {
-    //   children.add(Padding(
-    //     padding: EdgeInsets.only(
-    //       left: removePaddings
-    //           ? 0
-    //           : text != null
-    //               ? (size == YHButtonSize.LARGE
-    //                   ? 18
-    //                   : size == YHButtonSize.MEDIUM
-    //                       ? 14
-    //                       : 9)
-    //               : leftIcon != null
-    //                   ? (size == YHButtonSize.SMALL ? 5 : 10)
-    //                   : 0,
-    //     ),
-    //     child: rightIcon!,
-    //   ));
-    // }
-
-    // Return the final button
     return RawMaterialButton(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       elevation: 2,
@@ -108,7 +67,7 @@ class YHButton extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(cornerRadius)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         child: Row(
           mainAxisSize: autoResize ? MainAxisSize.min : MainAxisSize.max,
           mainAxisAlignment: horizontalAlignment,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/text/text.dart';
-import 'package:yh_design_system/fonts.dart';
-import 'package:yh_design_system/images.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
 
 enum YHSmallSolidButtonType {
   primary(YHColor.primary, YHColor.white),
@@ -40,7 +40,7 @@ class _YHSmallSolidButtonState extends State<YHSmallSolidButton> {
       onPressed: widget.onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: widget.type.bgColor.color,
-        padding: EdgeInsets.fromLTRB(14, 7, 14, 7),
+        padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/colors.dart';
 
 class YHTabbar extends StatefulWidget {
-  YHTabbar({
+  const YHTabbar({
     super.key,
     required this.initIndex,
     required this.tabs,

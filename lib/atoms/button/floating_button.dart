@@ -24,7 +24,7 @@ class _YHFloatingButtonState extends State<YHFloatingButton> {
       width: 52,
       child: FittedBox(
         child: FloatingActionButton(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           foregroundColor: YHColor.white.color,
           backgroundColor: YHColor.primary.color,
           onPressed: widget.onPressed,

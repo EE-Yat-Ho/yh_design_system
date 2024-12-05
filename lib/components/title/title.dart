@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/text/text.dart';
+import 'package:yh_design_system/molecules/text.dart';
 import 'package:yh_design_system/fonts.dart';
 
 class YHTitle extends StatelessWidget {
-  YHTitle({
+  const YHTitle({
     super.key,
     required this.title,
   });

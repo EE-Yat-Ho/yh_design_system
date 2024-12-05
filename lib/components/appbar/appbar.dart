@@ -10,7 +10,8 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? menuItem;
   final bool hideBack;
 
-  YHAppBar({
+  const YHAppBar({
+    super.key,
     this.icon,
     this.title = '',
     this.menuItem,
@@ -29,7 +30,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: hideBack
           ? Container()
           : icon == null
-              ? BackButton()
+              ? const BackButton()
               : IconButton(
                   icon: Image.asset(
                     icon!,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/text/text.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/fonts.dart';
 import 'package:yh_design_system/images.dart';
 
@@ -23,7 +23,8 @@ class TitleImageTextDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     var icon = image == null
         ? null
-        : SizedBox.fromSize(size: Size.fromRadius(50), child: image?.icon());
+        : SizedBox.fromSize(
+            size: const Size.fromRadius(50), child: image?.icon());
 
     return AlertDialog(
       icon: icon,
@@ -49,7 +50,7 @@ class TitleImageTextDialog extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text("취소"),
+          child: const Text("취소"),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -60,7 +61,8 @@ class TitleImageTextDialog extends StatelessWidget {
             onPressed(textController.text);
             Navigator.pop(context);
           },
-          child: YHText(text: "확인", font: YHFont.h6, color: YHColor.white),
+          child:
+              const YHText(text: "확인", font: YHFont.h6, color: YHColor.white),
         )
       ],
     );

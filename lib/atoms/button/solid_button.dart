@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/text/text.dart';
-import 'package:yh_design_system/fonts.dart';
-import 'package:yh_design_system/images.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
 
 class YHSolidButton extends StatefulWidget {
   const YHSolidButton({
@@ -29,7 +29,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
       onPressed: widget.onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: YHColor.primary.color,
-        padding: EdgeInsets.fromLTRB(14, 7, 14, 7),
+        padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),

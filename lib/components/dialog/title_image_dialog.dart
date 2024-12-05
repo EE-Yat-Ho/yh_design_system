@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/buttons/small_solid_button.dart';
-import 'package:yh_design_system/components/text/text.dart';
+import 'package:yh_design_system/atoms/button/small_solid_button.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/fonts.dart';
 import 'package:yh_design_system/images.dart';
 
 class TitleImageDialog extends StatelessWidget {
-  TitleImageDialog({
+  const TitleImageDialog({
     super.key,
     required this.title,
     this.image,
@@ -28,7 +28,8 @@ class TitleImageDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     var icon = image == null
         ? null
-        : SizedBox.fromSize(size: Size.fromRadius(50), child: image?.icon());
+        : SizedBox.fromSize(
+            size: const Size.fromRadius(50), child: image?.icon());
 
     var actions = [
       YHSmallSolidButton(
