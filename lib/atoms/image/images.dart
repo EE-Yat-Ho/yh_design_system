@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHImage {
   // special

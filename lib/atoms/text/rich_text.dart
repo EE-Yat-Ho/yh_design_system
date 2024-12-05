@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/components/text/text_span.dart';
+import 'package:yh_design_system/atoms/text/text_span.dart';
 
 class YHRichText extends StatefulWidget {
   const YHRichText({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/fonts.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
 
 class YHTab extends StatelessWidget {
   const YHTab({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
 
 class YHTabbar extends StatefulWidget {
   const YHTabbar({

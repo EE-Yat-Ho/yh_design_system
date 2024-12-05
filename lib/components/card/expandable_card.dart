@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/buttons/nemo_button.dart';
-import 'package:yh_design_system/components/cards/card.dart';
-import 'package:yh_design_system/components/lists/expandable_list.dart';
-import 'package:yh_design_system/components/text/text.dart';
-import 'package:yh_design_system/fonts.dart';
-import 'package:yh_design_system/images.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/button/button.dart';
+import 'package:yh_design_system/components/card/card.dart';
+import 'package:yh_design_system/components/list/expandable_list.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
 
 class YHExpandableCard extends StatelessWidget {
   const YHExpandableCard({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/text/text.dart';
-import 'package:yh_design_system/fonts.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
 
 class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? icon;

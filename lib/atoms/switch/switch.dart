@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:yh_design_system/colors.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
 
 class YHSwitch extends StatefulWidget {
   const YHSwitch({super.key, required this.onChanged});

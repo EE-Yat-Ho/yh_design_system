@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/components/text/text_style.dart';
+import 'package:yh_design_system/atoms/text/text_style.dart';
 
 class YHTextSpan {
   const YHTextSpan({

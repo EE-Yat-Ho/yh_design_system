@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/colors.dart';
-import 'package:yh_design_system/components/cards/child_card.dart';
-import 'package:yh_design_system/components/cards/expandable_card.dart';
-import 'package:yh_design_system/components/text/text.dart';
-import 'package:yh_design_system/fonts.dart';
-import 'package:yh_design_system/components/lists/app_expansion_panel.dart';
-import 'package:yh_design_system/images.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/components/card/child_card.dart';
+import 'package:yh_design_system/components/card/expandable_card.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
+import 'package:yh_design_system/utils/app_expansion_panel_list.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
 
 abstract class OpenableObject {
   final Object object;
