@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/components/card/child_card.dart';
-import 'package:yh_design_system/components/card/expandable_card.dart';
+import 'package:yh_design_system/components/card/openable_child_card.dart';
+import 'package:yh_design_system/components/card/openable_card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/utils/app_expansion_panel_list.dart';
@@ -39,35 +39,36 @@ abstract class ChildObject {
       this.rightText, this.isSelect);
 }
 
-class ExpandableList extends StatelessWidget {
-  const ExpandableList({
+class OpenableList extends StatelessWidget {
+  const OpenableList({
     super.key,
     required this.objects,
     required this.emptyText,
     required this.onTapOpenable,
-    this.onLongPressedOpenable,
     required this.onTapChild,
-    this.onLongPressedChild,
+    this.onLongPressOpenable,
+    this.onLongPressChild,
     this.onTapAddButton,
     this.showSelected = true,
     this.showAddButton = true,
     this.showExpanedNotes = true,
-    this.showExpandableArrow = true,
+    this.showOpenableArrow = true,
     this.showChildArrow = true,
   });
 
   final List<OpenableObject> objects;
   final String emptyText;
   final void Function(int id, bool isExpand) onTapOpenable;
-  final void Function(int id)? onLongPressedOpenable;
-  final void Function(Object object) onTapChild;
-  final void Function(Object object)? onLongPressedChild;
-  final void Function(Object object)? onTapAddButton;
+  final void Function(int id) onTapChild;
+
+  final void Function(int id)? onLongPressOpenable;
+  final void Function(int id)? onLongPressChild;
+  final void Function(int id)? onTapAddButton;
 
   final bool showSelected;
   final bool showAddButton;
   final bool showExpanedNotes;
-  final bool showExpandableArrow;
+  final bool showOpenableArrow;
   final bool showChildArrow;
 
   @override
@@ -84,7 +85,7 @@ class ExpandableList extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 8, 0, 100), // contentInset
       child: AppExpansionPanelList(
         expansionCallback: onTapOpenable,
-        onHeaderLongPress: onLongPressedOpenable,
+        onHeaderLongPress: onLongPressOpenable,
         elevation: 0,
         dividerColor: Colors.transparent,
         children: objects.map<AppExpansionPanel>((OpenableObject object) {
@@ -92,26 +93,26 @@ class ExpandableList extends StatelessWidget {
             canTapOnHeader: true,
             backgroundColor: Colors.transparent,
             headerBuilder: (BuildContext context, bool isExpanded) {
-              return YHExpandableCard(
+              return YHOpenableCard(
                 object: object,
                 onTapAddButton: onTapAddButton,
                 isSelected: showSelected &&
                     object.children.every((o) => o.isSelect) &&
                     object.children.isNotEmpty,
                 showAddButton: showAddButton,
-                showArrow: showExpandableArrow,
+                showArrow: showOpenableArrow,
               );
             },
             keyId: object.id,
             body: Column(
               children: object.children
-                  .map((childObject) => YHChildCard(
+                  .map((childObject) => YHOpenableChildCard(
                         object: childObject,
                         onTap: onTapChild,
-                        onLongPress: onLongPressedChild,
+                        onLongPress: onLongPressChild,
                         isSelected: showSelected && childObject.isSelect,
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
-                        showRight: showChildArrow,
+                        showRightArrow: showChildArrow,
                       ))
                   .toList(),
             ),

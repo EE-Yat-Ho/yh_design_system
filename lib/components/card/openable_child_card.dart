@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/components/card/card.dart';
-import 'package:yh_design_system/components/list/expandable_list.dart';
+import 'package:yh_design_system/components/list/openable_list.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHChildCard extends StatelessWidget {
-  const YHChildCard(
+class YHOpenableChildCard extends StatelessWidget {
+  const YHOpenableChildCard(
       {super.key,
       required this.object,
       required this.onTap,
       this.onLongPress,
       this.isSelected = false,
       this.margin,
-      this.showRight = true});
+      this.showRightArrow = true});
 
   final ChildObject object;
-  final void Function(Object object) onTap;
-  final void Function(Object object)? onLongPress;
+  final void Function(int id) onTap;
+  final void Function(int id)? onLongPress;
   final bool isSelected;
   final EdgeInsets? margin;
-  final bool showRight;
+  final bool showRightArrow;
 
   @override
   Widget build(BuildContext context) {
     List<Widget> list = [
       ListTile(
         dense: true,
-        leading: YHImage.icon_note.icon(width: 22, height: 22),
+        leading: object.leadingImage.icon(width: 22, height: 22),
         title: YHText(
           text: object.text,
           font: YHFont.regular16,
@@ -37,10 +37,10 @@ class YHChildCard extends StatelessWidget {
         ),
         contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         trailing: trailing(context),
-        onTap: () => onTap(object.object),
+        onTap: () => onTap(object.id),
         onLongPress: () {
           if (onLongPress != null) {
-            onLongPress!(object.object);
+            onLongPress!(object.id);
           }
         },
       ),
@@ -80,7 +80,7 @@ class YHChildCard extends StatelessWidget {
       // ),
     ];
 
-    if (showRight) {
+    if (showRightArrow) {
       list.add(
         YHImage.icon_right.icon(width: 24, height: 24),
       );

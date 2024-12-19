@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/components/card/card.dart';
-import 'package:yh_design_system/components/list/expandable_list.dart';
+import 'package:yh_design_system/components/list/openable_list.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHExpandableCard extends StatelessWidget {
-  const YHExpandableCard({
+class YHOpenableCard extends StatelessWidget {
+  const YHOpenableCard({
     super.key,
     required this.object,
     this.isSelected = false,
@@ -22,8 +22,8 @@ class YHExpandableCard extends StatelessWidget {
   final bool isSelected;
   final bool showAddButton;
   final bool showArrow;
-  final void Function(Object object)? onTap;
-  final void Function(Object object)? onTapAddButton;
+  final void Function(int id)? onTap;
+  final void Function(int id)? onTapAddButton;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class YHExpandableCard extends StatelessWidget {
 
     List<Widget> stackList = [
       ListTile(
-        leading: YHImage.icon_bag.icon(width: 26, height: 26),
+        leading: object.leadingImage.icon(width: 26, height: 26),
         title: YHText(
           text: object.text,
           font: YHFont.regular18,
@@ -65,7 +65,7 @@ class YHExpandableCard extends StatelessWidget {
         YHButton(
           onPressed: () {
             if (onTapAddButton != null) {
-              onTapAddButton!(object.object);
+              onTapAddButton!(object.id);
             }
           },
           rightIcon: Icon(
@@ -94,7 +94,7 @@ class YHExpandableCard extends StatelessWidget {
     return YHCard(
       onTap: () {
         if (onTap != null) {
-          onTap!(object.object);
+          onTap!(object.id);
         }
       },
       child: Stack(children: stackList),
