@@ -27,7 +27,7 @@ class YHOptionButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.fromLTRB(16, 14, 16, 14),
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
           backgroundColor: YHColor.white.color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10), // <-- Radius
@@ -38,15 +38,13 @@ class YHOptionButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             iconStack(),
-            SizedBox(
-              width: 10,
-            ),
+            const SizedBox(width: 10),
             YHText(
               text: title,
               font: YHFont.regular16,
               color: textColor,
             ),
-            Spacer(),
+            const Spacer(),
             YHText(
               text: description,
               font: YHFont.regular16,

@@ -17,7 +17,7 @@ class _YHSwitchState extends State<YHSwitch> {
   Widget build(BuildContext context) {
     return CupertinoSwitch(
       value: state,
-      activeColor: YHColor.primary.color,
+      activeTrackColor: YHColor.primary.color,
       onChanged: (bool? isOn) {
         widget.onChanged(isOn ?? false);
         setState(() {

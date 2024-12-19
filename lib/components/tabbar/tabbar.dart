@@ -14,10 +14,10 @@ class YHTabbar extends StatefulWidget {
   final List<Widget> tabs;
 
   @override
-  _YHTabbarState createState() => _YHTabbarState();
+  YHTabbarState createState() => YHTabbarState();
 }
 
-class _YHTabbarState extends State<YHTabbar>
+class YHTabbarState extends State<YHTabbar>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
