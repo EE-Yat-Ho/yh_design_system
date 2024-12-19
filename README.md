@@ -1,7 +1,15 @@
 <!--
 배포 방법
-pub.dev : flutter packages pub publish
-github : main 브랜치 푸시
+  pub.dev : flutter packages pub publish
+  사용하는 프로젝트에서 아래 커맨드 수행
+  flutter clean
+  flutter pub get 
+
+  github : main 브랜치 푸시
+  사용하는 프로젝트에서 
+  pubspec.lock 삭제
+  flutter pub get
+
 -->
 
 yhlab's design system package
