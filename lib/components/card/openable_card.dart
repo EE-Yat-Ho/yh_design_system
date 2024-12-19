@@ -92,11 +92,6 @@ class YHOpenableCard extends StatelessWidget {
     }
 
     return YHCard(
-      onTap: () {
-        if (onTap != null) {
-          onTap!(object.id);
-        }
-      },
       child: Stack(children: stackList),
     );
   }
