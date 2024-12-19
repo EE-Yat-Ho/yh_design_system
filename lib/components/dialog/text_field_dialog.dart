@@ -4,8 +4,8 @@ import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class TitleImageTextDialog extends StatelessWidget {
-  TitleImageTextDialog({
+class YHTextFieldDialog extends StatelessWidget {
+  YHTextFieldDialog({
     super.key,
     required this.onPressed,
     required this.title,
