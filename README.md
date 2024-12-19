@@ -1,5 +1,7 @@
 <!--
-배포 방법: flutter packages pub publish
+배포 방법
+pub.dev : flutter packages pub publish
+github : main 브랜치 푸시
 -->
 
 yhlab's design system package
