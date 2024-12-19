@@ -51,7 +51,7 @@ class OpenableList extends StatelessWidget {
     this.onTapAddButton,
     this.showSelected = true,
     this.showAddButton = true,
-    this.showExpanedNotes = true,
+    this.showChild = true,
     this.showOpenableArrow = true,
     this.showChildArrow = true,
   });
@@ -67,7 +67,7 @@ class OpenableList extends StatelessWidget {
 
   final bool showSelected;
   final bool showAddButton;
-  final bool showExpanedNotes;
+  final bool showChild;
   final bool showOpenableArrow;
   final bool showChildArrow;
 
@@ -116,7 +116,7 @@ class OpenableList extends StatelessWidget {
                       ))
                   .toList(),
             ),
-            isExpanded: showExpanedNotes ? object.isExpand : false,
+            isExpanded: showChild ? object.isExpand : false,
             iconBuilder: (child, isExpanded) {
               return null;
             },
