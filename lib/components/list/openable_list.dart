@@ -4,7 +4,7 @@ import 'package:yh_design_system/components/card/openable_child_card.dart';
 import 'package:yh_design_system/components/card/openable_card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
-import 'package:yh_design_system/utils/app_expansion_panel_list.dart';
+import 'package:yh_design_system/utils/yh_expansion_panel_list.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
 class OpenableObject {
@@ -14,7 +14,7 @@ class OpenableObject {
   final YHImage leadingImage;
   final String text;
   final String? rightText;
-  final bool isExpand;
+  final bool isOpened;
 
   OpenableObject(
     this.object,
@@ -23,7 +23,7 @@ class OpenableObject {
     this.leadingImage,
     this.text,
     this.rightText,
-    this.isExpand,
+    this.isOpened,
   );
 }
 
@@ -83,7 +83,7 @@ class OpenableList extends StatelessWidget {
     return Flexible(
         child: SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(0, 8, 0, 100), // contentInset
-      child: AppExpansionPanelList(
+      child: YHExpansionPanelList(
         expansionCallback: onTapOpenable,
         onHeaderLongPress: onLongPressOpenable,
         elevation: 0,
@@ -116,8 +116,8 @@ class OpenableList extends StatelessWidget {
                       ))
                   .toList(),
             ),
-            isExpanded: showChild ? object.isExpand : false,
-            iconBuilder: (child, isExpanded) {
+            isExpanded: showChild ? object.isOpened : false,
+            iconBuilder: (child, isOpened) {
               return null;
             },
           );

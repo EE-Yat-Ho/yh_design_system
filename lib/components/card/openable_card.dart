@@ -39,7 +39,7 @@ class YHOpenableCard extends StatelessWidget {
     ];
 
     if (showArrow) {
-      mainRowList.add(object.isExpand
+      mainRowList.add(object.isOpened
           ? YHImage.icon_down.icon()
           : YHImage.icon_left.icon());
     }
