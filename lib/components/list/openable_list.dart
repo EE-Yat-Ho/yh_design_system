@@ -7,7 +7,7 @@ import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/utils/app_expansion_panel_list.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-abstract class OpenableObject {
+class OpenableObject {
   final Object object;
   final List<ChildObject> children;
   final int id;
@@ -27,7 +27,7 @@ abstract class OpenableObject {
   );
 }
 
-abstract class ChildObject {
+class ChildObject {
   final Object object;
   final int id;
   final YHImage leadingImage;
