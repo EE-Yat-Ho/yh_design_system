@@ -56,7 +56,7 @@ class YHDialog extends StatelessWidget {
       YHButton(
         text: YHText(
             text: confirmText ?? "확인",
-            font: YHFont.regular16,
+            font: YHFont.regular14,
             color: YHColor.white),
         height: 40,
         backgroundColor: YHColor.primary,
@@ -73,7 +73,7 @@ class YHDialog extends StatelessWidget {
         YHButton(
           text: YHText(
             text: cancelText!,
-            font: YHFont.regular16,
+            font: YHFont.regular14,
             color: YHColor.black,
           ),
           height: 40,
@@ -97,6 +97,7 @@ class YHDialog extends StatelessWidget {
       content: content,
       actions: actions,
       // actionsPadding: const EdgeInsets.all(24),
+      actionsOverflowButtonSpacing: 8,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24.0),
       ),

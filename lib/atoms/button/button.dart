@@ -7,6 +7,10 @@ import 'package:yh_design_system/atoms/text/text.dart';
 class YHButton extends StatelessWidget {
   const YHButton({
     super.key,
+    // autoResize가 true면 최대 영역을 잡음. false면 최대한 작아지고 지정해준 크기로됨
+    this.autoResize = true,
+    this.width,
+    this.height,
     this.text,
     this.leftIcon,
     this.rightIcon,
@@ -14,14 +18,15 @@ class YHButton extends StatelessWidget {
     this.backgroundColor = YHColor.primary,
     this.textColor = YHColor.white,
     this.disable = false,
-    this.width,
-    this.height,
     this.borderColor = YHColor.primary,
     this.borderWidth = 0,
     this.cornerRadius = 8,
-    this.autoResize = true,
     this.horizontalAlignment = MainAxisAlignment.center,
   });
+
+  final bool autoResize;
+  final double? width;
+  final double? height;
 
   final YHText? text;
   final Widget? leftIcon;
@@ -33,14 +38,10 @@ class YHButton extends StatelessWidget {
 
   final bool disable;
 
-  final double? width;
-  final double? height;
-
   final YHColor borderColor;
   final double borderWidth;
   final double cornerRadius;
 
-  final bool autoResize;
   final MainAxisAlignment horizontalAlignment;
 
   @override
@@ -55,8 +56,9 @@ class YHButton extends StatelessWidget {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       elevation: 2,
       focusElevation: 2,
-      highlightElevation: 0,
+      highlightElevation: 1,
       hoverElevation: 0,
+      disabledElevation: 1,
       fillColor: disable ? YHColor.disable.color : backgroundColor.color,
       constraints: BoxConstraints(minHeight: height ?? 0, minWidth: width ?? 0),
       onPressed: disable ? null : onPressed,
