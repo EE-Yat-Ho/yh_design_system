@@ -34,11 +34,29 @@ class YHDialog extends StatelessWidget {
           size: const Size.fromRadius(50), child: image?.icon());
     }
 
+    Widget title = YHText(
+        text: text,
+        font: YHFont.regular16,
+        color: YHColor.black,
+        align: TextAlign.center,
+        maxLines: 10);
+
+    Widget? content;
+    if (subText != null) {
+      content = YHText(
+        text: subText!,
+        font: YHFont.regular14,
+        color: YHColor.gray,
+        align: TextAlign.center,
+        maxLines: 10,
+      );
+    }
+
     var actions = [
       YHButton(
         text: YHText(
             text: confirmText ?? "확인",
-            font: YHFont.regular14,
+            font: YHFont.regular16,
             color: YHColor.white),
         height: 40,
         backgroundColor: YHColor.primary,
@@ -54,7 +72,7 @@ class YHDialog extends StatelessWidget {
         YHButton(
           text: YHText(
             text: cancelText!,
-            font: YHFont.regular14,
+            font: YHFont.regular16,
             color: YHColor.black,
           ),
           backgroundColor: YHColor.white,
@@ -68,32 +86,14 @@ class YHDialog extends StatelessWidget {
       );
     }
 
-    Widget title = YHText(
-        text: text,
-        font: YHFont.regular14,
-        color: YHColor.black,
-        align: TextAlign.start,
-        maxLines: 10);
-
-    Widget? content;
-    if (subText != null) {
-      content = YHText(
-        text: subText!,
-        font: YHFont.regular14,
-        color: YHColor.gray,
-        align: TextAlign.center,
-        maxLines: 10,
-      );
-    }
-
     return AlertDialog(
       icon: icon,
       backgroundColor: YHColor.white.color,
       title: title,
-      titlePadding: const EdgeInsets.all(24),
+      // titlePadding: const EdgeInsets.all(24),
       content: content,
       actions: actions,
-      actionsPadding: const EdgeInsets.all(24),
+      // actionsPadding: const EdgeInsets.all(24),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24.0),
       ),
