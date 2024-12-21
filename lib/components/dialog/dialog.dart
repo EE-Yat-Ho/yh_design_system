@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
-import 'package:yh_design_system/atoms/button/small_solid_button.dart';
 
 class YHDialog extends StatelessWidget {
   const YHDialog({
     super.key,
-    required this.title,
-    this.subTitle,
+    required this.text,
+    this.subText,
     this.image,
     this.confirmText,
     required this.onConfirm,
@@ -17,8 +17,8 @@ class YHDialog extends StatelessWidget {
     this.onCancel,
   });
 
-  final String title;
-  final String? subTitle;
+  final String text;
+  final String? subText;
   final YHImage? image;
 
   final String? confirmText;
@@ -28,38 +28,57 @@ class YHDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var icon = image == null
-        ? null
-        : SizedBox.fromSize(
-            size: const Size.fromRadius(50), child: image?.icon());
+    Widget? icon;
+    if (image != null) {
+      icon = SizedBox.fromSize(
+          size: const Size.fromRadius(50), child: image?.icon());
+    }
 
     var actions = [
-      YHSmallSolidButton(
+      YHButton(
+        text: YHText(
+            text: confirmText ?? "확인",
+            font: YHFont.regular14,
+            color: YHColor.white),
+        height: 40,
+        backgroundColor: YHColor.primary,
         onPressed: () {
           Navigator.pop(context);
           onConfirm();
         },
-        title: confirmText ?? "확인",
       ),
     ];
 
     if (cancelText != null) {
-      actions.add(YHSmallSolidButton(
-        type: YHSmallSolidButtonType.white,
-        onPressed: () {
-          if (onCancel != null) {
-            onCancel!();
-          }
-          Navigator.pop(context);
-        },
-        title: cancelText!,
-      ));
+      actions.add(
+        YHButton(
+          text: YHText(
+            text: cancelText!,
+            font: YHFont.regular14,
+            color: YHColor.black,
+          ),
+          backgroundColor: YHColor.white,
+          onPressed: () {
+            Navigator.pop(context);
+            if (onCancel != null) {
+              onCancel!();
+            }
+          },
+        ),
+      );
     }
 
+    Widget title = YHText(
+        text: text,
+        font: YHFont.regular14,
+        color: YHColor.black,
+        align: TextAlign.start,
+        maxLines: 10);
+
     Widget? content;
-    if (subTitle != null) {
+    if (subText != null) {
       content = YHText(
-        text: subTitle!,
+        text: subText!,
         font: YHFont.regular14,
         color: YHColor.gray,
         align: TextAlign.center,
@@ -68,16 +87,16 @@ class YHDialog extends StatelessWidget {
     }
 
     return AlertDialog(
-        icon: icon,
-        backgroundColor: YHColor.white.color,
-        title: YHText(
-          text: title,
-          font: YHFont.regular16,
-          color: YHColor.black,
-          align: TextAlign.center,
-          maxLines: 10,
-        ),
-        content: content,
-        actions: actions);
+      icon: icon,
+      backgroundColor: YHColor.white.color,
+      title: title,
+      titlePadding: const EdgeInsets.all(24),
+      content: content,
+      actions: actions,
+      actionsPadding: const EdgeInsets.all(24),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24.0),
+      ),
+    );
   }
 }
