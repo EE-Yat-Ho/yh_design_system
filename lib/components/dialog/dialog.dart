@@ -60,6 +60,7 @@ class YHDialog extends StatelessWidget {
             color: YHColor.white),
         height: 40,
         backgroundColor: YHColor.primary,
+        autoResize: false,
         onPressed: () {
           Navigator.pop(context);
           onConfirm();
@@ -75,7 +76,9 @@ class YHDialog extends StatelessWidget {
             font: YHFont.regular16,
             color: YHColor.black,
           ),
+          height: 40,
           backgroundColor: YHColor.white,
+          autoResize: false,
           onPressed: () {
             Navigator.pop(context);
             if (onCancel != null) {
