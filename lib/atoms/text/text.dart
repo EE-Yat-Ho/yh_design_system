@@ -32,10 +32,7 @@ class _YHTextState extends State<YHText> {
   @override
   Widget build(BuildContext context) {
     Text text = Text(
-      style: TextStyle(
-          color: widget.color.color,
-          fontSize: widget.font.size,
-          fontWeight: widget.font.fontWeight),
+      style: widget.font.style(color: widget.color.color),
       widget.text,
       maxLines: widget.maxLines,
       textAlign: widget.align,

@@ -43,7 +43,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
       title: YHText(
         text: title ?? '',
-        font: YHFont.regular18,
+        font: YHFont.body2,
         color: YHColor.primary,
       ),
       backgroundColor: Colors.transparent,

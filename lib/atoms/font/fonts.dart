@@ -1,54 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHFont {
-  h0(size: 30, weight: YHFontWeight.bold),
-  h1(size: 24, weight: YHFontWeight.bold),
-  h2(size: 22, weight: YHFontWeight.bold),
-  h3(size: 20, weight: YHFontWeight.bold),
-  h4(size: 18, weight: YHFontWeight.bold),
-  h5(size: 16, weight: YHFontWeight.bold),
-  h6(size: 14, weight: YHFontWeight.bold),
-  bold13(size: 13, weight: YHFontWeight.bold),
-  bold14(size: 14, weight: YHFontWeight.bold),
-  bold18(size: 18, weight: YHFontWeight.bold),
-  regular18(size: 18, weight: YHFontWeight.regular),
-  regular16(size: 16, weight: YHFontWeight.regular),
-  regular14(size: 14, weight: YHFontWeight.regular),
-  regular12(size: 12, weight: YHFontWeight.regular),
+  title1,
+  title2,
+  title3,
+  title4,
 
-  title(size: 40, weight: YHFontWeight.regular),
+  label2,
 
-  medium12(size: 12, weight: YHFontWeight.medium),
-  medium14(size: 14, weight: YHFontWeight.medium),
-  medium16(size: 16, weight: YHFontWeight.medium);
+  body2,
+  body3,
+  body5;
 
-  const YHFont({
-    required this.size,
-    required this.weight,
-  });
+  const YHFont();
 
-  final double size;
-  final YHFontWeight weight;
+  String get fontFamily {
+    return "SpoqaHanSansNeo";
+  }
 
-  FontWeight get fontWeight => weight.fontweight();
+  double get fontSize {
+    switch (this) {
+      case YHFont.title1:
+        return 24;
+      case YHFont.title2:
+        return 18;
+      case YHFont.title3:
+        return 16;
+      case YHFont.title4:
+        return 14;
+      case YHFont.label2:
+        return 12;
+      case YHFont.body2:
+        return 18;
+      case YHFont.body3:
+        return 16;
+      case YHFont.body5:
+        return 14;
+    }
+  }
+
+  FontWeight? get fontWeight {
+    switch (this) {
+      case YHFont.title1:
+        return FontWeight.w700;
+      case YHFont.title2:
+        return FontWeight.w700;
+      case YHFont.title3:
+        return FontWeight.w700;
+      case YHFont.title4:
+        return FontWeight.w700;
+      case YHFont.label2:
+        return FontWeight.w500;
+      case YHFont.body2:
+        return FontWeight.w500;
+      case YHFont.body3:
+        return FontWeight.w500;
+      case YHFont.body5:
+        return FontWeight.w500;
+    }
+  }
 }
 
-enum YHFontWeight {
-  regular,
-  medium,
-  bold;
-  // semiBold,
-  // extraBold,
-  // ultraBold,
-
-  FontWeight fontweight() {
-    switch (this) {
-      case regular:
-        return FontWeight.w400;
-      case medium:
-        return FontWeight.w600;
-      case bold:
-        return FontWeight.w700;
-    }
+extension YHFontEx on YHFont {
+  TextStyle style({Color? color}) {
+    return TextStyle(
+      fontFamily: fontFamily, // enum의 폰트 이름 사용
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      height: 1.4,
+      color: color ?? YHColor.contentPrimary.color,
+    );
   }
 }

@@ -71,10 +71,7 @@ class YHTextFieldCard extends StatelessWidget {
           // ),
 
           hintText: placeholder,
-          hintStyle: TextStyle(
-            color: YHColor.gray.color,
-            fontSize: YHFont.regular16.size,
-          ),
+          hintStyle: YHFont.body5.style(color: YHColor.contentSecondary.color),
 
           fillColor: bgColor,
           filled: true,
@@ -98,10 +95,7 @@ class YHTextFieldCard extends StatelessWidget {
           ),
           contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
         ),
-        style: TextStyle(
-          color: YHColor.black.color,
-          fontSize: YHFont.regular16.size,
-        ),
+        style: YHFont.body5.style(color: YHColor.contentPrimary.color),
       ),
       // ),
       // )

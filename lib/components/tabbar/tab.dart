@@ -16,7 +16,7 @@ class YHTab extends StatelessWidget {
     return Tab(
       child: Text(
         text,
-        style: TextStyle(fontWeight: font.fontWeight, fontSize: font.size),
+        style: TextStyle(fontWeight: font.fontWeight, fontSize: font.fontSize),
       ),
     );
   }

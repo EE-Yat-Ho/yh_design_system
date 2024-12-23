@@ -41,13 +41,13 @@ class YHOptionButton extends StatelessWidget {
             const SizedBox(width: 10),
             YHText(
               text: title,
-              font: YHFont.regular16,
+              font: YHFont.body3,
               color: textColor,
             ),
             const Spacer(),
             YHText(
               text: description,
-              font: YHFont.regular16,
+              font: YHFont.body3,
               color: textColor,
             ),
           ],

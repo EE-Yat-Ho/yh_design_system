@@ -31,7 +31,12 @@ class YHCard extends StatelessWidget {
         side: BorderSide(color: borderColor!.color, width: borderWidth!),
         borderRadius: BorderRadius.circular(10),
       );
+    } else {
+      shape = RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      );
     }
+
     return Card(
         elevation: elevation,
         margin: margin,

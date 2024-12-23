@@ -31,7 +31,7 @@ class YHTextFieldDialog extends StatelessWidget {
       backgroundColor: YHColor.white.color,
       title: YHText(
         text: title,
-        font: YHFont.h4,
+        font: YHFont.title2,
         color: YHColor.black,
       ),
       content: SingleChildScrollView(
@@ -61,8 +61,8 @@ class YHTextFieldDialog extends StatelessWidget {
             onPressed(textController.text);
             Navigator.pop(context);
           },
-          child:
-              const YHText(text: "확인", font: YHFont.h6, color: YHColor.white),
+          child: const YHText(
+              text: "확인", font: YHFont.title4, color: YHColor.white),
         )
       ],
     );

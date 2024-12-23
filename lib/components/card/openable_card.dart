@@ -30,7 +30,7 @@ class YHOpenableCard extends StatelessWidget {
     List<Widget> mainRowList = [
       YHText(
         text: object.rightText ?? "", // bag.numberOfNote.toString(),
-        font: YHFont.regular16,
+        font: YHFont.body3,
         color: YHColor.gray,
       ),
       const SizedBox(
@@ -49,7 +49,7 @@ class YHOpenableCard extends StatelessWidget {
         leading: object.leadingImage.icon(width: 26, height: 26),
         title: YHText(
           text: object.text,
-          font: YHFont.regular18,
+          font: YHFont.body2,
           color: YHColor.black,
         ),
         contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),

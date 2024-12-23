@@ -36,7 +36,7 @@ class YHDialog extends StatelessWidget {
 
     Widget title = YHText(
         text: text,
-        font: YHFont.regular16,
+        font: YHFont.body3,
         color: YHColor.black,
         align: TextAlign.center,
         maxLines: 10);
@@ -45,7 +45,7 @@ class YHDialog extends StatelessWidget {
     if (subText != null) {
       content = YHText(
         text: subText!,
-        font: YHFont.regular14,
+        font: YHFont.body5,
         color: YHColor.gray,
         align: TextAlign.center,
         maxLines: 10,
@@ -56,7 +56,7 @@ class YHDialog extends StatelessWidget {
       YHButton(
         text: YHText(
             text: confirmText ?? "확인",
-            font: YHFont.regular14,
+            font: YHFont.body5,
             color: YHColor.white),
         height: 40,
         backgroundColor: YHColor.primary,
@@ -73,7 +73,7 @@ class YHDialog extends StatelessWidget {
         YHButton(
           text: YHText(
             text: cancelText!,
-            font: YHFont.regular14,
+            font: YHFont.body5,
             color: YHColor.black,
           ),
           height: 40,

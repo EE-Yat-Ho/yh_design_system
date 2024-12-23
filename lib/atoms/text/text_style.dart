@@ -13,6 +13,8 @@ class YHTextStyle {
 
   TextStyle textStyle() {
     return TextStyle(
-        color: color.color, fontSize: font.size, fontWeight: font.fontWeight);
+        color: color.color,
+        fontSize: font.fontSize,
+        fontWeight: font.fontWeight);
   }
 }

@@ -41,9 +41,7 @@ class YHImageTextButton extends StatelessWidget {
       list.add(Icon(iconData));
     }
     list.add(YHText(
-        text: text,
-        font: YHFont.regular16,
-        color: textColor ?? YHColor.primary));
+        text: text, font: YHFont.body3, color: textColor ?? YHColor.primary));
 
     return Row(children: list);
   }
