@@ -63,6 +63,8 @@ class YHOpenableCard extends StatelessWidget {
     if (showAddButton) {
       mainRowList.insertAll(2, [
         YHButton(
+          width: 24,
+          height: 24,
           onPressed: () {
             if (onTapAddButton != null) {
               onTapAddButton!(object.id);
