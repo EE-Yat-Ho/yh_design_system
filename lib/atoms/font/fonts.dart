@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHFont {
+  title0,
   title1,
   title2,
   title3,
@@ -9,9 +10,11 @@ enum YHFont {
 
   label2,
 
+  body1,
   body2,
   body3,
-  body5;
+  body5,
+  body6;
 
   const YHFont();
 
@@ -21,6 +24,8 @@ enum YHFont {
 
   double get fontSize {
     switch (this) {
+      case YHFont.title0:
+        return 30;
       case YHFont.title1:
         return 24;
       case YHFont.title2:
@@ -31,32 +36,33 @@ enum YHFont {
         return 14;
       case YHFont.label2:
         return 12;
+      case YHFont.body1:
+        return 20;
       case YHFont.body2:
         return 18;
       case YHFont.body3:
         return 16;
       case YHFont.body5:
         return 14;
+      case YHFont.body6:
+        return 12;
     }
   }
 
   FontWeight? get fontWeight {
     switch (this) {
+      case YHFont.title0:
       case YHFont.title1:
-        return FontWeight.w700;
       case YHFont.title2:
-        return FontWeight.w700;
       case YHFont.title3:
-        return FontWeight.w700;
       case YHFont.title4:
         return FontWeight.w700;
       case YHFont.label2:
-        return FontWeight.w500;
+      case YHFont.body1:
       case YHFont.body2:
-        return FontWeight.w500;
       case YHFont.body3:
-        return FontWeight.w500;
       case YHFont.body5:
+      case YHFont.body6:
         return FontWeight.w500;
     }
   }
