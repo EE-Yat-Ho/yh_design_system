@@ -52,11 +52,17 @@ class YHButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var children = <Widget>[];
 
+    if (leftIcon != null) {
+      children.add(leftIcon!);
+    }
     if (text != null) {
       children.add(text!);
     }
     if (image != null) {
       children.add(image!);
+    }
+    if (rightIcon != null) {
+      children.add(rightIcon!);
     }
 
     return RawMaterialButton(
