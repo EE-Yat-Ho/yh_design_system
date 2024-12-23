@@ -38,6 +38,7 @@ class YHCard extends StatelessWidget {
     }
 
     return Card(
+        clipBehavior: Clip.antiAlias,
         elevation: elevation,
         margin: margin,
         color: backgroundColor.color,
