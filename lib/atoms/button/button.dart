@@ -9,19 +9,21 @@ class YHButton extends StatelessWidget {
     super.key,
     // autoResize가 true면 최대 영역을 잡음. false면 최대한 작아지고 지정해준 크기로됨
     this.autoResize = true,
-    this.width,
-    this.height,
     this.text,
-    this.leftIcon,
-    this.rightIcon,
+    this.image,
     required this.onPressed,
     this.backgroundColor = YHColor.primary,
     this.textColor = YHColor.white,
     this.disable = false,
+    this.width,
+    this.height,
+    this.leftIcon,
+    this.rightIcon,
     this.borderColor = YHColor.primary,
     this.borderWidth = 0,
     this.cornerRadius = 8,
     this.horizontalAlignment = MainAxisAlignment.center,
+    this.shadow = true,
   });
 
   final bool autoResize;
@@ -29,6 +31,7 @@ class YHButton extends StatelessWidget {
   final double? height;
 
   final YHText? text;
+  final Image? image;
   final Widget? leftIcon;
   final Widget? rightIcon;
   final GestureTapCallback onPressed;
@@ -37,6 +40,7 @@ class YHButton extends StatelessWidget {
   final YHColor textColor;
 
   final bool disable;
+  final bool shadow;
 
   final YHColor borderColor;
   final double borderWidth;
@@ -51,11 +55,14 @@ class YHButton extends StatelessWidget {
     if (text != null) {
       children.add(text!);
     }
+    if (image != null) {
+      children.add(image!);
+    }
 
     return RawMaterialButton(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      elevation: 2,
-      focusElevation: 2,
+      elevation: shadow ? 2 : 0,
+      focusElevation: shadow ? 2 : 0,
       highlightElevation: 1,
       hoverElevation: 0,
       disabledElevation: 1,
