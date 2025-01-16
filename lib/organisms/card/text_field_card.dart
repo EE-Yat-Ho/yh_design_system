@@ -15,7 +15,7 @@ class YHTextFieldCard extends StatelessWidget {
     this.autofocus = false,
     this.enabled = true,
     this.focusNode,
-    this.maxLines = 1,
+    this.maxLines,
     this.placeholder,
     this.borderType = BorderType.none,
     this.cornerRadius = 8,

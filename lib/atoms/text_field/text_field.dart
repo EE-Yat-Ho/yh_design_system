@@ -17,7 +17,7 @@ class YHTextField extends StatelessWidget {
     this.autofocus = false,
     this.enabled = true,
     this.focusNode,
-    this.maxLines = 1,
+    this.maxLines,
     this.placeholder,
     this.borderType = BorderType.none,
     this.cornerRadius = 8,
@@ -109,7 +109,6 @@ class YHTextField extends StatelessWidget {
     }
 
     return TextField(
-      // expands: false,
       cursorColor: YHColor.primary.color,
       keyboardType: textInputType ?? TextInputType.multiline,
       maxLines: obscureText ? 1 : maxLines,
@@ -119,7 +118,6 @@ class YHTextField extends StatelessWidget {
       autofocus: autofocus,
       focusNode: focusNode,
       enabled: enabled,
-
       decoration: InputDecoration(
         labelText: labelText,
         isDense: isDense,
@@ -158,3 +156,81 @@ class YHTextField extends StatelessWidget {
     );
   }
 }
+
+// class YHTextFieldCard extends StatelessWidget {
+//   const YHTextFieldCard({
+//     super.key,
+//     this.labelText = "",
+//     required this.controller,
+//     this.obscureText = false,
+//     this.onChanged,
+//     this.textInputType,
+//     this.isDense,
+//     this.autofocus = false,
+//     this.enabled = true,
+//     this.focusNode,
+//     this.maxLines,
+//     this.placeholder,
+//   });
+
+//   final String labelText;
+//   final TextEditingController controller;
+//   final bool obscureText;
+//   final ValueChanged<String>? onChanged;
+//   final TextInputType? textInputType;
+//   final bool? isDense;
+//   final bool autofocus;
+//   final bool enabled;
+//   final FocusNode? focusNode;
+//   final int? maxLines;
+//   final String? placeholder;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final bgColor = enabled
+//         ? YHColor.white.color
+//         : const Color.fromARGB(255, 172, 172, 172);
+
+//     return YHCard(
+//       child: TextField(
+//         cursorColor: YHColor.primary.color,
+//         keyboardType: textInputType ?? TextInputType.multiline,
+//         maxLines: maxLines,
+//         controller: controller,
+//         obscureText: obscureText,
+//         onChanged: onChanged,
+//         autofocus: autofocus,
+//         focusNode: focusNode,
+//         enabled: enabled,
+//         decoration: InputDecoration(
+//           isDense: isDense,
+//           hintText: placeholder,
+//           hintStyle: YHFont.body5.style(color: YHColor.contentSecondary.color),
+
+//           fillColor: bgColor,
+//           filled: true,
+
+//           // border: InputBorder.none, // OutlineInputBorder(),
+//           border: OutlineInputBorder(
+//             borderSide: BorderSide(color: bgColor, width: 0),
+//             borderRadius: BorderRadius.circular(12),
+//           ),
+//           enabledBorder: OutlineInputBorder(
+//             borderSide: BorderSide(color: bgColor, width: 0),
+//             borderRadius: BorderRadius.circular(12),
+//           ),
+//           focusedBorder: OutlineInputBorder(
+//             borderSide: BorderSide(color: bgColor, width: 0),
+//             borderRadius: BorderRadius.circular(12),
+//           ),
+//           disabledBorder: OutlineInputBorder(
+//             borderSide: BorderSide(color: bgColor, width: 0),
+//             borderRadius: BorderRadius.circular(12),
+//           ),
+//           contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+//         ),
+//         style: YHFont.body5.style(color: YHColor.contentPrimary.color),
+//       ),
+//     );
+//   }
+// }
