@@ -4,6 +4,9 @@ enum YHColor {
   primary(color: Color.fromARGB(255, 75, 130, 255)),
   disable(color: Color.fromARGB(255, 172, 172, 172)),
   supportWarning(color: Color.fromRGBO(248, 87, 82, 1)),
+  placeholder(color: Color.fromRGBO(191, 199, 212, 1)),
+  outline(color: Color.fromRGBO(213, 220, 229, 1)),
+  divider(color: Color.fromRGBO(213, 220, 229, 1)),
 
   contentPrimary(color: Color.fromRGBO(14, 19, 27, 1)),
   contentSecondary(color: Color.fromRGBO(123, 142, 163, 1)),
@@ -18,10 +21,13 @@ enum YHColor {
   optionsBG(color: Color.fromARGB(255, 220, 223, 228)),
   note(color: Color.fromARGB(255, 255, 146, 10)),
 
+  transparent(color: Color.fromRGBO(0, 0, 0, 0)),
   opacity(color: Color.fromRGBO(0, 0, 0, 0)),
+
   white(color: Color.fromARGB(255, 255, 255, 255)),
   gray(color: Color.fromARGB(255, 172, 172, 172)),
   black(color: Color.fromARGB(255, 17, 17, 17)),
+
   red(color: Color.fromARGB(255, 255, 0, 0)),
   gold(color: Color.fromARGB(255, 255, 187, 0));
 
@@ -30,4 +36,16 @@ enum YHColor {
   });
 
   final Color color;
+
+  static Widget square({
+    double width = 10,
+    double height = 10,
+    YHColor color = YHColor.primary,
+  }) {
+    return Container(
+      width: width,
+      height: height,
+      color: color.color,
+    );
+  }
 }

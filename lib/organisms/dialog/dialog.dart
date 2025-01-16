@@ -77,7 +77,7 @@ class YHDialog extends StatelessWidget {
             color: YHColor.black,
           ),
           height: 40,
-          backgroundColor: YHColor.white,
+          backgroundColor: YHColor.surface03,
           autoResize: false,
           onPressed: () {
             Navigator.pop(context);
