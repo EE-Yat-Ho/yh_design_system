@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/text_field/text_field.dart';
+import 'package:yh_design_system/organisms/card/card.dart';
+
+class YHTextFieldCard extends StatelessWidget {
+  const YHTextFieldCard({
+    super.key,
+    this.labelText,
+    this.controller,
+    this.obscureText = false,
+    required this.onChanged,
+    required this.onClear,
+    this.textInputType,
+    this.isDense,
+    this.autofocus = false,
+    this.enabled = true,
+    this.focusNode,
+    this.maxLines = 1,
+    this.placeholder,
+    this.borderType = BorderType.outline,
+    this.cornerRadius = 8,
+    this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
+    this.right,
+  });
+
+  final String? labelText;
+  final EdgeInsets padding;
+  final TextEditingController? controller;
+  final bool obscureText;
+  final void Function(String) onChanged;
+  final void Function() onClear;
+  final TextInputType? textInputType;
+  final bool? isDense;
+  final bool autofocus;
+  final bool enabled;
+  final FocusNode? focusNode;
+  final int? maxLines;
+  final String? placeholder;
+  final double cornerRadius;
+  final BorderType borderType;
+  final Widget? right;
+
+  @override
+  Widget build(BuildContext context) {
+    final bgColor = enabled ? YHColor.white : YHColor.disable;
+
+    return YHCard(
+      backgroundColor: bgColor,
+      child: YHTextField(
+        labelText: labelText,
+        padding: padding,
+        controller: controller,
+        obscureText: obscureText,
+        onChanged: onChanged,
+        onClear: onClear,
+        textInputType: textInputType,
+        isDense: isDense,
+        autofocus: autofocus,
+        enabled: enabled,
+        focusNode: focusNode,
+        maxLines: maxLines,
+        placeholder: placeholder,
+        cornerRadius: cornerRadius,
+        borderType: borderType,
+        right: right,
+      ),
+    );
+  }
+}
