@@ -141,8 +141,13 @@ class YHTextField extends StatelessWidget {
       autoResize: true,
       backgroundColor: YHColor.opacity,
       shadow: false,
-      image: Image.asset("assets/images/text_field_clear_icon.png",
-          width: 24, height: 24, fit: BoxFit.fitHeight),
+      image: Image.asset(
+        "assets/images/text_field_clear_icon.png",
+        width: 24,
+        height: 24,
+        fit: BoxFit.fitHeight,
+        package: "yh_design_system",
+      ),
       width: 40,
       height: 40,
     );

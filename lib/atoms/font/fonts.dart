@@ -76,6 +76,7 @@ extension YHFontEx on YHFont {
       fontWeight: fontWeight,
       height: 1.4,
       color: color ?? YHColor.contentPrimary.color,
+      package: "yh_design_system",
     );
   }
 }
