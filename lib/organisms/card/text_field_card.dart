@@ -17,11 +17,11 @@ class YHTextFieldCard extends StatelessWidget {
     this.focusNode,
     this.maxLines = 1,
     this.placeholder,
-    this.borderType = BorderType.outline,
+    this.borderType = BorderType.none,
     this.cornerRadius = 8,
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
-    this.hideClear = false,
+    this.hideClear = true,
   });
 
   final String? labelText;

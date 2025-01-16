@@ -3,7 +3,7 @@ import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
-enum BorderType { outline, underline }
+enum BorderType { outline, underline, none }
 
 class YHTextField extends StatelessWidget {
   const YHTextField({
@@ -19,11 +19,11 @@ class YHTextField extends StatelessWidget {
     this.focusNode,
     this.maxLines = 1,
     this.placeholder,
-    this.borderType = BorderType.outline,
+    this.borderType = BorderType.none,
     this.cornerRadius = 8,
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
-    this.hideClear = false,
+    this.hideClear = true,
   });
 
   final String? labelText;
@@ -88,7 +88,7 @@ class YHTextField extends StatelessWidget {
         borderSide: BorderSide(color: YHColor.disable.color, width: 1),
         borderRadius: borderRadius,
       );
-    } else {
+    } else if (borderType == BorderType.underline) {
       border = UnderlineInputBorder(
         borderSide: BorderSide(color: YHColor.primary.color, width: 1),
       );
@@ -101,6 +101,11 @@ class YHTextField extends StatelessWidget {
       disabledBorder = UnderlineInputBorder(
         borderSide: BorderSide(color: YHColor.disable.color, width: 1),
       );
+    } else {
+      border = InputBorder.none;
+      enabledBorder = InputBorder.none;
+      focusedBorder = InputBorder.none;
+      disabledBorder = InputBorder.none;
     }
 
     return TextField(
