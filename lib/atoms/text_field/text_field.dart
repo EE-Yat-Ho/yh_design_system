@@ -47,7 +47,7 @@ class YHTextField extends StatelessWidget {
     Widget rightWidget;
     if (right != null) {
       rightWidget = right!;
-    } else if (controller?.text.isNotEmpty ?? false) {
+    } else if ((controller?.text.isNotEmpty ?? false) && !hideClear) {
       rightWidget = _clearButton(context);
     } else {
       rightWidget = const SizedBox.shrink();
@@ -141,7 +141,7 @@ class YHTextField extends StatelessWidget {
       autoResize: true,
       backgroundColor: YHColor.opacity,
       shadow: false,
-      image: Image.asset("images/text_field_clear_icon.png",
+      image: Image.asset("assets/images/text_field_clear_icon.png",
           width: 24, height: 24, fit: BoxFit.fitHeight),
       width: 40,
       height: 40,
