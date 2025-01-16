@@ -122,7 +122,7 @@ class YHTextField extends StatelessWidget {
         labelText: labelText,
         isDense: isDense,
         hintText: placeholder,
-        hintStyle: YHFont.body2.style(color: YHColor.placeholder.color),
+        hintStyle: YHFont.body5.style(color: YHColor.placeholder.color),
         fillColor: bgColor,
         filled: true,
         border: border,
@@ -131,7 +131,7 @@ class YHTextField extends StatelessWidget {
         disabledBorder: disabledBorder,
         contentPadding: padding,
       ),
-      style: YHFont.body2.style(color: YHColor.contentPrimary.color),
+      style: YHFont.body5.style(color: YHColor.contentPrimary.color),
     );
   }
 
