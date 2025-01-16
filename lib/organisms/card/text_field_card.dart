@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/text_field/text_field.dart';
 import 'package:yh_design_system/organisms/card/card.dart';
 
@@ -7,6 +8,7 @@ class YHTextFieldCard extends StatelessWidget {
   const YHTextFieldCard({
     super.key,
     this.labelText,
+    this.font = YHFont.body3,
     this.controller,
     this.obscureText = false,
     required this.onChanged,
@@ -25,6 +27,7 @@ class YHTextFieldCard extends StatelessWidget {
   });
 
   final String? labelText;
+  final YHFont font;
   final EdgeInsets padding;
   final TextEditingController? controller;
   final bool obscureText;
@@ -49,6 +52,7 @@ class YHTextFieldCard extends StatelessWidget {
       backgroundColor: bgColor,
       child: YHTextField(
         labelText: labelText,
+        font: font,
         padding: padding,
         controller: controller,
         obscureText: obscureText,

@@ -9,6 +9,7 @@ class YHTextField extends StatelessWidget {
   const YHTextField({
     super.key,
     this.labelText,
+    this.font = YHFont.body3,
     this.controller,
     this.obscureText = false,
     required this.onChanged,
@@ -27,6 +28,7 @@ class YHTextField extends StatelessWidget {
   });
 
   final String? labelText;
+  final YHFont font;
   final EdgeInsets padding;
   final TextEditingController? controller;
   final bool obscureText;
@@ -122,7 +124,7 @@ class YHTextField extends StatelessWidget {
         labelText: labelText,
         isDense: isDense,
         hintText: placeholder,
-        hintStyle: YHFont.body5.style(color: YHColor.placeholder.color),
+        hintStyle: font.style(color: YHColor.placeholder.color),
         fillColor: bgColor,
         filled: true,
         border: border,
@@ -131,7 +133,7 @@ class YHTextField extends StatelessWidget {
         disabledBorder: disabledBorder,
         contentPadding: padding,
       ),
-      style: YHFont.body5.style(color: YHColor.contentPrimary.color),
+      style: font.style(color: YHColor.contentPrimary.color),
     );
   }
 
