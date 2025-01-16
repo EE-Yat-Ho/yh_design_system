@@ -10,7 +10,6 @@ class YHTextFieldCard extends StatelessWidget {
     this.controller,
     this.obscureText = false,
     required this.onChanged,
-    required this.onClear,
     this.textInputType,
     this.isDense,
     this.autofocus = false,
@@ -22,6 +21,7 @@ class YHTextFieldCard extends StatelessWidget {
     this.cornerRadius = 8,
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
+    this.hideClear = false,
   });
 
   final String? labelText;
@@ -29,7 +29,6 @@ class YHTextFieldCard extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final void Function(String) onChanged;
-  final void Function() onClear;
   final TextInputType? textInputType;
   final bool? isDense;
   final bool autofocus;
@@ -40,6 +39,7 @@ class YHTextFieldCard extends StatelessWidget {
   final double cornerRadius;
   final BorderType borderType;
   final Widget? right;
+  final bool hideClear;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,6 @@ class YHTextFieldCard extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         onChanged: onChanged,
-        onClear: onClear,
         textInputType: textInputType,
         isDense: isDense,
         autofocus: autofocus,
@@ -64,6 +63,7 @@ class YHTextFieldCard extends StatelessWidget {
         cornerRadius: cornerRadius,
         borderType: borderType,
         right: right,
+        hideClear: hideClear,
       ),
     );
   }

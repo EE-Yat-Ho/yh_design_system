@@ -12,7 +12,6 @@ class YHTextField extends StatelessWidget {
     this.controller,
     this.obscureText = false,
     required this.onChanged,
-    required this.onClear,
     this.textInputType,
     this.isDense,
     this.autofocus = false,
@@ -24,6 +23,7 @@ class YHTextField extends StatelessWidget {
     this.cornerRadius = 8,
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
+    this.hideClear = false,
   });
 
   final String? labelText;
@@ -31,7 +31,6 @@ class YHTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final void Function(String) onChanged;
-  final void Function() onClear;
   final TextInputType? textInputType;
   final bool? isDense;
   final bool autofocus;
@@ -42,7 +41,7 @@ class YHTextField extends StatelessWidget {
   final double cornerRadius;
   final BorderType borderType;
   final Widget? right;
-
+  final bool hideClear;
   @override
   Widget build(BuildContext context) {
     Widget rightWidget;
@@ -116,29 +115,13 @@ class YHTextField extends StatelessWidget {
       focusNode: focusNode,
       enabled: enabled,
 
-      // autofillHints: ["autofillHints"],
-      // strutStyle: StrutStyle(
-      //   fontSize: 10
-      // ),
       decoration: InputDecoration(
         labelText: labelText,
-        // fillColor: Colors.red,
-        // color
-        // helperText: "Help",
         isDense: isDense,
-        // labelStyle: TextStyle(
-        //   color: NemoColor.black.color,
-        //   decorationColor: NemoColor.gray.color,
-        //   fontWeight: NemoFont.regular14.fontWeight,
-        //   fontSize: NemoFont.h1.size,
-        // ),
-
         hintText: placeholder,
         hintStyle: YHFont.body2.style(color: YHColor.placeholder.color),
-
         fillColor: bgColor,
         filled: true,
-
         border: border,
         enabledBorder: enabledBorder,
         focusedBorder: focusedBorder,
@@ -152,7 +135,7 @@ class YHTextField extends StatelessWidget {
   Widget _clearButton(BuildContext context) {
     return YHButton(
       onPressed: () {
-        onClear();
+        onChanged("");
         controller?.clear();
       },
       autoResize: true,
