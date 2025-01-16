@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/components/card/openable_child_card.dart';
-import 'package:yh_design_system/components/card/openable_card.dart';
+import 'package:yh_design_system/organisms/card/openable_child_card.dart';
+import 'package:yh_design_system/organisms/card/openable_card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/utils/yh_expansion_panel_list.dart';
