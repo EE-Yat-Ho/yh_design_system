@@ -1,5 +1,12 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+
+enum YHFontFamily {
+  SpoqaHanSansNeo, // 기본 폰트 (nemo)
+  SANGJUDajungdagam // 필기체 (memory_log)
+}
 
 enum YHFont {
   title0,
@@ -18,9 +25,8 @@ enum YHFont {
 
   const YHFont();
 
-  String get fontFamily {
-    return "SpoqaHanSansNeo";
-  }
+  // 앱 전체 폰트 설정
+  static YHFontFamily fontFamily = YHFontFamily.SpoqaHanSansNeo;
 
   double get fontSize {
     switch (this) {
@@ -71,7 +77,7 @@ enum YHFont {
 extension YHFontEx on YHFont {
   TextStyle style({Color? color}) {
     return TextStyle(
-      fontFamily: fontFamily, // enum의 폰트 이름 사용
+      fontFamily: YHFont.fontFamily.name, // enum의 폰트 이름 사용
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: 1.4,
