@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class YHColor {
-  static YHColor primary =
-      const YHColor(color: Color.fromARGB(255, 75, 130, 255));
+  static YHColor primary = const YHColor(color: Color.fromARGB(255, 75, 130, 255));
 
   static const YHColor disable =
       YHColor(color: Color.fromARGB(255, 172, 172, 172));
@@ -31,6 +30,13 @@ class YHColor {
 
   static const YHColor gray90 =
       YHColor(color: Color.fromRGBO(213, 220, 229, 1));
+
+  static const YHColor gray50 =
+      YHColor(color: Color.fromRGBO(249, 249, 249, 1));
+  static const YHColor gray100 =
+      YHColor(color: Color.fromRGBO(237, 237, 237, 1));
+  static const YHColor gray400 =
+      YHColor(color: Color.fromRGBO(209, 209, 209, 1));
 
   static const YHColor white =
       YHColor(color: Color.fromARGB(255, 255, 255, 255));
