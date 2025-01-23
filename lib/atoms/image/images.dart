@@ -79,12 +79,13 @@ enum YHImage {
 }
 
 extension YHImageImage on YHImage {
-  Image icon({double width = 24, double height = 24, YHColor? color}) {
+  Image icon(
+      {double width = 24,
+      double height = 24,
+      YHColor? color,
+      BoxFit fit = BoxFit.fitHeight}) {
     return Image.asset("images/$name.png",
-        width: width,
-        height: height,
-        color: color?.color,
-        fit: BoxFit.fitHeight);
+        width: width, height: height, color: color?.color, fit: fit);
   }
 
   ImageProvider get imageProvider {

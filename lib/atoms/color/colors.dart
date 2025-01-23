@@ -1,7 +1,10 @@
+// ignore_for_file: type=lint
+
 import 'package:flutter/material.dart';
 
 class YHColor {
-  static YHColor primary = const YHColor(color: Color.fromARGB(255, 75, 130, 255));
+  static YHColor primary =
+      const YHColor(color: Color.fromARGB(255, 75, 130, 255));
 
   static const YHColor disable =
       YHColor(color: Color.fromARGB(255, 172, 172, 172));
