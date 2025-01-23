@@ -5,8 +5,8 @@ class YHCard extends StatelessWidget {
   const YHCard({
     super.key,
     this.elevation = 2,
-    this.margin,
-    this.padding,
+    this.margin = EdgeInsets.zero,
+    this.padding = EdgeInsets.zero,
     this.backgroundColor = YHColor.white,
     this.borderColor,
     this.borderWidth,
@@ -14,8 +14,8 @@ class YHCard extends StatelessWidget {
     required this.child,
   });
 
-  final EdgeInsets? margin;
-  final EdgeInsets? padding;
+  final EdgeInsets margin;
+  final EdgeInsets padding;
   final YHColor backgroundColor;
   final YHColor? borderColor;
   final double? borderWidth;
@@ -46,7 +46,7 @@ class YHCard extends StatelessWidget {
         child: InkWell(
             onTap: onTap,
             child: Padding(
-              padding: padding ?? EdgeInsets.zero,
+              padding: padding,
               child: child,
             )));
   }

@@ -13,14 +13,14 @@ class YHOpenableChildCard extends StatelessWidget {
       required this.onTap,
       this.onLongPress,
       this.isSelected = false,
-      this.margin,
+      this.margin = EdgeInsets.zero,
       this.showRightArrow = true});
 
   final ChildObject object;
   final void Function(int id) onTap;
   final void Function(int id)? onLongPress;
   final bool isSelected;
-  final EdgeInsets? margin;
+  final EdgeInsets margin;
   final bool showRightArrow;
 
   @override
