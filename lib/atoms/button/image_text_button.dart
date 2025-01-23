@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
-import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
 class YHImageTextButton extends StatelessWidget {
@@ -11,21 +10,40 @@ class YHImageTextButton extends StatelessWidget {
     this.iconData,
     this.image,
     this.textColor,
+    this.borderColor,
+    this.borderWidth,
+    this.cornerRadius,
+    this.minHeight,
+    this.minWidth,
     required this.onPressed,
   });
 
   final VoidCallback? onPressed;
-  final String text;
+  final YHText text;
   final IconData? iconData;
   final YHImage? image;
   final YHColor? textColor;
+  final YHColor? borderColor;
+  final double? borderWidth;
+  final double? cornerRadius;
+  final double? minHeight;
+  final double? minWidth;
 
   @override
   Widget build(BuildContext context) {
+    OutlinedBorder? shape;
+    if (borderColor != null && borderWidth != null) {
+      shape = RoundedRectangleBorder(
+        side: BorderSide(color: borderColor!.color, width: borderWidth!),
+        borderRadius: BorderRadius.circular(cornerRadius ?? 0),
+      );
+    }
     return TextButton(
         onPressed: onPressed,
         style: TextButton.styleFrom(
-          minimumSize: Size.zero,
+          shape: shape,
+          minimumSize: Size(minWidth ?? 0, minHeight ?? 0),
+          maximumSize: Size(minWidth ?? 0, minHeight ?? 0),
           padding: const EdgeInsets.all(5),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
@@ -35,14 +53,27 @@ class YHImageTextButton extends StatelessWidget {
   Widget child() {
     List<Widget> list = [];
 
+    Widget? imageWidget;
     if (image != null) {
-      list.add(image!.icon(width: 18, height: 18));
+      imageWidget = image!.icon(width: 24, height: 24);
     } else if (iconData != null) {
-      list.add(Icon(iconData));
+      imageWidget = Icon(iconData);
     }
-    list.add(YHText(
-        text: text, font: YHFont.body3, color: textColor ?? YHColor.primary));
+    if (imageWidget != null) {
+      list.add(Row(
+        children: [
+          const SizedBox(width: 14),
+          Center(child: imageWidget),
+          const Spacer()
+        ],
+      ));
+    }
+    list.add(Center(child: text));
 
-    return Row(children: list);
+    // return Row(children: list);
+
+    return Stack(
+      children: list,
+    );
   }
 }
