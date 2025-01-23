@@ -4,9 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHImage {
-  // special
-  background,
-  launch_logo,
+  // MARK: - Common
+  icon_camera,
+  icon_close,
+  icon_down,
+  icon_left,
+  icon_plus_white,
+  icon_plus,
+  icon_photo,
+  icon_refresh,
+  icon_right,
+  icon_save,
+  icon_save_white,
+  // premium & donation
+  icon_bus,
+  icon_coffee,
+  icon_chicken,
+  icon_salad,
+  icon_steak,
+  icon_premium_menu,
+  icon_premium_noAd,
+  icon_premium_month,
+
+  // MARK: - Nemo
   // exam
   icon_right_blue,
   icon_fail_red,
@@ -20,44 +40,42 @@ enum YHImage {
   char_question_mark,
   char_really,
   char_write,
-  // premium & donation
-  icon_bus,
-  icon_coffee,
-  icon_chicken,
-  icon_salad,
-  icon_steak,
-  icon_premium_menu,
-  icon_premium_noAd,
-  icon_premium_month,
+
+  background,
+  launch_logo,
 
   icon_alarm,
   icon_bag,
   icon_bag_white,
-  icon_camera,
   icon_check_blue,
   icon_check_red,
-  icon_close,
   icon_copy_right,
-  icon_down,
   icon_email,
   icon_language,
-  icon_left,
   icon_memo,
   icon_note,
-  icon_plus_white,
-  icon_plus,
-  icon_photo,
   icon_question,
   icon_rating,
-  icon_refresh,
   icon_runner,
-  icon_right,
-  icon_save,
-  icon_save_white,
   icon_send,
   icon_speaker,
   icon_timer,
   icon_xlsx,
+
+  // MARK: - Memory Log
+  memory_log_logo,
+  icon_apple,
+  icon_google,
+  icon_setting,
+  profile_rabbit,
+  profile_bear,
+  book_cover,
+  sample0,
+  sample1,
+  sample2,
+  sample3,
+  tape_blue,
+  tape_red,
 }
 
 extension YHImageImage on YHImage {
