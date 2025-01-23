@@ -9,17 +9,35 @@ class YHImageButton extends StatelessWidget {
     required this.onPressed,
     required this.width,
     required this.height,
-    required this.color,
+    this.imageColor,
+    this.imageWidth,
+    this.imageHeight,
+    this.borderColor,
+    this.borderWidth,
+    this.cornerRadius,
   });
 
   final VoidCallback onPressed;
-  final YHImage image;
   final double width;
   final double height;
-  final YHColor color;
+  final YHImage image;
+  final YHColor? imageColor;
+  final double? imageWidth;
+  final double? imageHeight;
+  final YHColor? borderColor;
+  final double? borderWidth;
+  final double? cornerRadius;
 
   @override
   Widget build(BuildContext context) {
+    OutlinedBorder? shape;
+    if (borderColor != null && borderWidth != null) {
+      shape = RoundedRectangleBorder(
+        side: BorderSide(color: borderColor!.color, width: borderWidth!),
+        borderRadius: BorderRadius.circular(cornerRadius ?? 0),
+      );
+    }
+
     return Container(
       padding: const EdgeInsets.all(0.0),
       width: width,
@@ -27,7 +45,11 @@ class YHImageButton extends StatelessWidget {
       child: IconButton(
         padding: EdgeInsets.zero,
         onPressed: onPressed,
-        icon: image.icon(width: width, height: height, color: color),
+        icon: image.icon(
+            width: imageWidth ?? width,
+            height: imageHeight ?? height,
+            color: imageColor),
+        style: IconButton.styleFrom(shape: shape),
       ),
     );
   }
