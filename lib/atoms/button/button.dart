@@ -12,14 +12,14 @@ class YHButton extends StatelessWidget {
     this.text,
     this.image,
     required this.onPressed,
-    this.backgroundColor = YHColor.primary,
+    this.backgroundColor,
     this.textColor = YHColor.white,
     this.disable = false,
     this.width,
     this.height,
     this.leftIcon,
     this.rightIcon,
-    this.borderColor = YHColor.primary,
+    this.borderColor,
     this.borderWidth = 0,
     this.cornerRadius = 8,
     this.horizontalAlignment = MainAxisAlignment.center,
@@ -36,13 +36,13 @@ class YHButton extends StatelessWidget {
   final Widget? rightIcon;
   final GestureTapCallback onPressed;
 
-  final YHColor backgroundColor;
+  final YHColor? backgroundColor;
   final YHColor textColor;
 
   final bool disable;
   final bool shadow;
 
-  final YHColor borderColor;
+  final YHColor? borderColor;
   final double borderWidth;
   final double cornerRadius;
 
@@ -64,6 +64,8 @@ class YHButton extends StatelessWidget {
     if (rightIcon != null) {
       children.add(rightIcon!);
     }
+    final backgroundColor = this.backgroundColor ?? YHColor.primary;
+    final borderColor = this.borderColor ?? YHColor.primary;
 
     return RawMaterialButton(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
