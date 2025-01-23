@@ -83,7 +83,7 @@ extension YHImageImage on YHImage {
       {double width = 24,
       double height = 24,
       YHColor? color,
-      BoxFit fit = BoxFit.fitHeight}) {
+      BoxFit? fit = BoxFit.fitHeight}) {
     return Image.asset("images/$name.png",
         width: width, height: height, color: color?.color, fit: fit);
   }
