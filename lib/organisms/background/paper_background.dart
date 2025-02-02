@@ -14,7 +14,7 @@ class YHPaperBackground extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('images/background.png'), // 배경 이미지
+            image: AssetImage('images/paper_background.png'), // 배경 이미지
           ),
         ),
         child: child);
