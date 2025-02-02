@@ -6,6 +6,7 @@ import 'package:yh_design_system/atoms/font/fonts.dart';
 
 class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
+  final YHFont titleFont;
   final bool showBack;
   final Widget? left;
   final double leftPadding;
@@ -18,6 +19,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   const YHAppBar({
     super.key,
     this.title,
+    this.titleFont = YHFont.body3,
     this.showBack = true,
     this.left,
     this.leftPadding = 8,
@@ -37,7 +39,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (title != null && title!.isNotEmpty) {
       titleWidget = YHText(
         text: title!,
-        font: YHFont.body3,
+        font: titleFont,
         color: YHColor.contentPrimary,
       );
     }
