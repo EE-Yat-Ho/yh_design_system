@@ -1,6 +1,6 @@
 name: yh_design_system
 description: "yhlab's design system package"
-version: 1.3.8
+version: 1.3.9
 homepage: "https://github.com/EE-Yat-Ho/yh_design_system"
 
 environment:
