@@ -4,7 +4,7 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 final class YHIndicator {
   static OverlayEntry? _indicator;
 
-  static void show(BuildContext? context, Widget? child) {
+  static void show({BuildContext? context, Widget? child}) {
     // 앱이 실행중인 상태라면 null일 수가 없지만,
     // 위젯 트리에 붙지 않은 상태일 수 있기에 null을 반환할 수 있음.
     // BuildContext? context = navigatorKey.currentContext;
