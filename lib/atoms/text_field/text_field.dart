@@ -25,6 +25,8 @@ class YHTextField extends StatelessWidget {
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
     this.hideClear = true,
+    this.backgroundColor = YHColor.white,
+    this.disabledBackgroundColor = YHColor.disable,
   });
 
   final String? labelText;
@@ -44,6 +46,9 @@ class YHTextField extends StatelessWidget {
   final BorderType borderType;
   final Widget? right;
   final bool hideClear;
+  final YHColor backgroundColor;
+  final YHColor disabledBackgroundColor;
+
   @override
   Widget build(BuildContext context) {
     Widget rightWidget;
@@ -65,49 +70,54 @@ class YHTextField extends StatelessWidget {
   }
 
   Widget _textField(BuildContext context) {
-    final bgColor = enabled ? YHColor.white.color : YHColor.disable.color;
+    final bgColor =
+        enabled ? backgroundColor.color : disabledBackgroundColor.color;
 
     InputBorder border;
     InputBorder enabledBorder;
     InputBorder focusedBorder;
     InputBorder disabledBorder;
 
-    if (borderType == BorderType.outline) {
-      final borderRadius = BorderRadius.circular(cornerRadius);
-      border = OutlineInputBorder(
-        borderSide: BorderSide(color: YHColor.primary.color, width: 1),
-        borderRadius: borderRadius,
-      );
-      enabledBorder = OutlineInputBorder(
-        borderSide: BorderSide(color: YHColor.outline.color, width: 1),
-        borderRadius: borderRadius,
-      );
-      focusedBorder = OutlineInputBorder(
-        borderSide: BorderSide(color: YHColor.primary.color, width: 1),
-        borderRadius: borderRadius,
-      );
-      disabledBorder = OutlineInputBorder(
-        borderSide: BorderSide(color: YHColor.disable.color, width: 1),
-        borderRadius: borderRadius,
-      );
-    } else if (borderType == BorderType.underline) {
-      border = UnderlineInputBorder(
-        borderSide: BorderSide(color: YHColor.primary.color, width: 1),
-      );
-      enabledBorder = UnderlineInputBorder(
-        borderSide: BorderSide(color: YHColor.outline.color, width: 1),
-      );
-      focusedBorder = UnderlineInputBorder(
-        borderSide: BorderSide(color: YHColor.primary.color, width: 1),
-      );
-      disabledBorder = UnderlineInputBorder(
-        borderSide: BorderSide(color: YHColor.disable.color, width: 1),
-      );
-    } else {
-      border = InputBorder.none;
-      enabledBorder = InputBorder.none;
-      focusedBorder = InputBorder.none;
-      disabledBorder = InputBorder.none;
+    switch (borderType) {
+      case BorderType.outline:
+        final borderRadius = BorderRadius.circular(cornerRadius);
+        border = OutlineInputBorder(
+          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+          borderRadius: borderRadius,
+        );
+        enabledBorder = OutlineInputBorder(
+          borderSide: BorderSide(color: YHColor.outline.color, width: 1),
+          borderRadius: borderRadius,
+        );
+        focusedBorder = OutlineInputBorder(
+          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+          borderRadius: borderRadius,
+        );
+        disabledBorder = OutlineInputBorder(
+          borderSide: BorderSide(color: YHColor.disable.color, width: 1),
+          borderRadius: borderRadius,
+        );
+        break;
+      case BorderType.underline:
+        border = UnderlineInputBorder(
+          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+        );
+        enabledBorder = UnderlineInputBorder(
+          borderSide: BorderSide(color: YHColor.outline.color, width: 1),
+        );
+        focusedBorder = UnderlineInputBorder(
+          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+        );
+        disabledBorder = UnderlineInputBorder(
+          borderSide: BorderSide(color: YHColor.disable.color, width: 1),
+        );
+        break;
+      case BorderType.none:
+        border = InputBorder.none;
+        enabledBorder = InputBorder.none;
+        focusedBorder = InputBorder.none;
+        disabledBorder = InputBorder.none;
+        break;
     }
 
     return TextField(
@@ -158,81 +168,3 @@ class YHTextField extends StatelessWidget {
     );
   }
 }
-
-// class YHTextFieldCard extends StatelessWidget {
-//   const YHTextFieldCard({
-//     super.key,
-//     this.labelText = "",
-//     required this.controller,
-//     this.obscureText = false,
-//     this.onChanged,
-//     this.textInputType,
-//     this.isDense,
-//     this.autofocus = false,
-//     this.enabled = true,
-//     this.focusNode,
-//     this.maxLines,
-//     this.placeholder,
-//   });
-
-//   final String labelText;
-//   final TextEditingController controller;
-//   final bool obscureText;
-//   final ValueChanged<String>? onChanged;
-//   final TextInputType? textInputType;
-//   final bool? isDense;
-//   final bool autofocus;
-//   final bool enabled;
-//   final FocusNode? focusNode;
-//   final int? maxLines;
-//   final String? placeholder;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final bgColor = enabled
-//         ? YHColor.white.color
-//         : const Color.fromARGB(255, 172, 172, 172);
-
-//     return YHCard(
-//       child: TextField(
-//         cursorColor: YHColor.primary.color,
-//         keyboardType: textInputType ?? TextInputType.multiline,
-//         maxLines: maxLines,
-//         controller: controller,
-//         obscureText: obscureText,
-//         onChanged: onChanged,
-//         autofocus: autofocus,
-//         focusNode: focusNode,
-//         enabled: enabled,
-//         decoration: InputDecoration(
-//           isDense: isDense,
-//           hintText: placeholder,
-//           hintStyle: YHFont.body5.style(color: YHColor.contentSecondary.color),
-
-//           fillColor: bgColor,
-//           filled: true,
-
-//           // border: InputBorder.none, // OutlineInputBorder(),
-//           border: OutlineInputBorder(
-//             borderSide: BorderSide(color: bgColor, width: 0),
-//             borderRadius: BorderRadius.circular(12),
-//           ),
-//           enabledBorder: OutlineInputBorder(
-//             borderSide: BorderSide(color: bgColor, width: 0),
-//             borderRadius: BorderRadius.circular(12),
-//           ),
-//           focusedBorder: OutlineInputBorder(
-//             borderSide: BorderSide(color: bgColor, width: 0),
-//             borderRadius: BorderRadius.circular(12),
-//           ),
-//           disabledBorder: OutlineInputBorder(
-//             borderSide: BorderSide(color: bgColor, width: 0),
-//             borderRadius: BorderRadius.circular(12),
-//           ),
-//           contentPadding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-//         ),
-//         style: YHFont.body5.style(color: YHColor.contentPrimary.color),
-//       ),
-//     );
-//   }
-// }
