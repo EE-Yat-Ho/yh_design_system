@@ -5,8 +5,10 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHImage {
   // MARK: - Common
+  icon_add,
   icon_camera,
   icon_close,
+  icon_check,
   icon_down,
   icon_left,
   icon_plus_white,
@@ -16,15 +18,6 @@ enum YHImage {
   icon_right,
   icon_save,
   icon_save_white,
-  // premium & donation
-  icon_bus,
-  icon_coffee,
-  icon_chicken,
-  icon_salad,
-  icon_steak,
-  icon_premium_menu,
-  icon_premium_noAd,
-  icon_premium_month,
 
   // MARK: - Nemo
   // exam
@@ -40,6 +33,15 @@ enum YHImage {
   char_question_mark,
   char_really,
   char_write,
+  // premium & donation
+  icon_bus,
+  icon_coffee,
+  icon_chicken,
+  icon_salad,
+  icon_steak,
+  icon_premium_menu,
+  icon_premium_noAd,
+  icon_premium_month,
 
   background,
   launch_logo,
@@ -66,6 +68,7 @@ enum YHImage {
   memory_log_logo,
   icon_apple,
   icon_google,
+  icon_pencil,
   icon_setting,
   profile_rabbit,
   profile_bear,
@@ -76,6 +79,13 @@ enum YHImage {
   sample3,
   tape_blue,
   tape_red,
+
+  // premium & donation
+  image_chicken,
+  image_coffee,
+  image_coffee_plus,
+  image_hamburger,
+  image_icecream,
 }
 
 extension YHImageImage on YHImage {
