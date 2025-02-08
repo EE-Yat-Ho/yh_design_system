@@ -11,7 +11,7 @@ enum YHFontFamily {
 enum YHFont {
   bold30, // title0,
   bold24, // title1,
-  bold18, // bold18,
+  bold18, // title2,
   bold16, // title3,
   bold14, // title4,
 
