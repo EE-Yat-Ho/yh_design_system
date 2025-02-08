@@ -9,19 +9,17 @@ enum YHFontFamily {
 }
 
 enum YHFont {
-  title0,
-  title1,
-  title2,
-  title3,
-  title4,
+  bold30, // title0,
+  bold24, // title1,
+  bold18, // bold18,
+  bold16, // title3,
+  bold14, // title4,
 
-  label2,
-
-  body1,
-  body2,
-  body3,
-  body5,
-  body6;
+  regular20, // body1,
+  regular18, // body2,
+  regular16, // body3,
+  regular14, // body5,
+  regular12; // body6, label2
 
   const YHFont();
 
@@ -30,45 +28,42 @@ enum YHFont {
 
   double get fontSize {
     switch (this) {
-      case YHFont.title0:
+      case YHFont.bold30:
         return 30;
-      case YHFont.title1:
+      case YHFont.bold24:
         return 24;
-      case YHFont.title2:
+      case YHFont.bold18:
         return 18;
-      case YHFont.title3:
+      case YHFont.bold16:
         return 16;
-      case YHFont.title4:
+      case YHFont.bold14:
         return 14;
-      case YHFont.label2:
-        return 12;
-      case YHFont.body1:
+      case YHFont.regular20:
         return 20;
-      case YHFont.body2:
+      case YHFont.regular18:
         return 18;
-      case YHFont.body3:
+      case YHFont.regular16:
         return 16;
-      case YHFont.body5:
+      case YHFont.regular14:
         return 14;
-      case YHFont.body6:
+      case YHFont.regular12:
         return 12;
     }
   }
 
   FontWeight? get fontWeight {
     switch (this) {
-      case YHFont.title0:
-      case YHFont.title1:
-      case YHFont.title2:
-      case YHFont.title3:
-      case YHFont.title4:
+      case YHFont.bold30:
+      case YHFont.bold24:
+      case YHFont.bold18:
+      case YHFont.bold16:
+      case YHFont.bold14:
         return FontWeight.w700;
-      case YHFont.label2:
-      case YHFont.body1:
-      case YHFont.body2:
-      case YHFont.body3:
-      case YHFont.body5:
-      case YHFont.body6:
+      case YHFont.regular20:
+      case YHFont.regular18:
+      case YHFont.regular16:
+      case YHFont.regular14:
+      case YHFont.regular12:
         return FontWeight.w500;
     }
   }

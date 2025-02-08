@@ -77,7 +77,7 @@ class OpenableList extends StatelessWidget {
       return Expanded(
           child: Center(
         child:
-            YHText(text: emptyText, font: YHFont.title2, color: YHColor.black),
+            YHText(text: emptyText, font: YHFont.bold18, color: YHColor.black),
       ));
     }
 

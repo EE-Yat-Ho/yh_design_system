@@ -31,7 +31,7 @@ class YHOpenableChildCard extends StatelessWidget {
         leading: object.leadingImage.icon(width: 22, height: 22),
         title: YHText(
           text: object.text,
-          font: YHFont.body3,
+          font: YHFont.regular16,
           color: YHColor.black,
           maxLines: 2,
         ),
@@ -64,7 +64,7 @@ class YHOpenableChildCard extends StatelessWidget {
     List<Widget> list = [
       YHText(
         text: object.rightText ?? "", // "Q ${note.numberOfQuestion}",
-        font: YHFont.body3,
+        font: YHFont.regular16,
         color: YHColor.gray,
       ),
       const SizedBox(
@@ -72,7 +72,7 @@ class YHOpenableChildCard extends StatelessWidget {
       ),
       // YHText(
       //   text: "M ${note.numberOfMemo}",
-      //   font: YHFont.body3,
+      //   font: YHFont.regular16,
       //   color: YHColor.gray,
       // ),
       // SizedBox(

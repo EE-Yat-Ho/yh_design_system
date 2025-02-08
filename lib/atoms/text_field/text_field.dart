@@ -9,7 +9,7 @@ class YHTextField extends StatelessWidget {
   const YHTextField({
     super.key,
     this.labelText,
-    this.font = YHFont.body3,
+    this.font = YHFont.regular16,
     this.controller,
     this.obscureText = false,
     required this.onChanged,

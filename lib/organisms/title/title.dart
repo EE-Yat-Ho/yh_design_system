@@ -19,7 +19,7 @@ class YHTitle extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: YHText(
           text: title,
-          font: YHFont.title1,
+          font: YHFont.bold24,
           color: YHColor.black,
         ),
       ),

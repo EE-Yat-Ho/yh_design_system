@@ -51,7 +51,7 @@ final class TRSearchBar extends StatelessWidget {
                 isDense: true,
                 backgroundColor: YHColor.surface03,
                 disabledBackgroundColor: YHColor.surface03,
-                font: YHFont.body3,
+                font: YHFont.regular16,
                 right: null,
                 enabled: textFieldEnabled,
               ),
@@ -68,7 +68,7 @@ final class TRSearchBar extends StatelessWidget {
             //   onPressed: () => widget.onTap?.call(),
             //   text: const TRText(
             //     text: '취소',
-            //     font: TRFont.body5,
+            //     font: TRFont.regular14,
             //     color: TRColor.contentPrimary,
             //   ),
             // ),

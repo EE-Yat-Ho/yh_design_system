@@ -19,7 +19,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   const YHAppBar({
     super.key,
     this.title,
-    this.titleFont = YHFont.body3,
+    this.titleFont = YHFont.regular16,
     this.showBack = true,
     this.left,
     this.leftPadding = 8,
