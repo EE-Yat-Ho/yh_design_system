@@ -11,7 +11,7 @@ class YHButton extends StatelessWidget {
     this.autoResize = true,
     this.width,
     this.height,
-    this.padding,
+    this.padding = const EdgeInsets.all(0),
     this.text,
     this.image,
     this.leftWidget,
@@ -30,7 +30,7 @@ class YHButton extends StatelessWidget {
   final bool autoResize;
   final double? width;
   final double? height;
-  final EdgeInsets? padding;
+  final EdgeInsets padding;
 
   final YHText? text;
   final Image? image;
@@ -86,7 +86,7 @@ class YHButton extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(cornerRadius)),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(0),
+        padding: padding,
         child: Row(
           mainAxisSize: autoResize ? MainAxisSize.min : MainAxisSize.max,
           mainAxisAlignment: horizontalAlignment,
