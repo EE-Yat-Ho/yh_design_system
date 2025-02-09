@@ -70,7 +70,7 @@ class YHOpenableCard extends StatelessWidget {
               onTapAddButton!(object.id);
             }
           },
-          rightIcon: Icon(
+          rightWidget: Icon(
             Icons.add,
             color: YHColor.white.color,
             size: 18,

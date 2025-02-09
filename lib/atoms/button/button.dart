@@ -9,16 +9,17 @@ class YHButton extends StatelessWidget {
     super.key,
     // autoResize가 true면 최대 영역을 잡음. false면 최대한 작아지고 지정해준 크기로됨
     this.autoResize = true,
+    this.width,
+    this.height,
+    this.padding,
     this.text,
     this.image,
+    this.leftWidget,
+    this.rightWidget,
     required this.onPressed,
     this.backgroundColor,
     this.textColor = YHColor.white,
     this.disable = false,
-    this.width,
-    this.height,
-    this.leftIcon,
-    this.rightIcon,
     this.borderColor,
     this.borderWidth = 0,
     this.cornerRadius = 8,
@@ -29,11 +30,12 @@ class YHButton extends StatelessWidget {
   final bool autoResize;
   final double? width;
   final double? height;
+  final EdgeInsets? padding;
 
   final YHText? text;
   final Image? image;
-  final Widget? leftIcon;
-  final Widget? rightIcon;
+  final Widget? leftWidget;
+  final Widget? rightWidget;
   final GestureTapCallback onPressed;
 
   final YHColor? backgroundColor;
@@ -52,8 +54,8 @@ class YHButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var children = <Widget>[];
 
-    if (leftIcon != null) {
-      children.add(leftIcon!);
+    if (leftWidget != null) {
+      children.add(leftWidget!);
     }
     if (text != null) {
       children.add(text!);
@@ -61,8 +63,8 @@ class YHButton extends StatelessWidget {
     if (image != null) {
       children.add(image!);
     }
-    if (rightIcon != null) {
-      children.add(rightIcon!);
+    if (rightWidget != null) {
+      children.add(rightWidget!);
     }
     final backgroundColor = this.backgroundColor ?? YHColor.primary;
     final borderColor = this.borderColor ?? YHColor.primary;
