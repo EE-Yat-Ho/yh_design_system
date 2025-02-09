@@ -16,6 +16,7 @@ class YHButton extends StatelessWidget {
     this.image,
     this.leftWidget,
     this.rightWidget,
+    this.spacing = 0,
     required this.onPressed,
     this.backgroundColor,
     this.textColor = YHColor.white,
@@ -36,6 +37,7 @@ class YHButton extends StatelessWidget {
   final Image? image;
   final Widget? leftWidget;
   final Widget? rightWidget;
+  final double spacing;
   final GestureTapCallback onPressed;
 
   final YHColor? backgroundColor;
@@ -88,6 +90,7 @@ class YHButton extends StatelessWidget {
       child: Padding(
         padding: padding,
         child: Row(
+          spacing: spacing,
           mainAxisSize: autoResize ? MainAxisSize.min : MainAxisSize.max,
           mainAxisAlignment: horizontalAlignment,
           crossAxisAlignment: CrossAxisAlignment.center,
