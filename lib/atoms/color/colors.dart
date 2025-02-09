@@ -36,7 +36,10 @@ class YHColor {
 
   static const YHColor gray50 =
       YHColor(color: Color.fromRGBO(249, 249, 249, 1));
+
   static const YHColor gray100 =
+      YHColor(color: Color.fromRGBO(244, 244, 246, 1));
+  static const YHColor gray200 =
       YHColor(color: Color.fromRGBO(237, 237, 237, 1));
   static const YHColor gray400 =
       YHColor(color: Color.fromRGBO(209, 209, 209, 1));
