@@ -16,6 +16,7 @@ enum YHFont {
   bold14, // title4,
 
   regular24,
+  regular22,
   regular20, // body1,
   regular18, // body2,
   regular16, // body3,
@@ -41,6 +42,8 @@ enum YHFont {
         return 14;
       case YHFont.regular24:
         return 24;
+      case YHFont.regular22:
+        return 22;
       case YHFont.regular20:
         return 20;
       case YHFont.regular18:
@@ -63,6 +66,7 @@ enum YHFont {
       case YHFont.bold14:
         return FontWeight.w700;
       case YHFont.regular24:
+      case YHFont.regular22:
       case YHFont.regular20:
       case YHFont.regular18:
       case YHFont.regular16:
