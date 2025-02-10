@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 class YHSwitch extends StatefulWidget {
-  const YHSwitch({super.key, required this.onChanged});
+  const YHSwitch({
+    super.key,
+    this.value = false,
+    required this.onChanged,
+  });
 
+  final bool value;
   final void Function(bool) onChanged;
 
   @override
@@ -11,17 +16,17 @@ class YHSwitch extends StatefulWidget {
 }
 
 class _YHSwitchState extends State<YHSwitch> {
-  bool state = false;
+  late bool value = widget.value;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoSwitch(
-      value: state,
+      value: value,
       activeTrackColor: YHColor.primary.color,
       onChanged: (bool? isOn) {
         widget.onChanged(isOn ?? false);
         setState(() {
-          state = isOn ?? false;
+          value = isOn ?? false;
         });
       },
     );
