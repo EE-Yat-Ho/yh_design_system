@@ -16,6 +16,8 @@ class YHColor {
       YHColor(color: Color.fromRGBO(213, 220, 229, 1));
   static const YHColor divider =
       YHColor(color: Color.fromRGBO(213, 220, 229, 1));
+  static const YHColor dividerWeak =
+      YHColor(color: Color.fromRGBO(234, 237, 242, 1));
 
   static const YHColor contentPrimary =
       YHColor(color: Color.fromRGBO(14, 19, 27, 1));
