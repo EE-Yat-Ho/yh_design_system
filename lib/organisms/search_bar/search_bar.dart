@@ -7,8 +7,8 @@ import 'package:yh_design_system/atoms/font/fonts.dart';
 // Designed Component
 // figma: https://www.figma.com/design/Jw6ccaau53hwdo4bC7stXe/Knock-Design-System?node-id=253-5386&t=knkDlFiUnjpMyJso-0
 
-final class TRSearchBar extends StatelessWidget {
-  TRSearchBar({
+final class YHSearchBar extends StatelessWidget {
+  YHSearchBar({
     super.key,
     this.placeholder,
     this.onChanged,
@@ -58,18 +58,18 @@ final class TRSearchBar extends StatelessWidget {
             ),
             // if (_controller.text.isNotEmpty)
             //   IconButton(
-            //     icon: Icon(Icons.clear, color: TRColor.contentSecondary.color),
+            //     icon: Icon(Icons.clear, color: YHColor.contentSecondary.color),
             //     onTap: () {
             //       _controller.clear();
             //       widget.onChanged?.call('');
             //     },
             //   ),
-            // TRButton(
+            // YHButton(
             //   onTap: () => widget.onTap?.call(),
-            //   text: const TRText(
+            //   text: const YHText(
             //     text: '취소',
-            //     font: TRFont.regular14,
-            //     color: TRColor.contentPrimary,
+            //     font: YHFont.regular14,
+            //     color: YHColor.contentPrimary,
             //   ),
             // ),
           ],

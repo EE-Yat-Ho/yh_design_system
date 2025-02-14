@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
-class TRSwitch extends StatefulWidget {
-  const TRSwitch({
+class YHSwitch extends StatefulWidget {
+  const YHSwitch({
     super.key,
     this.initialValue = false,
     this.width = 56.0,
@@ -33,10 +33,10 @@ class TRSwitch extends StatefulWidget {
   final bool ballShadow;
   final EdgeInsets? padding;
   @override
-  TRSwitchState createState() => TRSwitchState();
+  YHSwitchState createState() => YHSwitchState();
 }
 
-class TRSwitchState extends State<TRSwitch> {
+class YHSwitchState extends State<YHSwitch> {
   late bool isOn = widget.initialValue;
   late Color onBGColor = widget.onBGColor?.color ?? YHColor.primary.color;
   late Color switchColor = isOn ? onBGColor : widget.offBGColor.color;
