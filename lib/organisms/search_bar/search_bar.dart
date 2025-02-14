@@ -59,13 +59,13 @@ final class TRSearchBar extends StatelessWidget {
             // if (_controller.text.isNotEmpty)
             //   IconButton(
             //     icon: Icon(Icons.clear, color: TRColor.contentSecondary.color),
-            //     onPressed: () {
+            //     onTap: () {
             //       _controller.clear();
             //       widget.onChanged?.call('');
             //     },
             //   ),
             // TRButton(
-            //   onPressed: () => widget.onTap?.call(),
+            //   onTap: () => widget.onTap?.call(),
             //   text: const TRText(
             //     text: '취소',
             //     font: TRFont.regular14,

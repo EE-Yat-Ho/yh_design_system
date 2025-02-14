@@ -15,10 +15,10 @@ class YHImageTextButton extends StatelessWidget {
     this.cornerRadius,
     this.minHeight,
     this.minWidth,
-    required this.onPressed,
+    required this.onTap,
   });
 
-  final VoidCallback? onPressed;
+  final VoidCallback? onTap;
   final YHText text;
   final IconData? iconData;
   final YHImage? image;
@@ -39,7 +39,7 @@ class YHImageTextButton extends StatelessWidget {
       );
     }
     return TextButton(
-        onPressed: onPressed,
+        onPressed: onTap,
         style: TextButton.styleFrom(
           shape: shape,
           minimumSize: Size(minWidth ?? 0, minHeight ?? 0),

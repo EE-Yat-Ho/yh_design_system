@@ -27,6 +27,7 @@ class YHTextField extends StatelessWidget {
     this.hideClear = true,
     this.backgroundColor = YHColor.white,
     this.disabledBackgroundColor = YHColor.disable,
+    this.expands = false,
   });
 
   final String? labelText;
@@ -48,7 +49,7 @@ class YHTextField extends StatelessWidget {
   final bool hideClear;
   final YHColor backgroundColor;
   final YHColor disabledBackgroundColor;
-
+  final bool expands;
   @override
   Widget build(BuildContext context) {
     Widget rightWidget;
@@ -121,6 +122,7 @@ class YHTextField extends StatelessWidget {
     }
 
     return TextField(
+      expands: expands,
       cursorColor: YHColor.primary.color,
       keyboardType: textInputType ?? TextInputType.multiline,
       maxLines: obscureText ? 1 : maxLines,
@@ -149,7 +151,7 @@ class YHTextField extends StatelessWidget {
 
   Widget _clearButton(BuildContext context) {
     return YHButton(
-      onPressed: () {
+      onTap: () {
         onChanged("");
         controller?.clear();
       },

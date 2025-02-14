@@ -6,10 +6,10 @@ class YHFloatingButton extends StatefulWidget {
   const YHFloatingButton({
     super.key,
     required this.image,
-    required this.onPressed,
+    required this.onTap,
   });
 
-  final VoidCallback? onPressed;
+  final VoidCallback? onTap;
   final YHImage image;
 
   @override
@@ -27,7 +27,7 @@ class _YHFloatingButtonState extends State<YHFloatingButton> {
           shape: const CircleBorder(),
           foregroundColor: YHColor.white.color,
           backgroundColor: YHColor.primary.color,
-          onPressed: widget.onPressed,
+          onPressed: widget.onTap,
           child: widget.image.icon(),
         ),
       ),

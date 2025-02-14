@@ -6,7 +6,7 @@ class YHImageButton extends StatelessWidget {
   const YHImageButton({
     super.key,
     required this.image,
-    required this.onPressed,
+    required this.onTap,
     required this.width,
     required this.height,
     this.imageColor,
@@ -17,7 +17,7 @@ class YHImageButton extends StatelessWidget {
     this.cornerRadius,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback onTap;
   final double width;
   final double height;
   final YHImage image;
@@ -44,7 +44,7 @@ class YHImageButton extends StatelessWidget {
       height: height,
       child: IconButton(
         padding: EdgeInsets.zero,
-        onPressed: onPressed,
+        onPressed: onTap,
         icon: image.icon(
             width: imageWidth ?? width,
             height: imageHeight ?? height,

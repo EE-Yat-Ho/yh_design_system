@@ -8,6 +8,8 @@ class YHColor {
 
   static const YHColor disable =
       YHColor(color: Color.fromARGB(255, 172, 172, 172));
+  static const YHColor actionDisabled =
+      YHColor(color: Color.fromRGBO(191, 199, 212, 1));
   static const YHColor supportWarning =
       YHColor(color: Color.fromRGBO(248, 87, 82, 1));
   static const YHColor placeholder =

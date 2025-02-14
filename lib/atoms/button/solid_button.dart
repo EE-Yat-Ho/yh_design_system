@@ -10,10 +10,10 @@ class YHSolidButton extends StatefulWidget {
     this.title,
     this.iconData,
     this.image,
-    required this.onPressed,
+    required this.onTap,
   });
 
-  final VoidCallback? onPressed;
+  final VoidCallback? onTap;
   final String? title;
   final IconData? iconData;
   final YHImage? image;
@@ -26,7 +26,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: widget.onPressed,
+      onPressed: widget.onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: YHColor.primary.color,
         padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),

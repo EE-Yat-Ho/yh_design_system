@@ -17,15 +17,16 @@ class YHButton extends StatelessWidget {
     this.leftWidget,
     this.rightWidget,
     this.spacing = 0,
-    required this.onPressed,
+    required this.onTap,
     this.backgroundColor,
     this.textColor = YHColor.white,
-    this.disable = false,
+    this.enable = true,
     this.borderColor,
     this.borderWidth = 0,
     this.cornerRadius = 8,
     this.horizontalAlignment = MainAxisAlignment.center,
     this.shadow = true,
+    this.expands = false,
   });
 
   final bool autoResize;
@@ -38,12 +39,12 @@ class YHButton extends StatelessWidget {
   final Widget? leftWidget;
   final Widget? rightWidget;
   final double spacing;
-  final GestureTapCallback onPressed;
+  final void Function()? onTap;
 
   final YHColor? backgroundColor;
   final YHColor textColor;
 
-  final bool disable;
+  final bool enable;
   final bool shadow;
 
   final YHColor? borderColor;
@@ -51,9 +52,14 @@ class YHButton extends StatelessWidget {
   final double cornerRadius;
 
   final MainAxisAlignment horizontalAlignment;
+  final bool expands;
 
   @override
   Widget build(BuildContext context) {
+    return expands ? Expanded(child: _build()) : _build();
+  }
+
+  Widget _build() {
     var children = <Widget>[];
 
     if (leftWidget != null) {
@@ -78,9 +84,9 @@ class YHButton extends StatelessWidget {
       highlightElevation: 1,
       hoverElevation: 0,
       disabledElevation: 1,
-      fillColor: disable ? YHColor.disable.color : backgroundColor.color,
+      fillColor: enable ? backgroundColor.color : YHColor.actionDisabled.color,
       constraints: BoxConstraints(minHeight: height ?? 0, minWidth: width ?? 0),
-      onPressed: disable ? null : onPressed,
+      onPressed: enable ? onTap : null,
       shape: RoundedRectangleBorder(
         side: borderWidth > 0
             ? BorderSide(color: borderColor.color, width: borderWidth)

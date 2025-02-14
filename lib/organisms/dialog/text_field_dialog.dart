@@ -7,7 +7,7 @@ import 'package:yh_design_system/atoms/image/images.dart';
 class YHTextFieldDialog extends StatelessWidget {
   YHTextFieldDialog({
     super.key,
-    required this.onPressed,
+    required this.onTap,
     required this.title,
     required this.hintText,
     this.image,
@@ -17,7 +17,7 @@ class YHTextFieldDialog extends StatelessWidget {
   final String hintText;
   final YHImage? image;
   final TextEditingController textController = TextEditingController(text: "");
-  final void Function(String) onPressed;
+  final void Function(String) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class YHTextFieldDialog extends StatelessWidget {
             foregroundColor: YHColor.white.color,
           ),
           onPressed: () {
-            onPressed(textController.text);
+            onTap(textController.text);
             Navigator.pop(context);
           },
           child: const YHText(

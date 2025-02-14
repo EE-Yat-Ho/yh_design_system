@@ -11,10 +11,10 @@ class YHOptionButton extends StatelessWidget {
     required this.description,
     required this.isOn,
     required this.image,
-    required this.onPressed,
+    required this.onTap,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback onTap;
   final bool isOn;
   final String title;
   final String description;
@@ -25,7 +25,7 @@ class YHOptionButton extends StatelessWidget {
     var textColor = isOn ? YHColor.primary : YHColor.black;
 
     return ElevatedButton(
-        onPressed: onPressed,
+        onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
           backgroundColor: YHColor.white.color,

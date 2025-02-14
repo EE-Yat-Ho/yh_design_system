@@ -71,7 +71,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _backButton(BuildContext context) {
     return YHButton(
-      onPressed: backButtonOnTap != null
+      onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
       image: Image.asset("assets/images/icon_back_line_24.png",
@@ -88,7 +88,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _closeButton(BuildContext context) {
     return YHButton(
-      onPressed: backButtonOnTap != null
+      onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
       image: Image.asset("assets/images/icon_close_line_24.png",

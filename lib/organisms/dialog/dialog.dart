@@ -11,7 +11,7 @@ class YHDialog extends StatelessWidget {
     required this.text,
     this.subText,
     this.image,
-    this.confirmText,
+    this.confirmText = "확인",
     required this.onConfirm,
     this.cancelText,
     this.onCancel,
@@ -21,86 +21,85 @@ class YHDialog extends StatelessWidget {
   final String? subText;
   final YHImage? image;
 
-  final String? confirmText;
+  final String confirmText;
   final void Function() onConfirm;
+
   final String? cancelText;
   final void Function()? onCancel;
 
   @override
   Widget build(BuildContext context) {
-    Widget? icon;
-    if (image != null) {
-      icon = SizedBox.fromSize(
-          size: const Size.fromRadius(50), child: image?.icon());
-    }
+    return Dialog(
+      backgroundColor: YHColor.surface05.color,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
+        child: Column(
+          spacing: 12,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _title(),
+            if (image != null) image!.icon(width: 48, height: 48),
+            if (subText != null) _subText(),
+            const SizedBox(height: 28),
+            _buttons(context),
+          ],
+        ),
+      ),
+    );
+  }
 
-    Widget title = YHText(
+  Widget _title() {
+    return YHText(
         text: text,
         font: YHFont.regular16,
-        color: YHColor.black,
-        align: TextAlign.center,
-        maxLines: 10);
+        color: YHColor.contentPrimary,
+        align: TextAlign.start);
+  }
 
-    Widget? content;
-    if (subText != null) {
-      content = YHText(
+  Widget _subText() {
+    return YHText(
         text: subText!,
         font: YHFont.regular14,
-        color: YHColor.gray,
-        align: TextAlign.center,
-        maxLines: 10,
-      );
-    }
+        color: YHColor.contentSecondary,
+        align: TextAlign.start);
+  }
 
-    var actions = [
-      YHButton(
-        text: YHText(
-            text: confirmText ?? "확인",
-            font: YHFont.regular14,
-            color: YHColor.white),
-        height: 40,
-        backgroundColor: YHColor.primary,
-        autoResize: false,
-        onPressed: () {
-          Navigator.pop(context);
-          onConfirm();
-        },
-      ),
-    ];
-
-    if (cancelText != null) {
-      actions.add(
-        YHButton(
-          text: YHText(
-            text: cancelText!,
-            font: YHFont.regular14,
-            color: YHColor.black,
+  Widget _buttons(BuildContext context) {
+    return Row(
+      spacing: 8,
+      children: [
+        if (cancelText != null)
+          YHButton(
+            borderColor: YHColor.outline,
+            borderWidth: 1,
+            expands: true,
+            text: YHText(
+                text: cancelText!,
+                font: YHFont.regular14,
+                color: YHColor.black),
+            height: 48,
+            backgroundColor: YHColor.white,
+            onTap: () {
+              Navigator.pop(context);
+              if (onCancel != null) {
+                onCancel!();
+              }
+            },
           ),
-          height: 40,
-          backgroundColor: YHColor.surface03,
-          autoResize: false,
-          onPressed: () {
+        YHButton(
+          expands: true,
+          text: YHText(
+              text: confirmText, font: YHFont.regular14, color: YHColor.white),
+          height: 48,
+          backgroundColor: YHColor.primary,
+          onTap: () {
             Navigator.pop(context);
-            if (onCancel != null) {
-              onCancel!();
-            }
+            onConfirm();
           },
-        ),
-      );
-    }
-
-    return AlertDialog(
-      icon: icon,
-      backgroundColor: YHColor.white.color,
-      title: title,
-      // titlePadding: const EdgeInsets.all(24),
-      content: content,
-      actions: actions,
-      // actionsPadding: const EdgeInsets.all(24),
-      actionsOverflowButtonSpacing: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24.0),
-      ),
+        )
+      ],
     );
   }
 }

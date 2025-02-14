@@ -1,12 +1,16 @@
-
 import 'package:flutter/cupertino.dart';
 
 class ActionSheetAction {
-  ActionSheetAction({required this.id, required this.title, required this.onPressed, required this.isDestructive, required this.isDefault});
+  ActionSheetAction(
+      {required this.id,
+      required this.title,
+      required this.onTap,
+      required this.isDestructive,
+      required this.isDefault});
 
   final int id;
   final String title;
-  final void Function(int id) onPressed;
+  final void Function(int id) onTap;
   final bool isDestructive;
   final bool isDefault;
 }
@@ -18,16 +22,15 @@ void showActionSheet(BuildContext context, List<ActionSheetAction> actions) {
       isDestructiveAction: e.isDestructive,
       onPressed: () {
         Navigator.pop(context);
-        e.onPressed(e.id);
+        e.onTap(e.id);
       },
       child: Text(e.title),
     );
   }).toList();
 
   showCupertinoModalPopup<void>(
-    context: context,
-    builder: (BuildContext context) => CupertinoActionSheet(
-      actions: cupertinoActions,
-    )
-  );
+      context: context,
+      builder: (BuildContext context) => CupertinoActionSheet(
+            actions: cupertinoActions,
+          ));
 }
