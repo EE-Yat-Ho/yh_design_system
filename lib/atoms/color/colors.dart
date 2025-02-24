@@ -63,9 +63,10 @@ class YHColor {
   static const YHColor gray =
       YHColor(color: Color.fromARGB(255, 172, 172, 172));
   static const YHColor black = YHColor(color: Color.fromARGB(255, 17, 17, 17));
-  static const YHColor transparent = YHColor(color: Color.fromRGBO(0, 0, 0, 0));
-  static const YHColor opacity =
+  static const YHColor transparent =
       YHColor(color: Color.fromRGBO(255, 255, 255, 0));
+  static const YHColor opacity = YHColor(color: Color.fromRGBO(0, 0, 0, 0));
+
   static const YHColor red = YHColor(color: Color.fromARGB(255, 255, 0, 0));
   static const YHColor gold = YHColor(color: Color.fromARGB(255, 255, 187, 0));
 

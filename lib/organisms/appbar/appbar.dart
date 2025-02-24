@@ -29,7 +29,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.right,
     this.rightPadding,
     this.height = kToolbarHeight,
-    this.backgroundColor = YHColor.surface05, // 투명색으로 하면 상태바가 하얗게 변해버림
+    this.backgroundColor = YHColor.transparent,
     this.foregroundColor = YHColor.contentPrimary,
     this.backButtonOnTap,
   });
