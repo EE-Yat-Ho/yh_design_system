@@ -4,7 +4,7 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
-class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
+final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final YHFont titleFont;
   final bool showBack;
@@ -29,7 +29,7 @@ class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.right,
     this.rightPadding,
     this.height = kToolbarHeight,
-    this.backgroundColor = YHColor.transparent,
+    this.backgroundColor = YHColor.surface05, // 투명색으로 하면 상태바가 하얗게 변해버림
     this.foregroundColor = YHColor.contentPrimary,
     this.backButtonOnTap,
   });
