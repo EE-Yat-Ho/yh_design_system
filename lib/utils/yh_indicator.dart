@@ -13,9 +13,15 @@ final class YHIndicator {
 
     if (_indicator == null) {
       _indicator = OverlayEntry(
-          builder: (_) => Center(
-              child: child ??
-                  CircularProgressIndicator(color: YHColor.primary.color)));
+          builder: (_) => Container(
+                color: Colors.black.withValues(alpha: 0.01),
+                width: double.infinity,
+                height: double.infinity,
+                child: Center(
+                    child: child ??
+                        CircularProgressIndicator(
+                            color: YHColor.primary.color)),
+              ));
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Overlay.of(context).insert(_indicator!);
       });
