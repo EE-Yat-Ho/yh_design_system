@@ -9,7 +9,7 @@ class YHInkWell extends StatelessWidget {
   });
 
   final Widget child;
-  final GestureTapCallback onTap;
+  final void Function()? onTap;
   final bool isEnable;
 
   @override

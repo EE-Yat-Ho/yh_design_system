@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 class YHCard extends StatelessWidget {
@@ -14,6 +15,8 @@ class YHCard extends StatelessWidget {
     this.cornerRadius = 20,
     this.onTap,
     required this.child,
+    this.width,
+    this.height,
   });
 
   final EdgeInsets margin;
@@ -26,6 +29,8 @@ class YHCard extends StatelessWidget {
   final bool shadow;
   final void Function()? onTap;
   final Widget child;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +52,11 @@ class YHCard extends StatelessWidget {
         margin: margin,
         color: backgroundColor.color,
         shape: shape,
-        child: InkWell(
+        child: YHInkWell(
             onTap: onTap,
-            child: Padding(
+            child: Container(
+              width: width,
+              height: height,
               padding: padding,
               child: child,
             )));
