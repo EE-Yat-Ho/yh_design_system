@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/text_field/text_field.dart';
-import 'package:yh_design_system/organisms/card/card.dart';
+import 'package:yh_design_system/atoms/card/card.dart';
 
 class YHTextFieldCard extends StatelessWidget {
   const YHTextFieldCard({
