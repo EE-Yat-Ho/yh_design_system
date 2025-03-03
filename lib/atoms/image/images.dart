@@ -8,6 +8,7 @@ enum YHImage {
   icon_add,
   icon_camera,
   icon_close,
+  icon_close_line_24,
   icon_check,
   icon_down,
   icon_left,
@@ -93,9 +94,16 @@ extension YHImageImage on YHImage {
       {double width = 24,
       double height = 24,
       YHColor? color,
-      BoxFit? fit = BoxFit.fitHeight}) {
-    return Image.asset("images/$name.png",
-        width: width, height: height, color: color?.color, fit: fit);
+      BoxFit? fit = BoxFit.fitHeight,
+      String? package}) {
+    return Image.asset(
+      "images/$name.png",
+      width: width,
+      height: height,
+      color: color?.color,
+      fit: fit,
+      package: package,
+    );
   }
 
   ImageProvider get imageProvider {

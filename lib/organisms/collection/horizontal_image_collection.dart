@@ -1,33 +1,31 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
+import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/organisms/card/card.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
+import 'package:yh_util/image_entity.dart';
 
 class HorizontalImageCollection extends StatelessWidget {
-  final List<String> imageUrls;
+  final List<ImageEntity> images;
   final double itemHeight;
   final double itemWidth;
   final EdgeInsets contentInsets;
   final double spacing;
   final int selectedIndex;
   final bool showSelectedBorder;
-  final bool isNetworkImage;
   final Function(int)? onTap;
   final Function(int)? onDelete;
   final double dim;
 
   const HorizontalImageCollection(
       {super.key,
-      required this.imageUrls,
+      required this.images,
       this.itemHeight = 120,
       this.itemWidth = 120,
       this.spacing = 8,
       this.contentInsets = const EdgeInsets.symmetric(horizontal: 24),
       this.selectedIndex = 0,
       this.showSelectedBorder = false,
-      this.isNetworkImage = true,
       this.onTap,
       this.onDelete,
       this.dim = 0});
@@ -39,7 +37,7 @@ class HorizontalImageCollection extends StatelessWidget {
       child: ListView.builder(
         padding: contentInsets,
         scrollDirection: Axis.horizontal, // 가로 스크롤 설정
-        itemCount: imageUrls.length,
+        itemCount: images.length,
         itemBuilder: (context, index) {
           final isSelected = index == selectedIndex;
           final borderColor = isSelected ? YHColor.primary : null;
@@ -50,12 +48,12 @@ class HorizontalImageCollection extends StatelessWidget {
             borderColor: showSelectedBorder ? borderColor : null,
             borderWidth: showSelectedBorder ? borderWidth : 0.0,
             margin: EdgeInsets.only(
-                right: index == imageUrls.length - 1 ? 0 : spacing),
+                right: index == images.length - 1 ? 0 : spacing),
             onTap: () => onTap?.call(index),
             child: Stack(
               alignment: Alignment.topRight,
               children: [
-                _image(imageUrls[index], index),
+                _image(images[index], index),
                 if (dim > 0) _dim(),
                 if (onDelete != null) _deleteButton(index),
               ],
@@ -66,20 +64,13 @@ class HorizontalImageCollection extends StatelessWidget {
     );
   }
 
-  Widget _image(String imageUrl, int index) {
-    return isNetworkImage
-        ? Image.network(
-            imageUrls[index],
-            fit: BoxFit.cover,
-            width: itemWidth,
-            height: itemHeight,
-          )
-        : Image.file(
-            File(imageUrls[index]),
-            fit: BoxFit.cover,
-            width: itemWidth,
-            height: itemHeight,
-          );
+  Widget _image(ImageEntity image, int index) {
+    return Image.file(
+      image.file,
+      fit: image.fit,
+      width: itemWidth,
+      height: itemHeight,
+    );
   }
 
   Widget _deleteButton(int index) {
@@ -87,11 +78,7 @@ class HorizontalImageCollection extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       backgroundColor: YHColor.transparent,
       onTap: () => onDelete?.call(index),
-      image: Image.asset("assets/images/icon_close_line_24.png",
-          width: 24,
-          height: 24,
-          fit: BoxFit.fitHeight,
-          package: "yh_design_system"),
+      image: YHImage.icon_close_line_24.icon(color: YHColor.white),
     );
   }
 

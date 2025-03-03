@@ -2,6 +2,7 @@ name: yh_design_system
 description: "yhlab's design system package"
 version: 1.5.0
 homepage: "https://github.com/EE-Yat-Ho/yh_design_system"
+publish_to: none
 
 environment:
   sdk: ^3.5.2
@@ -10,6 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # 유틸들
+  yh_util:
+    git:
+      url: https://github.com/EE-Yat-Ho/yh_util.git
+      ref: main
 
 dev_dependencies:
   flutter_test:
