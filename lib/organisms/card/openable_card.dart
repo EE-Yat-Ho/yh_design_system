@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
-import 'package:yh_design_system/organisms/card/card.dart';
+import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/organisms/collection/openable_list.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
@@ -85,9 +85,7 @@ class YHOpenableCard extends StatelessWidget {
     if (isSelected) {
       stackList.add(
         Row(children: [
-          Container(
-            width: 12,
-          ),
+          Container(width: 12),
           YHImage.icon_check_red.icon(width: 40, height: 40)
         ]),
       );
