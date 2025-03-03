@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/organisms/appbar/appbar.dart';
 import 'package:yh_design_system/organisms/collection/horizontal_image_collection.dart';
 import 'package:yh_util/image_entity.dart';
@@ -7,11 +8,13 @@ import 'package:yh_util/image_entity.dart';
 class ImageDetailPage extends StatefulWidget {
   final List<ImageEntity> images;
   final int initialIndex;
+  final YHFont titleFont;
 
   const ImageDetailPage({
     super.key,
     required this.images,
     this.initialIndex = 0,
+    this.titleFont = YHFont.regular16,
   });
 
   @override
@@ -36,13 +39,14 @@ class ImageDetailPageState extends State<ImageDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const YHAppBar(
+      appBar: YHAppBar(
         title: "상세 이미지",
         showBack: false,
         showClose: true,
         rightPadding: 16,
         foregroundColor: YHColor.contentTertiary,
         backgroundColor: YHColor.transparent,
+        titleFont: widget.titleFont,
       ),
       backgroundColor: Colors.black,
       body: SafeArea(

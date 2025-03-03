@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
@@ -91,11 +92,11 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
-      image: Image.asset("assets/images/icon_close_line_24.png",
-          width: 24,
-          height: 24,
-          fit: BoxFit.fitHeight,
-          package: "yh_design_system"),
+      image: YHImage.icon_close_line_24.icon(
+        color: YHColor.contentTertiary,
+        fit: BoxFit.fitHeight,
+        package: "yh_design_system",
+      ),
       width: 40,
       height: 40,
       backgroundColor: YHColor.opacity,
