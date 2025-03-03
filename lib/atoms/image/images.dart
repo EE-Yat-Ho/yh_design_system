@@ -97,7 +97,7 @@ extension YHImageImage on YHImage {
       BoxFit? fit = BoxFit.fitHeight,
       String? package}) {
     return Image.asset(
-      "images/$name.png",
+      "assets/images/$name.png",
       width: width,
       height: height,
       color: color?.color,
@@ -107,6 +107,6 @@ extension YHImageImage on YHImage {
   }
 
   ImageProvider get imageProvider {
-    return AssetImage('images/$name.png');
+    return AssetImage('assets/images/$name.png');
   }
 }
