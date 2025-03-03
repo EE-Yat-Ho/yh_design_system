@@ -21,10 +21,14 @@ class ImageDetailPage extends StatefulWidget {
 class ImageDetailPageState extends State<ImageDetailPage> {
   late PageController _pageController;
   int _currentIndex = 0;
+  late final List<ImageEntity> _images;
 
   @override
   void initState() {
     super.initState();
+    _images = widget.images
+        .where((e) => (e.hasRemoteImage || e.tmpImage != null))
+        .toList();
     _currentIndex = widget.initialIndex;
     _pageController = PageController(initialPage: widget.initialIndex);
   }
@@ -47,7 +51,7 @@ class ImageDetailPageState extends State<ImageDetailPage> {
           children: [
             PageView.builder(
               controller: _pageController,
-              itemCount: widget.images.length,
+              itemCount: _images.length,
               onPageChanged: (index) {
                 setState(() {
                   _currentIndex = index;
@@ -58,8 +62,8 @@ class ImageDetailPageState extends State<ImageDetailPage> {
                   child: Align(
                     alignment: const Alignment(0.0, -0.2),
                     child: Image.file(
-                      widget.images[index].file,
-                      fit: widget.images[index].fit,
+                      _images[index].file,
+                      fit: _images[index].fit,
                     ),
                   ),
                 );
@@ -69,7 +73,7 @@ class ImageDetailPageState extends State<ImageDetailPage> {
               padding: const EdgeInsets.fromLTRB(0, 24, 0, 48),
               color: Colors.black.withValues(alpha: 0.7),
               child: HorizontalImageCollection(
-                images: widget.images,
+                images: _images,
                 itemHeight: 56,
                 itemWidth: 56,
                 selectedIndex: _currentIndex,
