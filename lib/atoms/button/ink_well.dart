@@ -5,19 +5,19 @@ class YHInkWell extends StatelessWidget {
     super.key,
     required this.child,
     required this.onTap,
-    this.isEnable = true,
+    this.enable = true,
   });
 
   final Widget child;
   final void Function()? onTap;
-  final bool isEnable;
+  final bool enable;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
       child: InkWell(
-        onTap: isEnable ? onTap : null,
+        onTap: enable ? onTap : null,
         child: child,
       ),
     );
