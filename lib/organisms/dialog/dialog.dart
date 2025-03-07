@@ -8,6 +8,9 @@ import 'package:yh_design_system/atoms/image/images.dart';
 class YHDialog extends StatelessWidget {
   const YHDialog({
     super.key,
+    this.titleFont = YHFont.regular16,
+    this.subTextFont = YHFont.regular14,
+    this.buttonFont = YHFont.regular14,
     required this.text,
     this.subText,
     this.image,
@@ -19,6 +22,9 @@ class YHDialog extends StatelessWidget {
 
   final String text;
   final String? subText;
+  final YHFont titleFont;
+  final YHFont subTextFont;
+  final YHFont buttonFont;
   final YHImage? image;
 
   final String confirmText;
@@ -53,7 +59,7 @@ class YHDialog extends StatelessWidget {
   Widget _title() {
     return YHText(
         text: text,
-        font: YHFont.regular16,
+        font: titleFont,
         color: YHColor.contentPrimary,
         align: TextAlign.start);
   }
@@ -61,7 +67,7 @@ class YHDialog extends StatelessWidget {
   Widget _subText() {
     return YHText(
         text: subText!,
-        font: YHFont.regular14,
+        font: subTextFont,
         color: YHColor.contentSecondary,
         align: TextAlign.start);
   }
@@ -76,9 +82,7 @@ class YHDialog extends StatelessWidget {
             borderWidth: 1,
             expands: true,
             text: YHText(
-                text: cancelText!,
-                font: YHFont.regular14,
-                color: YHColor.black),
+                text: cancelText!, font: buttonFont, color: YHColor.black),
             height: 48,
             backgroundColor: YHColor.white,
             onTap: () {
@@ -90,8 +94,8 @@ class YHDialog extends StatelessWidget {
           ),
         YHButton(
           expands: true,
-          text: YHText(
-              text: confirmText, font: YHFont.regular14, color: YHColor.white),
+          text:
+              YHText(text: confirmText, font: buttonFont, color: YHColor.white),
           height: 48,
           backgroundColor: YHColor.primary,
           onTap: () {
