@@ -17,8 +17,8 @@ class YHTransform extends StatelessWidget {
     const pie = 3.14;
     return Transform(
       transform: Matrix4.identity()
-        ..translate(offset.dx, offset.dy)
-        ..rotateZ(2 * pie * angle / 360), // 30도 회전 (라디안 값으로 π/6)
+        ..rotateZ(2 * pie * angle / 360) // 회전 (360도 = 2π)
+        ..translate(offset.dx, offset.dy),
       origin: offset,
       alignment: FractionalOffset.center,
       child: child,
