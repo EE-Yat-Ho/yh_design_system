@@ -20,6 +20,7 @@ class YHTransform extends StatelessWidget {
         ..translate(offset.dx, offset.dy)
         ..rotateZ(2 * pie * angle / 360), // 30도 회전 (라디안 값으로 π/6)
       origin: offset,
+      alignment: FractionalOffset.center,
       child: child,
     );
   }
