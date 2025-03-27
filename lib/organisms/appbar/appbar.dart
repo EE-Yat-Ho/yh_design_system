@@ -12,6 +12,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showClose;
   final Widget? left;
   final double leftPadding;
+  final double? leftWidth;
   final Widget? right;
   final double? rightPadding;
   final double? height;
@@ -27,6 +28,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showClose = false,
     this.left,
     this.leftPadding = 8,
+    this.leftWidth,
     this.right,
     this.rightPadding,
     this.height = kToolbarHeight,
@@ -62,7 +64,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (showBack) _backButton(context),
         if (left != null) left!,
       ]),
-      leadingWidth: titleWidget == null ? double.infinity : null,
+      leadingWidth: leftWidth ?? (titleWidget == null ? double.infinity : null),
       title: titleWidget,
       backgroundColor: backgroundColor.color,
       foregroundColor: foregroundColor.color,
