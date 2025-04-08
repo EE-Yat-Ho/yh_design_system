@@ -25,7 +25,11 @@ final class YHIndicator {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   child ??
-                      CircularProgressIndicator(color: YHColor.primary.color),
+                      SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: CircularProgressIndicator(
+                              color: YHColor.primary.color)),
                   if (_currentMessage != null) ...[
                     const SizedBox(height: 10),
                     YHText(
