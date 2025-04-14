@@ -31,7 +31,7 @@ final class YHIndicator {
                           child: CircularProgressIndicator(
                               color: YHColor.primary.color)),
                   if (_currentMessage != null) ...[
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     YHText(
                         text: _currentMessage!,
                         font: YHFont.regular16,
@@ -40,56 +40,22 @@ final class YHIndicator {
                 ],
               ))));
       WidgetsBinding.instance.addPostFrameCallback((_) {
+        debugPrint('🌀 인디케이터 노출');
         Overlay.of(context).insert(_indicator!);
       });
-
-      //   if (_indicator == null) {
-      //     Widget body = CircularProgressIndicator(color: YHColor.primary.color);
-      //     if (child != null) {
-      //       body = child;
-      //     } else if (text != null) {
-      //       body = Column(
-      //         spacing: 4,
-      //         children: [
-      //           CircularProgressIndicator(color: YHColor.primary.color),
-      //           YHText(text: text.text, font: text.font, color: text.color),
-      //         ],
-      //       );
-      //     }
-
-      //     WidgetsBinding.instance.addPostFrameCallback((_) {
-      //       Overlay.of(context).insert(_indicator!);
-      //     });
-      //   }
-      // }
-
-      // _indicator = OverlayEntry(
-      //   builder: (_) => Center(
-      //     child: Column(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       children: [
-      //         body,
-      //         if (_currentMessage != null) ...[
-      //           const SizedBox(height: 10),
-      //           YHText(
-      //               text: _currentMessage!,
-      //               font: YHFont.regular16,
-      //               color: YHColor.primary)
-      //         ],
-      //       ],
-      //     ),
-      //   ),
-      // );
     } else {
       // 인디케이터 재빌드
       WidgetsBinding.instance.addPostFrameCallback((_) {
+        debugPrint('🌀 인디케이터 재빌드');
         _indicator!.markNeedsBuild();
       });
     }
   }
 
   static void hide() {
+    // 인디케이터 제거
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      debugPrint('🌀 인디케이터 제거');
       if (_indicator != null) {
         _indicator?.remove();
         _indicator = null;
