@@ -15,7 +15,7 @@ class YHTextField extends StatelessWidget {
     required this.onChanged,
     this.textInputType,
     this.isDense,
-    this.autofocus = false,
+    this.autoFocus = false,
     this.enabled = true,
     this.focusNode,
     this.maxLines,
@@ -38,7 +38,7 @@ class YHTextField extends StatelessWidget {
   final void Function(String) onChanged;
   final TextInputType? textInputType;
   final bool? isDense;
-  final bool autofocus;
+  final bool autoFocus;
   final bool enabled;
   final FocusNode? focusNode;
   final int? maxLines;
@@ -129,7 +129,7 @@ class YHTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       onChanged: onChanged,
-      autofocus: autofocus,
+      autofocus: autoFocus,
       focusNode: focusNode,
       enabled: enabled,
       decoration: InputDecoration(

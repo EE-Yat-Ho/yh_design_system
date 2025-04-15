@@ -14,7 +14,7 @@ class YHTextFieldCard extends StatelessWidget {
     required this.onChanged,
     this.textInputType,
     this.isDense,
-    this.autofocus = false,
+    this.autoFocus = false,
     this.enabled = true,
     this.focusNode,
     this.maxLines,
@@ -34,7 +34,7 @@ class YHTextFieldCard extends StatelessWidget {
   final void Function(String) onChanged;
   final TextInputType? textInputType;
   final bool? isDense;
-  final bool autofocus;
+  final bool autoFocus;
   final bool enabled;
   final FocusNode? focusNode;
   final int? maxLines;
@@ -59,7 +59,7 @@ class YHTextFieldCard extends StatelessWidget {
         onChanged: onChanged,
         textInputType: textInputType,
         isDense: isDense,
-        autofocus: autofocus,
+        autoFocus: autoFocus,
         enabled: enabled,
         focusNode: focusNode,
         maxLines: maxLines,
