@@ -96,7 +96,7 @@ class YHCell extends StatelessWidget {
             YHCellRightType.none => const SizedBox.shrink(),
             YHCellRightType.text => YHText(
                 text: rightText!,
-                font: YHFont.regular14,
+                font: YHFont.regular16,
                 color: YHColor.gray700,
               ),
           },
