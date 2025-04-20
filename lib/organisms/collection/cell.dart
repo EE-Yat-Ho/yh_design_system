@@ -10,6 +10,7 @@ enum YHCellRightType {
   none,
   arrow,
   toggle,
+  text,
 }
 
 class YHCell extends StatelessWidget {
@@ -18,6 +19,7 @@ class YHCell extends StatelessWidget {
     this.leftImage,
     required this.title,
     this.subtitle,
+    this.rightText,
     this.rightType = YHCellRightType.arrow,
     this.initialToggleValue,
     this.margin = EdgeInsets.zero,
@@ -33,6 +35,7 @@ class YHCell extends StatelessWidget {
   final YHImage? leftImage;
   final String title;
   final String? subtitle;
+  final String? rightText;
   final YHCellRightType rightType;
   final bool? initialToggleValue;
   final EdgeInsets margin;
@@ -83,14 +86,19 @@ class YHCell extends StatelessWidget {
                     color: YHColor.gray700),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           switch (rightType) {
             YHCellRightType.arrow =>
               YHImage.icon_right.icon(width: 24, height: 24),
             YHCellRightType.toggle => YHSwitch(
                 initialValue: initialToggleValue ?? false,
                 onChanged: onToggle!),
-            YHCellRightType.none => SizedBox.shrink(),
+            YHCellRightType.none => const SizedBox.shrink(),
+            YHCellRightType.text => YHText(
+                text: rightText!,
+                font: YHFont.regular14,
+                color: YHColor.gray700,
+              ),
           },
         ],
       ),
