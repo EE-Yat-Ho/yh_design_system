@@ -4,13 +4,15 @@ class YHInkWell extends StatelessWidget {
   const YHInkWell({
     super.key,
     required this.child,
-    required this.onTap,
+    this.onTap,
+    this.onLongPress,
     this.enable = true,
     this.touchAnimation = true,
   });
 
   final Widget child;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final bool enable;
   final bool touchAnimation;
 
@@ -21,6 +23,7 @@ class YHInkWell extends StatelessWidget {
       child: InkWell(
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
         onTap: enable ? onTap : null,
+        onLongPress: enable ? onLongPress : null,
         child: child,
       ),
     );
