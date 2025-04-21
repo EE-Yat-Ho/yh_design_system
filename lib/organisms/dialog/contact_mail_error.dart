@@ -12,9 +12,10 @@ Future<dynamic> showContactMailErrorDialog(
       context: context,
       builder: (BuildContext innerContext) {
         return YHDialog(
-          image: image ?? YHImage.char_really,
+          image: image,
           text: text ??
-              "기본 메일앱 사용에 실패하여 직접 문의를 전송하기 어려운 상황입니다.\n\n아래 메일로 문의주시면 친절히 답변해 드리겠습니다! :)\n\nyhlabs.team@gmail.com",
+              "기본 메일앱 사용에 실패하여 직접 문의를 전송하기 어려운 상황입니다.\n\n아래 메일로 문의주시면 친절히 답변해 드리겠습니다! 🙏",
+          subText: "yhlab.team@gmail.com",
           onConfirm: () {
             Clipboard.setData(
                 const ClipboardData(text: "yhlabs.team@gmail.com"));
