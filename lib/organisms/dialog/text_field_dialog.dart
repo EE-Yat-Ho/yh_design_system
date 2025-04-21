@@ -3,43 +3,72 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
+import 'package:yh_design_system/atoms/text_field/text_editing_controller.dart';
 
-class YHTextFieldDialog extends StatelessWidget {
+class YHTextFieldDialog extends StatefulWidget {
   YHTextFieldDialog({
     super.key,
-    required this.onTap,
     required this.title,
-    required this.hintText,
+    String? initialValue,
+    this.hintText,
+    this.confirmText = "확인",
+    this.cancelText = "취소",
+    this.maxLength,
+    this.keyboardType = TextInputType.text,
+    required this.onConfirm,
     this.image,
-  });
+  }) {
+    textController = YHTextEditingController(text: initialValue);
+  }
 
   final String title;
-  final String hintText;
+  final String? hintText;
+  final String confirmText;
+  final String cancelText;
+  final int? maxLength;
+  final TextInputType keyboardType;
   final YHImage? image;
-  final TextEditingController textController = TextEditingController(text: "");
-  final void Function(String) onTap;
+  late final YHTextEditingController textController;
+  final void Function(String?) onConfirm;
 
   @override
+  State<YHTextFieldDialog> createState() => _YHTextFieldDialogState();
+}
+
+class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
+  @override
   Widget build(BuildContext context) {
-    var icon = image == null
+    var icon = widget.image == null
         ? null
         : SizedBox.fromSize(
-            size: const Size.fromRadius(50), child: image?.icon());
+            size: const Size.fromRadius(50), child: widget.image?.icon());
 
     return AlertDialog(
       icon: icon,
       backgroundColor: YHColor.white.color,
       title: YHText(
-        text: title,
-        font: YHFont.bold18,
+        text: widget.title,
+        font: YHFont.regular18,
         color: YHColor.black,
       ),
       content: SingleChildScrollView(
         child: Column(
           children: [
             TextField(
-              controller: textController,
-              decoration: InputDecoration(hintText: hintText),
+              controller: widget.textController,
+              decoration: InputDecoration(
+                hintText: widget.hintText,
+                hintStyle: TextStyle(color: YHColor.placeholder.color),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: YHColor.gray400.color),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: YHColor.primary.color),
+                ),
+              ),
+              style: TextStyle(color: YHColor.black.color),
+              maxLength: widget.maxLength,
+              keyboardType: widget.keyboardType,
               autofocus: true,
             ),
           ],
@@ -48,23 +77,32 @@ class YHTextFieldDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pop();
           },
-          child: const Text("취소"),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: YHColor.primary.color,
-            foregroundColor: YHColor.white.color,
+          child: YHText(
+            text: widget.cancelText,
+            font: YHFont.regular16,
+            color: YHColor.contentSecondary,
           ),
+        ),
+        TextButton(
           onPressed: () {
-            onTap(textController.text);
-            Navigator.pop(context);
+            widget.onConfirm(widget.textController.text);
+            Navigator.of(context).pop();
           },
-          child: const YHText(
-              text: "확인", font: YHFont.bold14, color: YHColor.white),
-        )
+          child: YHText(
+            text: widget.confirmText,
+            font: YHFont.regular16,
+            color: YHColor.primary,
+          ),
+        ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    widget.textController.dispose();
+    super.dispose();
   }
 }
