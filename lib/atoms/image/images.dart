@@ -91,23 +91,23 @@ enum YHImage {
 }
 
 extension YHImageImage on YHImage {
-  Image icon(
-      {double width = 24,
-      double height = 24,
-      YHColor? color,
-      BoxFit fit = BoxFit.fitHeight,
-      String? package}) {
-    return Image.asset(
-      "assets/images/$name.png",
-      width: width,
-      height: height,
-      color: color?.color,
-      fit: fit,
-      package: package,
-    );
-  }
+  // Image icon(
+  //     {double width = 24,
+  //     double height = 24,
+  //     YHColor? color,
+  //     BoxFit fit = BoxFit.fitHeight,
+  //     String? package}) {
+  //   return Image.asset(
+  //     "assets/images/$name.png",
+  //     width: width,
+  //     height: height,
+  //     color: color?.color,
+  //     fit: fit,
+  //     package: package,
+  //   );
+  // }
 
-  SvgPicture svg({
+  SvgPicture icon({
     double width = 24,
     double height = 24,
     YHColor? color,

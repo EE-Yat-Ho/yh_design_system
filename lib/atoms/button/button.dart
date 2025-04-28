@@ -35,7 +35,7 @@ class YHButton extends StatelessWidget {
   final EdgeInsets padding;
 
   final YHText? text;
-  final Image? image;
+  final Widget? image;
   final Widget? leftWidget;
   final Widget? rightWidget;
   final double spacing;
