@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHImage {
@@ -94,7 +95,7 @@ extension YHImageImage on YHImage {
       {double width = 24,
       double height = 24,
       YHColor? color,
-      BoxFit? fit = BoxFit.fitHeight,
+      BoxFit fit = BoxFit.fitHeight,
       String? package}) {
     return Image.asset(
       "assets/images/$name.png",
@@ -102,6 +103,23 @@ extension YHImageImage on YHImage {
       height: height,
       color: color?.color,
       fit: fit,
+      package: package,
+    );
+  }
+
+  SvgPicture svg({
+    double width = 24,
+    double height = 24,
+    YHColor? color,
+    BoxFit fit = BoxFit.fitHeight,
+    String? package,
+  }) {
+    return SvgPicture.asset(
+      "assets/images/$name.svg",
+      width: width,
+      height: height,
+      fit: fit,
+      color: color?.color,
       package: package,
     );
   }

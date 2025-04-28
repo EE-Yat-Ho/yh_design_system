@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # svg
+  flutter_svg: 2.1.0
   # 유틸들
   yh_util:
     git:
