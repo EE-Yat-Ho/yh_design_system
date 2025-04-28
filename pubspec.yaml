@@ -12,8 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # svg
-  flutter_svg: 2.1.0
+  # svg -> 노출되지 않는 이미지 존재, 성능이 떨어지는 경우도 많아서 png 하기로
+  # flutter_svg: 2.1.0
+  
   # 유틸들
   yh_util:
     git:
