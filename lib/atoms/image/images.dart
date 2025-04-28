@@ -87,39 +87,62 @@ enum YHImage {
   image_coffee,
   image_coffee_plus,
   image_hamburger,
-  image_icecream,
+  image_icecream;
+
+  bool get isSvg {
+    switch (this) {
+      case book_cover:
+      case icon_apple:
+      case icon_check:
+      case icon_close:
+      case icon_google:
+      case icon_left:
+      case icon_pencil:
+      case icon_plus:
+      case icon_right:
+      case icon_setting:
+      case image_chicken:
+      case image_coffee:
+      case image_coffee_plus:
+      case image_hamburger:
+      case image_icecream:
+      case sample0:
+      case sample1:
+      case sample2:
+      case sample3:
+      case tape_blue:
+      case tape_red:
+        return true;
+      default:
+        return false;
+    }
+  }
 }
 
 extension YHImageImage on YHImage {
-  // Image icon(
-  //     {double width = 24,
-  //     double height = 24,
-  //     YHColor? color,
-  //     BoxFit fit = BoxFit.fitHeight,
-  //     String? package}) {
-  //   return Image.asset(
-  //     "assets/images/$name.png",
-  //     width: width,
-  //     height: height,
-  //     color: color?.color,
-  //     fit: fit,
-  //     package: package,
-  //   );
-  // }
+  Widget icon(
+      {double width = 24,
+      double height = 24,
+      YHColor? color,
+      BoxFit fit = BoxFit.fitHeight,
+      String? package}) {
+    if (isSvg) {
+      return SvgPicture.asset(
+        "assets/images/$name.svg",
+        width: width,
+        height: height,
+        fit: fit,
+        color: color?.color,
+        package: package,
+      );
+    }
 
-  SvgPicture icon({
-    double width = 24,
-    double height = 24,
-    YHColor? color,
-    BoxFit fit = BoxFit.fitHeight,
-    String? package,
-  }) {
-    return SvgPicture.asset(
-      "assets/images/$name.svg",
+    return Image.asset(
+      "assets/images/$name.png",
       width: width,
       height: height,
-      fit: fit,
       color: color?.color,
+      fit: fit,
       package: package,
     );
   }
