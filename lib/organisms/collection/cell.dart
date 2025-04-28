@@ -71,6 +71,7 @@ class YHCell extends StatelessWidget {
             cornerRadius != null ? BorderRadius.circular(cornerRadius!) : null,
       ),
       child: Row(
+        spacing: 8,
         children: [
           if (leftImage != null) leftImage!.icon(width: 48, height: 48),
           Column(
