@@ -86,7 +86,9 @@ enum YHImage {
   image_coffee,
   image_coffee_plus,
   image_hamburger,
-  image_icecream;
+  image_icecream,
+  image_tv,
+  image_calender;
 }
 
 extension YHImageImage on YHImage {
