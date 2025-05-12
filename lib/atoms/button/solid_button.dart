@@ -12,7 +12,7 @@ class YHSolidButton extends StatefulWidget {
     this.image,
     this.padding,
     this.isEnabled = true,
-    this.disableColor = YHColor.disable,
+    this.disableColor = YHColor.actionDisabled,
     required this.onTap,
   });
 
