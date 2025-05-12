@@ -13,6 +13,7 @@ class YHSolidButton extends StatefulWidget {
     this.padding,
     this.isEnabled = true,
     this.disableColor = YHColor.actionDisabled,
+    this.font = YHFont.bold18,
     required this.onTap,
   });
 
@@ -23,7 +24,7 @@ class YHSolidButton extends StatefulWidget {
   final EdgeInsets? padding;
   final bool isEnabled;
   final YHColor disableColor;
-
+  final YHFont font;
   @override
   State<YHSolidButton> createState() => _YHSolidButtonState();
 }
@@ -47,7 +48,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
         backgroundColor: widget.isEnabled
             ? YHColor.primary.color
             : widget.disableColor.color,
-        padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
+        padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -71,7 +72,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
     if (widget.title != null) {
       list.add(YHText(
         text: widget.title ?? "",
-        font: YHFont.bold18,
+        font: widget.font,
         color: YHColor.white,
       ));
     }
