@@ -87,6 +87,9 @@ enum YHImage {
   image_coffee_plus,
   image_hamburger,
   image_icecream,
+
+  // 미션
+  image_coin,
   image_tv,
   image_calender;
 }
