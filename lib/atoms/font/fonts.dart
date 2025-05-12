@@ -15,6 +15,8 @@ enum YHFont {
   bold16, // title3,
   bold14, // title4,
 
+  regular32,
+  regular30,
   regular24,
   regular22,
   regular20, // body1,
@@ -30,26 +32,25 @@ enum YHFont {
 
   double get fontSize {
     switch (this) {
+      case YHFont.regular32:
+        return 32;
       case YHFont.bold30:
+      case YHFont.regular30:
         return 30;
       case YHFont.bold24:
-        return 24;
-      case YHFont.bold18:
-        return 18;
-      case YHFont.bold16:
-        return 16;
-      case YHFont.bold14:
-        return 14;
       case YHFont.regular24:
         return 24;
       case YHFont.regular22:
         return 22;
       case YHFont.regular20:
         return 20;
+      case YHFont.bold18:
       case YHFont.regular18:
         return 18;
+      case YHFont.bold16:
       case YHFont.regular16:
         return 16;
+      case YHFont.bold14:
       case YHFont.regular14:
         return 14;
       case YHFont.regular12:
@@ -65,6 +66,8 @@ enum YHFont {
       case YHFont.bold16:
       case YHFont.bold14:
         return FontWeight.w700;
+      case YHFont.regular32:
+      case YHFont.regular30:
       case YHFont.regular24:
       case YHFont.regular22:
       case YHFont.regular20:
