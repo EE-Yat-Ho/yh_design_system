@@ -10,6 +10,7 @@ class YHSolidButton extends StatefulWidget {
     this.title,
     this.iconData,
     this.image,
+    this.padding,
     required this.onTap,
   });
 
@@ -17,7 +18,7 @@ class YHSolidButton extends StatefulWidget {
   final String? title;
   final IconData? iconData;
   final YHImage? image;
-
+  final EdgeInsets? padding;
   @override
   State<YHSolidButton> createState() => _YHSolidButtonState();
 }
@@ -25,6 +26,16 @@ class YHSolidButton extends StatefulWidget {
 class _YHSolidButtonState extends State<YHSolidButton> {
   @override
   Widget build(BuildContext context) {
+    if (widget.padding != null) {
+      return Padding(
+        padding: widget.padding!,
+        child: _button(),
+      );
+    }
+    return _button();
+  }
+
+  Widget _button() {
     return ElevatedButton(
       onPressed: widget.onTap,
       style: ElevatedButton.styleFrom(
@@ -37,12 +48,12 @@ class _YHSolidButtonState extends State<YHSolidButton> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: children(),
+        children: _children(),
       ),
     );
   }
 
-  List<Widget> children() {
+  List<Widget> _children() {
     List<Widget> list = [];
     if (widget.iconData != null) {
       list.add(Icon(widget.iconData));
