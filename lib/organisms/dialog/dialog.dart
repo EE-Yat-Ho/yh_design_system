@@ -61,6 +61,7 @@ class YHDialog extends StatelessWidget {
         text: text,
         font: titleFont,
         color: YHColor.contentPrimary,
+        maxLines: 15,
         align: TextAlign.start);
   }
 
