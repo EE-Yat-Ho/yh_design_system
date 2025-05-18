@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
+import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
@@ -19,6 +20,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final YHColor backgroundColor;
   final YHColor foregroundColor;
   final void Function()? backButtonOnTap;
+  final void Function()? titleOnTap;
 
   const YHAppBar({
     super.key,
@@ -35,6 +37,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor = YHColor.transparent,
     this.foregroundColor = YHColor.contentPrimary,
     this.backButtonOnTap,
+    this.titleOnTap,
   });
 
   @override
@@ -44,11 +47,22 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     Widget? titleWidget;
     if (title != null && title!.isNotEmpty) {
-      titleWidget = YHText(
-        text: title!,
-        font: titleFont,
-        color: foregroundColor,
-      );
+      if (titleOnTap != null) {
+        titleWidget = YHInkWell(
+          onTap: titleOnTap!,
+          child: YHText(
+            text: title!,
+            font: titleFont,
+            color: foregroundColor,
+          ),
+        );
+      } else {
+        titleWidget = YHText(
+          text: title!,
+          font: titleFont,
+          color: foregroundColor,
+        );
+      }
     }
 
     return AppBar(
