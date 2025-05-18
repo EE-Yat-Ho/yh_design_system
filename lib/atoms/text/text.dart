@@ -11,13 +11,15 @@ class YHText extends StatelessWidget {
       this.fixWidth,
       this.maxLines,
       this.align = TextAlign.left,
-      this.withFlexible = false});
+      this.withFlexible = false,
+      this.decoration});
 
   final String text;
   final YHFont font;
   final YHColor color;
   final int? maxLines;
   final TextAlign align;
+  final TextDecoration? decoration;
 
   // Row에 넣을 때 오버플로우를 방지하기 위해, 한번 감싸주는 역할
   final bool withFlexible;
@@ -27,7 +29,7 @@ class YHText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Text text = Text(
-      style: font.style(color: color.color),
+      style: font.style(color: color.color, decoration: decoration),
       this.text,
       maxLines: maxLines,
       textAlign: align,

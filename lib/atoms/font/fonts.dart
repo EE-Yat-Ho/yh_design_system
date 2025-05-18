@@ -81,13 +81,14 @@ enum YHFont {
 }
 
 extension YHFontEx on YHFont {
-  TextStyle style({Color? color}) {
+  TextStyle style({Color? color, TextDecoration? decoration}) {
     return TextStyle(
       fontFamily: YHFont.fontFamily.name, // enum의 폰트 이름 사용
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: 1.4,
       color: color ?? YHColor.contentPrimary.color,
+      decoration: decoration,
       package: "yh_design_system",
     );
   }
