@@ -52,13 +52,13 @@ class YHCell extends StatelessWidget {
     if (onTap != null) {
       return YHInkWell(
         onTap: onTap!,
-        child: _buildCell(),
+        child: _cell(),
       );
     }
-    return _buildCell();
+    return _cell();
   }
 
-  Widget _buildCell() {
+  Widget _cell() {
     return Container(
       margin: margin,
       padding: padding,
@@ -71,9 +71,14 @@ class YHCell extends StatelessWidget {
             cornerRadius != null ? BorderRadius.circular(cornerRadius!) : null,
       ),
       child: Row(
-        spacing: 8,
         children: [
-          if (leftImage != null) leftImage!.icon(width: 48, height: 48),
+          // 왼쪽 이미지
+          if (leftImage != null) ...[
+            leftImage!.icon(width: 48, height: 48),
+            const SizedBox(width: 8),
+          ],
+
+          // 타이틀, 서브타이틀
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 2,
@@ -87,7 +92,10 @@ class YHCell extends StatelessWidget {
                     color: YHColor.gray700),
             ],
           ),
+
           const Spacer(),
+
+          // 오른쪽 타입에 따라 다른 위젯 표시
           switch (rightType) {
             YHCellRightType.arrow =>
               YHImage.icon_right.icon(width: 24, height: 24),
