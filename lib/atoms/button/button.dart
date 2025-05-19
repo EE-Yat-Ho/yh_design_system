@@ -27,6 +27,7 @@ class YHButton extends StatelessWidget {
     this.horizontalAlignment = MainAxisAlignment.center,
     this.shadow = true,
     this.expands = false,
+    this.reddot = false,
   });
 
   final bool autoResize;
@@ -46,6 +47,7 @@ class YHButton extends StatelessWidget {
 
   final bool enable;
   final bool shadow;
+  final bool reddot;
 
   final YHColor? borderColor;
   final double borderWidth;
