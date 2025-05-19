@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/decoration/yh_red_dot.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 
 class YHButton extends StatelessWidget {
@@ -125,8 +126,7 @@ class YHButton extends StatelessWidget {
             child: Container(
               width: redDotSize,
               height: redDotSize,
-              decoration: const BoxDecoration(
-                  color: Colors.red, shape: BoxShape.circle),
+              decoration: redDotDecoration,
             ),
           ),
         ],

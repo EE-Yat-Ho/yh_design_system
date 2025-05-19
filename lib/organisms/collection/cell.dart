@@ -3,6 +3,7 @@ import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
+import 'package:yh_design_system/atoms/decoration/yh_red_dot.dart';
 import 'package:yh_design_system/atoms/switch/switch.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 
@@ -28,6 +29,8 @@ class YHCell extends StatelessWidget {
     this.borderColor,
     this.borderWidth,
     this.cornerRadius,
+    this.redDot = false,
+    this.redDotSize = 6,
     this.onTap,
     this.onToggle,
   });
@@ -44,6 +47,8 @@ class YHCell extends StatelessWidget {
   final YHColor? borderColor;
   final double? borderWidth;
   final double? cornerRadius;
+  final bool redDot;
+  final double redDotSize;
   final void Function()? onTap;
   final void Function(bool)? onToggle;
 
@@ -59,6 +64,24 @@ class YHCell extends StatelessWidget {
   }
 
   Widget _cell() {
+    final title = YHText(
+        text: this.title, font: YHFont.regular22, color: YHColor.primary);
+
+    Widget? row;
+    if (redDot) {
+      row = Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          title,
+          Container(
+            margin: const EdgeInsets.only(top: 4),
+            width: redDotSize,
+            height: redDotSize,
+            decoration: redDotDecoration,
+          ),
+        ],
+      );
+    }
     return Container(
       margin: margin,
       padding: padding,
@@ -83,8 +106,7 @@ class YHCell extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 2,
             children: [
-              YHText(
-                  text: title, font: YHFont.regular22, color: YHColor.primary),
+              if (redDot) row! else title,
               if (subtitle != null)
                 YHText(
                     text: subtitle!,
