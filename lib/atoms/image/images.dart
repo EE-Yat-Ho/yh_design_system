@@ -11,6 +11,7 @@ enum YHImage {
   icon_close_line_24,
   icon_check,
   icon_down,
+  icon_hamburger,
   icon_left,
   icon_plus_white,
   icon_plus,
