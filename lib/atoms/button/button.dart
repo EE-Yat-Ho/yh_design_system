@@ -27,9 +27,9 @@ class YHButton extends StatelessWidget {
     this.horizontalAlignment = MainAxisAlignment.center,
     this.shadow = true,
     this.expands = false,
-    this.reddot = false,
-    this.reddotSize = 6,
-    this.reddotInset = 4,
+    this.redDot = false,
+    this.redDotSize = 6,
+    this.redDotInset = 4,
   });
 
   final bool autoResize;
@@ -49,9 +49,9 @@ class YHButton extends StatelessWidget {
 
   final bool enable;
   final bool shadow;
-  final bool reddot;
-  final double reddotInset;
-  final double reddotSize;
+  final bool redDot;
+  final double redDotInset;
+  final double redDotSize;
   final YHColor? borderColor;
   final double borderWidth;
   final double cornerRadius;
@@ -115,16 +115,16 @@ class YHButton extends StatelessWidget {
       child: padding,
     );
 
-    if (reddot) {
+    if (redDot) {
       button = Stack(
         children: [
           button,
           Positioned(
-            top: reddotInset,
-            right: reddotInset,
+            top: redDotInset,
+            right: redDotInset,
             child: Container(
-              width: reddotSize,
-              height: reddotSize,
+              width: redDotSize,
+              height: redDotSize,
               decoration: const BoxDecoration(
                   color: Colors.red, shape: BoxShape.circle),
             ),
