@@ -63,6 +63,7 @@ class YHButton extends StatelessWidget {
 
   Widget _build() {
     var children = <Widget>[];
+    Widget child;
 
     if (leftWidget != null) {
       children.add(leftWidget!);
@@ -76,6 +77,37 @@ class YHButton extends StatelessWidget {
     if (rightWidget != null) {
       children.add(rightWidget!);
     }
+
+    Widget row = Row(
+      spacing: spacing,
+      mainAxisSize: autoResize ? MainAxisSize.min : MainAxisSize.max,
+      mainAxisAlignment: horizontalAlignment,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: children,
+    );
+
+    if (reddot) {
+      child = Stack(
+        children: [
+          row,
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Container(
+              width: 6,
+              height: 6,
+              decoration: const BoxDecoration(
+                color: Colors.red,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        ],
+      );
+    } else {
+      child = row;
+    }
+
     final backgroundColor = this.backgroundColor ?? YHColor.primary;
     final borderColor = this.borderColor ?? YHColor.primary;
 
@@ -97,13 +129,7 @@ class YHButton extends StatelessWidget {
       ),
       child: Padding(
         padding: padding,
-        child: Row(
-          spacing: spacing,
-          mainAxisSize: autoResize ? MainAxisSize.min : MainAxisSize.max,
-          mainAxisAlignment: horizontalAlignment,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: children,
-        ),
+        child: child,
       ),
     );
   }
