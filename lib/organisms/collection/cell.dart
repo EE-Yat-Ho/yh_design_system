@@ -74,7 +74,7 @@ class YHCell extends StatelessWidget {
         children: [
           title,
           Container(
-            margin: const EdgeInsets.only(top: 4),
+            margin: const EdgeInsets.fromLTRB(2, 4, 0, 0),
             width: redDotSize,
             height: redDotSize,
             decoration: redDotDecoration,
