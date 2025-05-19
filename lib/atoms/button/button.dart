@@ -28,6 +28,8 @@ class YHButton extends StatelessWidget {
     this.shadow = true,
     this.expands = false,
     this.reddot = false,
+    this.reddotSize = 6,
+    this.reddotInset = 4,
   });
 
   final bool autoResize;
@@ -48,7 +50,8 @@ class YHButton extends StatelessWidget {
   final bool enable;
   final bool shadow;
   final bool reddot;
-
+  final double reddotInset;
+  final double reddotSize;
   final YHColor? borderColor;
   final double borderWidth;
   final double cornerRadius;
@@ -61,9 +64,11 @@ class YHButton extends StatelessWidget {
     return expands ? Expanded(child: _build()) : _build();
   }
 
+  YHColor get _backgroundColor => backgroundColor ?? YHColor.primary;
+  YHColor get _borderColor => borderColor ?? YHColor.primary;
+
   Widget _build() {
     var children = <Widget>[];
-    Widget child;
 
     if (leftWidget != null) {
       children.add(leftWidget!);
@@ -86,51 +91,48 @@ class YHButton extends StatelessWidget {
       children: children,
     );
 
-    if (reddot) {
-      child = Stack(
-        children: [
-          row,
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Container(
-              width: 6,
-              height: 6,
-              decoration: const BoxDecoration(
-                color: Colors.red,
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        ],
-      );
-    } else {
-      child = row;
-    }
+    Padding padding = Padding(
+      padding: this.padding,
+      child: row,
+    );
 
-    final backgroundColor = this.backgroundColor ?? YHColor.primary;
-    final borderColor = this.borderColor ?? YHColor.primary;
-
-    return RawMaterialButton(
+    Widget button = RawMaterialButton(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       elevation: shadow ? 2 : 0,
       focusElevation: shadow ? 2 : 0,
       highlightElevation: 1,
       hoverElevation: 0,
       disabledElevation: 1,
-      fillColor: enable ? backgroundColor.color : YHColor.actionDisabled.color,
+      fillColor: enable ? _backgroundColor.color : YHColor.actionDisabled.color,
       constraints: BoxConstraints(minHeight: height ?? 0, minWidth: width ?? 0),
       onPressed: enable ? onTap : null,
       shape: RoundedRectangleBorder(
         side: borderWidth > 0
-            ? BorderSide(color: borderColor.color, width: borderWidth)
+            ? BorderSide(color: _borderColor.color, width: borderWidth)
             : BorderSide.none,
         borderRadius: BorderRadius.all(Radius.circular(cornerRadius)),
       ),
-      child: Padding(
-        padding: padding,
-        child: child,
-      ),
+      child: padding,
     );
+
+    if (reddot) {
+      button = Stack(
+        children: [
+          button,
+          Positioned(
+            top: reddotInset,
+            right: reddotInset,
+            child: Container(
+              width: reddotSize,
+              height: reddotSize,
+              decoration: const BoxDecoration(
+                  color: Colors.red, shape: BoxShape.circle),
+            ),
+          ),
+        ],
+      );
+    }
+
+    return button;
   }
 }
