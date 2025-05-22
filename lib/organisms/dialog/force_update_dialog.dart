@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
 import 'package:yh_util/url_launch.dart';
@@ -18,6 +20,7 @@ Future<dynamic> showForceUpdateDialog(
           text: "죄송해요, 앱 사용에 꼭 필요한 업데이트가 있어요!",
           onConfirm: () => moveToStore(appStoreId, packageName),
           confirmText: "스토어로 이동",
+          onCancel: () => exit(0),
           cancelText: "종료",
         );
       });
