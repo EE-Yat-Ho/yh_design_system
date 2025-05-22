@@ -18,10 +18,11 @@ Future<dynamic> showForceUpdateDialog(
       builder: (BuildContext innerContext) {
         return YHDialog(
           text: "죄송해요, 앱 사용에 꼭 필요한 업데이트가 있어요!",
-          onConfirm: () => moveToStore(appStoreId, packageName),
+          onConfirm: () {
+            moveToStore(appStoreId, packageName);
+            exit(0);
+          },
           confirmText: "스토어로 이동",
-          onCancel: () => exit(0),
-          cancelText: "종료",
         );
       });
 }
