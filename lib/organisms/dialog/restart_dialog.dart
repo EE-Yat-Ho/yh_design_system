@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
 import 'package:yh_util/local_notification.dart';
 
+// shorebird 강제 업데이트
 Future<dynamic> showRestartDialog(BuildContext context) async {
   return showDialog(
       context: context,
