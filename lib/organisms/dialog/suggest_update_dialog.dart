@@ -15,7 +15,7 @@ Future<dynamic> showSuggestUpdateDialog(
       builder: (BuildContext innerContext) {
         return YHDialog(
           text: "새로운 업데이트가 있어요! 업데이트 하실래요?",
-          onConfirm: () => moveToStore(appStoreId, packageName),
+          onConfirm: () async => await moveToStore(appStoreId, packageName),
           confirmText: "스토어로 이동",
           cancelText: "다음에",
         );
