@@ -16,13 +16,15 @@ Future<dynamic> showForceUpdateDialog(
       context: context,
       barrierDismissible: false, // 배경 눌러도 안꺼지게
       builder: (BuildContext innerContext) {
-        return YHDialog(
-          text: "죄송해요, 앱 사용에 꼭 필요한 업데이트가 있어요!",
-          onConfirm: () async {
-            await moveToStore(appStoreId, packageName);
-            exit(0);
-          },
-          confirmText: "스토어로 이동",
-        );
+        return PopScope(
+            canPop: false, // 뒤로가기 물리버튼 방지
+            child: YHDialog(
+              text: "죄송해요, 앱 사용에 꼭 필요한 업데이트가 있어요!",
+              onConfirm: () async {
+                await moveToStore(appStoreId, packageName);
+                exit(0);
+              },
+              confirmText: "스토어로 이동",
+            ));
       });
 }

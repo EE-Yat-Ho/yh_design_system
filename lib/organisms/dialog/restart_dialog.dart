@@ -11,7 +11,7 @@ Future<dynamic> showRestartDialog(BuildContext context) async {
       barrierDismissible: false, // 배경 눌러도 안꺼지게
       builder: (_) {
         return PopScope(
-            canPop: false,
+            canPop: false, // 뒤로가기 물리버튼 방지
             child: YHDialog(
                 text: "개선사항을 적용할 준비가 되었어요! 앱을 재시작 해주세요.",
                 confirmText: "앱 종료",
