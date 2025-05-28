@@ -54,6 +54,8 @@ class OpenableList extends StatelessWidget {
     this.showChild = true,
     this.showOpenableArrow = true,
     this.showChildArrow = true,
+    this.openableCardElevation = 0,
+    this.childCardElevation = 0,
   });
 
   final List<OpenableObject> objects;
@@ -65,6 +67,8 @@ class OpenableList extends StatelessWidget {
   final void Function(int id)? onLongPressChild;
   final void Function(int id)? onTapAddButton;
 
+  final double openableCardElevation;
+  final double childCardElevation;
   final bool showSelected;
   final bool showAddButton;
   final bool showChild;

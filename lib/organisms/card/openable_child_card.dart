@@ -14,7 +14,8 @@ class YHOpenableChildCard extends StatelessWidget {
       this.onLongPress,
       this.isSelected = false,
       this.margin = EdgeInsets.zero,
-      this.showRightArrow = true});
+      this.showRightArrow = true,
+      this.elevation = 0});
 
   final ChildObject object;
   final void Function(int id) onTap;
@@ -22,6 +23,7 @@ class YHOpenableChildCard extends StatelessWidget {
   final bool isSelected;
   final EdgeInsets margin;
   final bool showRightArrow;
+  final double elevation;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,8 @@ class YHOpenableChildCard extends StatelessWidget {
       );
     }
 
-    return YHCard(margin: margin, child: Stack(children: list));
+    return YHCard(
+        margin: margin, elevation: elevation, child: Stack(children: list));
   }
 
   Widget trailing(BuildContext context) {

@@ -11,6 +11,7 @@ class YHOpenableCard extends StatelessWidget {
   const YHOpenableCard({
     super.key,
     required this.object,
+    this.elevation = 0,
     this.isSelected = false,
     this.showAddButton = true,
     this.showArrow = true,
@@ -19,6 +20,7 @@ class YHOpenableCard extends StatelessWidget {
   });
 
   final OpenableObject object;
+  final double elevation;
   final bool isSelected;
   final bool showAddButton;
   final bool showArrow;
@@ -92,6 +94,7 @@ class YHOpenableCard extends StatelessWidget {
     }
 
     return YHCard(
+      elevation: elevation,
       child: Stack(children: stackList),
     );
   }
