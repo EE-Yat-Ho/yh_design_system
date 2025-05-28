@@ -106,6 +106,7 @@ class OpenableList extends StatelessWidget {
                     object.children.isNotEmpty,
                 showAddButton: showAddButton,
                 showArrow: showOpenableArrow,
+                elevation: openableCardElevation,
               );
             },
             keyId: object.id,
@@ -118,6 +119,7 @@ class OpenableList extends StatelessWidget {
                         isSelected: showSelected && childObject.isSelect,
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
                         showRightArrow: showChildArrow,
+                        elevation: childCardElevation,
                       ))
                   .toList(),
             ),
