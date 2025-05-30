@@ -45,8 +45,8 @@ class YHDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            if (image != null) image!.icon(width: double.infinity, height: 100),
             _title(),
-            if (image != null) image!.icon(width: 48, height: 48),
             if (subText != null) _subText(),
             const SizedBox(height: 28),
             _buttons(context),
