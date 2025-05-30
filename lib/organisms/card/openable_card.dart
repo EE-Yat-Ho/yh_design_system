@@ -17,6 +17,7 @@ class YHOpenableCard extends StatelessWidget {
     this.showArrow = true,
     this.onTap,
     this.onTapAddButton,
+    this.cornerRadius = 20,
   });
 
   final OpenableObject object;
@@ -24,6 +25,7 @@ class YHOpenableCard extends StatelessWidget {
   final bool isSelected;
   final bool showAddButton;
   final bool showArrow;
+  final double cornerRadius;
   final void Function(int id)? onTap;
   final void Function(int id)? onTapAddButton;
 
@@ -94,6 +96,7 @@ class YHOpenableCard extends StatelessWidget {
     }
 
     return YHCard(
+      cornerRadius: cornerRadius,
       elevation: elevation,
       child: Stack(children: stackList),
     );

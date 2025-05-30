@@ -56,6 +56,8 @@ class OpenableList extends StatelessWidget {
     this.showChildArrow = true,
     this.openableCardElevation = 0,
     this.childCardElevation = 0,
+    this.openableCardCornerRadius = 20,
+    this.childCardCornerRadius = 20,
   });
 
   final List<OpenableObject> objects;
@@ -74,6 +76,8 @@ class OpenableList extends StatelessWidget {
   final bool showChild;
   final bool showOpenableArrow;
   final bool showChildArrow;
+  final double openableCardCornerRadius;
+  final double childCardCornerRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +111,7 @@ class OpenableList extends StatelessWidget {
                 showAddButton: showAddButton,
                 showArrow: showOpenableArrow,
                 elevation: openableCardElevation,
+                cornerRadius: openableCardCornerRadius,
               );
             },
             keyId: object.id,
@@ -120,6 +125,7 @@ class OpenableList extends StatelessWidget {
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
                         showRightArrow: showChildArrow,
                         elevation: childCardElevation,
+                        cornerRadius: childCardCornerRadius,
                       ))
                   .toList(),
             ),

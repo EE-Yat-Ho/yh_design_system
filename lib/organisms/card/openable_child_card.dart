@@ -15,7 +15,8 @@ class YHOpenableChildCard extends StatelessWidget {
       this.isSelected = false,
       this.margin = EdgeInsets.zero,
       this.showRightArrow = true,
-      this.elevation = 0});
+      this.elevation = 0,
+      this.cornerRadius = 20});
 
   final ChildObject object;
   final void Function(int id) onTap;
@@ -23,6 +24,7 @@ class YHOpenableChildCard extends StatelessWidget {
   final bool isSelected;
   final EdgeInsets margin;
   final bool showRightArrow;
+  final double cornerRadius;
   final double elevation;
 
   @override
@@ -51,16 +53,18 @@ class YHOpenableChildCard extends StatelessWidget {
     if (isSelected) {
       list.add(
         Row(children: [
-          Container(
-            width: 12,
-          ),
+          Container(width: 12),
           YHImage.icon_check_red.icon(width: 40, height: 40)
         ]),
       );
     }
 
     return YHCard(
-        margin: margin, elevation: elevation, child: Stack(children: list));
+      cornerRadius: cornerRadius,
+      margin: margin,
+      elevation: elevation,
+      child: Stack(children: list),
+    );
   }
 
   Widget trailing(BuildContext context) {
@@ -70,9 +74,7 @@ class YHOpenableChildCard extends StatelessWidget {
         font: YHFont.regular16,
         color: YHColor.gray,
       ),
-      const SizedBox(
-        width: 6,
-      ),
+      const SizedBox(width: 6),
       // YHText(
       //   text: "M ${note.numberOfMemo}",
       //   font: YHFont.regular16,
