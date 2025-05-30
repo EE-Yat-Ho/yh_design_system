@@ -16,7 +16,8 @@ class YHOpenableChildCard extends StatelessWidget {
       this.margin = EdgeInsets.zero,
       this.showRightArrow = true,
       this.elevation = 0,
-      this.cornerRadius = 20});
+      this.cornerRadius = 20,
+      this.minTileHeight = 40});
 
   final ChildObject object;
   final void Function(int id) onTap;
@@ -26,6 +27,7 @@ class YHOpenableChildCard extends StatelessWidget {
   final bool showRightArrow;
   final double cornerRadius;
   final double elevation;
+  final double minTileHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class YHOpenableChildCard extends StatelessWidget {
             onLongPress!(object.id);
           }
         },
+        minTileHeight: 40,
       ),
     ];
 

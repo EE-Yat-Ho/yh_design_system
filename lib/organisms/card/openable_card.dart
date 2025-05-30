@@ -37,9 +37,7 @@ class YHOpenableCard extends StatelessWidget {
         font: YHFont.regular16,
         color: YHColor.gray,
       ),
-      const SizedBox(
-        width: 8,
-      ),
+      const SizedBox(width: 8),
     ];
 
     if (showArrow) {
@@ -98,6 +96,7 @@ class YHOpenableCard extends StatelessWidget {
     return YHCard(
       cornerRadius: cornerRadius,
       elevation: elevation,
+      margin: const EdgeInsets.only(bottom: 4),
       child: Stack(children: stackList),
     );
   }
