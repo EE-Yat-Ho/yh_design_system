@@ -4,7 +4,7 @@ import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/text_field/text_field.dart';
 import 'package:yh_design_system/atoms/card/card.dart';
 
-class YHTextFieldCard extends StatelessWidget {
+final class YHTextFieldCard extends StatelessWidget {
   const YHTextFieldCard({
     super.key,
     this.labelText,
@@ -50,6 +50,7 @@ class YHTextFieldCard extends StatelessWidget {
 
     return YHCard(
       backgroundColor: bgColor,
+      cornerRadius: cornerRadius,
       child: YHTextField(
         labelText: labelText,
         font: font,
