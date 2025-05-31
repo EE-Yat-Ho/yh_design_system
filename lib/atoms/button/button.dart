@@ -101,7 +101,7 @@ class YHButton extends StatelessWidget {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       elevation: shadow ? 2 : 0,
       focusElevation: shadow ? 2 : 0,
-      highlightElevation: 1,
+      highlightElevation: shadow ? 1 : 0,
       hoverElevation: 0,
       disabledElevation: 1,
       fillColor: enable ? _backgroundColor.color : YHColor.actionDisabled.color,
