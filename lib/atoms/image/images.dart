@@ -22,6 +22,7 @@ enum YHImage {
   icon_save_white,
 
   // MARK: - Nemo
+  image_make_bag,
   // exam
   icon_right_blue,
   icon_fail_red,
