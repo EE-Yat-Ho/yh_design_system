@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 // 앱 프로젝트에서 특화된 이미지가 필요할 경우, 해당 인터페이스 구현하여 사용
-abstract interface class YHImageInterface {
-  String get packageName;
+abstract interface class YHImageInterface with Enum {
+  // 앱 프로젝트 특화 이미지인 경우, 패키지 이름 null 이어야함
+  String? get packageName;
+
+  // enum 타입의 name 사용
   String get fileName;
 }
 
