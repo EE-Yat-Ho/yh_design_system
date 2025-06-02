@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
+// 앱 프로젝트에서 특화된 이미지가 필요할 경우, 해당 인터페이스 구현하여 사용
 abstract interface class YHImageInterface {
   String get packageName;
+  String get fileName;
 }
 
 enum YHImage implements YHImageInterface {
@@ -82,9 +84,12 @@ enum YHImage implements YHImageInterface {
 
   @override
   String get packageName => 'yh_design_system';
+
+  @override
+  String get fileName => name;
 }
 
-extension YHImageImage on YHImage {
+extension YHImageImage on YHImageInterface {
   Image icon(
       {double width = 24,
       double height = 24,
@@ -92,7 +97,7 @@ extension YHImageImage on YHImage {
       BoxFit fit = BoxFit.fitHeight,
       String? package}) {
     return Image.asset(
-      "assets/images/$name.png",
+      "assets/images/$fileName.png",
       width: width,
       height: height,
       color: color?.color,
@@ -102,6 +107,6 @@ extension YHImageImage on YHImage {
   }
 
   ImageProvider get imageProvider {
-    return AssetImage('assets/images/$name.png');
+    return AssetImage('assets/images/$fileName.png');
   }
 }

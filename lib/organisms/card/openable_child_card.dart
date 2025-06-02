@@ -90,7 +90,7 @@ class YHOpenableChildCard extends StatelessWidget {
 
     if (showRightArrow) {
       list.add(
-        YHImage.icon_right.icon(width: 24, height: 24),
+        YHImage.icon_right_144.icon(width: 24, height: 24),
       );
     }
 

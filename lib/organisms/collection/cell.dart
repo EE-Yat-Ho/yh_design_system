@@ -120,7 +120,7 @@ class YHCell extends StatelessWidget {
           // 오른쪽 타입에 따라 다른 위젯 표시
           switch (rightType) {
             YHCellRightType.arrow =>
-              YHImage.icon_right.icon(width: 24, height: 24),
+              YHImage.icon_right_144.icon(width: 24, height: 24),
             YHCellRightType.toggle => YHSwitch(
                 initialValue: initialToggleValue ?? false,
                 onChanged: onToggle!),
