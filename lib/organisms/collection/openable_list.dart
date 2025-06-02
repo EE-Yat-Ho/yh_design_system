@@ -62,12 +62,13 @@ class OpenableList extends StatelessWidget {
 
   final List<OpenableObject> objects;
   final String emptyText;
-  final void Function(int id, bool isExpand) onTapOpenable;
-  final void Function(int id) onTapChild;
-
-  final void Function(int id)? onLongPressOpenable;
-  final void Function(int id)? onLongPressChild;
-  final void Function(int id)? onTapAddButton;
+  // 열 수 있는 셀 클릭
+  final void Function(int openableId, bool isExpand) onTapOpenable;
+  final void Function(int openableId)? onLongPressOpenable;
+  final void Function(int openableId)? onTapAddButton;
+  // 열 수 없는 셀 클릭
+  final void Function(int openableId, int childId) onTapChild;
+  final void Function(int openableId, int childId)? onLongPressChild;
 
   final double openableCardElevation;
   final double childCardElevation;
@@ -119,8 +120,9 @@ class OpenableList extends StatelessWidget {
               children: object.children
                   .map((childObject) => YHOpenableChildCard(
                         object: childObject,
-                        onTap: onTapChild,
-                        onLongPress: onLongPressChild,
+                        onTap: (childId) => onTapChild(object.id, childId),
+                        onLongPress: (childId) =>
+                            onLongPressChild?.call(object.id, childId),
                         isSelected: showSelected && childObject.isSelect,
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
                         showRightArrow: showChildArrow,
