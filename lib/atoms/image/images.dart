@@ -3,23 +3,36 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
-enum YHImage {
+abstract interface class YHImageInterface {
+  String get packageName;
+}
+
+enum YHImage implements YHImageInterface {
   // MARK: - Common
-  icon_add,
-  icon_camera,
-  icon_close,
+  icon_add_24,
+  icon_apple_24,
+  icon_back_line_24,
+  icon_camera_48,
+  icon_check_24,
+  icon_close_24,
   icon_close_line_24,
-  icon_check,
-  icon_down,
-  icon_hamburger,
-  icon_left,
-  icon_plus_white,
-  icon_plus,
-  icon_photo,
-  icon_refresh,
-  icon_right,
-  icon_save,
-  icon_save_white,
+  icon_down_24,
+  icon_google_24,
+  icon_hamburger_216,
+  icon_left_24,
+  icon_pencil_24,
+  icon_photo_48,
+  icon_plus_24,
+  icon_plus_white_24,
+  icon_refresh_48,
+  icon_right_144,
+  icon_save_24,
+  icon_setting_216,
+  icon_text_field_clear_24,
+
+  image_calender,
+  image_coin,
+  image_tv,
 
   // MARK: - Nemo
   image_make_bag,
@@ -65,35 +78,10 @@ enum YHImage {
   icon_send,
   icon_speaker,
   icon_timer,
-  icon_xlsx,
+  icon_xlsx;
 
-  // MARK: - Memory Log
-  memory_log_logo,
-  icon_apple,
-  icon_google,
-  icon_pencil,
-  icon_setting,
-  profile_rabbit,
-  profile_bear,
-  book_cover,
-  sample0,
-  sample1,
-  sample2,
-  sample3,
-  tape_blue,
-  tape_red,
-
-  // premium & donation
-  image_chicken,
-  image_coffee,
-  image_coffee_plus,
-  image_hamburger,
-  image_icecream,
-
-  // 미션
-  image_coin,
-  image_tv,
-  image_calender;
+  @override
+  String get packageName => 'yh_design_system';
 }
 
 extension YHImageImage on YHImage {
@@ -109,7 +97,7 @@ extension YHImageImage on YHImage {
       height: height,
       color: color?.color,
       fit: fit,
-      package: package,
+      package: package ?? packageName,
     );
   }
 
