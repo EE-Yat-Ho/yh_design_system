@@ -34,7 +34,8 @@ class _YHFloatingButtonState extends State<YHFloatingButton> {
         child: FloatingActionButton(
           shape: const CircleBorder(),
           foregroundColor: widget.imageColor?.color,
-          backgroundColor: widget.backgroundColor?.color,
+          backgroundColor:
+              widget.backgroundColor?.color ?? YHColor.primary.color,
           onPressed: widget.onTap,
           child: widget.image.icon(color: widget.imageColor),
         ),
