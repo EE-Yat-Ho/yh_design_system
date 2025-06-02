@@ -20,8 +20,8 @@ class YHOpenableChildCard extends StatelessWidget {
       this.minTileHeight = 40});
 
   final ChildObject object;
-  final void Function(int id) onTap;
-  final void Function(int id)? onLongPress;
+  final void Function(String id) onTap;
+  final void Function(String id)? onLongPress;
   final bool isSelected;
   final EdgeInsets margin;
   final bool showRightArrow;

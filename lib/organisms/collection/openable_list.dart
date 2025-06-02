@@ -29,7 +29,7 @@ class OpenableObject {
 
 class ChildObject {
   final Object object;
-  final int id;
+  final String id;
   final YHImageInterface leadingImage;
   final String text;
   final String? rightText;
@@ -67,8 +67,8 @@ class OpenableList extends StatelessWidget {
   final void Function(int openableId)? onLongPressOpenable;
   final void Function(int openableId)? onTapAddButton;
   // 열 수 없는 셀 클릭
-  final void Function(int openableId, int childId) onTapChild;
-  final void Function(int openableId, int childId)? onLongPressChild;
+  final void Function(int openableId, String childId) onTapChild;
+  final void Function(int openableId, String childId)? onLongPressChild;
 
   final double openableCardElevation;
   final double childCardElevation;
