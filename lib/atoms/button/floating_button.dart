@@ -7,8 +7,16 @@ class YHFloatingButton extends StatefulWidget {
     super.key,
     required this.image,
     required this.onTap,
+    this.width = 52,
+    this.height = 52,
+    this.imageColor,
+    this.backgroundColor,
   });
 
+  final double width;
+  final double height;
+  final YHColor? imageColor;
+  final YHColor? backgroundColor;
   final VoidCallback? onTap;
   final YHImageInterface image;
 
@@ -20,15 +28,15 @@ class _YHFloatingButtonState extends State<YHFloatingButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 52,
-      width: 52,
+      height: widget.height,
+      width: widget.width,
       child: FittedBox(
         child: FloatingActionButton(
           shape: const CircleBorder(),
-          foregroundColor: YHColor.white.color,
-          backgroundColor: YHColor.primary.color,
+          foregroundColor: widget.imageColor?.color,
+          backgroundColor: widget.backgroundColor?.color,
           onPressed: widget.onTap,
-          child: widget.image.icon(),
+          child: widget.image.icon(color: widget.imageColor),
         ),
       ),
     );
