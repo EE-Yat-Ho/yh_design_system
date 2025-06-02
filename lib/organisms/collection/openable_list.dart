@@ -98,32 +98,32 @@ class OpenableList extends StatelessWidget {
         onHeaderLongPress: onLongPressOpenable,
         elevation: 0,
         dividerColor: Colors.transparent,
-        children: objects.map<AppExpansionPanel>((OpenableObject object) {
+        children: objects.map<AppExpansionPanel>((OpenableObject openable) {
           return AppExpansionPanel(
             canTapOnHeader: true,
             backgroundColor: Colors.transparent,
             headerBuilder: (BuildContext context, bool isExpanded) {
               return YHOpenableCard(
-                object: object,
+                object: openable,
                 onTapAddButton: onTapAddButton,
                 isSelected: showSelected &&
-                    object.children.every((o) => o.isSelect) &&
-                    object.children.isNotEmpty,
+                    openable.children.every((o) => o.isSelect) &&
+                    openable.children.isNotEmpty,
                 showAddButton: showAddButton,
                 showArrow: showOpenableArrow,
                 elevation: openableCardElevation,
                 cornerRadius: openableCardCornerRadius,
               );
             },
-            keyId: object.id,
+            keyId: openable.id,
             body: Column(
-              children: object.children
-                  .map((childObject) => YHOpenableChildCard(
-                        object: childObject,
-                        onTap: (childId) => onTapChild(object.id, childId),
+              children: openable.children
+                  .map((child) => YHOpenableChildCard(
+                        object: child,
+                        onTap: (childId) => onTapChild(openable.id, childId),
                         onLongPress: (childId) =>
-                            onLongPressChild?.call(object.id, childId),
-                        isSelected: showSelected && childObject.isSelect,
+                            onLongPressChild?.call(openable.id, childId),
+                        isSelected: showSelected && child.isSelect,
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
                         showRightArrow: showChildArrow,
                         elevation: childCardElevation,
@@ -131,7 +131,7 @@ class OpenableList extends StatelessWidget {
                       ))
                   .toList(),
             ),
-            isExpanded: showChild ? object.isOpened : false,
+            isExpanded: showChild ? openable.isOpened : false,
             iconBuilder: (child, isOpened) {
               return null;
             },
