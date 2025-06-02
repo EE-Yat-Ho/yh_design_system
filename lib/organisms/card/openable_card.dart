@@ -88,7 +88,7 @@ class YHOpenableCard extends StatelessWidget {
       stackList.add(
         Row(children: [
           Container(width: 12),
-          YHImage.icon_check_red.icon(width: 40, height: 40)
+          YHImage.icon_check_red_130.icon(width: 40, height: 40)
         ]),
       );
     }

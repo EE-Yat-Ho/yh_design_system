@@ -62,7 +62,7 @@ class YHOptionButton extends StatelessWidget {
             ]
           : [
               image.icon(),
-              YHImage.icon_off.icon(),
+              YHImage.icon_off_22.icon(),
             ],
     );
   }

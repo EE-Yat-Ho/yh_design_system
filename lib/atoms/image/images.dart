@@ -13,75 +13,56 @@ abstract interface class YHImageInterface with Enum {
 }
 
 enum YHImage implements YHImageInterface {
-  // MARK: - Common
-  icon_add_24,
+  // 로그인
   icon_apple_24,
-  icon_back_24,
-  icon_camera_48,
-  icon_check_24,
-  icon_close_24,
-  icon_down_24,
   icon_google_24,
-  icon_hamburger_216,
-  icon_left_24,
+
+  // 기능
+  icon_camera_48,
   icon_pencil_24,
   icon_photo_48,
-  icon_plus_24,
+  icon_alarm_128,
   icon_refresh_48,
-  icon_right_144,
-  icon_save_24,
+
+  // 색연필 느낌의 체크, 동그라미
+  icon_circle_blue_130,
+  icon_check_blue_100,
+  icon_check_red_130,
+
+  // 혜택
+  image_calender_216,
+  image_coin_216,
+  image_tv_216,
+
+  // 후원
+  icon_bus_128,
+  icon_chicken_128,
+  icon_coffee_128,
+  icon_salad_128,
+  icon_steak_128,
+
+  // 기타 기능
+  icon_email_128,
+  icon_language_128,
+  icon_copy_right_48,
+
+  // 옵션 끄기
+  icon_off_22,
+
+  // 기본 아이콘들
+  icon_add_24,
+  icon_plus_24,
+  icon_back_24,
+  icon_close_24,
+  icon_down_24,
+  icon_hamburger_216,
   icon_setting_216,
-  icon_text_field_clear_24,
-
-  image_calender,
-  image_coin,
-  image_tv,
-
-  // MARK: - Nemo
-  image_make_bag,
-  // exam
-  icon_right_blue,
-  icon_fail_red,
-  icon_fail_blue,
-  icon_end_exam,
-  // exam options
-  icon_off,
-  icon_shuffle,
-  icon_decision,
-  // charactors
-  char_question_mark,
-  char_really,
-  char_write,
-  // premium & donation
-  icon_bus,
-  icon_coffee,
-  icon_chicken,
-  icon_salad,
-  icon_steak,
-  icon_premium_menu,
-  icon_premium_noAd,
-  icon_premium_month,
-
-  background,
-  launch_logo,
-
-  icon_alarm,
-  icon_bag,
-  icon_bag_white,
-  icon_check_blue,
-  icon_check_red,
-  icon_copy_right,
-  icon_email,
-  icon_language,
-  icon_memo,
-  icon_note,
-  icon_question,
-  icon_rating,
-  icon_runner,
-  icon_send,
-  icon_speaker,
-  icon_timer,
-  icon_xlsx;
+  icon_save_24,
+  icon_send_48,
+  icon_left_24,
+  icon_right_144,
+  icon_check_24,
+  icon_text_field_clear_24;
 
   @override
   String get packageName => 'yh_design_system';
