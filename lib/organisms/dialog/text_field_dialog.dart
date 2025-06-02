@@ -27,7 +27,7 @@ class YHTextFieldDialog extends StatefulWidget {
   final String cancelText;
   final int? maxLength;
   final TextInputType keyboardType;
-  final YHImage? image;
+  final YHImageInterface? image;
   late final YHTextEditingController textController;
   final void Function(String?) onConfirm;
 

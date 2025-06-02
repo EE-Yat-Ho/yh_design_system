@@ -20,7 +20,7 @@ class YHSolidButton extends StatefulWidget {
   final VoidCallback? onTap;
   final String? title;
   final IconData? iconData;
-  final YHImage? image;
+  final YHImageInterface? image;
   final EdgeInsets? padding;
   final bool isEnabled;
   final YHColor disableColor;

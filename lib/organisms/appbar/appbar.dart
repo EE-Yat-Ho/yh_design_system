@@ -108,7 +108,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
-      image: YHImage.icon_close_line_24.icon(
+      image: YHImage.icon_close_24.icon(
         color: YHColor.contentTertiary,
         fit: BoxFit.fitHeight,
         package: "yh_design_system",

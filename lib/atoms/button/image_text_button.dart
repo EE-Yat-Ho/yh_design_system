@@ -21,7 +21,7 @@ class YHImageTextButton extends StatelessWidget {
   final VoidCallback? onTap;
   final YHText text;
   final IconData? iconData;
-  final YHImage? image;
+  final YHImageInterface? image;
   final YHColor? textColor;
   final YHColor? borderColor;
   final double? borderWidth;

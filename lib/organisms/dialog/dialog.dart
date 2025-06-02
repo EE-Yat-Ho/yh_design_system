@@ -25,7 +25,7 @@ class YHDialog extends StatelessWidget {
   final YHFont titleFont;
   final YHFont subTextFont;
   final YHFont buttonFont;
-  final YHImage? image;
+  final YHImageInterface? image;
 
   final String confirmText;
   final void Function() onConfirm;

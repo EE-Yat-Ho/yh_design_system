@@ -11,7 +11,7 @@ class OpenableObject {
   final Object object;
   final List<ChildObject> children;
   final int id;
-  final YHImage leadingImage;
+  final YHImageInterface leadingImage;
   final String text;
   final String? rightText;
   final bool isOpened;
@@ -30,7 +30,7 @@ class OpenableObject {
 class ChildObject {
   final Object object;
   final int id;
-  final YHImage leadingImage;
+  final YHImageInterface leadingImage;
   final String text;
   final String? rightText;
   final bool isSelect;

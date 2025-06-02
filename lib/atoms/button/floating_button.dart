@@ -10,7 +10,7 @@ class YHFloatingButton extends StatefulWidget {
   });
 
   final VoidCallback? onTap;
-  final YHImage image;
+  final YHImageInterface image;
 
   @override
   State<YHFloatingButton> createState() => _YHFloatingButtonState();

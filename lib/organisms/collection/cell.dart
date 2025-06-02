@@ -35,7 +35,7 @@ class YHCell extends StatelessWidget {
     this.onToggle,
   });
 
-  final YHImage? leftImage;
+  final YHImageInterface? leftImage;
   final String title;
   final String? subtitle;
   final String? rightText;

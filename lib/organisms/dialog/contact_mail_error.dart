@@ -6,7 +6,7 @@ import 'package:yh_design_system/atoms/image/images.dart';
 Future<dynamic> showContactMailErrorDialog(
   BuildContext context, {
   String? text,
-  YHImage? image,
+  YHImageInterface? image,
 }) async {
   return showDialog(
       context: context,

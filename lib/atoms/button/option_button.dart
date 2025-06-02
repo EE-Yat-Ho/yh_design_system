@@ -18,7 +18,7 @@ class YHOptionButton extends StatelessWidget {
   final bool isOn;
   final String title;
   final String description;
-  final YHImage image;
+  final YHImageInterface image;
 
   @override
   Widget build(BuildContext context) {
