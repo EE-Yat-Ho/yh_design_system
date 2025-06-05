@@ -10,7 +10,7 @@ import 'package:yh_design_system/atoms/image/images.dart';
 class OpenableObject {
   final Object object;
   final List<ChildObject> children;
-  final int id;
+  final String id;
   final YHImageInterface leadingImage;
   final String text;
   final String? rightText;
@@ -63,12 +63,12 @@ class OpenableList extends StatelessWidget {
   final List<OpenableObject> objects;
   final String emptyText;
   // 열 수 있는 셀 클릭
-  final void Function(int openableId, bool isExpand) onTapOpenable;
-  final void Function(int openableId)? onLongPressOpenable;
-  final void Function(int openableId)? onTapAddButton;
+  final void Function(String openableId, bool isExpand) onTapOpenable;
+  final void Function(String openableId)? onLongPressOpenable;
+  final void Function(String openableId)? onTapAddButton;
   // 열 수 없는 셀 클릭
-  final void Function(int openableId, String childId) onTapChild;
-  final void Function(int openableId, String childId)? onLongPressChild;
+  final void Function(String openableId, String childId) onTapChild;
+  final void Function(String openableId, String childId)? onLongPressChild;
 
   final double openableCardElevation;
   final double childCardElevation;
@@ -94,8 +94,12 @@ class OpenableList extends StatelessWidget {
         child: SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(0, 8, 0, 100), // contentInset
       child: YHExpansionPanelList(
-        expansionCallback: onTapOpenable,
-        onHeaderLongPress: onLongPressOpenable,
+        expansionCallback: (index, isExpanded) {
+          onTapOpenable(objects[index].id, isExpanded);
+        },
+        onHeaderLongPress: (index) {
+          onLongPressOpenable?.call(objects[index].id);
+        },
         elevation: 0,
         dividerColor: Colors.transparent,
         children: objects.map<AppExpansionPanel>((OpenableObject openable) {
@@ -105,7 +109,9 @@ class OpenableList extends StatelessWidget {
             headerBuilder: (BuildContext context, bool isExpanded) {
               return YHOpenableCard(
                 object: openable,
-                onTapAddButton: onTapAddButton,
+                onTapAddButton: (id) {
+                  onTapAddButton?.call(id);
+                },
                 isSelected: showSelected &&
                     openable.children.every((o) => o.isSelect) &&
                     openable.children.isNotEmpty,
@@ -115,7 +121,6 @@ class OpenableList extends StatelessWidget {
                 cornerRadius: openableCardCornerRadius,
               );
             },
-            keyId: openable.id,
             body: Column(
               children: openable.children
                   .map((child) => YHOpenableChildCard(

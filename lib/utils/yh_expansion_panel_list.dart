@@ -155,8 +155,8 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
   }
 
   void _handlePressed(bool isExpanded, int index) {
-    final id = widget.children[index].keyId;
-    widget.expansionCallback?.call(id, isExpanded);
+    // final id = widget.children[index].keyId;
+    widget.expansionCallback?.call(index, isExpanded);
 
     if (widget._allowOnlyOnePanelOpen) {
       final ExpansionPanelRadio pressedChild =
@@ -172,7 +172,7 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
         if (widget.expansionCallback != null &&
             childIndex != index &&
             child.value == _currentOpenPanel?.value) {
-          widget.expansionCallback!(widget.children[childIndex].keyId, false);
+          widget.expansionCallback!(childIndex, false);
         }
       }
 
@@ -183,8 +183,7 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
   }
 
   void _handleLongPressed(int index) {
-    final id = widget.children[index].keyId;
-    widget.onHeaderLongPress?.call(id);
+    widget.onHeaderLongPress?.call(index);
   }
 
   ExpansionPanelRadio? searchPanelByValue(
@@ -327,7 +326,6 @@ class AppExpansionPanel {
     this.isExpanded = false,
     this.canTapOnHeader = true,
     this.backgroundColor,
-    required this.keyId,
   });
 
   /// The widget builder that builds the expansion panels' header.
@@ -359,6 +357,4 @@ class AppExpansionPanel {
   ///
   /// Defaults to [ThemeData.cardColor].
   final Color? backgroundColor;
-
-  final int keyId;
 }
