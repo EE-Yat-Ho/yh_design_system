@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class ActionSheetAction {
+final class ActionSheetAction {
   ActionSheetAction(
       {required this.id,
       required this.title,
@@ -8,9 +8,9 @@ class ActionSheetAction {
       required this.isDestructive,
       required this.isDefault});
 
-  final int id;
+  final String id;
   final String title;
-  final void Function(int id) onTap;
+  final void Function(String id) onTap;
   final bool isDestructive;
   final bool isDefault;
 }
