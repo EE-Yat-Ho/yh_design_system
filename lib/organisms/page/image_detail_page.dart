@@ -5,35 +5,44 @@ import 'package:yh_design_system/organisms/appbar/appbar.dart';
 import 'package:yh_design_system/organisms/collection/horizontal_image_collection.dart';
 import 'package:yh_util/image_entity.dart';
 
-class ImageDetailPage extends StatefulWidget {
-  final List<ImageEntity> images;
-  final int initialIndex;
-  final YHFont titleFont;
+final class ImageDetailPage extends StatefulWidget {
+  // images: List<ImageEntity>
+  // initialIndex: int
+  // titleFont: YHFont
+  final Map<String, dynamic> map;
 
   const ImageDetailPage({
     super.key,
-    required this.images,
-    this.initialIndex = 0,
-    this.titleFont = YHFont.regular16,
+    required this.map,
   });
 
   @override
   ImageDetailPageState createState() => ImageDetailPageState();
 }
 
-class ImageDetailPageState extends State<ImageDetailPage> {
+final class ImageDetailPageState extends State<ImageDetailPage> {
   late PageController _pageController;
-  int _currentIndex = 0;
   late final List<ImageEntity> _images;
+  late final YHFont _titleFont;
+  int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _images = widget.images
+    _images = (widget.map["images"] as List<ImageEntity>)
         .where((e) => (e.hasRemoteImage || e.tmpImage != null))
         .toList();
-    _currentIndex = widget.initialIndex;
-    _pageController = PageController(initialPage: widget.initialIndex);
+
+    if (widget.map["initialIndex"] != null) {
+      _currentIndex = widget.map["initialIndex"] as int;
+    }
+
+    if (widget.map["titleFont"] != null) {
+      _titleFont = widget.map["titleFont"] as YHFont;
+    } else {
+      _titleFont = YHFont.regular16;
+    }
+    _pageController = PageController(initialPage: _currentIndex);
   }
 
   @override
@@ -46,7 +55,7 @@ class ImageDetailPageState extends State<ImageDetailPage> {
         rightPadding: 16,
         foregroundColor: YHColor.contentTertiary,
         backgroundColor: YHColor.transparent,
-        titleFont: widget.titleFont,
+        titleFont: _titleFont,
       ),
       backgroundColor: Colors.black,
       body: SafeArea(
