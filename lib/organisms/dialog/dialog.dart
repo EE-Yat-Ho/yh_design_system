@@ -5,7 +5,7 @@ import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHDialog extends StatelessWidget {
+final class YHDialog extends StatelessWidget {
   const YHDialog({
     super.key,
     this.titleFont = YHFont.regular16,
@@ -18,6 +18,12 @@ class YHDialog extends StatelessWidget {
     required this.onConfirm,
     this.cancelText,
     this.onCancel,
+    this.imageWidth,
+    this.imageHeight,
+    this.buttonInRow = true,
+    this.buttonCornerRadius,
+    this.mainColumnCrossAxisAlignment = CrossAxisAlignment.start,
+    this.buttonTopPadding,
   });
 
   final String text;
@@ -26,6 +32,12 @@ class YHDialog extends StatelessWidget {
   final YHFont subTextFont;
   final YHFont buttonFont;
   final YHImageInterface? image;
+  final double? imageWidth;
+  final double? imageHeight;
+  final bool buttonInRow;
+  final double? buttonCornerRadius;
+  final CrossAxisAlignment mainColumnCrossAxisAlignment;
+  final double? buttonTopPadding;
 
   final String confirmText;
   final void Function() onConfirm;
@@ -41,15 +53,19 @@ class YHDialog extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
         child: Column(
-          spacing: 12,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 8,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (image != null) image!.icon(width: double.infinity, height: 100),
+            if (image != null)
+              image!.icon(
+                width: imageWidth ?? double.infinity,
+                height: imageHeight ?? 100,
+              ),
             _title(),
             if (subText != null) _subText(),
-            const SizedBox(height: 28),
-            _buttons(context),
+            SizedBox(height: buttonTopPadding ?? 28),
+            if (buttonInRow) _rowButtons(context) else _columnButtons(context)
           ],
         ),
       ),
@@ -73,12 +89,50 @@ class YHDialog extends StatelessWidget {
         align: TextAlign.start);
   }
 
-  Widget _buttons(BuildContext context) {
+  Widget _columnButtons(BuildContext context) {
+    return Column(
+      spacing: 8,
+      children: [
+        if (cancelText != null)
+          YHButton(
+            cornerRadius: buttonCornerRadius ?? 8,
+            borderColor: YHColor.outline,
+            borderWidth: 1,
+            text: YHText(
+                text: cancelText!, font: buttonFont, color: YHColor.black),
+            height: 48,
+            width: double.infinity,
+            backgroundColor: YHColor.white,
+            onTap: () {
+              Navigator.pop(context);
+              if (onCancel != null) {
+                onCancel!();
+              }
+            },
+          ),
+        YHButton(
+          cornerRadius: buttonCornerRadius ?? 8,
+          text:
+              YHText(text: confirmText, font: buttonFont, color: YHColor.white),
+          height: 48,
+          width: double.infinity,
+          backgroundColor: YHColor.primary,
+          onTap: () {
+            Navigator.pop(context);
+            onConfirm();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _rowButtons(BuildContext context) {
     return Row(
       spacing: 8,
       children: [
         if (cancelText != null)
           YHButton(
+            cornerRadius: buttonCornerRadius ?? 8,
             borderColor: YHColor.outline,
             borderWidth: 1,
             expands: true,
@@ -94,6 +148,7 @@ class YHDialog extends StatelessWidget {
             },
           ),
         YHButton(
+          cornerRadius: buttonCornerRadius ?? 8,
           expands: true,
           text:
               YHText(text: confirmText, font: buttonFont, color: YHColor.white),
