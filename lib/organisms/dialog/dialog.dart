@@ -22,8 +22,10 @@ final class YHDialog extends StatelessWidget {
     this.imageHeight,
     this.buttonInRow = true,
     this.buttonCornerRadius,
-    this.mainColumnCrossAxisAlignment = CrossAxisAlignment.start,
     this.buttonTopPadding,
+    this.mainColumnCrossAxisAlignment = CrossAxisAlignment.start,
+    this.titleAlign = TextAlign.start,
+    this.subTextAlign = TextAlign.start,
   });
 
   final String text;
@@ -36,8 +38,10 @@ final class YHDialog extends StatelessWidget {
   final double? imageHeight;
   final bool buttonInRow;
   final double? buttonCornerRadius;
-  final CrossAxisAlignment mainColumnCrossAxisAlignment;
   final double? buttonTopPadding;
+  final CrossAxisAlignment mainColumnCrossAxisAlignment;
+  final TextAlign titleAlign;
+  final TextAlign subTextAlign;
 
   final String confirmText;
   final void Function() onConfirm;
@@ -78,7 +82,7 @@ final class YHDialog extends StatelessWidget {
         font: titleFont,
         color: YHColor.contentPrimary,
         maxLines: 15,
-        align: TextAlign.start);
+        align: titleAlign);
   }
 
   Widget _subText() {
@@ -86,7 +90,7 @@ final class YHDialog extends StatelessWidget {
         text: subText!,
         font: subTextFont,
         color: YHColor.contentSecondary,
-        align: TextAlign.start);
+        align: subTextAlign);
   }
 
   Widget _columnButtons(BuildContext context) {
