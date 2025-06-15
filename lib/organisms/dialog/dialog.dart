@@ -54,7 +54,7 @@ final class YHDialog extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
         child: Column(
           spacing: 8,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: mainColumnCrossAxisAlignment,
           mainAxisSize: MainAxisSize.min,
           children: [
             if (image != null)
