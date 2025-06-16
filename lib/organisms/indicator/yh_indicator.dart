@@ -6,6 +6,7 @@ import 'package:yh_design_system/atoms/text/text.dart';
 final class YHIndicator {
   static OverlayEntry? _indicator;
   static String? _currentMessage;
+  static Widget? _commonChild;
 
   static void show(
       {required BuildContext? context, Widget? child, String? message}) {
@@ -25,6 +26,7 @@ final class YHIndicator {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   child ??
+                      _commonChild ??
                       SizedBox(
                           width: 40,
                           height: 40,
@@ -61,5 +63,9 @@ final class YHIndicator {
         _indicator = null;
       }
     });
+  }
+
+  static void setCommonIndicator(Widget child) {
+    _commonChild = child;
   }
 }
