@@ -24,6 +24,7 @@ final class YHTextFieldCard extends StatelessWidget {
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
     this.hideClear = true,
+    this.elevation = 0,
   });
 
   final String? labelText;
@@ -43,6 +44,7 @@ final class YHTextFieldCard extends StatelessWidget {
   final BorderType borderType;
   final Widget? right;
   final bool hideClear;
+  final double elevation;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ final class YHTextFieldCard extends StatelessWidget {
     return YHCard(
       backgroundColor: bgColor,
       cornerRadius: cornerRadius,
+      elevation: elevation,
       child: YHTextField(
         labelText: labelText,
         font: font,
