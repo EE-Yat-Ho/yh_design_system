@@ -96,18 +96,16 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
       final isExpanded = widget.children[index].isExpanded;
 
       // 헤더
-      Widget header = Expanded(
-        child: AnimatedContainer(
-          duration: widget.animationDuration,
-          curve: Curves.fastOutSlowIn,
-          margin: isExpanded ? widget.expandedHeaderPadding : EdgeInsets.zero,
-          child: ConstrainedBox(
-            constraints:
-                const BoxConstraints(minHeight: _kPanelHeaderCollapsedHeight),
-            child: child.headerBuilder(
-              context,
-              isExpanded,
-            ),
+      Widget header = AnimatedContainer(
+        duration: widget.animationDuration,
+        curve: Curves.fastOutSlowIn,
+        margin: isExpanded ? widget.expandedHeaderPadding : EdgeInsets.zero,
+        child: ConstrainedBox(
+          constraints:
+              const BoxConstraints(minHeight: _kPanelHeaderCollapsedHeight),
+          child: child.headerBuilder(
+            context,
+            isExpanded,
           ),
         ),
       );
