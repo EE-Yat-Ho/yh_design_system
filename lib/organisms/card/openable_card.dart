@@ -2,12 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/card/card.dart';
-import 'package:yh_design_system/organisms/collection/openable_list.dart';
+import 'package:yh_design_system/organisms/card/openable_child_card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHOpenableCard extends StatelessWidget {
+final class OpenableObject {
+  final Object object;
+  final List<ChildObject> children;
+  final String id;
+  final YHImageInterface leadingImage;
+  final String text;
+  final String? rightText;
+  final bool isOpened;
+
+  OpenableObject(
+    this.object,
+    this.children,
+    this.id,
+    this.leadingImage,
+    this.text,
+    this.rightText,
+    this.isOpened,
+  );
+}
+
+final class YHOpenableCard extends StatelessWidget {
   const YHOpenableCard({
     super.key,
     required this.object,

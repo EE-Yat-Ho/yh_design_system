@@ -27,11 +27,11 @@ class _SaltedKey<S, V> extends LocalKey {
   }
 }
 
-class YHExpansionPanelList extends StatefulWidget {
-  /// Creates an expansion panel list widget. The [expansionCallback] is
-  /// triggered when an expansion panel expand/collapse button is pushed.
+final class YHExpansionPanelList extends StatefulWidget {
+  /// 확장 패널 리스트 위젯을 생성합니다. [expansionCallback]은
+  /// 확장 패널의 확장/축소 버튼이 눌렸을 때 호출됩니다.
   ///
-  /// The [children] and [animationDuration] arguments must not be null.
+  /// [children]과 [animationDuration] 인수는 null이 아니어야 합니다.
   const YHExpansionPanelList({
     super.key,
     required this.children,
@@ -39,61 +39,39 @@ class YHExpansionPanelList extends StatefulWidget {
     this.onHeaderLongPress,
     this.animationDuration = kThemeAnimationDuration,
     this.expandedHeaderPadding = EdgeInsets.zero,
-    this.dividerColor,
     this.elevation = 2,
-  })  : _allowOnlyOnePanelOpen = false,
-        initialOpenPanelValue = null;
+  });
 
-  /// The children of the expansion panel list. They are laid out in a similar
-  /// fashion to [ListBody].
+  /// 확장 패널 리스트의 자식들입니다. [ListBody]와 유사한 방식으로 배치됩니다.
   final List<AppExpansionPanel> children;
 
-  /// The callback that gets called whenever one of the expand/collapse buttons
-  /// is pressed. The arguments passed to the callback are the index of the
-  /// pressed panel and whether the panel is currently expanded or not.
+  /// 확장/축소 버튼이 눌릴 때마다 호출되는 콜백입니다. 콜백에 전달되는 인자는
+  /// 눌린 패널의 인덱스와 패널이 현재 확장되어 있는지 여부입니다.
   ///
-  /// If YHExpansionPanelList.radio is used, the callback may be called a
-  /// second time if a different panel was previously open. The arguments
-  /// passed to the second callback are the index of the panel that will close
-  /// and false, marking that it will be closed.
+  /// YHExpansionPanelList.radio가 사용되는 경우, 이전에 다른 패널이 열려있었다면
+  /// 콜백이 두 번째로 호출될 수 있습니다. 두 번째 콜백에 전달되는 인자는
+  /// 닫힐 패널의 인덱스와 false이며, 이는 해당 패널이 닫힐 것임을 나타냅니다.
   ///
-  /// For YHExpansionPanelList, the callback needs to setState when it's notified
-  /// about the closing/opening panel. On the other hand, the callback for
-  /// YHExpansionPanelList.radio is simply meant to inform the parent widget of
-  /// changes, as the radio panels' open/close states are managed internally.
+  /// YHExpansionPanelList의 경우, 패널이 열리거나 닫힐 때 알림을 받으면
+  /// 콜백에서 setState를 호출해야 합니다. 반면에 YHExpansionPanelList.radio의
+  /// 콜백은 단순히 부모 위젯에 변경 사항을 알리기 위한 것입니다. 라디오 패널의
+  /// 열림/닫힘 상태는 내부적으로 관리되기 때문입니다.
   ///
-  /// This callback is useful in order to keep track of the expanded/collapsed
-  /// panels in a parent widget that may need to react to these changes.
+  /// 이 콜백은 부모 위젯에서 확장/축소된 패널을 추적하고 이러한 변경에
+  /// 반응해야 할 필요가 있을 때 유용합니다.
   final ExpansionPanelCallback? expansionCallback;
 
   final void Function(int index)? onHeaderLongPress;
 
-  /// The duration of the expansion animation.
+  /// 확장 애니메이션의 지속 시간입니다.
   final Duration animationDuration;
 
-  // Whether multiple panels can be open simultaneously
-  final bool _allowOnlyOnePanelOpen;
-
-  /// The value of the panel that initially begins open. (This value is
-  /// only used when initializing with the [YHExpansionPanelList.radio]
-  /// constructor.)
-  final Object? initialOpenPanelValue;
-
-  /// The padding that surrounds the panel header when expanded.
-  ///
-  /// By default, 16px of space is added to the header vertically (above and below)
-  /// during expansion.
+  /// 확장되었을 때 패널 헤더를 둘러싸는 패딩입니다.
+  /// 기본값으로, 확장 시 헤더에 세로로 16px의 공간이 추가됩니다 (위아래).
   final EdgeInsets expandedHeaderPadding;
 
-  /// Defines color for the divider when [AppExpansionPanel.isExpanded] is false.
-  ///
-  /// If `dividerColor` is null, then [DividerThemeData.color] is used. If that
-  /// is null, then [ThemeData.dividerColor] is used.
-  final Color? dividerColor;
-
-  /// Defines elevation for the [AppExpansionPanel] while it's expanded.
-  ///
-  /// By default, the value of elevation is 2.
+  /// [AppExpansionPanel]이 확장되었을 때의 elevation을 정의합니다.
+  /// 기본값으로, elevation 값은 2입니다.
   final double elevation;
 
   @override
@@ -101,115 +79,26 @@ class YHExpansionPanelList extends StatefulWidget {
 }
 
 class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
-  ExpansionPanelRadio? _currentOpenPanel;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget._allowOnlyOnePanelOpen) {
-      assert(_allIdentifiersUnique(),
-          'All ExpansionPanelRadio identifier values must be unique.');
-      if (widget.initialOpenPanelValue != null) {
-        _currentOpenPanel = searchPanelByValue(
-            widget.children.cast<ExpansionPanelRadio>(),
-            widget.initialOpenPanelValue);
-      }
-    }
-  }
-
-  @override
-  void didUpdateWidget(YHExpansionPanelList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    if (widget._allowOnlyOnePanelOpen) {
-      assert(_allIdentifiersUnique(),
-          'All ExpansionPanelRadio identifier values must be unique.');
-      // If the previous widget was non-radio YHExpansionPanelList, initialize the
-      // open panel to widget.initialOpenPanelValue
-      if (!oldWidget._allowOnlyOnePanelOpen) {
-        _currentOpenPanel = searchPanelByValue(
-            widget.children.cast<ExpansionPanelRadio>(),
-            widget.initialOpenPanelValue);
-      }
-    } else {
-      _currentOpenPanel = null;
-    }
-  }
-
-  bool _allIdentifiersUnique() {
-    final Map<Object, bool> identifierMap = <Object, bool>{};
-    for (final ExpansionPanelRadio child
-        in widget.children.cast<ExpansionPanelRadio>()) {
-      identifierMap[child.value] = true;
-    }
-    return identifierMap.length == widget.children.length;
-  }
-
   bool _isChildExpanded(int index) {
-    if (widget._allowOnlyOnePanelOpen) {
-      final ExpansionPanelRadio radioWidget =
-          widget.children[index] as ExpansionPanelRadio;
-      return _currentOpenPanel?.value == radioWidget.value;
-    }
     return widget.children[index].isExpanded;
   }
 
   void _handlePressed(bool isExpanded, int index) {
-    // final id = widget.children[index].keyId;
     widget.expansionCallback?.call(index, isExpanded);
-
-    if (widget._allowOnlyOnePanelOpen) {
-      final ExpansionPanelRadio pressedChild =
-          widget.children[index] as ExpansionPanelRadio;
-
-      // If another ExpansionPanelRadio was already open, apply its
-      // expansionCallback (if any) to false, because it's closing.
-      for (int childIndex = 0;
-          childIndex < widget.children.length;
-          childIndex += 1) {
-        final ExpansionPanelRadio child =
-            widget.children[childIndex] as ExpansionPanelRadio;
-        if (widget.expansionCallback != null &&
-            childIndex != index &&
-            child.value == _currentOpenPanel?.value) {
-          widget.expansionCallback!(childIndex, false);
-        }
-      }
-
-      setState(() {
-        _currentOpenPanel = isExpanded ? null : pressedChild;
-      });
-    }
   }
 
   void _handleLongPressed(int index) {
     widget.onHeaderLongPress?.call(index);
   }
 
-  ExpansionPanelRadio? searchPanelByValue(
-      List<ExpansionPanelRadio> panels, Object? value) {
-    for (final ExpansionPanelRadio panel in panels) {
-      if (panel.value == value) return panel;
-    }
-    return null;
-  }
-
   @override
   Widget build(BuildContext context) {
-    assert(
-      kElevationToShadow.containsKey(widget.elevation),
-      'Invalid value for elevation. See the kElevationToShadow constant for'
-      ' possible elevation values.',
-    );
-
     final List<MergeableMaterialItem> items = <MergeableMaterialItem>[];
 
     for (int index = 0; index < widget.children.length; index += 1) {
-      //todo: Uncomment to add gap between selected panels
-      /*if (_isChildExpanded(index) && index != 0 && !_isChildExpanded(index - 1))
-        items.add(MaterialGap(key: _SaltedKey<BuildContext, int>(context, index * 2 - 1)));*/
-
       final AppExpansionPanel child = widget.children[index];
+
+      // 헤더
       final Widget headerWidget = child.headerBuilder(
         context,
         _isChildExpanded(index),
@@ -233,14 +122,6 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
         );
       }
 
-      final iconContainer = child.iconBuilder;
-      if (iconContainer != null) {
-        expandIconContainer = iconContainer(
-          expandIconContainer,
-          _isChildExpanded(index),
-        );
-      }
-
       Widget header = Row(
         children: <Widget>[
           Expanded(
@@ -257,7 +138,7 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
               ),
             ),
           ),
-          if (expandIconContainer != null) expandIconContainer,
+          expandIconContainer,
         ],
       );
       if (child.canTapOnHeader) {
@@ -302,59 +183,45 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
 
     return MergeableMaterial(
       hasDividers: true,
-      dividerColor: widget.dividerColor,
       elevation: widget.elevation,
       children: items,
     );
   }
 }
 
-typedef ExpansionPanelIconBuilder = Widget? Function(
-  Widget child,
-  bool isExpanded,
-);
-
-class AppExpansionPanel {
-  /// Creates an expansion panel to be used as a child for [ExpansionPanelList].
-  /// See [ExpansionPanelList] for an example on how to use this widget.
+final class AppExpansionPanel {
+  /// [ExpansionPanelList]의 자식으로 사용할 확장 패널을 생성합니다.
+  /// 이 위젯을 사용하는 방법에 대한 예제는 [ExpansionPanelList]를 참조하세요.
   ///
-  /// The [headerBuilder], [body], and [isExpanded] arguments must not be null.
+  /// [headerBuilder], [body], [isExpanded] 인수는 null이 아니어야 합니다.
   AppExpansionPanel({
     required this.headerBuilder,
     required this.body,
-    this.iconBuilder,
     this.isExpanded = false,
     this.canTapOnHeader = true,
     this.backgroundColor,
   });
 
-  /// The widget builder that builds the expansion panels' header.
+  /// 확장 패널의 헤더를 빌드하는 위젯 빌더입니다.
   final ExpansionPanelHeaderBuilder headerBuilder;
 
-  /// The widget builder that builds the expansion panels' icon.
+  /// 헤더 아래에 표시되는 확장 패널의 본문입니다.
   ///
-  /// If not pass any function, then default icon will be displayed.
-  ///
-  /// If builder function return null, then icon will not displayed.
-  final ExpansionPanelIconBuilder? iconBuilder;
-
-  /// The body of the expansion panel that's displayed below the header.
-  ///
-  /// This widget is visible only when the panel is expanded.
+  /// 이 위젯은 패널이 확장되었을 때만 표시됩니다.
   final Widget body;
 
-  /// Whether the panel is expanded.
+  /// 패널이 확장되어 있는지 여부입니다.
   ///
-  /// Defaults to false.
+  /// 기본값은 false입니다.
   final bool isExpanded;
 
-  /// Whether tapping on the panel's header will expand/collapse it.
+  /// 패널의 헤더를 탭했을 때 확장/축소할지 여부입니다.
   ///
-  /// Defaults to false.
+  /// 기본값은 false입니다.
   final bool canTapOnHeader;
 
-  /// Defines the background color of the panel.
+  /// 패널의 배경색을 정의합니다.
   ///
-  /// Defaults to [ThemeData.cardColor].
+  /// 기본값은 [ThemeData.cardColor]입니다.
   final Color? backgroundColor;
 }

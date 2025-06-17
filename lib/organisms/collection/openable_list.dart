@@ -5,41 +5,8 @@ import 'package:yh_design_system/organisms/card/openable_card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/utils/yh_expansion_panel_list.dart';
-import 'package:yh_design_system/atoms/image/images.dart';
 
-class OpenableObject {
-  final Object object;
-  final List<ChildObject> children;
-  final String id;
-  final YHImageInterface leadingImage;
-  final String text;
-  final String? rightText;
-  final bool isOpened;
-
-  OpenableObject(
-    this.object,
-    this.children,
-    this.id,
-    this.leadingImage,
-    this.text,
-    this.rightText,
-    this.isOpened,
-  );
-}
-
-class ChildObject {
-  final Object object;
-  final String id;
-  final YHImageInterface leadingImage;
-  final String text;
-  final String? rightText;
-  final bool isSelect;
-
-  ChildObject(this.object, this.id, this.leadingImage, this.text,
-      this.rightText, this.isSelect);
-}
-
-class OpenableList extends StatelessWidget {
+final class OpenableList extends StatelessWidget {
   const OpenableList({
     super.key,
     required this.objects,
@@ -101,7 +68,6 @@ class OpenableList extends StatelessWidget {
           onLongPressOpenable?.call(objects[index].id);
         },
         elevation: 0,
-        dividerColor: Colors.transparent,
         children: objects.map<AppExpansionPanel>((OpenableObject openable) {
           return AppExpansionPanel(
             canTapOnHeader: true,
@@ -137,9 +103,6 @@ class OpenableList extends StatelessWidget {
                   .toList(),
             ),
             isExpanded: showChild ? openable.isOpened : false,
-            iconBuilder: (child, isOpened) {
-              return null;
-            },
           );
         }).toList(),
       ),

@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/card/card.dart';
-import 'package:yh_design_system/organisms/collection/openable_list.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHOpenableChildCard extends StatelessWidget {
+final class ChildObject {
+  final Object object;
+  final String id;
+  final YHImageInterface leadingImage;
+  final String text;
+  final String? rightText;
+  final bool isSelect;
+
+  ChildObject(this.object, this.id, this.leadingImage, this.text,
+      this.rightText, this.isSelect);
+}
+
+final class YHOpenableChildCard extends StatelessWidget {
   const YHOpenableChildCard(
       {super.key,
       required this.object,
