@@ -75,6 +75,7 @@ final class OpenableList extends StatelessWidget {
             headerBuilder: (BuildContext context, bool isExpanded) {
               return YHOpenableCard(
                 object: openable,
+                onTap: (id) {},
                 onTapAddButton: (id) {
                   onTapAddButton?.call(id);
                 },

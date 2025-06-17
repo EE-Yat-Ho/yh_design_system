@@ -31,11 +31,12 @@ final class YHOpenableCard extends StatelessWidget {
   const YHOpenableCard({
     super.key,
     required this.object,
+    required this.onTap,
+    this.onLongPress,
     this.elevation = 0,
     this.isSelected = false,
     this.showAddButton = true,
     this.showArrow = true,
-    // this.onTap,
     this.onTapAddButton,
     this.cornerRadius = 20,
   });
@@ -46,7 +47,8 @@ final class YHOpenableCard extends StatelessWidget {
   final bool showAddButton;
   final bool showArrow;
   final double cornerRadius;
-  // final void Function(String id)? onTap;
+  final void Function(String id) onTap;
+  final void Function(String id)? onLongPress;
   final void Function(String id)? onTapAddButton;
 
   @override
@@ -74,6 +76,8 @@ final class YHOpenableCard extends StatelessWidget {
           font: YHFont.regular18,
           color: YHColor.black,
         ),
+        onTap: () => onTap(object.id),
+        onLongPress: () => onLongPress?.call(object.id),
         contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

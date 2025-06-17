@@ -55,11 +55,7 @@ final class YHOpenableChildCard extends StatelessWidget {
         contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         trailing: trailing(context),
         onTap: () => onTap(object.id),
-        onLongPress: () {
-          if (onLongPress != null) {
-            onLongPress!(object.id);
-          }
-        },
+        onLongPress: () => onLongPress?.call(object.id),
         minTileHeight: 40,
       ),
     ];
