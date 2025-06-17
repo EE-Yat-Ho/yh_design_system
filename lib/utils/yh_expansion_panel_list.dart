@@ -79,10 +79,6 @@ final class YHExpansionPanelList extends StatefulWidget {
 }
 
 class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
-  bool _isChildExpanded(int index) {
-    return widget.children[index].isExpanded;
-  }
-
   void _handlePressed(bool isExpanded, int index) {
     widget.expansionCallback?.call(index, isExpanded);
   }
@@ -97,54 +93,29 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
 
     for (int index = 0; index < widget.children.length; index += 1) {
       final AppExpansionPanel child = widget.children[index];
+      final isExpanded = widget.children[index].isExpanded;
 
       // 헤더
-      final Widget headerWidget = child.headerBuilder(
-        context,
-        _isChildExpanded(index),
-      );
-
-      Widget? expandIconContainer = ExpandIcon(
-        isExpanded: _isChildExpanded(index),
-        onPressed: !child.canTapOnHeader
-            ? (bool isExpanded) => _handlePressed(isExpanded, index)
-            : null,
-      );
-      if (!child.canTapOnHeader) {
-        final MaterialLocalizations localizations =
-            MaterialLocalizations.of(context);
-        expandIconContainer = Semantics(
-          label: _isChildExpanded(index)
-              ? localizations.expandedIconTapHint
-              : localizations.collapsedIconTapHint,
-          container: true,
-          child: expandIconContainer,
-        );
-      }
-
-      Widget header = Row(
-        children: <Widget>[
-          Expanded(
-            child: AnimatedContainer(
-              duration: widget.animationDuration,
-              curve: Curves.fastOutSlowIn,
-              margin: _isChildExpanded(index)
-                  ? widget.expandedHeaderPadding
-                  : EdgeInsets.zero,
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                    minHeight: _kPanelHeaderCollapsedHeight),
-                child: headerWidget,
-              ),
+      Widget header = Expanded(
+        child: AnimatedContainer(
+          duration: widget.animationDuration,
+          curve: Curves.fastOutSlowIn,
+          margin: isExpanded ? widget.expandedHeaderPadding : EdgeInsets.zero,
+          child: ConstrainedBox(
+            constraints:
+                const BoxConstraints(minHeight: _kPanelHeaderCollapsedHeight),
+            child: child.headerBuilder(
+              context,
+              isExpanded,
             ),
           ),
-          expandIconContainer,
-        ],
+        ),
       );
+
       if (child.canTapOnHeader) {
         header = MergeSemantics(
           child: InkWell(
-            onTap: () => _handlePressed(_isChildExpanded(index), index),
+            onTap: () => _handlePressed(isExpanded, index),
             onLongPress: () => _handleLongPressed(index),
             child: header,
           ),
@@ -165,7 +136,7 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
                 secondCurve:
                     const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
                 sizeCurve: Curves.fastOutSlowIn,
-                crossFadeState: _isChildExpanded(index)
+                crossFadeState: isExpanded
                     ? CrossFadeState.showSecond
                     : CrossFadeState.showFirst,
                 duration: widget.animationDuration,
@@ -175,7 +146,7 @@ class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
         ),
       );
 
-      if (_isChildExpanded(index) && index != widget.children.length - 1) {
+      if (isExpanded && index != widget.children.length - 1) {
         items.add(MaterialGap(
             key: _SaltedKey<BuildContext, int>(context, index * 2 + 1)));
       }
