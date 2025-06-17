@@ -28,14 +28,14 @@ class _SaltedKey<S, V> extends LocalKey {
 }
 
 final class YHExpansionPanelList extends StatefulWidget {
-  /// 확장 패널 리스트 위젯을 생성합니다. [expansionCallback]은
+  /// 확장 패널 리스트 위젯을 생성합니다. [onChangeExpand]은
   /// 확장 패널의 확장/축소 버튼이 눌렸을 때 호출됩니다.
   ///
   /// [children]과 [animationDuration] 인수는 null이 아니어야 합니다.
   const YHExpansionPanelList({
     super.key,
     required this.children,
-    this.expansionCallback,
+    this.onChangeExpand,
     this.onHeaderLongPress,
     this.animationDuration = kThemeAnimationDuration,
     this.expandedHeaderPadding = EdgeInsets.zero,
@@ -59,7 +59,7 @@ final class YHExpansionPanelList extends StatefulWidget {
   ///
   /// 이 콜백은 부모 위젯에서 확장/축소된 패널을 추적하고 이러한 변경에
   /// 반응해야 할 필요가 있을 때 유용합니다.
-  final ExpansionPanelCallback? expansionCallback;
+  final void Function(int panelIndex, bool isExpanded)? onChangeExpand;
 
   final void Function(int index)? onHeaderLongPress;
 
@@ -80,7 +80,7 @@ final class YHExpansionPanelList extends StatefulWidget {
 
 class _YHExpansionPanelListState extends State<YHExpansionPanelList> {
   void _handlePressed(bool isExpanded, int index) {
-    widget.expansionCallback?.call(index, isExpanded);
+    widget.onChangeExpand?.call(index, isExpanded);
   }
 
   void _handleLongPressed(int index) {

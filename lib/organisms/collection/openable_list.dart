@@ -61,7 +61,7 @@ final class OpenableList extends StatelessWidget {
         child: SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(0, 8, 0, 100), // contentInset
       child: YHExpansionPanelList(
-        expansionCallback: (index, isExpanded) {
+        onChangeExpand: (index, isExpanded) {
           onTapOpenable(objects[index].id, isExpanded);
         },
         onHeaderLongPress: (index) {
