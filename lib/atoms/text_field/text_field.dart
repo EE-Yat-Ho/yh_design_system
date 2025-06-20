@@ -28,6 +28,9 @@ class YHTextField extends StatelessWidget {
     this.backgroundColor = YHColor.white,
     this.disabledBackgroundColor = YHColor.disable,
     this.expands = false,
+    this.textAlign = TextAlign.start,
+    this.textAlignVertical,
+    this.textDirection,
   });
 
   final String? labelText;
@@ -50,6 +53,10 @@ class YHTextField extends StatelessWidget {
   final YHColor backgroundColor;
   final YHColor disabledBackgroundColor;
   final bool expands;
+  final TextAlign textAlign;
+  final TextAlignVertical? textAlignVertical;
+  final TextDirection? textDirection;
+
   @override
   Widget build(BuildContext context) {
     Widget rightWidget;
@@ -146,6 +153,9 @@ class YHTextField extends StatelessWidget {
         contentPadding: padding,
       ),
       style: font.style(color: YHColor.contentPrimary.color),
+      textAlign: textAlign,
+      textAlignVertical: textAlignVertical,
+      textDirection: textDirection,
     );
   }
 
