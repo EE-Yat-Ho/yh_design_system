@@ -93,7 +93,9 @@ final class YHOpenableChildCard extends StatelessWidget {
       list.addAll([
         const SizedBox(width: 4),
         YHCard(
-          backgroundColor: YHColor.black,
+          borderWidth: 1,
+          borderColor: YHColor.gray90,
+          backgroundColor: YHColor.transparent,
           cornerRadius: 4,
           child: Image.file(object.rightImage!.file, width: 24, height: 24),
         )
