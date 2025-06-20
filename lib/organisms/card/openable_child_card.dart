@@ -13,9 +13,10 @@ final class ChildObject {
   final String text;
   final String? rightText;
   final bool isSelect;
+  final ImageEntity? rightImage;
 
   ChildObject(this.object, this.id, this.leadingImage, this.text,
-      this.rightText, this.isSelect);
+      this.rightText, this.isSelect, this.rightImage);
 }
 
 final class YHOpenableChildCard extends StatelessWidget {
@@ -30,7 +31,6 @@ final class YHOpenableChildCard extends StatelessWidget {
     this.elevation = 0,
     this.cornerRadius = 20,
     this.minTileHeight = 40,
-    this.image,
   });
 
   final ChildObject object;
@@ -42,7 +42,6 @@ final class YHOpenableChildCard extends StatelessWidget {
   final double cornerRadius;
   final double elevation;
   final double minTileHeight;
-  final ImageEntity? image;
 
   @override
   Widget build(BuildContext context) {
@@ -88,15 +87,20 @@ final class YHOpenableChildCard extends StatelessWidget {
         font: YHFont.regular16,
         color: YHColor.gray,
       ),
-      const SizedBox(width: 6),
     ];
 
-    if (showRightArrow) {
-      list.add(YHImage.icon_right_216.icon(width: 24, height: 24));
+    if (object.rightImage != null) {
+      list.addAll([
+        const SizedBox(width: 4),
+        Image.file(object.rightImage!.file, width: 24, height: 24)
+      ]);
     }
 
-    if (image != null) {
-      list.add(Image.file(image!.file, width: 24, height: 24));
+    if (showRightArrow) {
+      list.addAll([
+        const SizedBox(width: 4),
+        YHImage.icon_right_216.icon(width: 24, height: 24)
+      ]);
     }
 
     return Row(
