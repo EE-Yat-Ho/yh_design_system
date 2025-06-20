@@ -4,6 +4,7 @@ import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
+import 'package:yh_util/image_entity.dart';
 
 final class ChildObject {
   final Object object;
@@ -18,17 +19,19 @@ final class ChildObject {
 }
 
 final class YHOpenableChildCard extends StatelessWidget {
-  const YHOpenableChildCard(
-      {super.key,
-      required this.object,
-      required this.onTap,
-      this.onLongPress,
-      this.isSelected = false,
-      this.margin = EdgeInsets.zero,
-      this.showRightArrow = true,
-      this.elevation = 0,
-      this.cornerRadius = 20,
-      this.minTileHeight = 40});
+  const YHOpenableChildCard({
+    super.key,
+    required this.object,
+    required this.onTap,
+    this.onLongPress,
+    this.isSelected = false,
+    this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 4),
+    this.showRightArrow = true,
+    this.elevation = 0,
+    this.cornerRadius = 20,
+    this.minTileHeight = 40,
+    this.image,
+  });
 
   final ChildObject object;
   final void Function(String id) onTap;
@@ -39,6 +42,7 @@ final class YHOpenableChildCard extends StatelessWidget {
   final double cornerRadius;
   final double elevation;
   final double minTileHeight;
+  final ImageEntity? image;
 
   @override
   Widget build(BuildContext context) {
@@ -80,25 +84,19 @@ final class YHOpenableChildCard extends StatelessWidget {
   Widget trailing(BuildContext context) {
     List<Widget> list = [
       YHText(
-        text: object.rightText ?? "", // "Q ${note.numberOfQuestion}",
+        text: object.rightText ?? "",
         font: YHFont.regular16,
         color: YHColor.gray,
       ),
       const SizedBox(width: 6),
-      // YHText(
-      //   text: "M ${note.numberOfMemo}",
-      //   font: YHFont.regular16,
-      //   color: YHColor.gray,
-      // ),
-      // SizedBox(
-      //   width: 6,
-      // ),
     ];
 
     if (showRightArrow) {
-      list.add(
-        YHImage.icon_right_144.icon(width: 24, height: 24),
-      );
+      list.add(YHImage.icon_right_216.icon(width: 24, height: 24));
+    }
+
+    if (image != null) {
+      list.add(Image.file(image!.file, width: 24, height: 24));
     }
 
     return Row(

@@ -54,14 +54,14 @@ enum YHImage implements YHImageInterface {
   icon_plus_24,
   icon_back_24,
   icon_close_24,
-  icon_down_24,
+  icon_down_216,
   icon_hamburger_216,
   icon_sissor_48,
   icon_setting_216,
   icon_save_24,
   icon_send_48,
-  icon_left_24,
-  icon_right_144,
+  icon_left_216,
+  icon_right_216,
   icon_check_24,
   icon_text_field_clear_24;
 
