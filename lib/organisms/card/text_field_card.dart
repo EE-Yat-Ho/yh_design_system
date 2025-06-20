@@ -25,6 +25,9 @@ final class YHTextFieldCard extends StatelessWidget {
     this.right,
     this.hideClear = true,
     this.elevation = 0,
+    this.textAlign = TextAlign.start,
+    this.textAlignVertical,
+    this.textDirection,
   });
 
   final String? labelText;
@@ -45,6 +48,9 @@ final class YHTextFieldCard extends StatelessWidget {
   final Widget? right;
   final bool hideClear;
   final double elevation;
+  final TextAlign textAlign;
+  final TextAlignVertical? textAlignVertical;
+  final TextDirection? textDirection;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +78,9 @@ final class YHTextFieldCard extends StatelessWidget {
         borderType: borderType,
         right: right,
         hideClear: hideClear,
+        textAlign: textAlign,
+        textAlignVertical: textAlignVertical,
+        textDirection: textDirection,
       ),
     );
   }
