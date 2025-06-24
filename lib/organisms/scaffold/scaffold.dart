@@ -14,7 +14,8 @@ final class YHScaffold extends StatelessWidget {
     // Scaffold
     this.resizeToAvoidBottomInset = true, // 키보드 올라올 때 줄어들지 여부
     this.scaffoldBackgroundColor = Colors.transparent, // 배경색
-    this.bottomNavigationBar,
+    this.appBar, // 상단 앱바
+    this.bottomNavigationBar, // 하단 네비게이션 바
     required this.body,
   });
 
@@ -24,6 +25,7 @@ final class YHScaffold extends StatelessWidget {
   final bool resizeToAvoidBottomInset;
   final List<bool>? safeAreaFromLTRB;
   final Color scaffoldBackgroundColor;
+  final PreferredSizeWidget? appBar;
   final Widget? bottomNavigationBar;
   final Widget body;
 
@@ -77,6 +79,7 @@ final class YHScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       backgroundColor: scaffoldBackgroundColor,
+      appBar: appBar,
       bottomNavigationBar: bottomNavigationBar,
       body: child,
     );
