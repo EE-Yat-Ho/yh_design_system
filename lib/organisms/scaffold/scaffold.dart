@@ -7,10 +7,10 @@ final class YHScaffold extends StatelessWidget {
     // PopScope
     this.canPop = true, // 기본 뒤로가기 기능 작동여부 (ios 백스와이프, 안드로이드 백버튼)
     this.onPopInvokedWithResult, // 뒤로가기 감지시 팝업, 광고 등의 행동 하고싶을 때 사용
+    // SafeArea
+    this.safeAreaFromLTRB, // safeArea. null이면 설정안함
     // PaperBackground
     this.paperBackground = true, // 종이 배경 사용 여부
-    // SafeArea
-    this.safeAreaFromLTBR, // safeArea. null이면 설정안함
     // Scaffold
     this.resizeToAvoidBottomInset = true, // 키보드 올라올 때 줄어들지 여부
     this.scaffoldBackgroundColor = Colors.transparent, // 배경색
@@ -21,7 +21,7 @@ final class YHScaffold extends StatelessWidget {
   final Function(bool, dynamic)? onPopInvokedWithResult;
   final bool paperBackground;
   final bool resizeToAvoidBottomInset;
-  final List<bool>? safeAreaFromLTBR;
+  final List<bool>? safeAreaFromLTRB;
   final Color scaffoldBackgroundColor;
   final Widget body;
 
@@ -38,7 +38,7 @@ final class YHScaffold extends StatelessWidget {
   }
 
   Widget _buildPopScope(Widget child) {
-    // !canpop 이거나, onPopInvokedWithResult 있으면 PopScope 사용
+    // canpop false 이거나, onPopInvokedWithResult 있으면 PopScope 사용
     if (!canPop || onPopInvokedWithResult != null) {
       return PopScope(
         canPop: canPop,
@@ -51,12 +51,12 @@ final class YHScaffold extends StatelessWidget {
 
   Widget _buildSafeArea(Widget child) {
     // safeArea 있으면 SafeArea 사용
-    if (safeAreaFromLTBR != null) {
+    if (safeAreaFromLTRB != null) {
       return SafeArea(
-        top: safeAreaFromLTBR![0],
-        bottom: safeAreaFromLTBR![1],
-        left: safeAreaFromLTBR![2],
-        right: safeAreaFromLTBR![3],
+        top: safeAreaFromLTRB![1],
+        bottom: safeAreaFromLTRB![3],
+        left: safeAreaFromLTRB![0],
+        right: safeAreaFromLTRB![2],
         child: child,
       );
     }
