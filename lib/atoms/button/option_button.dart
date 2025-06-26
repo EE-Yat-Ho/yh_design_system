@@ -4,7 +4,7 @@ import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHOptionButton extends StatelessWidget {
+final class YHOptionButton extends StatelessWidget {
   const YHOptionButton({
     super.key,
     required this.title,
@@ -12,6 +12,8 @@ class YHOptionButton extends StatelessWidget {
     required this.isOn,
     required this.image,
     required this.onTap,
+    this.backgroundColor = YHColor.white,
+    this.elevation = 3,
   });
 
   final VoidCallback onTap;
@@ -19,6 +21,8 @@ class YHOptionButton extends StatelessWidget {
   final String title;
   final String description;
   final YHImageInterface image;
+  final YHColor backgroundColor;
+  final double elevation;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +32,11 @@ class YHOptionButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
-          backgroundColor: YHColor.white.color,
+          backgroundColor: backgroundColor.color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10), // <-- Radius
           ),
-          elevation: 3,
+          elevation: elevation,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
