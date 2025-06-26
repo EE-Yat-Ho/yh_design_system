@@ -28,6 +28,11 @@ final class YHTextFieldCard extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.textDirection,
+    // 색 관련
+    this.borderColor = YHColor.outline,
+    this.disabledBorderColor = YHColor.disable,
+    this.focusedBorderColor, // = YHColor.primary
+    this.enabledBorderColor, // = YHColor.primary
   });
 
   final String? labelText;
@@ -51,6 +56,11 @@ final class YHTextFieldCard extends StatelessWidget {
   final TextAlign textAlign;
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
+  // 색 관련
+  final YHColor borderColor;
+  final YHColor disabledBorderColor;
+  final YHColor? focusedBorderColor;
+  final YHColor? enabledBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +91,10 @@ final class YHTextFieldCard extends StatelessWidget {
         textAlign: textAlign,
         textAlignVertical: textAlignVertical,
         textDirection: textDirection,
+        borderColor: borderColor,
+        disabledBorderColor: disabledBorderColor,
+        focusedBorderColor: focusedBorderColor,
+        enabledBorderColor: enabledBorderColor,
       ),
     );
   }

@@ -25,12 +25,17 @@ class YHTextField extends StatelessWidget {
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,
     this.hideClear = true,
-    this.backgroundColor = YHColor.white,
-    this.disabledBackgroundColor = YHColor.disable,
     this.expands = false,
     this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.textDirection,
+    // 색 관련
+    this.backgroundColor = YHColor.white,
+    this.disabledBackgroundColor = YHColor.disable,
+    this.borderColor = YHColor.outline,
+    this.disabledBorderColor = YHColor.disable,
+    this.focusedBorderColor, // = YHColor.primary
+    this.enabledBorderColor, // = YHColor.primary
   });
 
   final String? labelText;
@@ -50,12 +55,17 @@ class YHTextField extends StatelessWidget {
   final BorderType borderType;
   final Widget? right;
   final bool hideClear;
-  final YHColor backgroundColor;
-  final YHColor disabledBackgroundColor;
   final bool expands;
   final TextAlign textAlign;
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
+  // 색 관련
+  final YHColor backgroundColor;
+  final YHColor disabledBackgroundColor;
+  final YHColor borderColor;
+  final YHColor disabledBorderColor;
+  final YHColor? focusedBorderColor;
+  final YHColor? enabledBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -86,38 +96,45 @@ class YHTextField extends StatelessWidget {
     InputBorder focusedBorder;
     InputBorder disabledBorder;
 
+    final borderColor = this.borderColor.color;
+    final enabledBorderColor =
+        this.enabledBorderColor?.color ?? YHColor.primary.color;
+    final focusedBorderColor =
+        this.focusedBorderColor?.color ?? YHColor.primary.color;
+    final disabledBorderColor = this.disabledBorderColor.color;
+
     switch (borderType) {
       case BorderType.outline:
         final borderRadius = BorderRadius.circular(cornerRadius);
         border = OutlineInputBorder(
-          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+          borderSide: BorderSide(color: borderColor, width: 1),
           borderRadius: borderRadius,
         );
         enabledBorder = OutlineInputBorder(
-          borderSide: BorderSide(color: YHColor.outline.color, width: 1),
+          borderSide: BorderSide(color: enabledBorderColor, width: 1),
           borderRadius: borderRadius,
         );
         focusedBorder = OutlineInputBorder(
-          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+          borderSide: BorderSide(color: focusedBorderColor, width: 1),
           borderRadius: borderRadius,
         );
         disabledBorder = OutlineInputBorder(
-          borderSide: BorderSide(color: YHColor.disable.color, width: 1),
+          borderSide: BorderSide(color: disabledBorderColor, width: 1),
           borderRadius: borderRadius,
         );
         break;
       case BorderType.underline:
         border = UnderlineInputBorder(
-          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+          borderSide: BorderSide(color: borderColor, width: 1),
         );
         enabledBorder = UnderlineInputBorder(
-          borderSide: BorderSide(color: YHColor.outline.color, width: 1),
+          borderSide: BorderSide(color: enabledBorderColor, width: 1),
         );
         focusedBorder = UnderlineInputBorder(
-          borderSide: BorderSide(color: YHColor.primary.color, width: 1),
+          borderSide: BorderSide(color: focusedBorderColor, width: 1),
         );
         disabledBorder = UnderlineInputBorder(
-          borderSide: BorderSide(color: YHColor.disable.color, width: 1),
+          borderSide: BorderSide(color: disabledBorderColor, width: 1),
         );
         break;
       case BorderType.none:
