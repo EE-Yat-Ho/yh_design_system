@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-class YHColor {
+final class YHColor {
   static YHColor primary =
       const YHColor(color: Color.fromARGB(255, 75, 130, 255));
+  static YHColor primary_a20 =
+      YHColor(color: primary.color.withAlpha((0.2 * 255).toInt()));
 
   static const YHColor disable =
       YHColor(color: Color.fromARGB(255, 172, 172, 172));
@@ -12,6 +14,9 @@ class YHColor {
       YHColor(color: Color.fromRGBO(191, 199, 212, 1));
   static const YHColor supportWarning =
       YHColor(color: Color.fromRGBO(248, 87, 82, 1));
+  static YHColor supportWarning_a20 =
+      YHColor(color: supportWarning.color.withAlpha((0.2 * 255).toInt()));
+
   static const YHColor placeholder =
       YHColor(color: Color.fromRGBO(191, 199, 212, 1));
   static const YHColor outline =
