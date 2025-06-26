@@ -31,8 +31,8 @@ final class YHTextFieldCard extends StatelessWidget {
     // 색 관련
     this.borderColor = YHColor.outline,
     this.disabledBorderColor = YHColor.disable,
+    this.enabledBorderColor = YHColor.outline,
     this.focusedBorderColor, // = YHColor.primary
-    this.enabledBorderColor, // = YHColor.primary
   });
 
   final String? labelText;
@@ -60,7 +60,7 @@ final class YHTextFieldCard extends StatelessWidget {
   final YHColor borderColor;
   final YHColor disabledBorderColor;
   final YHColor? focusedBorderColor;
-  final YHColor? enabledBorderColor;
+  final YHColor enabledBorderColor;
 
   @override
   Widget build(BuildContext context) {

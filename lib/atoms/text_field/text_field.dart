@@ -5,7 +5,7 @@ import 'package:yh_design_system/atoms/font/fonts.dart';
 
 enum BorderType { outline, underline, none }
 
-class YHTextField extends StatelessWidget {
+final class YHTextField extends StatelessWidget {
   const YHTextField({
     super.key,
     this.labelText,
@@ -32,10 +32,11 @@ class YHTextField extends StatelessWidget {
     // 색 관련
     this.backgroundColor = YHColor.white,
     this.disabledBackgroundColor = YHColor.disable,
-    this.borderColor = YHColor.outline,
+    this.borderColor = YHColor.outline, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
     this.disabledBorderColor = YHColor.disable,
     this.focusedBorderColor, // = YHColor.primary
-    this.enabledBorderColor, // = YHColor.primary
+    this.enabledBorderColor = YHColor.outline,
+    this.errorBorderColor = YHColor.supportWarning,
   });
 
   final String? labelText;
@@ -62,10 +63,11 @@ class YHTextField extends StatelessWidget {
   // 색 관련
   final YHColor backgroundColor;
   final YHColor disabledBackgroundColor;
-  final YHColor borderColor;
+  final YHColor borderColor; // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
   final YHColor disabledBorderColor;
   final YHColor? focusedBorderColor;
-  final YHColor? enabledBorderColor;
+  final YHColor enabledBorderColor;
+  final YHColor errorBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -95,13 +97,14 @@ class YHTextField extends StatelessWidget {
     InputBorder enabledBorder;
     InputBorder focusedBorder;
     InputBorder disabledBorder;
+    InputBorder errorBorder;
 
     final borderColor = this.borderColor.color;
-    final enabledBorderColor =
-        this.enabledBorderColor?.color ?? YHColor.primary.color;
+    final enabledBorderColor = this.enabledBorderColor.color;
     final focusedBorderColor =
         this.focusedBorderColor?.color ?? YHColor.primary.color;
     final disabledBorderColor = this.disabledBorderColor.color;
+    final errorBorderColor = this.errorBorderColor.color;
 
     switch (borderType) {
       case BorderType.outline:
@@ -122,6 +125,10 @@ class YHTextField extends StatelessWidget {
           borderSide: BorderSide(color: disabledBorderColor, width: 1),
           borderRadius: borderRadius,
         );
+        errorBorder = OutlineInputBorder(
+          borderSide: BorderSide(color: errorBorderColor, width: 1),
+          borderRadius: borderRadius,
+        );
         break;
       case BorderType.underline:
         border = UnderlineInputBorder(
@@ -136,12 +143,16 @@ class YHTextField extends StatelessWidget {
         disabledBorder = UnderlineInputBorder(
           borderSide: BorderSide(color: disabledBorderColor, width: 1),
         );
+        errorBorder = UnderlineInputBorder(
+          borderSide: BorderSide(color: errorBorderColor, width: 1),
+        );
         break;
       case BorderType.none:
         border = InputBorder.none;
         enabledBorder = InputBorder.none;
         focusedBorder = InputBorder.none;
         disabledBorder = InputBorder.none;
+        errorBorder = InputBorder.none;
         break;
     }
 
@@ -167,6 +178,7 @@ class YHTextField extends StatelessWidget {
         enabledBorder: enabledBorder,
         focusedBorder: focusedBorder,
         disabledBorder: disabledBorder,
+        errorBorder: errorBorder,
         contentPadding: padding,
       ),
       style: font.style(color: YHColor.contentPrimary.color),
