@@ -89,6 +89,25 @@ extension YHImageImage on YHImageInterface {
     );
   }
 
+  Stack iconWithOff(
+      {double width = 24,
+      double height = 24,
+      YHColor? color,
+      BoxFit fit = BoxFit.fitHeight,
+      String? package}) {
+    return Stack(
+      children: [
+        icon(
+            width: width,
+            height: height,
+            color: color,
+            fit: fit,
+            package: package),
+        YHImage.icon_off_22.icon(width: width, height: height),
+      ],
+    );
+  }
+
   ImageProvider get imageProvider {
     return AssetImage('assets/images/$fileName.png');
   }
