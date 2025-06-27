@@ -49,7 +49,7 @@ final class YHIndicator {
       // 인디케이터 재빌드
       WidgetsBinding.instance.addPostFrameCallback((_) {
         debugPrint('🌀 인디케이터 재빌드');
-        _indicator!.markNeedsBuild();
+        _indicator?.markNeedsBuild();
       });
     }
   }
