@@ -69,11 +69,11 @@ final class YHIndicator {
     // 인디케이터 제거
     WidgetsBinding.instance.addPostFrameCallback((_) {
       debugPrint('🌀 인디케이터 제거');
-      if (_indicator != null) {
+      if (_indicator != null && _isRemoving) {
+        _isRemoving = false;
         _indicator?.remove();
         _indicator = null;
       }
-      _isRemoving = false; // 제거 완료 후 상태 해제
     });
   }
 
