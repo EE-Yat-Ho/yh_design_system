@@ -7,12 +7,14 @@ final class YHIndicator {
   static OverlayEntry? _indicator;
   static String? _currentMessage;
   static Widget? _commonChild;
+  static bool _isRemoving = false; // 제거 중인지 추적
 
   static void show(
       {required BuildContext? context, Widget? child, String? message}) {
     if (context == null) return;
 
     _currentMessage = message;
+    _isRemoving = false; // show 시 제거 상태 해제
 
     if (_indicator == null) {
       // 새로운 인디케이터 노출
@@ -42,19 +44,28 @@ final class YHIndicator {
                 ],
               ))));
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        debugPrint('🌀 인디케이터 노출');
-        Overlay.of(context).insert(_indicator!);
+        // 제거 중이 아닐 때만 추가
+        if (!_isRemoving && _indicator != null) {
+          debugPrint('🌀 인디케이터 노출');
+          Overlay.of(context).insert(_indicator!);
+        }
       });
     } else {
       // 인디케이터 재빌드
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        debugPrint('🌀 인디케이터 재빌드');
-        _indicator?.markNeedsBuild();
+        if (!_isRemoving && _indicator != null) {
+          debugPrint('🌀 인디케이터 재빌드');
+          _indicator?.markNeedsBuild();
+        }
       });
     }
   }
 
   static void hide() {
+    if (_indicator == null || _isRemoving) return; // 이미 제거중이면 리턴
+
+    _isRemoving = true; // 제거 상태로 설정
+
     // 인디케이터 제거
     WidgetsBinding.instance.addPostFrameCallback((_) {
       debugPrint('🌀 인디케이터 제거');
@@ -62,9 +73,11 @@ final class YHIndicator {
         _indicator?.remove();
         _indicator = null;
       }
+      _isRemoving = false; // 제거 완료 후 상태 해제
     });
   }
 
+  // 기본적인 인디케이터 위젯 설정하기
   static void setCommonIndicator(Widget child) {
     _commonChild = child;
   }
