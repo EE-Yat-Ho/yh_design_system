@@ -17,6 +17,9 @@ final class YHScaffold extends StatelessWidget {
     this.appBar, // 상단 앱바
     this.bottomNavigationBar, // 하단 네비게이션 바
     required this.body,
+    this.floatingActionButton,
+    this.floatingActionButtonLocation,
+    this.floatingActionButtonAnimator,
   });
 
   final bool canPop;
@@ -28,6 +31,9 @@ final class YHScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Widget? bottomNavigationBar;
   final Widget body;
+  final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final FloatingActionButtonAnimator? floatingActionButtonAnimator;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +88,9 @@ final class YHScaffold extends StatelessWidget {
       appBar: appBar,
       bottomNavigationBar: bottomNavigationBar,
       body: child,
+      floatingActionButton: floatingActionButton,
+      floatingActionButtonLocation: floatingActionButtonLocation,
+      floatingActionButtonAnimator: floatingActionButtonAnimator,
     );
   }
 }
