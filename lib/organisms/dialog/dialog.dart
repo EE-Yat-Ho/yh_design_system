@@ -99,7 +99,7 @@ final class YHDialog extends StatelessWidget {
       children: [
         if (cancelText != null)
           YHButton(
-            cornerRadius: buttonCornerRadius ?? 8,
+            cornerRadius: buttonCornerRadius ?? 24,
             borderColor: YHColor.outline,
             borderWidth: 1,
             text: YHText(
@@ -115,7 +115,7 @@ final class YHDialog extends StatelessWidget {
             },
           ),
         YHButton(
-          cornerRadius: buttonCornerRadius ?? 8,
+          cornerRadius: buttonCornerRadius ?? 24,
           text:
               YHText(text: confirmText, font: buttonFont, color: YHColor.white),
           height: 48,
@@ -136,7 +136,7 @@ final class YHDialog extends StatelessWidget {
       children: [
         if (cancelText != null)
           YHButton(
-            cornerRadius: buttonCornerRadius ?? 24,
+            cornerRadius: buttonCornerRadius ?? 8,
             borderColor: YHColor.outline,
             borderWidth: 1,
             expands: true,
@@ -152,7 +152,7 @@ final class YHDialog extends StatelessWidget {
             },
           ),
         YHButton(
-          cornerRadius: buttonCornerRadius ?? 24,
+          cornerRadius: buttonCornerRadius ?? 8,
           expands: true,
           text:
               YHText(text: confirmText, font: buttonFont, color: YHColor.white),
