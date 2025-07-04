@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/row/row.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
@@ -131,7 +132,8 @@ final class YHDialog extends StatelessWidget {
   }
 
   Widget _rowButtons(BuildContext context) {
-    return Row(
+    return YHRow(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       spacing: 8,
       children: [
         if (cancelText != null)
