@@ -64,7 +64,6 @@ final class YHDialog extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
         child: Column(
-          spacing: 8,
           crossAxisAlignment: columnCrossAxisAlignment,
           mainAxisAlignment: columnMainAxisAlignment,
           mainAxisSize: MainAxisSize.min,
@@ -74,10 +73,13 @@ final class YHDialog extends StatelessWidget {
                 width: imageWidth ?? double.infinity,
                 height: imageHeight ?? 100,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
             ],
             _title(),
-            if (subText != null) _subText(),
+            if (subText != null) ...[
+              const SizedBox(height: 8),
+              _subText(),
+            ],
             SizedBox(height: buttonTopPadding ?? 24),
             if (buttonDirection == ButtonDirection.horizontal)
               _rowButtons(context)
