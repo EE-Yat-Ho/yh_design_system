@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/atoms/column/column.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
@@ -29,7 +28,8 @@ final class YHDialog extends StatelessWidget {
     this.buttonDirection = ButtonDirection.horizontal,
     this.buttonCornerRadius,
     this.buttonTopPadding,
-    this.mainColumnCrossAxisAlignment = CrossAxisAlignment.start,
+    this.columnMainAxisAlignment = MainAxisAlignment.start,
+    this.columnCrossAxisAlignment = CrossAxisAlignment.start,
     this.titleAlign = TextAlign.start,
     this.subTextAlign = TextAlign.start,
   });
@@ -45,7 +45,8 @@ final class YHDialog extends StatelessWidget {
   final ButtonDirection buttonDirection;
   final double? buttonCornerRadius;
   final double? buttonTopPadding;
-  final CrossAxisAlignment mainColumnCrossAxisAlignment;
+  final MainAxisAlignment columnMainAxisAlignment;
+  final CrossAxisAlignment columnCrossAxisAlignment;
   final TextAlign titleAlign;
   final TextAlign subTextAlign;
 
@@ -64,17 +65,20 @@ final class YHDialog extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
         child: Column(
           spacing: 8,
-          crossAxisAlignment: mainColumnCrossAxisAlignment,
+          crossAxisAlignment: columnCrossAxisAlignment,
+          mainAxisAlignment: columnMainAxisAlignment,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (image != null)
+            if (image != null) ...[
               image!.icon(
                 width: imageWidth ?? double.infinity,
                 height: imageHeight ?? 100,
               ),
+              const SizedBox(height: 16),
+            ],
             _title(),
             if (subText != null) _subText(),
-            SizedBox(height: buttonTopPadding ?? 28),
+            SizedBox(height: buttonTopPadding ?? 24),
             if (buttonDirection == ButtonDirection.horizontal)
               _rowButtons(context)
             else
@@ -103,9 +107,8 @@ final class YHDialog extends StatelessWidget {
   }
 
   Widget _columnButtons(BuildContext context) {
-    return YHColumn(
+    return Column(
       spacing: 8,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
       children: [
         if (cancelText != null)
           YHButton(
