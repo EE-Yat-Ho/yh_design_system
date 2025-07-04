@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/atoms/row/row.dart';
+import 'package:yh_design_system/atoms/column/column.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
+
+enum ButtonDirection {
+  vertical,
+  horizontal,
+}
 
 final class YHDialog extends StatelessWidget {
   const YHDialog({
@@ -21,7 +26,7 @@ final class YHDialog extends StatelessWidget {
     this.onCancel,
     this.imageWidth,
     this.imageHeight,
-    this.buttonInRow = true,
+    this.buttonDirection = ButtonDirection.horizontal,
     this.buttonCornerRadius,
     this.buttonTopPadding,
     this.mainColumnCrossAxisAlignment = CrossAxisAlignment.start,
@@ -37,7 +42,7 @@ final class YHDialog extends StatelessWidget {
   final YHImageInterface? image;
   final double? imageWidth;
   final double? imageHeight;
-  final bool buttonInRow;
+  final ButtonDirection buttonDirection;
   final double? buttonCornerRadius;
   final double? buttonTopPadding;
   final CrossAxisAlignment mainColumnCrossAxisAlignment;
@@ -70,7 +75,10 @@ final class YHDialog extends StatelessWidget {
             _title(),
             if (subText != null) _subText(),
             SizedBox(height: buttonTopPadding ?? 28),
-            if (buttonInRow) _rowButtons(context) else _columnButtons(context)
+            if (buttonDirection == ButtonDirection.horizontal)
+              _rowButtons(context)
+            else
+              _columnButtons(context)
           ],
         ),
       ),
@@ -95,8 +103,9 @@ final class YHDialog extends StatelessWidget {
   }
 
   Widget _columnButtons(BuildContext context) {
-    return Column(
+    return YHColumn(
       spacing: 8,
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       children: [
         if (cancelText != null)
           YHButton(
@@ -132,8 +141,7 @@ final class YHDialog extends StatelessWidget {
   }
 
   Widget _rowButtons(BuildContext context) {
-    return YHRow(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+    return Row(
       spacing: 8,
       children: [
         if (cancelText != null)
