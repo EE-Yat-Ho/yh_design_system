@@ -9,6 +9,7 @@ final class YHChip extends StatelessWidget {
     required this.text,
     this.backgroundColor,
     this.textColor,
+    this.margin,
     this.padding = const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
     this.borderRadius = 20.0,
     this.font = YHFont.regular14,
@@ -17,6 +18,7 @@ final class YHChip extends StatelessWidget {
   final String text;
   final YHColor? backgroundColor;
   final YHColor? textColor;
+  final EdgeInsets? margin;
   final EdgeInsets padding;
   final double borderRadius;
   final YHFont font;
@@ -24,6 +26,7 @@ final class YHChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       padding: padding,
       decoration: BoxDecoration(
         color: (backgroundColor ?? YHColor.primary)
