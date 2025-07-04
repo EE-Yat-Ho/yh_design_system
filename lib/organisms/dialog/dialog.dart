@@ -25,6 +25,7 @@ final class YHDialog extends StatelessWidget {
     this.onCancel,
     this.imageWidth,
     this.imageHeight,
+    this.imageBottomPadding,
     this.buttonDirection = ButtonDirection.horizontal,
     this.buttonCornerRadius,
     this.buttonTopPadding,
@@ -42,6 +43,7 @@ final class YHDialog extends StatelessWidget {
   final YHImageInterface? image;
   final double? imageWidth;
   final double? imageHeight;
+  final double? imageBottomPadding;
   final ButtonDirection buttonDirection;
   final double? buttonCornerRadius;
   final double? buttonTopPadding;
@@ -73,7 +75,7 @@ final class YHDialog extends StatelessWidget {
                 width: imageWidth ?? double.infinity,
                 height: imageHeight ?? 100,
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: imageBottomPadding ?? 16),
             ],
             _title(),
             if (subText != null) ...[
