@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-final class YHColumn extends StatelessWidget {
-  const YHColumn({
+final class YHRow extends StatelessWidget {
+  const YHRow({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.center,
     this.crossAxisAlignment = CrossAxisAlignment.center,
@@ -22,7 +22,7 @@ final class YHColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final column = Column(
+    final row = Row(
       key: key,
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
@@ -34,9 +34,9 @@ final class YHColumn extends StatelessWidget {
     if (padding != null) {
       return Padding(
         padding: padding!,
-        child: column,
+        child: row,
       );
     }
-    return column;
+    return row;
   }
 }
