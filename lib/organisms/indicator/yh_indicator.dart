@@ -20,6 +20,8 @@ final class YHIndicator {
     Widget? indicatorWidget,
     String? message,
   }) {
+    debugPrint('🌀 show 호출');
+
     if (context == null) {
       debugPrint("🚨🌀 인디케이터 노출 실패. context is null");
       return;
@@ -68,6 +70,7 @@ final class YHIndicator {
   }
 
   static void hide() {
+    debugPrint('🌀 hide 호출');
     if (_indicatorOverlay == null || _isRemoving) return; // 이미 제거중이면 리턴
 
     _isRemoving = true; // 제거 상태로 설정
