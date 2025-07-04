@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
-class YHText extends StatelessWidget {
+final class YHText extends StatelessWidget {
   const YHText(
       {super.key,
       required this.text,
