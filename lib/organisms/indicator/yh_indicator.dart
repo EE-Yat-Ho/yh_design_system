@@ -7,13 +7,10 @@ final class YHIndicator {
   static OverlayEntry? _indicatorOverlay;
   // 인디케이터 아래에 노출할 메시지
   static String? _currentMessage;
-  // 기본 인디케이터 위젯
-  static Widget _defaultIndicatorWidget = SizedBox(
-      width: 40,
-      height: 40,
-      child: CircularProgressIndicator(color: YHColor.primary.color));
-  // 제거 중인지 추적
-  static bool _isRemoving = false;
+  // 빌드 콜백 함수에서 indicator를 어떻게 할지 결정한 state
+  static bool _isShowing = false;
+  // 빌드 콜백 함수의 중복 요청 방지
+  static bool _isUpdating = false;
 
   static void show({
     required BuildContext? context,
@@ -23,63 +20,76 @@ final class YHIndicator {
     debugPrint('🌀 show 호출');
 
     if (context == null) {
-      debugPrint("🚨🌀 인디케이터 노출 실패. context is null");
+      debugPrint("🚨🌀 인디케이터 노출 실패. context가 null임");
+      return;
+    }
+
+    if (!context.mounted) {
+      debugPrint("🚨🌀 인디케이터 노출 실패. context가 mounted가 아님");
       return;
     }
 
     _currentMessage = message;
-    _isRemoving = false; // show 시 제거 상태 해제
+    _isShowing = true;
 
-    if (_indicatorOverlay == null) {
-      // 새로운 인디케이터 노출
-      _indicatorOverlay = OverlayEntry(
-          builder: (_) => Container(
-              color: Colors.black.withValues(alpha: 0.01),
-              width: double.infinity, // 터치를 막기위함
-              height: double.infinity,
-              child: Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  indicatorWidget ?? _defaultIndicatorWidget,
-                  if (_currentMessage != null) ...[
-                    const SizedBox(height: 8),
-                    YHText(
-                        text: _currentMessage!,
-                        font: YHFont.regular16,
-                        color: YHColor.primary)
-                  ],
-                ],
-              ))));
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        // 제거 중이 아닐 때만 추가
-        if (!_isRemoving && _indicatorOverlay != null) {
-          debugPrint('🌀 인디케이터 노출');
-          Overlay.of(context).insert(_indicatorOverlay!);
-        }
-      });
-    } else {
-      // 인디케이터 재빌드
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (!_isRemoving && _indicatorOverlay != null) {
-          debugPrint('🌀 인디케이터 재빌드');
-          _indicatorOverlay?.markNeedsBuild();
-        }
-      });
-    }
+    _updateIndicator(
+      context: context,
+      indicatorWidget: indicatorWidget,
+    );
   }
 
   static void hide() {
     debugPrint('🌀 hide 호출');
-    if (_indicatorOverlay == null || _isRemoving) return; // 이미 제거중이면 리턴
+    _isShowing = false;
+    _updateIndicator();
+  }
 
-    _isRemoving = true; // 제거 상태로 설정
-
-    // 인디케이터 제거
+  static void _updateIndicator({
+    BuildContext? context,
+    Widget? indicatorWidget,
+  }) {
+    if (_isUpdating) {
+      debugPrint("🚨🌀 인디케이터 업데이트 중이라 무시됨");
+      return;
+    }
+    _isUpdating = true;
+    // 상태값에 따라 인디케이터 노출, 제거, 재빌드 결정
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      debugPrint('🌀 인디케이터 제거');
-      if (_indicatorOverlay != null && _isRemoving) {
-        _isRemoving = false;
+      _isUpdating = false;
+
+      if (_isShowing &&
+          context != null &&
+          context.mounted &&
+          _indicatorOverlay == null) {
+        debugPrint('🌀 인디케이터 노출');
+        _indicatorOverlay = OverlayEntry(
+            builder: (_) => Container(
+                color: Colors.black.withValues(alpha: 0.01),
+                width: double.infinity, // 터치를 막기위함
+                height: double.infinity,
+                child: Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    indicatorWidget ?? _defaultIndicatorWidget,
+                    if (_currentMessage != null) ...[
+                      const SizedBox(height: 8),
+                      YHText(
+                          text: _currentMessage!,
+                          font: YHFont.regular16,
+                          color: YHColor.primary)
+                    ],
+                  ],
+                ))));
+        Overlay.of(context).insert(_indicatorOverlay!);
+      } else if (_isShowing &&
+          context != null &&
+          context.mounted &&
+          _indicatorOverlay != null) {
+        debugPrint('🌀 인디케이터 재빌드');
+        _indicatorOverlay?.markNeedsBuild();
+      } else {
+        debugPrint('🌀 인디케이터 제거');
         _indicatorOverlay?.remove();
         _indicatorOverlay = null;
       }
@@ -90,4 +100,10 @@ final class YHIndicator {
   static void setCommonIndicator(Widget child) {
     _defaultIndicatorWidget = child;
   }
+
+  // 기본 인디케이터 위젯
+  static Widget _defaultIndicatorWidget = SizedBox(
+      width: 40,
+      height: 40,
+      child: CircularProgressIndicator(color: YHColor.primary.color));
 }
