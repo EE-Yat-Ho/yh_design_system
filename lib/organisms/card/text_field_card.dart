@@ -35,7 +35,7 @@ final class YHTextFieldCard extends StatelessWidget {
     this.enabledBorderColor = YHColor.outline,
     this.focusedBorderColor, // = YHColor.primary
     // 그림자
-    this.useShadow = true,
+    this.useShadow = false,
     this.boxShadow,
     this.shadowColor,
     this.shadowSpreadRadius,
