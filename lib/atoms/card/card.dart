@@ -53,6 +53,15 @@ final class YHCard extends StatelessWidget {
     // elevation: shadow ? elevation : 0,
     // shape: shape,
     // child:
+    final bs = boxShadow ??
+        [
+          BoxShadow(
+            color: Colors.grey.withValues(alpha: 0.5),
+            spreadRadius: 2,
+            blurRadius: 3,
+            offset: const Offset(0, 4),
+          )
+        ];
     return YHInkWell(
         onTap: onTap,
         child: Container(
@@ -62,7 +71,7 @@ final class YHCard extends StatelessWidget {
           padding: padding,
           decoration: BoxDecoration(
             color: backgroundColor.color,
-            boxShadow: shadow ? boxShadow : null,
+            boxShadow: shadow ? bs : [],
             borderRadius: BorderRadius.circular(cornerRadius),
             border: borderColor != null && borderWidth != null
                 ? Border.all(
