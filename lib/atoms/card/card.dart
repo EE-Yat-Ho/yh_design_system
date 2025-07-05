@@ -16,7 +16,7 @@ final class YHCard extends StatelessWidget {
     this.width,
     this.height,
     // 그림자
-    this.shadow = true, // 그림자 사용 여부
+    this.useShadow = true, // 그림자 사용 여부
     this.boxShadow, // boxShadow 통째로 넣을 경우
     this.shadowColor, // 그림자 색상
     this.shadowSpreadRadius, // 그림자 확산 반경
@@ -35,7 +35,7 @@ final class YHCard extends StatelessWidget {
   final double? width;
   final double? height;
   // 그림자
-  final bool shadow;
+  final bool useShadow;
   final List<BoxShadow>? boxShadow;
   final Color? shadowColor;
   final double? shadowSpreadRadius;
@@ -80,7 +80,7 @@ final class YHCard extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: backgroundColor.color,
-            boxShadow: shadow ? bs : [],
+            boxShadow: useShadow ? bs : [],
             borderRadius: BorderRadius.circular(cornerRadius),
             border: borderColor != null && borderWidth != null
                 ? Border.all(
