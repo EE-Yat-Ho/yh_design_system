@@ -36,34 +36,42 @@ final class YHCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ShapeBorder? shape;
-    if (borderColor != null && borderWidth != null) {
-      shape = RoundedRectangleBorder(
-        side: BorderSide(color: borderColor!.color, width: borderWidth!),
-        borderRadius: BorderRadius.circular(cornerRadius),
-      );
-    } else {
-      shape = RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(cornerRadius),
-      );
-    }
+    // ShapeBorder? shape;
+    // if (borderColor != null && borderWidth != null) {
+    //   shape = RoundedRectangleBorder(
+    //     side: BorderSide(color: borderColor!.color, width: borderWidth!),
+    //     borderRadius: BorderRadius.circular(cornerRadius),
+    //   );
+    // } else {
+    //   shape = RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(cornerRadius),
+    //   );
+    // }
 
-    return Card(
-        clipBehavior: Clip.antiAlias,
-        elevation: shadow ? elevation : 0,
-        shape: shape,
-        child: YHInkWell(
-            onTap: onTap,
-            child: Container(
-              width: width,
-              height: height,
-              margin: margin,
-              padding: padding,
-              decoration: BoxDecoration(
-                color: backgroundColor.color,
-                boxShadow: shadow ? boxShadow : null,
-              ),
-              child: child,
-            )));
+    // return Card(
+    // clipBehavior: Clip.antiAlias,
+    // elevation: shadow ? elevation : 0,
+    // shape: shape,
+    // child:
+    return YHInkWell(
+        onTap: onTap,
+        child: Container(
+          width: width,
+          height: height,
+          margin: margin,
+          padding: padding,
+          decoration: BoxDecoration(
+            color: backgroundColor.color,
+            boxShadow: shadow ? boxShadow : null,
+            borderRadius: BorderRadius.circular(cornerRadius),
+            border: borderColor != null && borderWidth != null
+                ? Border.all(
+                    color: borderColor!.color,
+                    width: borderWidth!,
+                  )
+                : null,
+          ),
+          child: child,
+        ));
   }
 }
