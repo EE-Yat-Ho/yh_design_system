@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
-class YHCard extends StatelessWidget {
+final class YHCard extends StatelessWidget {
   const YHCard({
     super.key,
     this.elevation = 0,

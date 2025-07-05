@@ -7,6 +7,10 @@ final class YHColor {
       const YHColor(color: Color.fromARGB(255, 75, 130, 255));
   static YHColor primary_a20 =
       YHColor(color: primary.color.withAlpha((0.2 * 255).toInt()));
+  static YHColor primary_a30 =
+      YHColor(color: primary.color.withAlpha((0.3 * 255).toInt()));
+  static YHColor primary_a40 =
+      YHColor(color: primary.color.withAlpha((0.4 * 255).toInt()));
 
   static const YHColor disable =
       YHColor(color: Color.fromARGB(255, 172, 172, 172));
