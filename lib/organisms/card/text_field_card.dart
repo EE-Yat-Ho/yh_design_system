@@ -28,10 +28,19 @@ final class YHTextFieldCard extends StatelessWidget {
     this.textAlignVertical,
     this.textDirection,
     // 색 관련
+    this.enabledBackgroundColor = YHColor.white,
+    this.disabledBackgroundColor = YHColor.disable,
     this.borderColor = YHColor.outline,
     this.disabledBorderColor = YHColor.disable,
     this.enabledBorderColor = YHColor.outline,
     this.focusedBorderColor, // = YHColor.primary
+    // 그림자
+    this.useShadow = true,
+    this.boxShadow,
+    this.shadowColor,
+    this.shadowSpreadRadius,
+    this.shadowBlurRadius,
+    this.shadowOffset,
   });
 
   final String? labelText;
@@ -55,18 +64,32 @@ final class YHTextFieldCard extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
   // 색 관련
+  final YHColor enabledBackgroundColor;
+  final YHColor disabledBackgroundColor;
   final YHColor borderColor;
   final YHColor disabledBorderColor;
   final YHColor? focusedBorderColor;
   final YHColor enabledBorderColor;
+  // 그림자
+  final bool useShadow;
+  final List<BoxShadow>? boxShadow;
+  final Color? shadowColor;
+  final double? shadowSpreadRadius;
+  final double? shadowBlurRadius;
+  final Offset? shadowOffset;
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = enabled ? YHColor.white : YHColor.disable;
-
     return YHCard(
-      backgroundColor: bgColor,
+      backgroundColor:
+          enabled ? enabledBackgroundColor : disabledBackgroundColor,
       cornerRadius: cornerRadius,
+      useShadow: useShadow,
+      boxShadow: boxShadow,
+      shadowColor: shadowColor,
+      shadowSpreadRadius: shadowSpreadRadius,
+      shadowBlurRadius: shadowBlurRadius,
+      shadowOffset: shadowOffset,
       child: YHTextField(
         labelText: labelText,
         font: font,
