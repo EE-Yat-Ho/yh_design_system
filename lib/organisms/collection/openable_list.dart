@@ -21,8 +21,6 @@ final class OpenableList extends StatelessWidget {
     this.showChild = true,
     this.showOpenableArrow = true,
     this.showChildArrow = true,
-    this.openableCardElevation = 0,
-    this.childCardElevation = 0,
     this.openableCardCornerRadius = 20,
     this.childCardCornerRadius = 20,
   });
@@ -37,8 +35,6 @@ final class OpenableList extends StatelessWidget {
   final void Function(String openableId, String childId) onTapChild;
   final void Function(String openableId, String childId)? onLongPressChild;
 
-  final double openableCardElevation;
-  final double childCardElevation;
   final bool showSelected;
   final bool showAddButton;
   final bool showChild;
@@ -84,7 +80,6 @@ final class OpenableList extends StatelessWidget {
                     openable.children.isNotEmpty,
                 showAddButton: showAddButton,
                 showArrow: showOpenableArrow,
-                elevation: openableCardElevation,
                 cornerRadius: openableCardCornerRadius,
               );
             },
@@ -98,7 +93,6 @@ final class OpenableList extends StatelessWidget {
                         isSelected: showSelected && child.isSelect,
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
                         showRightArrow: showChildArrow,
-                        elevation: childCardElevation,
                         cornerRadius: childCardCornerRadius,
                       ))
                   .toList(),

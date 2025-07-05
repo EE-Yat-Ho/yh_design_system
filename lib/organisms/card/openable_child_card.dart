@@ -28,7 +28,6 @@ final class YHOpenableChildCard extends StatelessWidget {
     this.isSelected = false,
     this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 4),
     this.showRightArrow = true,
-    this.elevation = 0,
     this.cornerRadius = 20,
     this.minTileHeight = 40,
   });
@@ -40,7 +39,6 @@ final class YHOpenableChildCard extends StatelessWidget {
   final EdgeInsets margin;
   final bool showRightArrow;
   final double cornerRadius;
-  final double elevation;
   final double minTileHeight;
 
   @override
@@ -75,7 +73,6 @@ final class YHOpenableChildCard extends StatelessWidget {
     return YHCard(
       cornerRadius: cornerRadius,
       margin: margin,
-      elevation: elevation,
       child: Stack(children: list),
     );
   }

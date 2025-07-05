@@ -95,7 +95,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       width: 40,
       height: 40,
       backgroundColor: YHColor.opacity,
-      shadow: false,
+      useShadow: false,
     );
   }
 
@@ -108,7 +108,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       width: 40,
       height: 40,
       backgroundColor: YHColor.opacity,
-      shadow: false,
+      useShadow: false,
     );
   }
 }

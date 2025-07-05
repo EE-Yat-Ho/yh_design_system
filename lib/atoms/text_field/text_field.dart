@@ -196,7 +196,7 @@ final class YHTextField extends StatelessWidget {
       },
       autoResize: true,
       backgroundColor: YHColor.opacity,
-      shadow: false,
+      useShadow: false,
       image: Image.asset(
         "assets/images/text_field_clear_icon.png",
         width: 24,

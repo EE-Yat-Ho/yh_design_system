@@ -33,7 +33,6 @@ final class YHOpenableCard extends StatelessWidget {
     required this.object,
     required this.onTap,
     this.onLongPress,
-    this.elevation = 0,
     this.isSelected = false,
     this.margin = const EdgeInsets.only(bottom: 4),
     this.showAddButton = true,
@@ -43,7 +42,6 @@ final class YHOpenableCard extends StatelessWidget {
   });
 
   final OpenableObject object;
-  final double elevation;
   final bool isSelected;
   final EdgeInsets margin;
   final bool showAddButton;
@@ -121,7 +119,6 @@ final class YHOpenableCard extends StatelessWidget {
 
     return YHCard(
       cornerRadius: cornerRadius,
-      elevation: elevation,
       margin: margin,
       child: Stack(children: stackList),
     );

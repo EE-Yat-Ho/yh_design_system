@@ -26,7 +26,7 @@ class YHButton extends StatelessWidget {
     this.borderWidth = 0,
     this.cornerRadius = 8,
     this.horizontalAlignment = MainAxisAlignment.center,
-    this.shadow = true,
+    this.useShadow = true,
     this.expands = false,
     this.redDot = false,
     this.redDotSize = 6,
@@ -49,7 +49,7 @@ class YHButton extends StatelessWidget {
   final YHColor textColor;
 
   final bool enable;
-  final bool shadow;
+  final bool useShadow;
   final bool redDot;
   final double redDotInset;
   final double redDotSize;
@@ -99,9 +99,9 @@ class YHButton extends StatelessWidget {
 
     Widget button = RawMaterialButton(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      elevation: shadow ? 2 : 0,
-      focusElevation: shadow ? 2 : 0,
-      highlightElevation: shadow ? 1 : 0,
+      elevation: useShadow ? 2 : 0,
+      focusElevation: useShadow ? 2 : 0,
+      highlightElevation: useShadow ? 1 : 0,
       hoverElevation: 0,
       disabledElevation: 1,
       fillColor: enable ? _backgroundColor.color : YHColor.actionDisabled.color,
