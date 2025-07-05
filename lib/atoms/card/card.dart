@@ -7,6 +7,7 @@ final class YHCard extends StatelessWidget {
     super.key,
     this.elevation = 0,
     this.shadow = true,
+    this.boxShadow,
     this.margin = EdgeInsets.zero,
     this.padding = EdgeInsets.zero,
     this.backgroundColor = YHColor.surface05,
@@ -27,6 +28,7 @@ final class YHCard extends StatelessWidget {
   final double cornerRadius;
   final double? elevation;
   final bool shadow;
+  final List<BoxShadow>? boxShadow;
   final void Function()? onTap;
   final Widget child;
   final double? width;
@@ -49,15 +51,18 @@ final class YHCard extends StatelessWidget {
     return Card(
         clipBehavior: Clip.antiAlias,
         elevation: shadow ? elevation : 0,
-        margin: margin,
-        color: backgroundColor.color,
         shape: shape,
         child: YHInkWell(
             onTap: onTap,
             child: Container(
               width: width,
               height: height,
+              margin: margin,
               padding: padding,
+              decoration: BoxDecoration(
+                color: backgroundColor.color,
+                boxShadow: shadow ? boxShadow : null,
+              ),
               child: child,
             )));
   }
