@@ -20,15 +20,29 @@ final class YHInkWell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
-      clipBehavior: cornerRadius > 0 ? Clip.antiAlias : Clip.none,
-      borderRadius:
-          cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
+    // return Material(
+    //   color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
+    //   clipBehavior: cornerRadius > 0 ? Clip.antiAlias : Clip.none,
+    //   borderRadius:
+    //       cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
+    //   child: InkWell(
+    //     splashFactory: touchAnimation ? null : NoSplash.splashFactory,
+    //     borderRadius:
+    //         cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
+    //     onTap: enable ? onTap : null,
+    //     onLongPress: enable ? onLongPress : null,
+    //     child: child,
+    //   ),
+    // );
+
+    return Ink(
+      decoration: BoxDecoration(
+        color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
+        borderRadius: BorderRadius.circular(cornerRadius),
+      ),
       child: InkWell(
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
-        borderRadius:
-            cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
+        borderRadius: BorderRadius.circular(cornerRadius),
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
         child: child,
