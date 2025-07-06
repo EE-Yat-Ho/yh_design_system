@@ -28,9 +28,6 @@ final class YHInkWell extends StatelessWidget {
       ),
       child: InkWell(
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(cornerRadius),
-        ),
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
         child: child,
