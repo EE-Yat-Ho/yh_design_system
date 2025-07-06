@@ -44,23 +44,6 @@ final class YHCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ShapeBorder? shape;
-    // if (borderColor != null && borderWidth != null) {
-    //   shape = RoundedRectangleBorder(
-    //     side: BorderSide(color: borderColor!.color, width: borderWidth!),
-    //     borderRadius: BorderRadius.circular(cornerRadius),
-    //   );
-    // } else {
-    //   shape = RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.circular(cornerRadius),
-    //   );
-    // }
-
-    // return Card(
-    // clipBehavior: Clip.antiAlias,
-    // elevation: shadow ? elevation : 0,
-    // shape: shape,
-    // child:
     final bs = boxShadow ??
         [
           BoxShadow(
@@ -72,7 +55,7 @@ final class YHCard extends StatelessWidget {
         ];
     return Container(
       margin: margin,
-      // padding: padding,
+      // padding: padding, 터치 애니메이션에 포함되어야 해서, YHInkWell에 배치.
       decoration: BoxDecoration(
         color: backgroundColor.color,
         boxShadow: useShadow ? bs : [],
