@@ -31,7 +31,7 @@ final class YHInkWell extends StatelessWidget {
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
-        child: Padding(padding: padding, child: child),
+        child: Container(padding: padding, child: child),
       ),
     );
   }

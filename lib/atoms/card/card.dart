@@ -72,7 +72,7 @@ final class YHCard extends StatelessWidget {
         ];
     return Container(
       margin: margin,
-      padding: padding,
+      // padding: padding,
       decoration: BoxDecoration(
         color: backgroundColor.color,
         boxShadow: useShadow ? bs : [],
@@ -84,14 +84,12 @@ final class YHCard extends StatelessWidget {
               )
             : null,
       ),
-      child: onTap != null
-          ? YHInkWell(
-              onTap: onTap,
-              cornerRadius: cornerRadius,
-              padding: padding,
-              child: child,
-            )
-          : child,
+      child: YHInkWell(
+        onTap: onTap,
+        cornerRadius: cornerRadius,
+        padding: padding,
+        child: child,
+      ),
     );
   }
 }
