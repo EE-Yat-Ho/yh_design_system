@@ -80,6 +80,10 @@ final class YHOpenableChildCard extends StatelessWidget {
     return YHCard(
       cornerRadius: cornerRadius,
       margin: margin,
+      shadowColor: shadowColor,
+      shadowSpreadRadius: shadowSpreadRadius,
+      shadowBlurRadius: shadowBlurRadius,
+      shadowOffset: shadowOffset,
       child: Stack(children: list),
     );
   }
@@ -102,9 +106,6 @@ final class YHOpenableChildCard extends StatelessWidget {
           backgroundColor: YHColor.transparent,
           cornerRadius: 4,
           shadowColor: shadowColor,
-          shadowSpreadRadius: shadowSpreadRadius,
-          shadowBlurRadius: shadowBlurRadius,
-          shadowOffset: shadowOffset,
           child: Image.file(object.rightImage!.file, width: 24, height: 24),
         )
       ]);
