@@ -31,7 +31,10 @@ final class YHInkWell extends StatelessWidget {
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
-        child: Container(padding: padding, child: child),
+        child: Container(
+          padding: padding, // 패딩은 터치 애니메이션에 포함이므로 여기 배치. 마진은 밖에 배치(YHCard).
+          child: child,
+        ),
       ),
     );
   }
