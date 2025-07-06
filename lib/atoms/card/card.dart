@@ -84,11 +84,13 @@ final class YHCard extends StatelessWidget {
               )
             : null,
       ),
-      child: YHInkWell(
-        onTap: onTap,
-        cornerRadius: cornerRadius,
-        child: child,
-      ),
+      child: onTap != null
+          ? YHInkWell(
+              onTap: onTap,
+              cornerRadius: cornerRadius,
+              child: child,
+            )
+          : child,
     );
   }
 }

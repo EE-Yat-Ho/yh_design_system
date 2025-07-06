@@ -9,6 +9,7 @@ final class YHInkWell extends StatelessWidget {
     this.enable = true,
     this.touchAnimation = true,
     this.cornerRadius = 20,
+    this.padding = EdgeInsets.zero,
   });
 
   final Widget child;
@@ -17,7 +18,7 @@ final class YHInkWell extends StatelessWidget {
   final bool enable;
   final bool touchAnimation;
   final double cornerRadius;
-
+  final EdgeInsets padding;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -30,22 +31,8 @@ final class YHInkWell extends StatelessWidget {
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
-        child: child,
+        child: Padding(padding: padding, child: child),
       ),
     );
-
-    // return Ink(
-    //   decoration: BoxDecoration(
-    //     color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
-    //     borderRadius: BorderRadius.circular(cornerRadius),
-    //   ),
-    //   child: InkWell(
-    //     splashFactory: touchAnimation ? null : NoSplash.splashFactory,
-    //     borderRadius: BorderRadius.circular(cornerRadius),
-    //     onTap: enable ? onTap : null,
-    //     onLongPress: enable ? onLongPress : null,
-    //     child: child,
-    //   ),
-    // );
   }
 }
