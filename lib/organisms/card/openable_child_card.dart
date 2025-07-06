@@ -30,6 +30,10 @@ final class YHOpenableChildCard extends StatelessWidget {
     this.showRightArrow = true,
     this.cornerRadius = 20,
     this.minTileHeight = 40,
+    this.shadowColor,
+    this.shadowSpreadRadius = 1,
+    this.shadowBlurRadius = 2,
+    this.shadowOffset = const Offset(0, 2),
   });
 
   final ChildObject object;
@@ -40,7 +44,10 @@ final class YHOpenableChildCard extends StatelessWidget {
   final bool showRightArrow;
   final double cornerRadius;
   final double minTileHeight;
-
+  final Color? shadowColor;
+  final double shadowSpreadRadius;
+  final double shadowBlurRadius;
+  final Offset shadowOffset;
   @override
   Widget build(BuildContext context) {
     List<Widget> list = [
@@ -94,6 +101,10 @@ final class YHOpenableChildCard extends StatelessWidget {
           borderColor: YHColor.gray90,
           backgroundColor: YHColor.transparent,
           cornerRadius: 4,
+          shadowColor: shadowColor,
+          shadowSpreadRadius: shadowSpreadRadius,
+          shadowBlurRadius: shadowBlurRadius,
+          shadowOffset: shadowOffset,
           child: Image.file(object.rightImage!.file, width: 24, height: 24),
         )
       ]);

@@ -19,9 +19,9 @@ final class YHCard extends StatelessWidget {
     this.useShadow = true, // 그림자 사용 여부
     this.boxShadow, // boxShadow 통째로 넣을 경우
     this.shadowColor, // 그림자 색상
-    this.shadowSpreadRadius, // 그림자 확산 반경
-    this.shadowBlurRadius, // 그림자 흐림 정도
-    this.shadowOffset, // 그림자 오프셋
+    this.shadowSpreadRadius = 2, // 그림자 확산 반경
+    this.shadowBlurRadius = 3, // 그림자 흐림 정도
+    this.shadowOffset = const Offset(0, 4), // 그림자 오프셋
   });
 
   final EdgeInsets margin;
@@ -38,9 +38,9 @@ final class YHCard extends StatelessWidget {
   final bool useShadow;
   final List<BoxShadow>? boxShadow;
   final Color? shadowColor;
-  final double? shadowSpreadRadius;
-  final double? shadowBlurRadius;
-  final Offset? shadowOffset;
+  final double shadowSpreadRadius;
+  final double shadowBlurRadius;
+  final Offset shadowOffset;
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +65,9 @@ final class YHCard extends StatelessWidget {
         [
           BoxShadow(
             color: shadowColor ?? Colors.grey.withValues(alpha: 0.5),
-            spreadRadius: shadowSpreadRadius ?? 2,
-            blurRadius: shadowBlurRadius ?? 3,
-            offset: shadowOffset ?? const Offset(0, 4),
+            spreadRadius: shadowSpreadRadius,
+            blurRadius: shadowBlurRadius,
+            offset: shadowOffset,
           )
         ];
     return YHInkWell(

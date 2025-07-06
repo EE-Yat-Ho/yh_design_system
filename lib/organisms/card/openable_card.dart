@@ -39,6 +39,10 @@ final class YHOpenableCard extends StatelessWidget {
     this.showArrow = true,
     this.onTapAddButton,
     this.cornerRadius = 20,
+    this.shadowColor,
+    this.shadowSpreadRadius = 1,
+    this.shadowBlurRadius = 2,
+    this.shadowOffset = const Offset(0, 2),
   });
 
   final OpenableObject object;
@@ -46,11 +50,14 @@ final class YHOpenableCard extends StatelessWidget {
   final EdgeInsets margin;
   final bool showAddButton;
   final bool showArrow;
+  final Color? shadowColor;
   final double cornerRadius;
+  final double shadowSpreadRadius;
+  final double shadowBlurRadius;
+  final Offset shadowOffset;
   final void Function(String id) onTap;
   final void Function(String id)? onLongPress;
   final void Function(String id)? onTapAddButton;
-
   @override
   Widget build(BuildContext context) {
     List<Widget> mainRowList = [
@@ -120,6 +127,10 @@ final class YHOpenableCard extends StatelessWidget {
     return YHCard(
       cornerRadius: cornerRadius,
       margin: margin,
+      shadowColor: shadowColor,
+      shadowSpreadRadius: shadowSpreadRadius,
+      shadowBlurRadius: shadowBlurRadius,
+      shadowOffset: shadowOffset,
       child: Stack(children: stackList),
     );
   }

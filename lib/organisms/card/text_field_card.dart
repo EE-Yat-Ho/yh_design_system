@@ -38,9 +38,9 @@ final class YHTextFieldCard extends StatelessWidget {
     this.useShadow = false,
     this.boxShadow,
     this.shadowColor,
-    this.shadowSpreadRadius,
-    this.shadowBlurRadius,
-    this.shadowOffset,
+    this.shadowSpreadRadius = 2,
+    this.shadowBlurRadius = 3,
+    this.shadowOffset = const Offset(0, 4),
   });
 
   final String? labelText;
@@ -74,9 +74,9 @@ final class YHTextFieldCard extends StatelessWidget {
   final bool useShadow;
   final List<BoxShadow>? boxShadow;
   final Color? shadowColor;
-  final double? shadowSpreadRadius;
-  final double? shadowBlurRadius;
-  final Offset? shadowOffset;
+  final double shadowSpreadRadius;
+  final double shadowBlurRadius;
+  final Offset shadowOffset;
 
   @override
   Widget build(BuildContext context) {
