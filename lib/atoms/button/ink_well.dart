@@ -23,8 +23,9 @@ final class YHInkWell extends StatelessWidget {
     return Material(
       color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
       child: InkWell(
-        radius: cornerRadius,
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
+        borderRadius:
+            cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
         child: child,
