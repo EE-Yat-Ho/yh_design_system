@@ -86,6 +86,7 @@ final class YHCard extends StatelessWidget {
       ),
       child: YHInkWell(
         onTap: onTap,
+        cornerRadius: cornerRadius,
         child: child,
       ),
     );

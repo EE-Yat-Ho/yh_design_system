@@ -8,6 +8,7 @@ final class YHInkWell extends StatelessWidget {
     this.onLongPress,
     this.enable = true,
     this.touchAnimation = true,
+    this.cornerRadius = 0,
   });
 
   final Widget child;
@@ -15,11 +16,15 @@ final class YHInkWell extends StatelessWidget {
   final void Function()? onLongPress;
   final bool enable;
   final bool touchAnimation;
+  final double cornerRadius;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(cornerRadius),
+      ),
       child: InkWell(
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
         onTap: enable ? onTap : null,
