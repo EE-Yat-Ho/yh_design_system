@@ -75,11 +75,11 @@ final class YHCard extends StatelessWidget {
       child: Ink(
         width: width,
         height: height,
+        color: backgroundColor.color,
         child: Container(
           margin: margin,
           padding: padding,
           decoration: BoxDecoration(
-            color: backgroundColor.color,
             boxShadow: useShadow ? bs : [],
             borderRadius: BorderRadius.circular(cornerRadius),
             border: borderColor != null && borderWidth != null
