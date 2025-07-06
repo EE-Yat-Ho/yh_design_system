@@ -8,7 +8,7 @@ final class YHInkWell extends StatelessWidget {
     this.onLongPress,
     this.enable = true,
     this.touchAnimation = true,
-    this.cornerRadius = 0,
+    this.cornerRadius = 20,
   });
 
   final Widget child;
@@ -20,33 +20,37 @@ final class YHInkWell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Material(
-    //   color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
-    //   clipBehavior: cornerRadius > 0 ? Clip.antiAlias : Clip.none,
-    //   borderRadius:
-    //       cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
-    //   child: InkWell(
-    //     splashFactory: touchAnimation ? null : NoSplash.splashFactory,
-    //     borderRadius:
-    //         cornerRadius > 0 ? BorderRadius.circular(cornerRadius) : null,
-    //     onTap: enable ? onTap : null,
-    //     onLongPress: enable ? onLongPress : null,
-    //     child: child,
-    //   ),
-    // );
-
-    return Ink(
-      decoration: BoxDecoration(
-        color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
+    return Material(
+      color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
+      clipBehavior: Clip.antiAlias,
+      borderRadius: BorderRadius.circular(cornerRadius),
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(cornerRadius),
       ),
       child: InkWell(
         splashFactory: touchAnimation ? null : NoSplash.splashFactory,
         borderRadius: BorderRadius.circular(cornerRadius),
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(cornerRadius),
+        ),
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
         child: child,
       ),
     );
+
+    // return Ink(
+    //   decoration: BoxDecoration(
+    //     color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
+    //     borderRadius: BorderRadius.circular(cornerRadius),
+    //   ),
+    //   child: InkWell(
+    //     splashFactory: touchAnimation ? null : NoSplash.splashFactory,
+    //     borderRadius: BorderRadius.circular(cornerRadius),
+    //     onTap: enable ? onTap : null,
+    //     onLongPress: enable ? onLongPress : null,
+    //     child: child,
+    //   ),
+    // );
   }
 }
