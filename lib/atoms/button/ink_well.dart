@@ -23,7 +23,6 @@ final class YHInkWell extends StatelessWidget {
     return Material(
       color: Colors.transparent, // Container의 Color가 터치 애니메이션을 덮는 것을 방지.
       clipBehavior: Clip.antiAlias,
-      borderRadius: BorderRadius.circular(cornerRadius),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(cornerRadius),
       ),
@@ -32,7 +31,6 @@ final class YHInkWell extends StatelessWidget {
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(cornerRadius),
         ),
-        borderRadius: BorderRadius.circular(cornerRadius),
         onTap: enable ? onTap : null,
         onLongPress: enable ? onLongPress : null,
         child: child,
