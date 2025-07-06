@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class YHInkWell extends StatelessWidget {
+final class YHInkWell extends StatelessWidget {
   const YHInkWell({
     super.key,
     required this.child,
