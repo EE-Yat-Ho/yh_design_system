@@ -70,27 +70,23 @@ final class YHCard extends StatelessWidget {
             offset: shadowOffset,
           )
         ];
-    return YHInkWell(
-      onTap: onTap,
-      child: Ink(
-        width: width,
-        height: height,
+    return Container(
+      margin: margin,
+      padding: padding,
+      decoration: BoxDecoration(
         color: backgroundColor.color,
-        child: Container(
-          margin: margin,
-          padding: padding,
-          decoration: BoxDecoration(
-            boxShadow: useShadow ? bs : [],
-            borderRadius: BorderRadius.circular(cornerRadius),
-            border: borderColor != null && borderWidth != null
-                ? Border.all(
-                    color: borderColor!.color,
-                    width: borderWidth!,
-                  )
-                : null,
-          ),
-          child: child,
-        ),
+        boxShadow: useShadow ? bs : [],
+        borderRadius: BorderRadius.circular(cornerRadius),
+        border: borderColor != null && borderWidth != null
+            ? Border.all(
+                color: borderColor!.color,
+                width: borderWidth!,
+              )
+            : null,
+      ),
+      child: YHInkWell(
+        onTap: onTap,
+        child: child,
       ),
     );
   }
