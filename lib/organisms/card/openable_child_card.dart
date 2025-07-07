@@ -105,7 +105,7 @@ final class YHOpenableChildCard extends StatelessWidget {
           borderColor: YHColor.gray90,
           backgroundColor: YHColor.transparent,
           cornerRadius: 4,
-          shadowColor: shadowColor,
+          useShadow: false,
           child: Image.file(object.rightImage!.file, width: 24, height: 24),
         )
       ]);
