@@ -16,7 +16,7 @@ final class OpenableObject {
   final String? rightText;
   final bool isOpened;
 
-  OpenableObject(
+  const OpenableObject(
     this.object,
     this.children,
     this.id,

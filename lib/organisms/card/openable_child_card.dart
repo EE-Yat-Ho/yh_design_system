@@ -13,10 +13,19 @@ final class ChildObject {
   final String text;
   final String? rightText;
   final bool isSelect;
+  final bool isBookmark;
   final ImageEntity? rightImage;
 
-  ChildObject(this.object, this.id, this.leadingImage, this.text,
-      this.rightText, this.isSelect, this.rightImage);
+  const ChildObject(
+    this.object,
+    this.id,
+    this.leadingImage,
+    this.text,
+    this.rightText,
+    this.isSelect,
+    this.isBookmark,
+    this.rightImage,
+  );
 }
 
 final class YHOpenableChildCard extends StatelessWidget {
@@ -25,11 +34,14 @@ final class YHOpenableChildCard extends StatelessWidget {
     required this.object,
     required this.onTap,
     this.onLongPress,
-    this.isSelected = false,
     this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 4),
-    this.showRightArrow = true,
     this.cornerRadius = 20,
     this.minTileHeight = 40,
+    // 보여줄지 여부들
+    this.showSelectCheck = true,
+    this.showBookmark = true,
+    this.showRightArrow = true,
+    // 그림자
     this.shadowColor,
     this.shadowSpreadRadius = 1,
     this.shadowBlurRadius = 2,
@@ -39,15 +51,19 @@ final class YHOpenableChildCard extends StatelessWidget {
   final ChildObject object;
   final void Function(String id) onTap;
   final void Function(String id)? onLongPress;
-  final bool isSelected;
   final EdgeInsets margin;
-  final bool showRightArrow;
   final double cornerRadius;
   final double minTileHeight;
+  // 보여줄지 여부들
+  final bool showSelectCheck;
+  final bool showBookmark;
+  final bool showRightArrow;
+  // 그림자
   final Color? shadowColor;
   final double shadowSpreadRadius;
   final double shadowBlurRadius;
   final Offset shadowOffset;
+
   @override
   Widget build(BuildContext context) {
     List<Widget> list = [
@@ -68,7 +84,7 @@ final class YHOpenableChildCard extends StatelessWidget {
       ),
     ];
 
-    if (isSelected) {
+    if (showSelectCheck && object.isSelect) {
       list.add(
         Row(children: [
           Container(width: 12),
@@ -108,6 +124,16 @@ final class YHOpenableChildCard extends StatelessWidget {
           useShadow: false,
           child: Image.file(object.rightImage!.file, width: 24, height: 24),
         )
+      ]);
+    }
+
+    if (showBookmark) {
+      list.addAll([
+        const SizedBox(width: 4),
+        if (object.isBookmark)
+          YHImage.icon_bookmark_on_48.icon(width: 24, height: 24)
+        else
+          YHImage.icon_bookmark_off_48.icon(width: 24, height: 24)
       ]);
     }
 

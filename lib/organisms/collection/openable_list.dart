@@ -17,6 +17,7 @@ final class OpenableList extends StatelessWidget {
     this.onLongPressChild,
     this.onTapAddButton,
     this.showSelected = true,
+    this.showBookmark = true,
     this.showAddButton = true,
     this.showChild = true,
     this.showOpenableArrow = true,
@@ -36,6 +37,7 @@ final class OpenableList extends StatelessWidget {
   final void Function(String openableId, String childId)? onLongPressChild;
 
   final bool showSelected;
+  final bool showBookmark;
   final bool showAddButton;
   final bool showChild;
   final bool showOpenableArrow;
@@ -90,8 +92,9 @@ final class OpenableList extends StatelessWidget {
                         onTap: (childId) => onTapChild(openable.id, childId),
                         onLongPress: (childId) =>
                             onLongPressChild?.call(openable.id, childId),
-                        isSelected: showSelected && child.isSelect,
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+                        showSelectCheck: showSelected,
+                        showBookmark: showBookmark,
                         showRightArrow: showChildArrow,
                         cornerRadius: childCardCornerRadius,
                       ))
