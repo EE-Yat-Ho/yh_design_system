@@ -134,19 +134,16 @@ final class YHOpenableChildCard extends StatelessWidget {
     if (showBookmark) {
       list.addAll([
         const SizedBox(width: 4),
-        // YHCard(
-        //   width: 24,
-        //   height: 24,
-        //   useShadow: false,
-        //   backgroundColor: YHColor.transparent,
-        //   onTap: () => onBookmarkTap?.call(object.id),
-        //   child: object.isBookmark
-        //       ? YHImage.icon_bookmark_on_48.icon(width: 24, height: 24)
-        //       : YHImage.icon_bookmark_off_48.icon(width: 24, height: 24),
-        // )
-        object.isBookmark
-            ? YHImage.icon_bookmark_on_48.icon(width: 24, height: 24)
-            : YHImage.icon_bookmark_off_48.icon(width: 24, height: 24),
+        YHCard(
+          width: 24,
+          height: 24,
+          useShadow: false,
+          backgroundColor: YHColor.transparent,
+          onTap: () => onBookmarkTap?.call(object.id),
+          child: object.isBookmark
+              ? YHImage.icon_bookmark_on_48.icon(width: 22, height: 22)
+              : YHImage.icon_bookmark_off_48.icon(width: 22, height: 22),
+        )
       ]);
     }
 
