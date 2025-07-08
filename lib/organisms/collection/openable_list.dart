@@ -15,6 +15,7 @@ final class OpenableList extends StatelessWidget {
     required this.onTapChild,
     this.onLongPressOpenable,
     this.onLongPressChild,
+    this.onBookmarkTapChild,
     this.onTapAddButton,
     this.showSelected = true,
     this.showBookmark = true,
@@ -35,6 +36,7 @@ final class OpenableList extends StatelessWidget {
   // 열 수 없는 셀 클릭
   final void Function(String openableId, String childId) onTapChild;
   final void Function(String openableId, String childId)? onLongPressChild;
+  final void Function(String openableId, String childId)? onBookmarkTapChild;
 
   final bool showSelected;
   final bool showBookmark;
@@ -92,6 +94,8 @@ final class OpenableList extends StatelessWidget {
                         onTap: (childId) => onTapChild(openable.id, childId),
                         onLongPress: (childId) =>
                             onLongPressChild?.call(openable.id, childId),
+                        onBookmarkTap: (childId) =>
+                            onBookmarkTapChild?.call(openable.id, childId),
                         margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
                         showSelectCheck: showSelected,
                         showBookmark: showBookmark,
