@@ -81,7 +81,7 @@ final class YHOpenableChildCard extends StatelessWidget {
           color: YHColor.black,
           maxLines: 2,
         ),
-        contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        contentPadding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
         trailing: trailing(context),
         onTap: () => onTap(object.id),
         onLongPress: () => onLongPress?.call(object.id),
@@ -136,6 +136,7 @@ final class YHOpenableChildCard extends StatelessWidget {
       list.addAll([
         const SizedBox(width: 4),
         YHInkWell(
+          padding: const EdgeInsets.all(4),
           cornerRadius: 4,
           onTap: () => onBookmarkTap?.call(object.id),
           child: object.isBookmark
