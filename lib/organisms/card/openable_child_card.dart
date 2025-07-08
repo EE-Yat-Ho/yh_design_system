@@ -11,21 +11,21 @@ final class ChildObject {
   final String id;
   final YHImageInterface leadingImage;
   final String text;
-  final String? rightText;
   final bool isSelect;
   final bool isBookmark;
+  final String? rightText;
   final ImageEntity? rightImage;
 
-  const ChildObject(
-    this.object,
-    this.id,
-    this.leadingImage,
-    this.text,
+  const ChildObject({
+    required this.object,
+    required this.id,
+    required this.leadingImage,
+    required this.text,
+    required this.isSelect,
+    required this.isBookmark,
     this.rightText,
-    this.isSelect,
-    this.isBookmark,
     this.rightImage,
-  );
+  });
 }
 
 final class YHOpenableChildCard extends StatelessWidget {

@@ -16,15 +16,15 @@ final class OpenableObject {
   final String? rightText;
   final bool isOpened;
 
-  const OpenableObject(
-    this.object,
-    this.children,
-    this.id,
-    this.leadingImage,
-    this.text,
+  const OpenableObject({
+    required this.object,
+    required this.children,
+    required this.id,
+    required this.leadingImage,
+    required this.text,
     this.rightText,
-    this.isOpened,
-  );
+    required this.isOpened,
+  });
 }
 
 final class YHOpenableCard extends StatelessWidget {
