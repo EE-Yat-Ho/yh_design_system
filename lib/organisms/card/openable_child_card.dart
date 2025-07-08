@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
@@ -134,15 +135,12 @@ final class YHOpenableChildCard extends StatelessWidget {
     if (showBookmark) {
       list.addAll([
         const SizedBox(width: 4),
-        YHCard(
-          width: 24,
-          height: 24,
-          useShadow: false,
-          backgroundColor: YHColor.transparent,
+        YHInkWell(
+          cornerRadius: 4,
           onTap: () => onBookmarkTap?.call(object.id),
           child: object.isBookmark
-              ? YHImage.icon_bookmark_on_48.icon(width: 22, height: 22)
-              : YHImage.icon_bookmark_off_48.icon(width: 22, height: 22),
+              ? YHImage.icon_bookmark_on_48.icon(width: 20, height: 20)
+              : YHImage.icon_bookmark_off_48.icon(width: 20, height: 20),
         )
       ]);
     }
