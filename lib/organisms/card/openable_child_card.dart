@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
@@ -32,8 +33,6 @@ final class YHOpenableChildCard extends StatelessWidget {
   const YHOpenableChildCard({
     super.key,
     required this.object,
-    required this.onTap,
-    this.onLongPress,
     this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 4),
     this.cornerRadius = 20,
     this.minTileHeight = 40,
@@ -46,11 +45,13 @@ final class YHOpenableChildCard extends StatelessWidget {
     this.shadowSpreadRadius = 1,
     this.shadowBlurRadius = 2,
     this.shadowOffset = const Offset(0, 2),
+    // 이벤트
+    required this.onTap,
+    this.onLongPress,
+    this.onBookmarkTap,
   });
 
   final ChildObject object;
-  final void Function(String id) onTap;
-  final void Function(String id)? onLongPress;
   final EdgeInsets margin;
   final double cornerRadius;
   final double minTileHeight;
@@ -63,6 +64,10 @@ final class YHOpenableChildCard extends StatelessWidget {
   final double shadowSpreadRadius;
   final double shadowBlurRadius;
   final Offset shadowOffset;
+  // 이벤트
+  final void Function(String id) onTap;
+  final void Function(String id)? onLongPress;
+  final void Function(String id)? onBookmarkTap;
 
   @override
   Widget build(BuildContext context) {
@@ -131,9 +136,15 @@ final class YHOpenableChildCard extends StatelessWidget {
       list.addAll([
         const SizedBox(width: 4),
         if (object.isBookmark)
-          YHImage.icon_bookmark_on_48.icon(width: 24, height: 24)
+          YHInkWell(
+            onTap: () => onBookmarkTap?.call(object.id),
+            child: YHImage.icon_bookmark_on_48.icon(width: 24, height: 24),
+          )
         else
-          YHImage.icon_bookmark_off_48.icon(width: 24, height: 24)
+          YHInkWell(
+            onTap: () => onBookmarkTap?.call(object.id),
+            child: YHImage.icon_bookmark_off_48.icon(width: 24, height: 24),
+          )
       ]);
     }
 
