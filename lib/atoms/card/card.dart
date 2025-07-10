@@ -12,6 +12,7 @@ final class YHCard extends StatelessWidget {
     this.borderWidth,
     this.cornerRadius = 20,
     this.onTap,
+    this.onLongPress,
     required this.child,
     this.width,
     this.height,
@@ -31,6 +32,7 @@ final class YHCard extends StatelessWidget {
   final double? borderWidth;
   final double cornerRadius;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final Widget child;
   final double? width;
   final double? height;
@@ -69,6 +71,7 @@ final class YHCard extends StatelessWidget {
       ),
       child: YHInkWell(
         onTap: onTap,
+        onLongPress: onLongPress,
         enable: onTap != null,
         cornerRadius: cornerRadius,
         padding: padding,
