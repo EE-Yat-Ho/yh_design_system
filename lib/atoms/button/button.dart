@@ -3,16 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/decoration/yh_red_dot.dart';
+import 'package:yh_design_system/atoms/row/row.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 
-class YHButton extends StatelessWidget {
+final class YHButton extends StatelessWidget {
   const YHButton({
     super.key,
     // autoResize가 true면 최대 영역을 잡음. false면 최대한 작아지고 지정해준 크기로됨
     this.autoResize = true,
     this.width,
     this.height,
-    this.padding = const EdgeInsets.all(0),
+    this.padding,
+    this.margin,
     this.text,
     this.image,
     this.leftWidget,
@@ -36,7 +38,8 @@ class YHButton extends StatelessWidget {
   final bool autoResize;
   final double? width;
   final double? height;
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
+  final EdgeInsets? margin;
 
   final YHText? text;
   final Widget? image;
@@ -62,13 +65,13 @@ class YHButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return expands ? Expanded(child: _build()) : _build();
+    return expands ? Expanded(child: _body()) : _body();
   }
 
   YHColor get _backgroundColor => backgroundColor ?? YHColor.primary;
   YHColor get _borderColor => borderColor ?? YHColor.primary;
 
-  Widget _build() {
+  Widget _body() {
     var children = <Widget>[];
 
     if (leftWidget != null) {
@@ -84,17 +87,13 @@ class YHButton extends StatelessWidget {
       children.add(rightWidget!);
     }
 
-    Widget row = Row(
+    Widget row = YHRow(
       spacing: spacing,
+      padding: padding,
       mainAxisSize: autoResize ? MainAxisSize.min : MainAxisSize.max,
       mainAxisAlignment: horizontalAlignment,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: children,
-    );
-
-    Padding padding = Padding(
-      padding: this.padding,
-      child: row,
     );
 
     Widget button = RawMaterialButton(
@@ -113,7 +112,7 @@ class YHButton extends StatelessWidget {
             : BorderSide.none,
         borderRadius: BorderRadius.all(Radius.circular(cornerRadius)),
       ),
-      child: padding,
+      child: row,
     );
 
     if (redDot) {
@@ -130,6 +129,13 @@ class YHButton extends StatelessWidget {
             ),
           ),
         ],
+      );
+    }
+
+    if (margin != null) {
+      button = Padding(
+        padding: margin!,
+        child: button,
       );
     }
 
