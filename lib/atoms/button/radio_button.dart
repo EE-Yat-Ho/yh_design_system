@@ -14,6 +14,7 @@ final class YHRadioButton extends StatelessWidget {
     this.margin = const EdgeInsets.only(bottom: 8),
     this.borderRadius = 8,
     this.backgroundColor,
+    this.height = 48,
   });
 
   final String text;
@@ -24,11 +25,13 @@ final class YHRadioButton extends StatelessWidget {
   final EdgeInsets margin;
   final double borderRadius;
   final Color? backgroundColor;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
+      height: height,
       padding: padding,
       decoration: BoxDecoration(
         color: backgroundColor ?? YHColor.contentSecondary.color.withAlpha(51),
