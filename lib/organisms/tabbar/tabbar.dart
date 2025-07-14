@@ -19,6 +19,7 @@ final class YHTabbar extends StatefulWidget {
     this.indicatorColor = YHColor.contentPrimary,
     this.dividerColor = YHColor.outline,
     this.indicatorSize = TabBarIndicatorSize.label,
+    this.tabAlignment,
     required this.onTap,
   });
 
@@ -36,6 +37,7 @@ final class YHTabbar extends StatefulWidget {
   final YHColor indicatorColor;
   final YHColor dividerColor;
   final TabBarIndicatorSize indicatorSize;
+  final TabAlignment? tabAlignment;
 
   @override
   YHTabbarState createState() => YHTabbarState();
@@ -65,7 +67,7 @@ final class YHTabbarState extends State<YHTabbar>
       child: TabBar(
         controller: _tabController,
         isScrollable: widget.isScrollable,
-        tabAlignment: TabAlignment.start,
+        tabAlignment: widget.tabAlignment,
         padding: widget.padding,
         labelPadding: widget.labelPadding,
         tabs: widget.texts
