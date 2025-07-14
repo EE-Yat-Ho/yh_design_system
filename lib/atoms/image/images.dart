@@ -65,7 +65,8 @@ enum YHImage implements YHImageInterface {
   icon_left_216,
   icon_right_216,
   icon_plus_24,
-  icon_text_field_clear_24;
+  icon_text_field_clear_24,
+  icon_information_24;
 
   @override
   String get packageName => 'yh_design_system';

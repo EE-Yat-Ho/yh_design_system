@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
-class YHTab extends StatelessWidget {
+final class YHTab extends StatelessWidget {
   const YHTab({
     super.key,
     this.height = 40,
     required this.text,
-    required this.font,
+    this.color = YHColor.contentSecondary,
+    this.font = YHFont.regular16,
   });
 
   final String text;
+  final YHColor color;
   final YHFont font;
   final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Tab(
-      height: height,
-      child: Text(
-        text,
-        style: TextStyle(fontWeight: font.fontWeight, fontSize: font.fontSize),
-      ),
-    );
+        height: height, child: YHText(text: text, font: font, color: color));
   }
 }

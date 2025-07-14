@@ -22,7 +22,6 @@ final class YHButton extends StatelessWidget {
     this.spacing = 0,
     required this.onTap,
     this.backgroundColor,
-    this.textColor = YHColor.white,
     this.enable = true,
     this.borderColor,
     this.borderWidth = 0,
@@ -49,7 +48,6 @@ final class YHButton extends StatelessWidget {
   final void Function()? onTap;
 
   final YHColor? backgroundColor;
-  final YHColor textColor;
 
   final bool enable;
   final bool useShadow;
