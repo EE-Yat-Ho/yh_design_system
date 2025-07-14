@@ -10,29 +10,28 @@ final class YHRadioButton extends StatelessWidget {
     required this.value,
     required this.groupValue,
     required this.onChanged,
-    this.padding = EdgeInsets.zero,
     this.margin = const EdgeInsets.only(bottom: 8),
     this.borderRadius = 8,
     this.backgroundColor,
     this.height = 48,
+    this.contentPadding,
   });
 
   final String text;
   final String value;
   final String groupValue;
   final Function(String) onChanged;
-  final EdgeInsets padding;
   final EdgeInsets margin;
   final double borderRadius;
   final Color? backgroundColor;
   final double height;
+  final EdgeInsets? contentPadding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
       height: height,
-      padding: padding,
       decoration: BoxDecoration(
         color: backgroundColor ?? YHColor.contentSecondary.color.withAlpha(51),
         borderRadius: BorderRadius.circular(borderRadius),
@@ -43,6 +42,7 @@ final class YHRadioButton extends StatelessWidget {
           font: YHFont.regular16,
           color: YHColor.contentPrimary,
         ),
+        contentPadding: contentPadding,
         value: value,
         groupValue: groupValue,
         onChanged: (String? value) {
