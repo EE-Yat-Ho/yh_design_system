@@ -44,14 +44,29 @@ final class YHTabbar extends StatefulWidget {
 }
 
 final class YHTabbarState extends State<YHTabbar>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabController;
+    with TickerProviderStateMixin {
+  late TabController _tabController;
 
   @override
   void initState() {
     _tabController = TabController(length: widget.texts.length, vsync: this);
     _tabController.index = widget.initIndex;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(YHTabbar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    // 탭 개수가 변경된 경우 TabController 재생성
+    if (oldWidget.texts.length != widget.texts.length) {
+      final oldIndex = _tabController.index;
+      _tabController.dispose();
+      _tabController = TabController(length: widget.texts.length, vsync: this);
+
+      // 기존 인덱스가 새로운 탭 범위 내에 있으면 유지, 그렇지 않으면 0으로 설정
+      _tabController.index = oldIndex < widget.texts.length ? oldIndex : 0;
+    }
   }
 
   @override
