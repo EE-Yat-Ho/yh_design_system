@@ -13,10 +13,10 @@ final class YHTabbar extends StatefulWidget {
     this.padding = const EdgeInsets.symmetric(horizontal: 8),
     this.labelPadding = const EdgeInsets.symmetric(horizontal: 12),
     this.isScrollable = false,
-    this.backgroundColor = YHColor.white,
-    this.selectedColor = YHColor.contentPrimary,
+    this.backgroundColor,
+    this.selectedColor,
     this.unselectedColor = YHColor.contentSecondary,
-    this.indicatorColor = YHColor.contentPrimary,
+    this.indicatorColor,
     this.dividerColor = YHColor.outline,
     this.indicatorSize = TabBarIndicatorSize.label,
     this.tabAlignment,
@@ -31,10 +31,10 @@ final class YHTabbar extends StatefulWidget {
   final EdgeInsets padding;
   final EdgeInsets labelPadding;
   final bool isScrollable;
-  final YHColor backgroundColor;
-  final YHColor selectedColor;
+  final YHColor? backgroundColor;
+  final YHColor? selectedColor;
   final YHColor unselectedColor;
-  final YHColor indicatorColor;
+  final YHColor? indicatorColor;
   final YHColor dividerColor;
   final TabBarIndicatorSize indicatorSize;
   final TabAlignment? tabAlignment;
@@ -63,7 +63,7 @@ final class YHTabbarState extends State<YHTabbar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.backgroundColor.color,
+      color: widget.backgroundColor?.color,
       child: TabBar(
         controller: _tabController,
         isScrollable: widget.isScrollable,
@@ -77,17 +77,17 @@ final class YHTabbarState extends State<YHTabbar>
                   height: widget.height,
                   text: entry.value,
                   color: _tabController.index == entry.key
-                      ? widget.selectedColor
+                      ? widget.selectedColor ?? YHColor.primary
                       : widget.unselectedColor,
                   font: widget.font,
                 ))
             .toList(),
-        indicatorColor: widget.indicatorColor.color,
         dividerColor: widget.dividerColor.color,
         indicatorSize: widget.indicatorSize,
         indicator: UnderlineTabIndicator(
-            borderSide:
-                BorderSide(color: widget.indicatorColor.color, width: 2)),
+            borderSide: BorderSide(
+                color: widget.indicatorColor?.color ?? YHColor.primary.color,
+                width: 2)),
         onTap: widget.onTap,
       ),
     );
