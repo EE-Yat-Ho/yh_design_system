@@ -15,6 +15,9 @@ final class YHRadioButton extends StatelessWidget {
     this.backgroundColor,
     this.height = 48,
     this.contentPadding,
+    this.dense = true,
+    this.font = YHFont.regular16,
+    this.textColor = YHColor.contentPrimary,
   });
 
   final String text;
@@ -23,9 +26,12 @@ final class YHRadioButton extends StatelessWidget {
   final Function(String) onChanged;
   final EdgeInsets margin;
   final double borderRadius;
-  final Color? backgroundColor;
+  final YHColor? backgroundColor;
   final double height;
   final EdgeInsets? contentPadding;
+  final bool dense;
+  final YHFont font;
+  final YHColor textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +39,16 @@ final class YHRadioButton extends StatelessWidget {
       margin: margin,
       height: height,
       decoration: BoxDecoration(
-        color: backgroundColor ?? YHColor.contentSecondary.color.withAlpha(51),
+        color: backgroundColor?.color ??
+            YHColor.contentSecondary.color.withAlpha(51),
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: RadioListTile<String>(
+        dense: dense,
         title: YHText(
           text: text,
-          font: YHFont.regular16,
-          color: YHColor.contentPrimary,
+          font: font,
+          color: textColor,
         ),
         contentPadding: contentPadding,
         value: value,
