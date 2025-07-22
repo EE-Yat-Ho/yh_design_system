@@ -19,7 +19,7 @@ final class YHTextFieldCard extends StatelessWidget {
     this.focusNode,
     this.maxLines,
     this.placeholder,
-    this.borderType = BorderType.none,
+    this.borderType = BorderType.outline,
     this.cornerRadius = 8,
     this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
     this.right,

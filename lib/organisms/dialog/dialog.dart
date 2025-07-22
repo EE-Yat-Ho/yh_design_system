@@ -27,14 +27,14 @@ final class YHDialog extends StatelessWidget {
     this.imageWidth,
     this.imageHeight,
     this.imageBottomPadding,
-    this.buttonDirection = ButtonDirection.horizontal,
+    this.buttonDirection = ButtonDirection.vertical,
     this.buttonCornerRadius,
     this.buttonTopPadding,
-    this.columnMainAxisAlignment = MainAxisAlignment.start,
-    this.columnCrossAxisAlignment = CrossAxisAlignment.start,
+    this.columnMainAxisAlignment = MainAxisAlignment.center,
+    this.columnCrossAxisAlignment = CrossAxisAlignment.center,
     this.columnMainAxisSize = MainAxisSize.min,
-    this.titleAlign = TextAlign.start,
-    this.subTextAlign = TextAlign.start,
+    this.titleAlign = TextAlign.center,
+    this.subTextAlign = TextAlign.center,
   });
 
   final String text;
@@ -63,7 +63,7 @@ final class YHDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double topPadding = image == null ? 20 : 12;
+    final double topPadding = image == null ? 20 : 16;
 
     return Dialog(
       backgroundColor: YHColor.surface05.color,
@@ -114,43 +114,6 @@ final class YHDialog extends StatelessWidget {
         align: subTextAlign);
   }
 
-  Widget _columnButtons(BuildContext context) {
-    return Column(
-      spacing: 8,
-      children: [
-        if (cancelText != null)
-          YHButton(
-            cornerRadius: buttonCornerRadius ?? 24,
-            borderColor: YHColor.outline,
-            borderWidth: 1,
-            text: YHText(
-                text: cancelText!, font: buttonFont, color: YHColor.black),
-            height: 48,
-            width: double.infinity,
-            backgroundColor: YHColor.white,
-            onTap: () {
-              Navigator.pop(context);
-              if (onCancel != null) {
-                onCancel!();
-              }
-            },
-          ),
-        YHButton(
-          cornerRadius: buttonCornerRadius ?? 24,
-          text:
-              YHText(text: confirmText, font: buttonFont, color: YHColor.white),
-          height: 48,
-          width: double.infinity,
-          backgroundColor: YHColor.primary,
-          onTap: () {
-            Navigator.pop(context);
-            onConfirm();
-          },
-        )
-      ],
-    );
-  }
-
   Widget _rowButtons(BuildContext context) {
     return Row(
       spacing: 8,
@@ -178,6 +141,43 @@ final class YHDialog extends StatelessWidget {
           text:
               YHText(text: confirmText, font: buttonFont, color: YHColor.white),
           height: 48,
+          backgroundColor: YHColor.primary,
+          onTap: () {
+            Navigator.pop(context);
+            onConfirm();
+          },
+        )
+      ],
+    );
+  }
+
+  Widget _columnButtons(BuildContext context) {
+    return Column(
+      spacing: 8,
+      children: [
+        if (cancelText != null)
+          YHButton(
+            cornerRadius: buttonCornerRadius ?? 24,
+            borderColor: YHColor.outline,
+            borderWidth: 1,
+            text: YHText(
+                text: cancelText!, font: buttonFont, color: YHColor.black),
+            height: 48,
+            width: double.infinity,
+            backgroundColor: YHColor.white,
+            onTap: () {
+              Navigator.pop(context);
+              if (onCancel != null) {
+                onCancel!();
+              }
+            },
+          ),
+        YHButton(
+          cornerRadius: buttonCornerRadius ?? 24,
+          text:
+              YHText(text: confirmText, font: buttonFont, color: YHColor.white),
+          height: 48,
+          width: double.infinity,
           backgroundColor: YHColor.primary,
           onTap: () {
             Navigator.pop(context);

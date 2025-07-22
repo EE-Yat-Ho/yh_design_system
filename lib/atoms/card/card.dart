@@ -10,7 +10,7 @@ final class YHCard extends StatelessWidget {
     this.backgroundColor = YHColor.surface05,
     this.borderColor,
     this.borderWidth,
-    this.cornerRadius = 20,
+    this.cornerRadius = 12,
     this.onTap,
     this.onLongPress,
     required this.child,
@@ -20,9 +20,9 @@ final class YHCard extends StatelessWidget {
     this.useShadow = true, // 그림자 사용 여부
     this.boxShadow, // boxShadow 통째로 넣을 경우
     this.shadowColor, // 그림자 색상
-    this.shadowSpreadRadius = 2, // 그림자 확산 반경
-    this.shadowBlurRadius = 3, // 그림자 흐림 정도
-    this.shadowOffset = const Offset(0, 4), // 그림자 오프셋
+    this.shadowSpreadRadius = 1, // 그림자 확산 반경
+    this.shadowBlurRadius = 2, // 그림자 흐림 정도
+    this.shadowOffset = const Offset(0, 3), // 그림자 오프셋
   });
 
   final EdgeInsets margin;

@@ -49,7 +49,7 @@ final class YHSearchBar extends StatelessWidget {
                 borderType: BorderType.none,
                 padding: const EdgeInsets.all(0),
                 isDense: true,
-                backgroundColor: YHColor.surface03,
+                enabledBackgroundColor: YHColor.surface03,
                 disabledBackgroundColor: YHColor.surface03,
                 font: YHFont.regular16,
                 right: null,
