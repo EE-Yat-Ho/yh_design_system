@@ -81,8 +81,6 @@ final class YHTextFieldCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return YHCard(
-      backgroundColor:
-          enabled ? enabledBackgroundColor : disabledBackgroundColor,
       cornerRadius: cornerRadius,
       useShadow: useShadow,
       boxShadow: boxShadow,
@@ -115,6 +113,8 @@ final class YHTextFieldCard extends StatelessWidget {
         disabledBorderColor: disabledBorderColor,
         focusedBorderColor: focusedBorderColor,
         enabledBorderColor: enabledBorderColor,
+        enabledBackgroundColor: enabledBackgroundColor,
+        disabledBackgroundColor: disabledBackgroundColor,
       ),
     );
   }

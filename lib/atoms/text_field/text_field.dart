@@ -30,7 +30,7 @@ final class YHTextField extends StatelessWidget {
     this.textAlignVertical,
     this.textDirection,
     // 색 관련
-    this.backgroundColor = YHColor.white,
+    this.enabledBackgroundColor = YHColor.white,
     this.disabledBackgroundColor = YHColor.disable,
     this.borderColor = YHColor.outline, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
     this.disabledBorderColor = YHColor.disable,
@@ -61,7 +61,7 @@ final class YHTextField extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
   // 색 관련
-  final YHColor backgroundColor;
+  final YHColor enabledBackgroundColor;
   final YHColor disabledBackgroundColor;
   final YHColor borderColor; // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
   final YHColor disabledBorderColor;
@@ -91,7 +91,7 @@ final class YHTextField extends StatelessWidget {
 
   Widget _textField(BuildContext context) {
     final bgColor =
-        enabled ? backgroundColor.color : disabledBackgroundColor.color;
+        enabled ? enabledBackgroundColor.color : disabledBackgroundColor.color;
 
     InputBorder border;
     InputBorder enabledBorder;
