@@ -135,7 +135,7 @@ final class YHOpenableChildCard extends StatelessWidget {
               debugPrint(
                   "🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
               // 이미지 표시 실패 시 대체 이미지
-              return YHImage.icon_photo_48.iconWithOff();
+              return YHImage.icon_photo_48.iconWithOff(width: 20, height: 20);
             },
           ),
         )
