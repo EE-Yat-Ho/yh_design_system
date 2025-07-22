@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/column/column.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
@@ -31,6 +32,7 @@ final class YHDialog extends StatelessWidget {
     this.buttonTopPadding,
     this.columnMainAxisAlignment = MainAxisAlignment.start,
     this.columnCrossAxisAlignment = CrossAxisAlignment.start,
+    this.columnMainAxisSize = MainAxisSize.min,
     this.titleAlign = TextAlign.start,
     this.subTextAlign = TextAlign.start,
   });
@@ -49,6 +51,7 @@ final class YHDialog extends StatelessWidget {
   final double? buttonTopPadding;
   final MainAxisAlignment columnMainAxisAlignment;
   final CrossAxisAlignment columnCrossAxisAlignment;
+  final MainAxisSize columnMainAxisSize;
   final TextAlign titleAlign;
   final TextAlign subTextAlign;
 
@@ -60,35 +63,35 @@ final class YHDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double topPadding = image == null ? 20 : 12;
+
     return Dialog(
       backgroundColor: YHColor.surface05.color,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
-        child: Column(
-          crossAxisAlignment: columnCrossAxisAlignment,
-          mainAxisAlignment: columnMainAxisAlignment,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (image != null) ...[
-              image!.icon(
-                width: imageWidth ?? double.infinity,
-                height: imageHeight ?? 100,
-              ),
-              SizedBox(height: imageBottomPadding ?? 16),
-            ],
-            _title(),
-            if (subText != null) ...[
-              const SizedBox(height: 8),
-              _subText(),
-            ],
-            SizedBox(height: buttonTopPadding ?? 24),
-            if (buttonDirection == ButtonDirection.horizontal)
-              _rowButtons(context)
-            else
-              _columnButtons(context)
+      child: YHColumn(
+        padding: EdgeInsets.fromLTRB(20, topPadding, 20, 20),
+        crossAxisAlignment: columnCrossAxisAlignment,
+        mainAxisAlignment: columnMainAxisAlignment,
+        mainAxisSize: columnMainAxisSize,
+        children: [
+          if (image != null) ...[
+            image!.icon(
+              width: imageWidth ?? double.infinity,
+              height: imageHeight ?? 100,
+            ),
+            SizedBox(height: imageBottomPadding ?? 16),
           ],
-        ),
+          _title(),
+          if (subText != null) ...[
+            const SizedBox(height: 8),
+            _subText(),
+          ],
+          SizedBox(height: buttonTopPadding ?? 24),
+          if (buttonDirection == ButtonDirection.horizontal)
+            _rowButtons(context)
+          else
+            _columnButtons(context)
+        ],
       ),
     );
   }
@@ -107,6 +110,7 @@ final class YHDialog extends StatelessWidget {
         text: subText!,
         font: subTextFont,
         color: YHColor.contentSecondary,
+        maxLines: 15,
         align: subTextAlign);
   }
 
