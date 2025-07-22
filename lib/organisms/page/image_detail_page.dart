@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
+import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/organisms/appbar/appbar.dart';
 import 'package:yh_design_system/organisms/collection/horizontal_image_collection.dart';
 import 'package:yh_util/image_entity.dart';
@@ -77,6 +78,12 @@ final class ImageDetailPageState extends State<ImageDetailPage> {
                     child: Image.file(
                       _images[index].file,
                       fit: _images[index].fit,
+                      errorBuilder: (context, error, stackTrace) {
+                        debugPrint(
+                            "🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
+                        // 이미지 표시 실패 시 대체 이미지
+                        return YHImage.icon_photo_48.iconWithOff();
+                      },
                     ),
                   ),
                 );

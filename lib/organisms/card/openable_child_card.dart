@@ -127,7 +127,17 @@ final class YHOpenableChildCard extends StatelessWidget {
           backgroundColor: YHColor.transparent,
           cornerRadius: 4,
           useShadow: false,
-          child: Image.file(object.rightImage!.file, width: 24, height: 24),
+          child: Image.file(
+            object.rightImage!.file,
+            width: 24,
+            height: 24,
+            errorBuilder: (context, error, stackTrace) {
+              debugPrint(
+                  "🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
+              // 이미지 표시 실패 시 대체 이미지
+              return YHImage.icon_photo_48.iconWithOff();
+            },
+          ),
         )
       ]);
     }
