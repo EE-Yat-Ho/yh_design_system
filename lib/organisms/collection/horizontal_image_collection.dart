@@ -5,7 +5,7 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_util/image_entity.dart';
 
-class HorizontalImageCollection extends StatelessWidget {
+final class HorizontalImageCollection extends StatelessWidget {
   final List<ImageEntity> images;
   final double itemHeight;
   final double itemWidth;
@@ -17,18 +17,19 @@ class HorizontalImageCollection extends StatelessWidget {
   final Function(int)? onDelete;
   final double dim;
 
-  const HorizontalImageCollection(
-      {super.key,
-      required this.images,
-      this.itemHeight = 120,
-      this.itemWidth = 120,
-      this.spacing = 8,
-      this.contentInsets = const EdgeInsets.symmetric(horizontal: 24),
-      this.selectedIndex = 0,
-      this.showSelectedBorder = false,
-      this.onTap,
-      this.onDelete,
-      this.dim = 0});
+  const HorizontalImageCollection({
+    super.key,
+    required this.images,
+    this.itemHeight = 120,
+    this.itemWidth = 120,
+    this.spacing = 8,
+    this.contentInsets = const EdgeInsets.symmetric(horizontal: 24),
+    this.selectedIndex = 0,
+    this.showSelectedBorder = true,
+    this.onTap,
+    this.onDelete,
+    this.dim = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +41,17 @@ class HorizontalImageCollection extends StatelessWidget {
         itemCount: images.length,
         itemBuilder: (context, index) {
           final isSelected = index == selectedIndex;
-          final borderColor = isSelected ? YHColor.primary : null;
-          final borderWidth = isSelected ? 2.0 : 0.0;
+          final borderColor =
+              showSelectedBorder && isSelected ? YHColor.primary : null;
 
           return YHCard(
             cornerRadius: 8,
-            borderColor: showSelectedBorder ? borderColor : null,
-            borderWidth: showSelectedBorder ? borderWidth : 0.0,
+            borderColor: borderColor,
+            borderWidth: 2,
             margin: EdgeInsets.only(
                 right: index == images.length - 1 ? 0 : spacing),
             onTap: () => onTap?.call(index),
+            useShadow: false,
             child: Stack(
               alignment: Alignment.topRight,
               children: [

@@ -97,7 +97,6 @@ final class ImageDetailPageState extends State<ImageDetailPage> {
                 itemHeight: 56,
                 itemWidth: 56,
                 selectedIndex: _currentIndex,
-                showSelectedBorder: true,
                 onTap: (index) {
                   _pageController.jumpToPage(index);
                   setState(() {
