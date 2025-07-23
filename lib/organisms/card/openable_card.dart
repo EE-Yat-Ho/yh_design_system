@@ -31,30 +31,44 @@ final class YHOpenableCard extends StatelessWidget {
   const YHOpenableCard({
     super.key,
     required this.object,
-    required this.onTap,
-    this.onLongPress,
-    this.isSelected = false,
+    // 레이아웃
+    this.dense = false,
     this.margin = const EdgeInsets.only(bottom: 4),
+    this.contentPadding = const EdgeInsets.fromLTRB(12, 0, 12, 0),
+    this.cornerRadius = 20,
+    this.horizontalTitleGap = 12,
+    this.isSelected = false,
+    // 보여줄지 여부들
     this.showAddButton = true,
     this.showArrow = true,
-    this.onTapAddButton,
-    this.cornerRadius = 20,
+    // 그림자
     this.shadowColor,
     this.shadowSpreadRadius = 1,
     this.shadowBlurRadius = 2,
     this.shadowOffset = const Offset(0, 2),
+    // 이벤트
+    required this.onTap,
+    this.onLongPress,
+    this.onTapAddButton,
   });
 
   final OpenableObject object;
+  // 레이아웃
+  final bool dense;
   final bool isSelected;
   final EdgeInsets margin;
+  final double cornerRadius;
+  final double horizontalTitleGap;
+  final EdgeInsets contentPadding;
+  // 보여줄지 여부들
   final bool showAddButton;
   final bool showArrow;
+  // 그림자
   final Color? shadowColor;
-  final double cornerRadius;
   final double shadowSpreadRadius;
   final double shadowBlurRadius;
   final Offset shadowOffset;
+  // 이벤트
   final void Function(String id) onTap;
   final void Function(String id)? onLongPress;
   final void Function(String id)? onTapAddButton;
@@ -77,6 +91,7 @@ final class YHOpenableCard extends StatelessWidget {
 
     List<Widget> stackList = [
       ListTile(
+        dense: dense,
         leading: object.leadingImage.icon(width: 26, height: 26),
         title: YHText(
           text: object.text,
@@ -85,7 +100,8 @@ final class YHOpenableCard extends StatelessWidget {
         ),
         onTap: () => onTap(object.id),
         onLongPress: () => onLongPress?.call(object.id),
-        contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        horizontalTitleGap: 12,
+        contentPadding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: mainRowList,

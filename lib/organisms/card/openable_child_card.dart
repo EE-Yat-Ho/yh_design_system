@@ -33,8 +33,12 @@ final class YHOpenableChildCard extends StatelessWidget {
   const YHOpenableChildCard({
     super.key,
     required this.object,
+    // 레이아웃
+    this.dense = true,
     this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 4),
+    this.contentPadding = const EdgeInsets.fromLTRB(12, 0, 12, 0),
     this.cornerRadius = 20,
+    this.horizontalTitleGap = 12,
     this.minTileHeight = 40,
     // 보여줄지 여부들
     this.showSelectCheck = true,
@@ -52,9 +56,13 @@ final class YHOpenableChildCard extends StatelessWidget {
   });
 
   final ChildObject object;
-  final EdgeInsets margin;
+  // 레이아웃
+  final bool dense;
   final double cornerRadius;
   final double minTileHeight;
+  final double horizontalTitleGap;
+  final EdgeInsets margin;
+  final EdgeInsets contentPadding;
   // 보여줄지 여부들
   final bool showSelectCheck;
   final bool showBookmark;
@@ -73,7 +81,7 @@ final class YHOpenableChildCard extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> list = [
       ListTile(
-        dense: true,
+        dense: dense,
         leading: object.leadingImage.icon(width: 22, height: 22),
         title: YHText(
           text: object.text,
@@ -81,7 +89,8 @@ final class YHOpenableChildCard extends StatelessWidget {
           color: YHColor.black,
           maxLines: 2,
         ),
-        contentPadding: const EdgeInsets.fromLTRB(16, 0, 12, 0),
+        horizontalTitleGap: horizontalTitleGap,
+        contentPadding: contentPadding,
         trailing: trailing(context),
         onTap: () => onTap(object.id),
         onLongPress: () => onLongPress?.call(object.id),

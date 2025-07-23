@@ -23,12 +23,38 @@ final class OpenableList extends StatelessWidget {
     this.showChild = true,
     this.showOpenableArrow = true,
     this.showChildArrow = true,
-    this.openableCardCornerRadius = 20,
-    this.childCardCornerRadius = 20,
+    this.openableDense = false,
+    this.childDense = true,
+    this.openableCardCornerRadius = 12,
+    this.childCardCornerRadius = 12,
+    this.openableCardHorizontalTitleGap = 12,
+    this.childCardHorizontalTitleGap = 12,
+    this.openableCardContentPadding = const EdgeInsets.fromLTRB(12, 0, 12, 0),
+    this.childCardContentPadding = const EdgeInsets.fromLTRB(12, 0, 12, 0),
   });
 
   final List<OpenableObject> objects;
+
+  // 레이아웃
+  final bool openableDense;
+  final bool childDense;
   final String emptyText;
+  final double openableCardCornerRadius;
+  final double childCardCornerRadius;
+  final double openableCardHorizontalTitleGap;
+  final double childCardHorizontalTitleGap;
+  final EdgeInsets openableCardContentPadding;
+  final EdgeInsets childCardContentPadding;
+
+  // 보여줄지 여부들
+  final bool showSelected;
+  final bool showBookmark;
+  final bool showAddButton;
+  final bool showChild;
+  final bool showOpenableArrow;
+  final bool showChildArrow;
+
+  // 이벤트들
   // 열 수 있는 셀 클릭
   final void Function(String openableId, bool isExpand) onTapOpenable;
   final void Function(String openableId)? onLongPressOpenable;
@@ -37,15 +63,6 @@ final class OpenableList extends StatelessWidget {
   final void Function(String openableId, String childId) onTapChild;
   final void Function(String openableId, String childId)? onLongPressChild;
   final void Function(String openableId, String childId)? onBookmarkTapChild;
-
-  final bool showSelected;
-  final bool showBookmark;
-  final bool showAddButton;
-  final bool showChild;
-  final bool showOpenableArrow;
-  final bool showChildArrow;
-  final double openableCardCornerRadius;
-  final double childCardCornerRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +91,12 @@ final class OpenableList extends StatelessWidget {
             backgroundColor: Colors.transparent,
             headerBuilder: (BuildContext context, bool isExpanded) {
               return YHOpenableCard(
+                dense: openableDense,
                 object: openable,
+                horizontalTitleGap: openableCardHorizontalTitleGap,
+                contentPadding: openableCardContentPadding,
                 onTap: (id) {},
-                onTapAddButton: (id) {
-                  onTapAddButton?.call(id);
-                },
+                onTapAddButton: (id) => onTapAddButton?.call(id),
                 isSelected: showSelected &&
                     openable.children.every((o) => o.isSelect) &&
                     openable.children.isNotEmpty,
@@ -91,6 +109,9 @@ final class OpenableList extends StatelessWidget {
               children: openable.children
                   .map((child) => YHOpenableChildCard(
                         object: child,
+                        dense: childDense,
+                        horizontalTitleGap: childCardHorizontalTitleGap,
+                        contentPadding: childCardContentPadding,
                         onTap: (childId) => onTapChild(openable.id, childId),
                         onLongPress: (childId) =>
                             onLongPressChild?.call(openable.id, childId),
