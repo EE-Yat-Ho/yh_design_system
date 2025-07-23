@@ -36,7 +36,7 @@ final class YHOpenableCard extends StatelessWidget {
     this.margin = const EdgeInsets.only(bottom: 4),
     this.contentPadding = const EdgeInsets.fromLTRB(12, 0, 12, 0),
     this.cornerRadius = 20,
-    this.horizontalTitleGap = 12,
+    this.horizontalTitleGap = 10,
     this.isSelected = false,
     // 보여줄지 여부들
     this.showAddButton = true,

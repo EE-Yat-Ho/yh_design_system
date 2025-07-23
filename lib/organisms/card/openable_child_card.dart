@@ -36,7 +36,7 @@ final class YHOpenableChildCard extends StatelessWidget {
     // 레이아웃
     this.dense = true,
     this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 4),
-    this.contentPadding = const EdgeInsets.fromLTRB(12, 0, 12, 0),
+    this.contentPadding = const EdgeInsets.fromLTRB(16, 0, 12, 0),
     this.cornerRadius = 20,
     this.horizontalTitleGap = 12,
     this.minTileHeight = 40,
