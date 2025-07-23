@@ -100,8 +100,8 @@ final class YHOpenableCard extends StatelessWidget {
         ),
         onTap: () => onTap(object.id),
         onLongPress: () => onLongPress?.call(object.id),
-        horizontalTitleGap: 12,
-        contentPadding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+        horizontalTitleGap: horizontalTitleGap,
+        contentPadding: contentPadding,
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: mainRowList,
