@@ -14,8 +14,8 @@ abstract interface class YHImageInterface {
 
 enum YHImage implements YHImageInterface {
   // 로그인
-  icon_apple_24,
-  icon_google_24,
+  icon_apple_216,
+  icon_google_216,
 
   // 기능
   icon_camera_48,
