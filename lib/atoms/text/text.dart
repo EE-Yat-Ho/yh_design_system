@@ -3,16 +3,18 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
 final class YHText extends StatelessWidget {
-  const YHText(
-      {super.key,
-      required this.text,
-      required this.font,
-      required this.color,
-      this.fixWidth,
-      this.maxLines,
-      this.align = TextAlign.left,
-      this.withFlexible = false,
-      this.decoration});
+  const YHText({
+    super.key,
+    required this.text,
+    required this.font,
+    required this.color,
+    this.fixWidth,
+    this.maxLines,
+    this.align = TextAlign.left,
+    this.withFlexible = false,
+    this.decoration,
+    this.overflow,
+  });
 
   final String text;
   final YHFont font;
@@ -20,6 +22,7 @@ final class YHText extends StatelessWidget {
   final int? maxLines;
   final TextAlign align;
   final TextDecoration? decoration;
+  final TextOverflow? overflow;
 
   // Row에 넣을 때 오버플로우를 방지하기 위해, 한번 감싸주는 역할
   final bool withFlexible;
@@ -33,9 +36,10 @@ final class YHText extends StatelessWidget {
       this.text,
       maxLines: maxLines,
       textAlign: align,
-      overflow: maxLines == null
-          ? TextOverflow.visible // 줄 제한 없으면 다 보여줘야함
-          : TextOverflow.ellipsis, // 넘치면 ...처리
+      overflow: overflow ??
+          (maxLines == null
+              ? TextOverflow.visible // 줄 제한 없으면 다 보여줘야함
+              : TextOverflow.ellipsis), // 넘치면 ...처리
     );
 
     if (withFlexible) {
