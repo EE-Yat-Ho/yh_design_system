@@ -35,6 +35,7 @@ final class YHDialog extends StatelessWidget {
     this.columnMainAxisSize = MainAxisSize.min,
     this.titleAlign = TextAlign.center,
     this.subTextAlign = TextAlign.center,
+    this.confirmButtonBackgroundColor,
   });
 
   final String text;
@@ -54,6 +55,7 @@ final class YHDialog extends StatelessWidget {
   final MainAxisSize columnMainAxisSize;
   final TextAlign titleAlign;
   final TextAlign subTextAlign;
+  final YHColor? confirmButtonBackgroundColor;
 
   final String confirmText;
   final void Function() onConfirm;
@@ -141,7 +143,7 @@ final class YHDialog extends StatelessWidget {
           text:
               YHText(text: confirmText, font: buttonFont, color: YHColor.white),
           height: 48,
-          backgroundColor: YHColor.primary,
+          backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
           onTap: () {
             Navigator.pop(context);
             onConfirm();
@@ -178,7 +180,7 @@ final class YHDialog extends StatelessWidget {
               YHText(text: confirmText, font: buttonFont, color: YHColor.white),
           height: 48,
           width: double.infinity,
-          backgroundColor: YHColor.primary,
+          backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
           onTap: () {
             Navigator.pop(context);
             onConfirm();
