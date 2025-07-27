@@ -4,13 +4,14 @@ import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHSolidButton extends StatefulWidget {
+final class YHSolidButton extends StatefulWidget {
   const YHSolidButton({
     super.key,
     this.title,
     this.iconData,
     this.image,
-    this.padding,
+    this.margin,
+    this.padding = const EdgeInsets.fromLTRB(14, 10, 14, 10),
     this.isEnabled = true,
     this.disableColor = YHColor.actionDisabled,
     this.font = YHFont.bold18,
@@ -21,7 +22,8 @@ class YHSolidButton extends StatefulWidget {
   final String? title;
   final IconData? iconData;
   final YHImageInterface? image;
-  final EdgeInsets? padding;
+  final EdgeInsets? margin;
+  final EdgeInsets padding;
   final bool isEnabled;
   final YHColor disableColor;
   final YHFont font;
@@ -32,9 +34,9 @@ class YHSolidButton extends StatefulWidget {
 class _YHSolidButtonState extends State<YHSolidButton> {
   @override
   Widget build(BuildContext context) {
-    if (widget.padding != null) {
+    if (widget.margin != null) {
       return Padding(
-        padding: widget.padding!,
+        padding: widget.margin!,
         child: _button(),
       );
     }
@@ -48,7 +50,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
         backgroundColor: widget.isEnabled
             ? YHColor.primary.color
             : widget.disableColor.color,
-        padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
+        padding: widget.padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
