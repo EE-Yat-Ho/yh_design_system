@@ -23,6 +23,8 @@ enum YHImage implements YHImageInterface {
   icon_photo_48,
   icon_alarm_128,
   icon_refresh_48,
+  icon_search_48,
+  icon_theme_128,
 
   // 색연필 느낌의 체크, 동그라미
   icon_circle_blue_130,
