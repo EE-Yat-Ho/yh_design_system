@@ -94,6 +94,9 @@ final class YHColor {
       YHColor(color: Color.fromRGBO(244, 244, 246, 1));
   static const YHColor note = YHColor(color: Color.fromARGB(255, 255, 146, 10));
 
+  static const YHColor actionSheetText =
+      YHColor(color: Color.fromRGBO(72, 95, 133, 1));
+
   const YHColor({
     required this.color,
   });
