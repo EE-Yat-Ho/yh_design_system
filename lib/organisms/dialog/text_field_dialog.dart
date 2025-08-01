@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
-import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/atoms/text_field/text_editing_controller.dart';
 
-class YHTextFieldDialog extends StatefulWidget {
+final class YHTextFieldDialog extends StatefulWidget {
   YHTextFieldDialog({
     super.key,
-    required this.title,
+    this.title,
+    this.titleWidget,
+    this.icon,
     String? initialValue,
     this.hintText,
     this.confirmText = "확인",
@@ -16,18 +17,18 @@ class YHTextFieldDialog extends StatefulWidget {
     this.maxLength,
     this.keyboardType = TextInputType.text,
     required this.onConfirm,
-    this.image,
   }) {
     textController = YHTextEditingController(text: initialValue);
   }
 
-  final String title;
+  final String? title;
+  final Widget? titleWidget;
   final String? hintText;
   final String confirmText;
   final String cancelText;
+  final Widget? icon;
   final int? maxLength;
   final TextInputType keyboardType;
-  final YHImageInterface? image;
   late final YHTextEditingController textController;
   final void Function(String?) onConfirm;
 
@@ -38,19 +39,16 @@ class YHTextFieldDialog extends StatefulWidget {
 class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
   @override
   Widget build(BuildContext context) {
-    var icon = widget.image == null
-        ? null
-        : SizedBox.fromSize(
-            size: const Size.fromRadius(50), child: widget.image?.icon());
-
     return AlertDialog(
-      icon: icon,
+      icon: widget.icon,
       backgroundColor: YHColor.white.color,
-      title: YHText(
-        text: widget.title,
-        font: YHFont.regular18,
-        color: YHColor.black,
-      ),
+      title: widget.title != null
+          ? YHText(
+              text: widget.title!,
+              font: YHFont.regular18,
+              color: YHColor.black,
+            )
+          : widget.titleWidget,
       content: SingleChildScrollView(
         child: Column(
           children: [
