@@ -22,7 +22,8 @@ final class YHScaffold extends StatelessWidget {
     this.scrollable = false, // 스크롤 가능 여부
     this.scrollController, // 스크롤 컨트롤러
     // SafeArea
-    this.safeAreaFromLTRB, // safeArea. null이면 설정안함
+    this.outsideSafeAreaFromLTRB, // safeArea. null이면 설정안함
+    this.insideSafeAreaFromLTRB, // safeArea. null이면 설정안함
   });
 
   // PopScope
@@ -43,16 +44,19 @@ final class YHScaffold extends StatelessWidget {
   final bool scrollable;
   final ScrollController? scrollController;
   // SafeArea
-  final List<bool>? safeAreaFromLTRB;
+  final List<bool>? outsideSafeAreaFromLTRB;
+  final List<bool>? insideSafeAreaFromLTRB;
 
   @override
   Widget build(BuildContext context) {
     // 조건에 부합하면 해당 위젯 생성하고 조건에 부합하지 않으면 그냥 반환
     return _buildPopScope(
-      _buildPaperBackground(
-        _buildScaffold(
-          _buildSingleChildScrollView(
-            _buildSafeArea(body),
+      _buildOutsideSafeArea(
+        _buildPaperBackground(
+          _buildScaffold(
+            _buildSingleChildScrollView(
+              _buildInsideSafeArea(body),
+            ),
           ),
         ),
       ),
@@ -75,6 +79,20 @@ final class YHScaffold extends StatelessWidget {
     // paperBackground true 이면 YHPaperBackground 사용
     if (paperBackground) {
       return YHPaperBackground(child: child);
+    }
+    return child;
+  }
+
+  Widget _buildOutsideSafeArea(Widget child) {
+    // safeArea 있으면 SafeArea 사용
+    if (outsideSafeAreaFromLTRB != null) {
+      return SafeArea(
+        top: outsideSafeAreaFromLTRB![1],
+        bottom: outsideSafeAreaFromLTRB![3],
+        left: outsideSafeAreaFromLTRB![0],
+        right: outsideSafeAreaFromLTRB![2],
+        child: child,
+      );
     }
     return child;
   }
@@ -102,14 +120,13 @@ final class YHScaffold extends StatelessWidget {
     return child;
   }
 
-  Widget _buildSafeArea(Widget child) {
-    // safeArea 있으면 SafeArea 사용
-    if (safeAreaFromLTRB != null) {
+  Widget _buildInsideSafeArea(Widget child) {
+    if (insideSafeAreaFromLTRB != null) {
       return SafeArea(
-        top: safeAreaFromLTRB![1],
-        bottom: safeAreaFromLTRB![3],
-        left: safeAreaFromLTRB![0],
-        right: safeAreaFromLTRB![2],
+        top: insideSafeAreaFromLTRB![1],
+        bottom: insideSafeAreaFromLTRB![3],
+        left: insideSafeAreaFromLTRB![0],
+        right: insideSafeAreaFromLTRB![2],
         child: child,
       );
     }

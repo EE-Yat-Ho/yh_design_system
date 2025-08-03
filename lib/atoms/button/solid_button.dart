@@ -12,6 +12,7 @@ final class YHSolidButton extends StatefulWidget {
     this.image,
     this.margin,
     this.padding = const EdgeInsets.fromLTRB(14, 10, 14, 10),
+    this.fixedSize,
     this.isEnabled = true,
     this.disableColor = YHColor.actionDisabled,
     this.font = YHFont.bold18,
@@ -24,6 +25,7 @@ final class YHSolidButton extends StatefulWidget {
   final YHImageInterface? image;
   final EdgeInsets? margin;
   final EdgeInsets padding;
+  final Size? fixedSize;
   final bool isEnabled;
   final YHColor disableColor;
   final YHFont font;
@@ -51,6 +53,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
             ? YHColor.primary.color
             : widget.disableColor.color,
         padding: widget.padding,
+        fixedSize: widget.fixedSize,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
