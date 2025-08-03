@@ -7,8 +7,6 @@ final class YHScaffold extends StatelessWidget {
     // PopScope
     this.canPop = true, // 기본 뒤로가기 기능 작동여부 (ios 백스와이프, 안드로이드 백버튼)
     this.onPopInvokedWithResult, // 뒤로가기 감지시 팝업, 광고 등의 행동 하고싶을 때 사용
-    // SafeArea
-    this.safeAreaFromLTRB, // safeArea. null이면 설정안함
     // PaperBackground
     this.paperBackground = true, // 종이 배경 사용 여부
     // Scaffold
@@ -20,13 +18,20 @@ final class YHScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.floatingActionButtonLocation,
     this.floatingActionButtonAnimator,
+    // SingleChildScrollView
+    this.scrollable = false, // 스크롤 가능 여부
+    this.scrollController, // 스크롤 컨트롤러
+    // SafeArea
+    this.safeAreaFromLTRB, // safeArea. null이면 설정안함
   });
 
+  // PopScope
   final bool canPop;
   final Function(bool, dynamic)? onPopInvokedWithResult;
+  // PaperBackground
   final bool paperBackground;
+  // Scaffold
   final bool resizeToAvoidBottomInset;
-  final List<bool>? safeAreaFromLTRB;
   final Color scaffoldBackgroundColor;
   final PreferredSizeWidget? appBar;
   final Widget? bottomNavigationBar;
@@ -34,14 +39,21 @@ final class YHScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final FloatingActionButtonAnimator? floatingActionButtonAnimator;
+  // SingleChildScrollView
+  final bool scrollable;
+  final ScrollController? scrollController;
+  // SafeArea
+  final List<bool>? safeAreaFromLTRB;
 
   @override
   Widget build(BuildContext context) {
     // 조건에 부합하면 해당 위젯 생성하고 조건에 부합하지 않으면 그냥 반환
     return _buildPopScope(
-      _buildSafeArea(
-        _buildPaperBackground(
-          _buildScaffold(body),
+      _buildPaperBackground(
+        _buildScaffold(
+          _buildSingleChildScrollView(
+            _buildSafeArea(body),
+          ),
         ),
       ),
     );
@@ -53,20 +65,6 @@ final class YHScaffold extends StatelessWidget {
       return PopScope(
         canPop: canPop,
         onPopInvokedWithResult: onPopInvokedWithResult,
-        child: child,
-      );
-    }
-    return child;
-  }
-
-  Widget _buildSafeArea(Widget child) {
-    // safeArea 있으면 SafeArea 사용
-    if (safeAreaFromLTRB != null) {
-      return SafeArea(
-        top: safeAreaFromLTRB![1],
-        bottom: safeAreaFromLTRB![3],
-        left: safeAreaFromLTRB![0],
-        right: safeAreaFromLTRB![2],
         child: child,
       );
     }
@@ -92,5 +90,29 @@ final class YHScaffold extends StatelessWidget {
       floatingActionButtonLocation: floatingActionButtonLocation,
       floatingActionButtonAnimator: floatingActionButtonAnimator,
     );
+  }
+
+  Widget _buildSingleChildScrollView(Widget child) {
+    if (scrollable) {
+      return SingleChildScrollView(
+        controller: scrollController,
+        child: child,
+      );
+    }
+    return child;
+  }
+
+  Widget _buildSafeArea(Widget child) {
+    // safeArea 있으면 SafeArea 사용
+    if (safeAreaFromLTRB != null) {
+      return SafeArea(
+        top: safeAreaFromLTRB![1],
+        bottom: safeAreaFromLTRB![3],
+        left: safeAreaFromLTRB![0],
+        right: safeAreaFromLTRB![2],
+        child: child,
+      );
+    }
+    return child;
   }
 }
