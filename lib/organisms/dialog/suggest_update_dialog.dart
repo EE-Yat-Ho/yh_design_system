@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
 import 'package:yh_util/url_launch.dart';
 
@@ -14,10 +15,10 @@ Future<dynamic> showSuggestUpdateDialog(
       context: context,
       builder: (BuildContext innerContext) {
         return YHDialog(
-          text: "새로운 업데이트가 있어요! 업데이트 하실래요?",
+          text: 'dialog.suggest_update.message'.tr(),
           onConfirm: () async => await moveToStore(appStoreId, packageName),
-          confirmText: "스토어로 이동",
-          cancelText: "다음에",
+          confirmText: 'dialog.suggest_update.go_to_store'.tr(),
+          cancelText: 'dialog.suggest_update.later'.tr(),
         );
       });
 }

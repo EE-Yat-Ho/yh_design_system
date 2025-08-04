@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
@@ -13,15 +14,13 @@ Future<dynamic> showContactMailErrorDialog(
       builder: (BuildContext innerContext) {
         return YHDialog(
           image: image,
-          text: text ??
-              "기본 메일앱 사용에 실패하여 직접 문의를 전송하기 어려운 상황입니다.\n\n아래 메일로 문의주시면 친절히 답변해 드리겠습니다! 🙏",
-          subText: "yhlab.team@gmail.com",
+          text: text ?? 'contact_mail.error_message'.tr(),
+          subText: 'contact_mail.email'.tr(),
           onConfirm: () {
-            Clipboard.setData(
-                const ClipboardData(text: "yhlabs.team@gmail.com"));
+            Clipboard.setData(ClipboardData(text: 'contact_mail.email'.tr()));
           },
-          confirmText: "메일 복사",
-          cancelText: "확인",
+          confirmText: 'contact_mail.copy_mail'.tr(),
+          cancelText: 'common.confirm'.tr(),
         );
       });
 }

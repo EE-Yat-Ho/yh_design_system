@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
@@ -12,8 +13,8 @@ final class YHTextFieldDialog extends StatefulWidget {
     this.icon,
     String? initialValue,
     this.hintText,
-    this.confirmText = "확인",
-    this.cancelText = "취소",
+    this.confirmText,
+    this.cancelText,
     this.maxLength,
     this.keyboardType = TextInputType.text,
     required this.onConfirm,
@@ -24,8 +25,8 @@ final class YHTextFieldDialog extends StatefulWidget {
   final String? title;
   final Widget? titleWidget;
   final String? hintText;
-  final String confirmText;
-  final String cancelText;
+  final String? confirmText;
+  final String? cancelText;
   final Widget? icon;
   final int? maxLength;
   final TextInputType keyboardType;
@@ -78,7 +79,7 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
             Navigator.of(context).pop();
           },
           child: YHText(
-            text: widget.cancelText,
+            text: widget.cancelText ?? 'common.cancel'.tr(),
             font: YHFont.regular16,
             color: YHColor.contentSecondary,
           ),
@@ -89,7 +90,7 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
             Navigator.of(context).pop();
           },
           child: YHText(
-            text: widget.confirmText,
+            text: widget.confirmText ?? 'common.confirm'.tr(),
             font: YHFont.regular16,
             color: YHColor.primary,
           ),

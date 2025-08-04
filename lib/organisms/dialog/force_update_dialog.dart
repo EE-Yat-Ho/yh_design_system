@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
 import 'package:yh_util/url_launch.dart';
 
@@ -19,12 +20,12 @@ Future<dynamic> showForceUpdateDialog(
         return PopScope(
             canPop: false, // 뒤로가기 물리버튼 방지
             child: YHDialog(
-              text: "죄송해요, 앱 사용에 꼭 필요한 업데이트가 있어요!",
+              text: 'dialog.force_update.message'.tr(),
               onConfirm: () async {
                 await moveToStore(appStoreId, packageName);
                 exit(0);
               },
-              confirmText: "스토어로 이동",
+              confirmText: 'dialog.force_update.go_to_store'.tr(),
             ));
       });
 }

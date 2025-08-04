@@ -1,0 +1,71 @@
+{
+    "common": {
+        "confirm": "确认",
+        "cancel": "取消",
+        "close": "关闭",
+        "save": "保存",
+        "delete": "删除",
+        "edit": "编辑",
+        "add": "添加",
+        "search": "搜索",
+        "loading": "加载中...",
+        "error": "错误",
+        "success": "成功",
+        "warning": "警告",
+        "info": "信息",
+        "language": "语言"
+    },
+    "design_system": {
+        "button": {
+            "primary": "主要按钮",
+            "secondary": "次要按钮",
+            "outline": "轮廓按钮",
+            "text": "文本按钮"
+        },
+        "text_field": {
+            "hint": "请输入",
+            "error": "发生错误",
+            "required": "此字段为必填项"
+        },
+        "dialog": {
+            "title": "通知",
+            "message": "请输入您的消息"
+        },
+        "segment_control": {
+            "segment_1": "第一个",
+            "segment_2": "第二个",
+            "segment_3": "第三个"
+        }
+    },
+    "contact_mail": {
+        "error_message": "无法使用默认邮件应用，难以直接发送咨询。\n\n请通过以下邮箱联系我们，我们将友好回复！🙏",
+        "email": "yhlab.team@gmail.com",
+        "copy_mail": "复制邮箱"
+    },
+    "dialog": {
+        "login_failure": "登录失败。\n{exception}",
+        "tester_login": {
+            "title": "测试员登录",
+            "hint": "请输入测试员代码"
+        },
+        "suggest_update": {
+            "message": "有新更新！您要更新吗？",
+            "go_to_store": "前往商店",
+            "later": "稍后"
+        },
+        "force_update": {
+            "message": "抱歉，使用应用需要必要的更新！",
+            "go_to_store": "前往商店"
+        },
+        "restart": {
+            "message": "改进已准备就绪！请重启应用。",
+            "exit_app": "退出应用",
+            "notification_title": "改进已应用",
+            "notification_body": "请点击重启应用！"
+        }
+    },
+    "text_field": {
+        "clear": "清除",
+        "placeholder": "请输入"
+    }
+}

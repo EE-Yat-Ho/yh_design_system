@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
 import 'package:yh_util/local_notification.dart';
 
@@ -13,11 +14,13 @@ Future<dynamic> showRestartDialog(BuildContext context) async {
         return PopScope(
             canPop: false, // 뒤로가기 물리버튼 방지
             child: YHDialog(
-                text: "개선사항을 적용할 준비가 되었어요! 앱을 재시작 해주세요.",
-                confirmText: "앱 종료",
+                text: 'dialog.restart.message'.tr(),
+                confirmText: 'dialog.restart.exit_app'.tr(),
                 onConfirm: () async {
                   await showLocalNotification(
-                      1, "개선사항 반영 완료", "앱을 다시 시작하기 위해 눌러주세요!");
+                      1,
+                      'dialog.restart.notification_title'.tr(),
+                      'dialog.restart.notification_body'.tr());
                   exit(0);
                 }));
       });
