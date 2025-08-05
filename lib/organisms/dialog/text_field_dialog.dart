@@ -42,7 +42,7 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       icon: widget.icon,
-      backgroundColor: YHColor.white.color,
+      backgroundColor: YHColor.white,
       title: widget.title != null
           ? YHText(
               text: widget.title!,
@@ -57,15 +57,15 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
               controller: widget.textController,
               decoration: InputDecoration(
                 hintText: widget.hintText,
-                hintStyle: TextStyle(color: YHColor.placeholder.color),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: YHColor.gray400.color),
+                hintStyle: const TextStyle(color: YHColor.textPlaceholder),
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: YHColor.surfaceSub),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: YHColor.primary.color),
+                  borderSide: BorderSide(color: YHColor.primary),
                 ),
               ),
-              style: TextStyle(color: YHColor.black.color),
+              style: const TextStyle(color: YHColor.textDefault),
               maxLength: widget.maxLength,
               keyboardType: widget.keyboardType,
               autofocus: true,
@@ -81,7 +81,7 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
           child: YHText(
             text: widget.cancelText ?? 'common.cancel'.tr(),
             font: YHFont.regular16,
-            color: YHColor.contentSecondary,
+            color: YHColor.textSub,
           ),
         ),
         TextButton(

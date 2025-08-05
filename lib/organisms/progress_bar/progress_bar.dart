@@ -38,7 +38,7 @@ final class YHProgressBar extends StatelessWidget {
       child: Container(
         height: 4,
         decoration: BoxDecoration(
-          color: isActive ? YHColor.primary.color : YHColor.dividerWeak.color,
+          color: isActive ? YHColor.primary : YHColor.surfaceSubStrong,
           borderRadius: BorderRadius.circular(8),
         ),
       ),

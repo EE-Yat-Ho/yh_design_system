@@ -105,5 +105,5 @@ final class YHIndicator {
   static Widget _defaultIndicatorWidget = SizedBox(
       width: 40,
       height: 40,
-      child: CircularProgressIndicator(color: YHColor.primary.color));
+      child: CircularProgressIndicator(color: YHColor.primary));
 }

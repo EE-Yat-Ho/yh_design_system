@@ -43,8 +43,8 @@ class YHCell extends StatelessWidget {
   final bool? initialToggleValue;
   final EdgeInsets margin;
   final EdgeInsets padding;
-  final YHColor backgroundColor;
-  final YHColor? borderColor;
+  final Color backgroundColor;
+  final Color? borderColor;
   final double? borderWidth;
   final double? cornerRadius;
   final bool redDot;
@@ -86,9 +86,9 @@ class YHCell extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        color: backgroundColor.color,
+        color: backgroundColor,
         border: borderColor != null
-            ? Border.all(color: borderColor!.color, width: borderWidth ?? 1)
+            ? Border.all(color: borderColor!, width: borderWidth ?? 1)
             : null,
         borderRadius:
             cornerRadius != null ? BorderRadius.circular(cornerRadius!) : null,

@@ -54,7 +54,7 @@ final class ImageDetailPageState extends State<ImageDetailPage> {
         showBack: false,
         showClose: true,
         rightPadding: 16,
-        foregroundColor: YHColor.contentTertiary,
+        foregroundColor: YHColor.textWhite,
         backgroundColor: YHColor.transparent,
         titleFont: _titleFont,
       ),

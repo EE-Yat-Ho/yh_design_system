@@ -8,12 +8,12 @@ final class YHTab extends StatelessWidget {
     super.key,
     this.height = 40,
     required this.text,
-    this.color = YHColor.contentSecondary,
+    this.color = YHColor.textSub,
     this.font = YHFont.regular16,
   });
 
   final String text;
-  final YHColor color;
+  final Color color;
   final YHFont font;
   final double? height;
 

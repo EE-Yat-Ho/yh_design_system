@@ -15,9 +15,9 @@ final class YHTabbar extends StatefulWidget {
     this.isScrollable = false,
     this.backgroundColor,
     this.selectedColor,
-    this.unselectedColor = YHColor.contentSecondary,
+    this.unselectedColor = YHColor.textSub,
     this.indicatorColor,
-    this.dividerColor = YHColor.outline,
+    this.dividerColor = YHColor.surfaceSub,
     this.indicatorSize = TabBarIndicatorSize.label,
     this.tabAlignment,
     required this.onTap,
@@ -31,11 +31,11 @@ final class YHTabbar extends StatefulWidget {
   final EdgeInsets padding;
   final EdgeInsets labelPadding;
   final bool isScrollable;
-  final YHColor? backgroundColor;
-  final YHColor? selectedColor;
-  final YHColor unselectedColor;
-  final YHColor? indicatorColor;
-  final YHColor dividerColor;
+  final Color? backgroundColor;
+  final Color? selectedColor;
+  final Color unselectedColor;
+  final Color? indicatorColor;
+  final Color dividerColor;
   final TabBarIndicatorSize indicatorSize;
   final TabAlignment? tabAlignment;
 
@@ -78,7 +78,7 @@ final class YHTabbarState extends State<YHTabbar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.backgroundColor?.color,
+      color: widget.backgroundColor,
       child: TabBar(
         controller: _tabController,
         isScrollable: widget.isScrollable,
@@ -97,12 +97,11 @@ final class YHTabbarState extends State<YHTabbar>
                   font: widget.font,
                 ))
             .toList(),
-        dividerColor: widget.dividerColor.color,
+        dividerColor: widget.dividerColor,
         indicatorSize: widget.indicatorSize,
         indicator: UnderlineTabIndicator(
             borderSide: BorderSide(
-                color: widget.indicatorColor?.color ?? YHColor.primary.color,
-                width: 2)),
+                color: widget.indicatorColor ?? YHColor.primary, width: 2)),
         onTap: widget.onTap,
       ),
     );

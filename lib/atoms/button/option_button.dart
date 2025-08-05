@@ -21,7 +21,7 @@ final class YHOptionButton extends StatelessWidget {
   final String title;
   final String description;
   final YHImageInterface image;
-  final YHColor backgroundColor;
+  final Color backgroundColor;
   final double elevation;
 
   @override
@@ -32,7 +32,7 @@ final class YHOptionButton extends StatelessWidget {
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
-          backgroundColor: backgroundColor.color,
+          backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10), // <-- Radius
           ),

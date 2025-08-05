@@ -28,12 +28,12 @@ final class YHTextFieldCard extends StatelessWidget {
     this.textAlignVertical,
     this.textDirection,
     // 색 관련
-    this.textColor = YHColor.contentPrimary,
+    this.textColor = YHColor.textDefault,
     this.enabledBackgroundColor = YHColor.white,
-    this.disabledBackgroundColor = YHColor.disable,
-    this.borderColor = YHColor.outline,
-    this.disabledBorderColor = YHColor.disable,
-    this.enabledBorderColor = YHColor.outline,
+    this.disabledBackgroundColor = YHColor.surfaceDisabled,
+    this.borderColor = YHColor.surfaceDisabled,
+    this.disabledBorderColor = YHColor.surfaceDisabled,
+    this.enabledBorderColor = YHColor.surfaceSub,
     this.focusedBorderColor, // = YHColor.primary
     // 그림자
     this.useShadow = false,
@@ -65,13 +65,13 @@ final class YHTextFieldCard extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
   // 색 관련
-  final YHColor textColor;
-  final YHColor enabledBackgroundColor;
-  final YHColor disabledBackgroundColor;
-  final YHColor borderColor;
-  final YHColor disabledBorderColor;
-  final YHColor? focusedBorderColor;
-  final YHColor enabledBorderColor;
+  final Color textColor;
+  final Color enabledBackgroundColor;
+  final Color disabledBackgroundColor;
+  final Color borderColor;
+  final Color disabledBorderColor;
+  final Color? focusedBorderColor;
+  final Color enabledBorderColor;
   // 그림자
   final bool useShadow;
   final List<BoxShadow>? boxShadow;

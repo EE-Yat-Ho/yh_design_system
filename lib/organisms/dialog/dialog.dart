@@ -55,7 +55,7 @@ final class YHDialog extends StatelessWidget {
   final MainAxisSize columnMainAxisSize;
   final TextAlign titleAlign;
   final TextAlign subTextAlign;
-  final YHColor? confirmButtonBackgroundColor;
+  final Color? confirmButtonBackgroundColor;
 
   final String confirmText;
   final void Function() onConfirm;
@@ -68,7 +68,7 @@ final class YHDialog extends StatelessWidget {
     final double topPadding = image == null ? 20 : 16;
 
     return Dialog(
-      backgroundColor: YHColor.surface05.color,
+      backgroundColor: YHColor.surfaceDefault,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: YHColumn(
         padding: EdgeInsets.fromLTRB(20, topPadding, 20, 20),
@@ -102,7 +102,7 @@ final class YHDialog extends StatelessWidget {
     return YHText(
         text: text,
         font: titleFont,
-        color: YHColor.contentPrimary,
+        color: YHColor.textDefault,
         maxLines: 15,
         align: titleAlign);
   }
@@ -111,7 +111,7 @@ final class YHDialog extends StatelessWidget {
     return YHText(
         text: subText!,
         font: subTextFont,
-        color: YHColor.contentSecondary,
+        color: YHColor.textSub,
         maxLines: 15,
         align: subTextAlign);
   }
@@ -123,7 +123,7 @@ final class YHDialog extends StatelessWidget {
         if (cancelText != null)
           YHButton(
             cornerRadius: buttonCornerRadius ?? 8,
-            borderColor: YHColor.outline,
+            borderColor: YHColor.surfaceSub,
             borderWidth: 1,
             expands: true,
             text: YHText(
@@ -160,7 +160,7 @@ final class YHDialog extends StatelessWidget {
         if (cancelText != null)
           YHButton(
             cornerRadius: buttonCornerRadius ?? 24,
-            borderColor: YHColor.outline,
+            borderColor: YHColor.surfaceSub,
             borderWidth: 1,
             text: YHText(
                 text: cancelText!, font: buttonFont, color: YHColor.black),

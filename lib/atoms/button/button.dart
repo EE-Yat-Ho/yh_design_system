@@ -47,14 +47,14 @@ final class YHButton extends StatelessWidget {
   final double spacing;
   final void Function()? onTap;
 
-  final YHColor? backgroundColor;
+  final Color? backgroundColor;
 
   final bool enable;
   final bool useShadow;
   final bool redDot;
   final double redDotInset;
   final double redDotSize;
-  final YHColor? borderColor;
+  final Color? borderColor;
   final double borderWidth;
   final double cornerRadius;
 
@@ -66,8 +66,8 @@ final class YHButton extends StatelessWidget {
     return expands ? Expanded(child: _body()) : _body();
   }
 
-  YHColor get _backgroundColor => backgroundColor ?? YHColor.primary;
-  YHColor get _borderColor => borderColor ?? YHColor.primary;
+  Color get _backgroundColor => backgroundColor ?? YHColor.primary;
+  Color get _borderColor => borderColor ?? YHColor.primary;
 
   Widget _body() {
     var children = <Widget>[];
@@ -101,12 +101,12 @@ final class YHButton extends StatelessWidget {
       highlightElevation: useShadow ? 1 : 0,
       hoverElevation: 0,
       disabledElevation: 1,
-      fillColor: enable ? _backgroundColor.color : YHColor.actionDisabled.color,
+      fillColor: enable ? _backgroundColor : YHColor.textDisabled,
       constraints: BoxConstraints(minHeight: height ?? 0, minWidth: width ?? 0),
       onPressed: enable ? onTap : null,
       shape: RoundedRectangleBorder(
         side: borderWidth > 0
-            ? BorderSide(color: _borderColor.color, width: borderWidth)
+            ? BorderSide(color: _borderColor, width: borderWidth)
             : BorderSide.none,
         borderRadius: BorderRadius.all(Radius.circular(cornerRadius)),
       ),

@@ -123,7 +123,7 @@ final class YHOpenableChildCard extends StatelessWidget {
       YHText(
         text: object.rightText ?? "",
         font: YHFont.regular16,
-        color: YHColor.gray,
+        color: YHColor.textSub,
       ),
     ];
 
@@ -132,7 +132,7 @@ final class YHOpenableChildCard extends StatelessWidget {
         const SizedBox(width: 4),
         YHCard(
           borderWidth: 1,
-          borderColor: YHColor.gray90,
+          borderColor: YHColor.surfaceSub,
           backgroundColor: YHColor.transparent,
           cornerRadius: 4,
           useShadow: false,

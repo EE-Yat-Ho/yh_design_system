@@ -13,27 +13,27 @@ class YHDockedButton extends StatelessWidget {
     required this.onTapRight,
     this.rightText = "확인",
     this.rightBackgroundColor,
-    this.rightTextColor = YHColor.contentTertiary,
+    this.rightTextColor = YHColor.textWhite,
     this.rightBorderColor,
     this.rightEnabled = true,
     this.onTapLeft,
     this.leftText = "취소",
-    this.leftBackgroundColor = YHColor.surface05,
-    this.leftTextColor = YHColor.contentPrimary,
-    this.leftBorderColor = YHColor.outline,
+    this.leftBackgroundColor = YHColor.surfaceDefault,
+    this.leftTextColor = YHColor.textDefault,
+    this.leftBorderColor = YHColor.surfaceSub,
   });
 
   final void Function() onTapRight;
   final String? rightText;
-  final YHColor? rightBackgroundColor;
-  final YHColor rightTextColor;
-  final YHColor? rightBorderColor;
+  final Color? rightBackgroundColor;
+  final Color rightTextColor;
+  final Color? rightBorderColor;
   final bool rightEnabled;
   final void Function()? onTapLeft;
   final String? leftText;
-  final YHColor leftBackgroundColor;
-  final YHColor leftTextColor;
-  final YHColor? leftBorderColor;
+  final Color leftBackgroundColor;
+  final Color leftTextColor;
+  final Color? leftBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +41,13 @@ class YHDockedButton extends StatelessWidget {
       width: double.infinity,
       height: 88,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
           colors: [
-            YHColor.white.color,
-            YHColor.white.color.withValues(alpha: 0),
+            YHColor.white,
+            YHColor.transparent,
           ],
         ),
       ),

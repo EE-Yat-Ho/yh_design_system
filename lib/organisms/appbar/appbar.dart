@@ -17,8 +17,8 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? right;
   final double? rightPadding;
   final double? height;
-  final YHColor backgroundColor;
-  final YHColor foregroundColor;
+  final Color backgroundColor;
+  final Color foregroundColor;
   final void Function()? backButtonOnTap;
   final void Function()? titleOnTap;
 
@@ -35,7 +35,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.rightPadding,
     this.height = kToolbarHeight,
     this.backgroundColor = YHColor.transparent,
-    this.foregroundColor = YHColor.contentPrimary,
+    this.foregroundColor = YHColor.textDefault,
     this.backButtonOnTap,
     this.titleOnTap,
   });
@@ -80,8 +80,8 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       ]),
       leadingWidth: leftWidth ?? (titleWidget == null ? double.infinity : null),
       title: titleWidget,
-      backgroundColor: backgroundColor.color,
-      foregroundColor: foregroundColor.color,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
       centerTitle: true,
     );
   }
@@ -104,7 +104,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
-      image: YHImage.icon_close_24.icon(color: YHColor.contentTertiary),
+      image: YHImage.icon_close_24.icon(color: YHColor.iconWhite),
       width: 40,
       height: 40,
       backgroundColor: YHColor.opacity,

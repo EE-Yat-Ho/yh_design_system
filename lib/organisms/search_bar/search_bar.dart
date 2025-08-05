@@ -33,12 +33,12 @@ final class YHSearchBar extends StatelessWidget {
         height: 42,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: YHColor.surface03.color,
+          color: YHColor.surfaceSub,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           children: [
-            Icon(Icons.search, color: YHColor.contentSecondary.color),
+            const Icon(Icons.search, color: YHColor.iconSub),
             const SizedBox(width: 8),
             Expanded(
               child: YHTextField(
@@ -49,8 +49,8 @@ final class YHSearchBar extends StatelessWidget {
                 borderType: BorderType.none,
                 padding: const EdgeInsets.all(0),
                 isDense: true,
-                enabledBackgroundColor: YHColor.surface03,
-                disabledBackgroundColor: YHColor.surface03,
+                enabledBackgroundColor: YHColor.surfaceSub,
+                disabledBackgroundColor: YHColor.surfaceSub,
                 font: YHFont.regular16,
                 right: null,
                 enabled: textFieldEnabled,
@@ -69,7 +69,7 @@ final class YHSearchBar extends StatelessWidget {
             //   text: const YHText(
             //     text: '취소',
             //     font: YHFont.regular14,
-            //     color: YHColor.contentPrimary,
+            //     color: YHColor.textDefault,
             //   ),
             // ),
           ],

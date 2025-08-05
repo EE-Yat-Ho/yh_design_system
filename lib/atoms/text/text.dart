@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
 final class YHText extends StatelessWidget {
@@ -18,7 +17,7 @@ final class YHText extends StatelessWidget {
 
   final String text;
   final YHFont font;
-  final YHColor color;
+  final Color color;
   final int? maxLines;
   final TextAlign align;
   final TextDecoration? decoration;
@@ -32,7 +31,7 @@ final class YHText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Text text = Text(
-      style: font.style(color: color.color, decoration: decoration),
+      style: font.style(color: color, decoration: decoration),
       this.text,
       maxLines: maxLines,
       textAlign: align,

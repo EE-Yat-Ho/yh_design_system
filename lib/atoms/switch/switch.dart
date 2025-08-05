@@ -12,7 +12,7 @@ class YHSwitch extends StatefulWidget {
     this.ballPadding = 2.0,
     this.onChanged,
     this.onBGColor,
-    this.offBGColor = YHColor.actionDisabled,
+    this.offBGColor = YHColor.textDisabled,
     this.onBallColor = YHColor.white,
     this.offBallColor = YHColor.white,
     this.ballShadow = false,
@@ -26,10 +26,10 @@ class YHSwitch extends StatefulWidget {
   final double ballSize;
   final double ballPadding;
   final void Function(bool)? onChanged;
-  final YHColor? onBGColor;
-  final YHColor offBGColor;
-  final YHColor onBallColor;
-  final YHColor offBallColor;
+  final Color? onBGColor;
+  final Color offBGColor;
+  final Color onBallColor;
+  final Color offBallColor;
   final bool ballShadow;
   final EdgeInsets? padding;
   @override
@@ -38,8 +38,8 @@ class YHSwitch extends StatefulWidget {
 
 class YHSwitchState extends State<YHSwitch> {
   late bool isOn = widget.initialValue;
-  late Color onBGColor = widget.onBGColor?.color ?? YHColor.primary.color;
-  late Color switchColor = isOn ? onBGColor : widget.offBGColor.color;
+  late Color onBGColor = widget.onBGColor ?? YHColor.primary;
+  late Color switchColor = isOn ? onBGColor : widget.offBGColor;
   late double switchLeft = isOn
       ? (widget.width - widget.ballSize) - widget.ballPadding
       : widget.ballPadding;
@@ -74,7 +74,7 @@ class YHSwitchState extends State<YHSwitch> {
           switchColor = onBGColor;
           switchLeft = (widget.width - widget.ballSize) - widget.ballPadding;
         } else {
-          switchColor = widget.offBGColor.color;
+          switchColor = widget.offBGColor;
           switchLeft = widget.ballPadding;
         }
 
@@ -111,8 +111,7 @@ class YHSwitchState extends State<YHSwitch> {
                       )
                     ]
                   : [],
-              color:
-                  isOn ? widget.offBallColor.color : widget.onBallColor.color,
+              color: isOn ? widget.offBallColor : widget.onBallColor,
             ),
           ),
         ),

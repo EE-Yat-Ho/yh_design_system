@@ -7,7 +7,7 @@ final class YHCard extends StatelessWidget {
     super.key,
     this.margin = EdgeInsets.zero,
     this.padding = EdgeInsets.zero,
-    this.backgroundColor = YHColor.surface05,
+    this.backgroundColor = YHColor.surfaceDefault,
     this.borderColor,
     this.borderWidth,
     this.cornerRadius = 12,
@@ -27,8 +27,8 @@ final class YHCard extends StatelessWidget {
 
   final EdgeInsets margin;
   final EdgeInsets padding;
-  final YHColor backgroundColor;
-  final YHColor? borderColor;
+  final Color backgroundColor;
+  final Color? borderColor;
   final double? borderWidth;
   final double cornerRadius;
   final void Function()? onTap;
@@ -59,12 +59,12 @@ final class YHCard extends StatelessWidget {
       margin: margin,
       // padding: padding, 터치 애니메이션에 포함되어야 해서, YHInkWell에 배치.
       decoration: BoxDecoration(
-        color: backgroundColor.color,
+        color: backgroundColor,
         boxShadow: useShadow ? bs : [],
         borderRadius: BorderRadius.circular(cornerRadius),
         border: borderColor != null && borderWidth != null
             ? Border.all(
-                color: borderColor!.color,
+                color: borderColor!,
                 width: borderWidth!,
               )
             : null,

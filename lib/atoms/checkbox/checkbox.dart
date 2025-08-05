@@ -11,7 +11,7 @@ final class YHCheckbox extends StatefulWidget {
     this.checkIconSize = 12.0,
     this.checkColor = YHColor.white,
     this.activeColor,
-    this.borderColor = YHColor.actionDisabled,
+    this.borderColor = YHColor.textDisabled,
     this.borderRadius = 2.0,
     this.borderWidth = 1.5,
     this.animationDuration = const Duration(milliseconds: 200),
@@ -22,9 +22,9 @@ final class YHCheckbox extends StatefulWidget {
   final double tapTargetSize;
   final double checkboxSize;
   final double checkIconSize;
-  final YHColor checkColor;
-  final YHColor? activeColor;
-  final YHColor borderColor;
+  final Color checkColor;
+  final Color? activeColor;
+  final Color borderColor;
   final double borderRadius;
   final double borderWidth;
   final Duration animationDuration;
@@ -43,7 +43,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
   @override
   void initState() {
     super.initState();
-    final activeColor = widget.activeColor?.color ?? YHColor.primary.color;
+    final activeColor = widget.activeColor ?? YHColor.primary;
 
     _animationController = AnimationController(
       duration: widget.animationDuration,
@@ -60,7 +60,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
     ).animate(_checkAnimation);
 
     _borderColorAnimation = ColorTween(
-      begin: widget.borderColor.color,
+      begin: widget.borderColor,
       end: activeColor,
     ).animate(_checkAnimation);
 
@@ -72,7 +72,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
   @override
   void didUpdateWidget(YHCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final activeColor = widget.activeColor?.color ?? YHColor.primary.color;
+    final activeColor = widget.activeColor ?? YHColor.primary;
 
     if (widget.value != oldWidget.value) {
       if (widget.value) {
@@ -93,7 +93,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
       ).animate(_checkAnimation);
 
       _borderColorAnimation = ColorTween(
-        begin: widget.borderColor.color,
+        begin: widget.borderColor,
         end: activeColor,
       ).animate(_checkAnimation);
     }
@@ -121,8 +121,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
                 height: widget.checkboxSize,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color:
-                        _borderColorAnimation.value ?? widget.borderColor.color,
+                    color: _borderColorAnimation.value ?? widget.borderColor,
                     width: widget.borderWidth,
                   ),
                   borderRadius: BorderRadius.circular(widget.borderRadius),
@@ -131,7 +130,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
                 child: CustomPaint(
                   painter: _CheckMarkPainter(
                     progress: _checkAnimation,
-                    color: widget.checkColor.color,
+                    color: widget.checkColor,
                   ),
                   size: Size(widget.checkIconSize, widget.checkIconSize),
                 ),

@@ -16,8 +16,8 @@ final class YHChip extends StatelessWidget {
   });
 
   final String text;
-  final YHColor? backgroundColor;
-  final YHColor? textColor;
+  final Color? backgroundColor;
+  final Color? textColor;
   final EdgeInsets? margin;
   final EdgeInsets padding;
   final double borderRadius;
@@ -29,9 +29,8 @@ final class YHChip extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        color: (backgroundColor ?? YHColor.primary)
-            .color
-            .withAlpha((0.1 * 255).toInt()),
+        color:
+            (backgroundColor ?? YHColor.primary).withAlpha((0.1 * 255).toInt()),
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: YHText(

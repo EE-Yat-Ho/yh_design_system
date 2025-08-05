@@ -27,7 +27,7 @@ final class GuideMessage extends StatelessWidget {
           child: YHText(
             text: message,
             font: YHFont.regular14,
-            color: YHColor.contentSecondary,
+            color: YHColor.textSub,
           ),
         ),
       ],

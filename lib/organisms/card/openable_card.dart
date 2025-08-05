@@ -78,7 +78,7 @@ final class YHOpenableCard extends StatelessWidget {
       YHText(
         text: object.rightText ?? "", // bag.numberOfNote.toString(),
         font: YHFont.regular16,
-        color: YHColor.gray,
+        color: YHColor.textSub,
       ),
       const SizedBox(width: 8),
     ];
@@ -119,9 +119,9 @@ final class YHOpenableCard extends StatelessWidget {
               onTapAddButton!(object.id);
             }
           },
-          rightWidget: Icon(
+          rightWidget: const Icon(
             Icons.add,
-            color: YHColor.white.color,
+            color: YHColor.iconWhite,
             size: 18,
           ),
         ),

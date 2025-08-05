@@ -30,14 +30,14 @@ final class YHTextField extends StatelessWidget {
     this.textAlignVertical,
     this.textDirection,
     // 색 관련
-    this.textColor = YHColor.contentPrimary,
+    this.textColor = YHColor.textDefault,
     this.enabledBackgroundColor = YHColor.white,
-    this.disabledBackgroundColor = YHColor.disable,
-    this.borderColor = YHColor.outline, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
-    this.disabledBorderColor = YHColor.disable,
+    this.disabledBackgroundColor = YHColor.surfaceDisabled,
+    this.borderColor = YHColor.surfaceDisabled, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
+    this.disabledBorderColor = YHColor.surfaceDisabled,
     this.focusedBorderColor, // = YHColor.primary
-    this.enabledBorderColor = YHColor.outline,
-    this.errorBorderColor = YHColor.supportWarning,
+    this.enabledBorderColor = YHColor.surfaceSub,
+    this.errorBorderColor = YHColor.surfaceError,
   });
 
   final String? labelText;
@@ -62,14 +62,14 @@ final class YHTextField extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
   // 색 관련
-  final YHColor textColor;
-  final YHColor enabledBackgroundColor;
-  final YHColor disabledBackgroundColor;
-  final YHColor borderColor; // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
-  final YHColor disabledBorderColor;
-  final YHColor? focusedBorderColor;
-  final YHColor enabledBorderColor;
-  final YHColor errorBorderColor;
+  final Color textColor;
+  final Color enabledBackgroundColor;
+  final Color disabledBackgroundColor;
+  final Color borderColor; // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
+  final Color disabledBorderColor;
+  final Color? focusedBorderColor;
+  final Color enabledBorderColor;
+  final Color errorBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +92,7 @@ final class YHTextField extends StatelessWidget {
   }
 
   Widget _textField(BuildContext context) {
-    final bgColor =
-        enabled ? enabledBackgroundColor.color : disabledBackgroundColor.color;
+    final bgColor = enabled ? enabledBackgroundColor : disabledBackgroundColor;
 
     InputBorder border;
     InputBorder enabledBorder;
@@ -101,12 +100,11 @@ final class YHTextField extends StatelessWidget {
     InputBorder disabledBorder;
     InputBorder errorBorder;
 
-    final borderColor = this.borderColor.color;
-    final enabledBorderColor = this.enabledBorderColor.color;
-    final focusedBorderColor =
-        this.focusedBorderColor?.color ?? YHColor.primary.color;
-    final disabledBorderColor = this.disabledBorderColor.color;
-    final errorBorderColor = this.errorBorderColor.color;
+    final borderColor = this.borderColor;
+    final enabledBorderColor = this.enabledBorderColor;
+    final focusedBorderColor = this.focusedBorderColor ?? YHColor.primary;
+    final disabledBorderColor = this.disabledBorderColor;
+    final errorBorderColor = this.errorBorderColor;
 
     switch (borderType) {
       case BorderType.outline:
@@ -160,7 +158,7 @@ final class YHTextField extends StatelessWidget {
 
     return TextField(
       expands: expands,
-      cursorColor: YHColor.primary.color,
+      cursorColor: YHColor.primary,
       keyboardType: textInputType ?? TextInputType.multiline,
       maxLines: obscureText ? 1 : maxLines,
       controller: controller,
@@ -173,7 +171,7 @@ final class YHTextField extends StatelessWidget {
         labelText: labelText,
         isDense: isDense,
         hintText: placeholder,
-        hintStyle: font.style(color: YHColor.placeholder.color),
+        hintStyle: font.style(color: YHColor.textPlaceholder),
         fillColor: bgColor,
         filled: true,
         border: border,
@@ -183,7 +181,7 @@ final class YHTextField extends StatelessWidget {
         errorBorder: errorBorder,
         contentPadding: padding,
       ),
-      style: font.style(color: textColor.color),
+      style: font.style(color: textColor),
       textAlign: textAlign,
       textAlignVertical: textAlignVertical,
       textDirection: textDirection,
@@ -197,7 +195,7 @@ final class YHTextField extends StatelessWidget {
         controller?.clear();
       },
       autoResize: true,
-      backgroundColor: YHColor.opacity,
+      backgroundColor: YHColor.transparent,
       useShadow: false,
       image: Image.asset(
         "assets/images/text_field_clear_icon.png",

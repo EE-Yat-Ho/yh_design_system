@@ -66,7 +66,7 @@ final class _YHSegmentControlState extends State<YHSegmentControl>
 
           return Container(
             decoration: BoxDecoration(
-              color: YHColor.surface02.color,
+              color: YHColor.surfaceSub,
               borderRadius: BorderRadius.circular(24),
             ),
             padding: const EdgeInsets.all(4),
@@ -87,9 +87,9 @@ final class _YHSegmentControlState extends State<YHSegmentControl>
                         width: segmentWidth,
                         height: 40, // 세그먼트 높이와 맞춤
                         decoration: BoxDecoration(
-                          color: YHColor.white.color,
+                          color: YHColor.white,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: YHColor.outline.color),
+                          border: Border.all(color: YHColor.surfaceSub),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withAlpha(25),
@@ -124,8 +124,8 @@ final class _YHSegmentControlState extends State<YHSegmentControl>
                               curve: Curves.easeInOut,
                               style: TextStyle(
                                 color: isSelected
-                                    ? YHColor.contentPrimary.color
-                                    : YHColor.contentSecondary.color,
+                                    ? YHColor.textDefault
+                                    : YHColor.textSub,
                                 fontSize: YHFont.regular14.fontSize,
                                 fontWeight: YHFont.regular14.fontWeight,
                                 fontFamily: YHFont.fontFamily.name,
