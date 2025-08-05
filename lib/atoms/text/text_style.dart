@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
-class YHTextStyle {
+final class YHTextStyle {
   const YHTextStyle({
     required this.font,
     required this.color,
   });
 
   final YHFont font;
-  final YHColor color;
+  final Color color;
 
   TextStyle textStyle() {
     return TextStyle(
-        color: color.color,
-        fontSize: font.fontSize,
-        fontWeight: font.fontWeight);
+        color: color, fontSize: font.fontSize, fontWeight: font.fontWeight);
   }
 }
