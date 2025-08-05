@@ -86,7 +86,6 @@ final class YHColor {
   //     YHColor(color: Color.fromARGB(255, 255, 152, 0));
   // static const YHColor yellow =
   //     YHColor(color: Color.fromARGB(255, 255, 215, 0));
-  // static const YHColor gold = YHColor(color: Color.fromARGB(255, 255, 187, 0));
 
   // static const YHColor optionsBG =
   //     YHColor(color: Color.fromARGB(255, 220, 223, 228));
@@ -281,6 +280,9 @@ final class YHColor {
   static const Color pink800 = Color(0xFF9D174D);
   static const Color pink900 = Color(0xFF831743);
   static const Color pink950 = Color(0xFF500724);
+
+  // Gold
+  static const Color gold = Color(0xFFFFBB01);
 
   // Utility methods for withAlpha
   static Color withAlpha(Color color, int alpha) {
