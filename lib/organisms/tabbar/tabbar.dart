@@ -17,7 +17,7 @@ final class YHTabbar extends StatefulWidget {
     this.selectedColor,
     this.unselectedColor = YHColor.textSub,
     this.indicatorColor,
-    this.dividerColor = YHColor.surfaceSub,
+    this.dividerColor = YHColor.strokeNeutral,
     this.indicatorSize = TabBarIndicatorSize.label,
     this.tabAlignment,
     required this.onTap,

@@ -3,15 +3,6 @@
 import 'package:flutter/material.dart';
 
 final class YHColor {
-  // static YHColor primary =
-  //     const YHColor(color: Color.fromARGB(255, 75, 130, 255));
-  // static YHColor primary_a20 =
-  //     YHColor(color: primary.color.withAlpha((0.2 * 255).toInt()));
-  // static YHColor primary_a30 =
-  //     YHColor(color: primary.color.withAlpha((0.3 * 255).toInt()));
-  // static YHColor primary_a40 =
-  //     YHColor(color: primary.color.withAlpha((0.4 * 255).toInt()));
-
   // static const YHColor disable =
   //     YHColor(color: Color.fromARGB(255, 172, 172, 172));
   // static const YHColor actionDisabled =
@@ -52,67 +43,137 @@ final class YHColor {
   // static const YHColor gray90 =
   //     YHColor(color: Color.fromRGBO(213, 220, 229, 1));
 
-  // static const YHColor gray50 =
-  //     YHColor(color: Color.fromRGBO(249, 249, 249, 1));
-  // static const YHColor gray100 =
-  //     YHColor(color: Color.fromRGBO(231, 231, 231, 1));
-  // static const YHColor gray200 =
-  //     YHColor(color: Color.fromRGBO(229, 229, 229, 1));
-  // static const YHColor gray300 =
-  //     YHColor(color: Color.fromRGBO(217, 217, 217, 1));
-  // static const YHColor gray400 =
-  //     YHColor(color: Color.fromRGBO(209, 209, 209, 1));
-  // static const YHColor gray500 =
-  //     YHColor(color: Color.fromRGBO(198, 198, 198, 1));
-  // static const YHColor gray600 =
-  //     YHColor(color: Color.fromRGBO(180, 180, 180, 1));
-  // static const YHColor gray700 =
-  //     YHColor(color: Color.fromRGBO(141, 141, 141, 1));
-  // static const YHColor gray800 =
-  //     YHColor(color: Color.fromRGBO(109, 109, 109, 1));
-  // static const YHColor gray900 = YHColor(color: Color.fromRGBO(83, 83, 83, 1));
-
-  // static const YHColor white =
-  //     YHColor(color: Color.fromARGB(255, 255, 255, 255));
-  // static const YHColor gray =
-  //     YHColor(color: Color.fromARGB(255, 172, 172, 172));
-  // static const YHColor black = YHColor(color: Color.fromARGB(255, 17, 17, 17));
-  // static const YHColor transparent =
-  //     YHColor(color: Color.fromRGBO(255, 255, 255, 0));
-  // static const YHColor opacity = YHColor(color: Color.fromRGBO(0, 0, 0, 0));
-
-  // static const YHColor red = YHColor(color: Color.fromARGB(255, 255, 0, 0));
-  // static const YHColor orange =
-  //     YHColor(color: Color.fromARGB(255, 255, 152, 0));
-  // static const YHColor yellow =
-  //     YHColor(color: Color.fromARGB(255, 255, 215, 0));
-
-  // static const YHColor optionsBG =
-  //     YHColor(color: Color.fromARGB(255, 220, 223, 228));
   // static const YHColor grayBG =
   //     YHColor(color: Color.fromRGBO(244, 244, 246, 1));
-  // static const YHColor note = YHColor(color: Color.fromARGB(255, 255, 146, 10));
 
-  // static const YHColor actionSheetText =
-  //     YHColor(color: Color.fromRGBO(72, 95, 133, 1));
+  // MARK: - Custom
+  static const Color note = Color(0xFFF59E0B);
+  static const Color gold = Color(0xFFFFBB01);
+  static const Color textActionSheet = Color(0xFF485F85);
 
-  const YHColor({
-    required this.color,
-  });
+  // MARK: - Semantic
 
-  final Color color;
+  // Semantic Colors - Text
+  static const Color textDefault = gray900;
+  static const Color textSub = gray500;
+  static const Color textDisabled = gray300;
+  static const Color textPlaceholder = gray400;
+  static const Color textWhite = white;
+  static Color textPrimary = primary;
+  static const Color textError = red500;
+  static const Color textWarning = orange500;
 
-  static Widget square({
-    double width = 10,
-    double height = 10,
-    required YHColor color, // = YHColor.primary,
-  }) {
-    return Container(
-      width: width,
-      height: height,
-      color: color.color,
-    );
-  }
+  // Semantic Colors - Text/Accent
+  static const Color textAccentRed = red500;
+  static const Color textAccentOrange = orange500;
+  static const Color textAccentBrown = brown500;
+  static const Color textAccentYellow = yellow500;
+  static const Color textAccentGreen = green500;
+  static const Color textAccentTeal = teal500;
+  static const Color textAccentBlue = blue500;
+  static const Color textAccentViolet = violet500;
+  static const Color textAccentPink = pink500;
+  static const Color textAccentBlackAlpha = black900;
+  static const Color textAccentBlackAlphaSub = black500;
+  static const Color textAccentWhiteAlpha = white900;
+  static const Color textAccentWhiteAlphaSub = white500;
+
+  // Semantic Colors - Icon
+  static const Color iconDefault = gray900;
+  static const Color iconSub = gray500;
+  static const Color iconSubWeak = gray300;
+  static const Color iconDisabled = gray300;
+  static const Color iconWhite = white;
+  static Color iconPrimary = primary;
+  static const Color iconError = red500;
+  static const Color iconWarning = orange500;
+
+  // Semantic Colors - Icon/Accent
+  static const Color iconAccentRed = red500;
+  static const Color iconAccentOrange = orange500;
+  static const Color iconAccentBrown = brown500;
+  static const Color iconAccentYellow = yellow500;
+  static const Color iconAccentGreen = green500;
+  static const Color iconAccentTeal = teal500;
+  static const Color iconAccentBlue = blue500;
+  static const Color iconAccentViolet = violet500;
+  static const Color iconAccentPink = pink500;
+  static const Color iconAccentBlackAlpha = black900;
+  static const Color iconAccentBlackAlphaSub = black500;
+  static const Color iconAccentWhiteAlpha = white900;
+  static const Color iconAccentWhiteAlphaSub = white500;
+
+  // Semantic Colors - Stroke
+  static const Color strokeDefault = gray200;
+  static const Color strokeWeak = gray100;
+  static const Color strokeStrong = gray300;
+  static const Color strokeNeutral = gray500;
+  static const Color strokeBlack = gray900;
+  static const Color strokeBlackWeak = gray700;
+  static const Color strokeWhite = white;
+  static Color strokePrimary = primary;
+  static const Color strokeError = red500;
+  static const Color strokeOverlay = gray100;
+  static const Color strokeTransparent = transparent;
+
+  // Semantic Colors - Stroke/Accent
+  static const Color strokeAccentRed = red500;
+  static const Color strokeAccentOrange = orange500;
+  static const Color strokeAccentBrown = brown500;
+  static const Color strokeAccentYellow = yellow500;
+  static const Color strokeAccentGreen = green500;
+  static const Color strokeAccentTeal = teal500;
+  static const Color strokeAccentBlue = blue500;
+  static const Color strokeAccentViolet = violet500;
+  static const Color strokeAccentPink = pink500;
+
+  // Semantic Colors - Background
+  static const Color backgroundBasement = gray100;
+  static const Color backgroundDefault = white;
+  static const Color backgroundBasementBlack = gray950;
+  static const Color backgroundDefaultBlack = gray800;
+
+  // Semantic Colors - Surface
+  static const Color surfaceDefault = white;
+  static const Color surfaceSubWeak = gray50;
+  static const Color surfaceSub = gray100;
+  static const Color surfaceSubStrong = gray200;
+  static const Color surfaceBlack = gray900;
+  static const Color surfaceBlackWeak = gray700;
+  static const Color surfaceNeutral = gray500;
+  static const Color surfaceDisabled = gray100;
+  static const Color surfaceDisabledStrong = gray300;
+  static Color surfacePrimary = primary;
+  static const Color surfacePrimaryWeak = blue100;
+  static const Color surfacePrimaryWeaker = blue50;
+  static const Color surfaceError = red500;
+  static const Color surfaceErrorWeak = red100;
+  static const Color surfaceOverlayStrong = black800;
+  static const Color surfaceOverlay = black500;
+  static const Color surfaceOverlayWeak = black200;
+  static const Color surfaceOverlayWeaker = black100;
+
+  // Semantic Colors - Surface/Accent
+  static const Color surfaceAccentRed = red500;
+  static const Color surfaceAccentRedWeak = red100;
+  static const Color surfaceAccentOrange = orange500;
+  static const Color surfaceAccentOrangeWeak = orange100;
+  static const Color surfaceAccentBrown = brown500;
+  static const Color surfaceAccentBrownWeak = brown100;
+  static const Color surfaceAccentYellow = yellow500;
+  static const Color surfaceAccentYellowWeak = yellow100;
+  static const Color surfaceAccentGreen = green500;
+  static const Color surfaceAccentGreenWeak = green100;
+  static const Color surfaceAccentTeal = teal500;
+  static const Color surfaceAccentTealWeak = teal100;
+  static const Color surfaceAccentBlue = blue500;
+  static const Color surfaceAccentBlueWeak = blue100;
+  static const Color surfaceAccentViolet = violet500;
+  static const Color surfaceAccentVioletWeak = violet100;
+  static const Color surfaceAccentPink = pink500;
+  static const Color surfaceAccentPinkWeak = pink100;
+
+  // MARK: - Base
 
   // Primary
   static Color primary = Color.fromARGB(255, 75, 130, 255);
@@ -281,132 +342,14 @@ final class YHColor {
   static const Color pink900 = Color(0xFF831743);
   static const Color pink950 = Color(0xFF500724);
 
-  // Gold
-  static const Color gold = Color(0xFFFFBB01);
+  // MARK: - Utility
 
-  // Utility methods for withAlpha
-  static Color withAlpha(Color color, int alpha) {
-    return color.withAlpha(alpha);
+  static Widget square(
+      {double width = 10, double height = 10, required Color color}) {
+    return Container(
+      width: width,
+      height: height,
+      color: color,
+    );
   }
-
-  // Semantic Colors - Text
-  static const Color textDefault = gray900;
-  static const Color textSub = gray500;
-  static const Color textDisabled = gray300;
-  static const Color textPlaceholder = gray400;
-  static const Color textWhite = white;
-  static Color textPrimary = primary;
-  static const Color textError = red500;
-  static const Color textWarning = orange500;
-
-  // Semantic Colors - Text/Accent
-  static const Color textAccentRed = red500;
-  static const Color textAccentOrange = orange500;
-  static const Color textAccentBrown = brown500;
-  static const Color textAccentYellow = yellow500;
-  static const Color textAccentGreen = green500;
-  static const Color textAccentTeal = teal500;
-  static const Color textAccentBlue = blue500;
-  static const Color textAccentViolet = violet500;
-  static const Color textAccentPink = pink500;
-  static const Color textAccentBlackAlpha = black900;
-  static const Color textAccentBlackAlphaSub = black500;
-  static const Color textAccentWhiteAlpha = white900;
-  static const Color textAccentWhiteAlphaSub = white500;
-  static const Color textActionSheet = Color(0xFF485F85);
-
-  // Semantic Colors - Icon
-  static const Color iconDefault = gray900;
-  static const Color iconSub = gray500;
-  static const Color iconSubWeak = gray300;
-  static const Color iconDisabled = gray300;
-  static const Color iconWhite = white;
-  static Color iconPrimary = primary;
-  static const Color iconError = red500;
-  static const Color iconWarning = orange500;
-
-  // Semantic Colors - Icon/Accent
-  static const Color iconAccentRed = red500;
-  static const Color iconAccentOrange = orange500;
-  static const Color iconAccentBrown = brown500;
-  static const Color iconAccentYellow = yellow500;
-  static const Color iconAccentGreen = green500;
-  static const Color iconAccentTeal = teal500;
-  static const Color iconAccentBlue = blue500;
-  static const Color iconAccentViolet = violet500;
-  static const Color iconAccentPink = pink500;
-  static const Color iconAccentBlackAlpha = black900;
-  static const Color iconAccentBlackAlphaSub = black500;
-  static const Color iconAccentWhiteAlpha = white900;
-  static const Color iconAccentWhiteAlphaSub = white500;
-
-  // Semantic Colors - Stroke
-  static const Color strokeDefault = gray200;
-  static const Color strokeWeak = gray100;
-  static const Color strokeStrong = gray300;
-  static const Color strokeNeutral = gray500;
-  static const Color strokeBlack = gray900;
-  static const Color strokeBlackWeak = gray700;
-  static const Color strokeWhite = white;
-  static Color strokePrimary = primary;
-  static const Color strokeError = red500;
-  static const Color strokeOverlay = gray100;
-  static const Color strokeTransparent = transparent;
-
-  // Semantic Colors - Stroke/Accent
-  static const Color strokeAccentRed = red500;
-  static const Color strokeAccentOrange = orange500;
-  static const Color strokeAccentBrown = brown500;
-  static const Color strokeAccentYellow = yellow500;
-  static const Color strokeAccentGreen = green500;
-  static const Color strokeAccentTeal = teal500;
-  static const Color strokeAccentBlue = blue500;
-  static const Color strokeAccentViolet = violet500;
-  static const Color strokeAccentPink = pink500;
-
-  // Semantic Colors - Background
-  static const Color backgroundBasement = gray100;
-  static const Color backgroundDefault = white;
-  static const Color backgroundBasementBlack = gray950;
-  static const Color backgroundDefaultBlack = gray800;
-
-  // Semantic Colors - Surface
-  static const Color surfaceDefault = white;
-  static const Color surfaceSubWeak = gray50;
-  static const Color surfaceSub = gray100;
-  static const Color surfaceSubStrong = gray200;
-  static const Color surfaceBlack = gray900;
-  static const Color surfaceBlackWeak = gray700;
-  static const Color surfaceNeutral = gray500;
-  static const Color surfaceDisabled = gray100;
-  static const Color surfaceDisabledStrong = gray300;
-  static Color surfacePrimary = primary;
-  static const Color surfacePrimaryWeak = blue100;
-  static const Color surfacePrimaryWeaker = blue50;
-  static const Color surfaceError = red500;
-  static const Color surfaceErrorWeak = red100;
-  static const Color surfaceOverlayStrong = black800;
-  static const Color surfaceOverlay = black500;
-  static const Color surfaceOverlayWeak = black200;
-  static const Color surfaceOverlayWeaker = black100;
-
-  // Semantic Colors - Surface/Accent
-  static const Color surfaceAccentRed = red500;
-  static const Color surfaceAccentRedWeak = red100;
-  static const Color surfaceAccentOrange = orange500;
-  static const Color surfaceAccentOrangeWeak = orange100;
-  static const Color surfaceAccentBrown = brown500;
-  static const Color surfaceAccentBrownWeak = brown100;
-  static const Color surfaceAccentYellow = yellow500;
-  static const Color surfaceAccentYellowWeak = yellow100;
-  static const Color surfaceAccentGreen = green500;
-  static const Color surfaceAccentGreenWeak = green100;
-  static const Color surfaceAccentTeal = teal500;
-  static const Color surfaceAccentTealWeak = teal100;
-  static const Color surfaceAccentBlue = blue500;
-  static const Color surfaceAccentBlueWeak = blue100;
-  static const Color surfaceAccentViolet = violet500;
-  static const Color surfaceAccentVioletWeak = violet100;
-  static const Color surfaceAccentPink = pink500;
-  static const Color surfaceAccentPinkWeak = pink100;
 }
