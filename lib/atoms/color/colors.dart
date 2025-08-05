@@ -311,6 +311,7 @@ final class YHColor {
   static const Color textAccentBlackAlphaSub = black500;
   static const Color textAccentWhiteAlpha = white900;
   static const Color textAccentWhiteAlphaSub = white500;
+  static const Color textActionSheet = Color(0xFF485F85);
 
   // Semantic Colors - Icon
   static const Color iconDefault = gray900;
