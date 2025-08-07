@@ -33,10 +33,10 @@ final class YHTextField extends StatelessWidget {
     this.textColor = YHColor.textDefault,
     this.enabledBackgroundColor = YHColor.white,
     this.disabledBackgroundColor = YHColor.surfaceDisabled,
-    this.borderColor = YHColor.surfaceDisabled, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
+    this.borderColor = YHColor.strokeDefault, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
     this.disabledBorderColor = YHColor.surfaceDisabled,
     this.focusedBorderColor, // = YHColor.primary
-    this.enabledBorderColor = YHColor.surfaceSub,
+    this.enabledBorderColor = YHColor.strokeDefault,
     this.errorBorderColor = YHColor.surfaceError,
   });
 

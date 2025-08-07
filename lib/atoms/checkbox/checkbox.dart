@@ -11,7 +11,7 @@ final class YHCheckbox extends StatefulWidget {
     this.checkIconSize = 12.0,
     this.checkColor = YHColor.white,
     this.activeColor,
-    this.borderColor = YHColor.textDisabled,
+    this.borderColor = YHColor.strokeDefault,
     this.borderRadius = 2.0,
     this.borderWidth = 1.5,
     this.animationDuration = const Duration(milliseconds: 200),

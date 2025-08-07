@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
@@ -22,8 +21,8 @@ class YHImageTextButton extends StatelessWidget {
   final YHText text;
   final IconData? iconData;
   final YHImageInterface? image;
-  final YHColor? textColor;
-  final YHColor? borderColor;
+  final Color? textColor;
+  final Color? borderColor;
   final double? borderWidth;
   final double? cornerRadius;
   final double? minHeight;
@@ -34,7 +33,7 @@ class YHImageTextButton extends StatelessWidget {
     OutlinedBorder? shape;
     if (borderColor != null && borderWidth != null) {
       shape = RoundedRectangleBorder(
-        side: BorderSide(color: borderColor!.color, width: borderWidth!),
+        side: BorderSide(color: borderColor!, width: borderWidth!),
         borderRadius: BorderRadius.circular(cornerRadius ?? 0),
       );
     }

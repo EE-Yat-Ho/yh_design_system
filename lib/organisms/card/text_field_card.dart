@@ -31,9 +31,9 @@ final class YHTextFieldCard extends StatelessWidget {
     this.textColor = YHColor.textDefault,
     this.enabledBackgroundColor = YHColor.white,
     this.disabledBackgroundColor = YHColor.surfaceDisabled,
-    this.borderColor = YHColor.surfaceDisabled,
-    this.disabledBorderColor = YHColor.surfaceDisabled,
-    this.enabledBorderColor = YHColor.surfaceSub,
+    this.borderColor = YHColor.strokeDefault,
+    this.disabledBorderColor = YHColor.surfaceDisabledStrong,
+    this.enabledBorderColor = YHColor.strokeDefault,
     this.focusedBorderColor, // = YHColor.primary
     // 그림자
     this.useShadow = false,
