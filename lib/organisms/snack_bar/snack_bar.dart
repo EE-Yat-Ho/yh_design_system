@@ -113,7 +113,7 @@ final class YHSnackBar extends StatelessWidget {
                   top: 16,
                 ),
                 decoration: BoxDecoration(
-                  color: YHColor.textWhite,
+                  color: YHColor.surfaceOverlay,
                   borderRadius: BorderRadius.circular(6),
                   boxShadow: [
                     BoxShadow(
@@ -133,7 +133,7 @@ final class YHSnackBar extends StatelessWidget {
                     YHText(
                       text: message,
                       font: YHFont.regular16,
-                      color: YHColor.white,
+                      color: YHColor.textWhite,
                     ),
                   ],
                 ),
