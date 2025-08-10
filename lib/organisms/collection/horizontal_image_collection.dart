@@ -41,8 +41,9 @@ final class HorizontalImageCollection extends StatelessWidget {
         itemCount: images.length,
         itemBuilder: (context, index) {
           final isSelected = index == selectedIndex;
-          final borderColor =
-              showSelectedBorder && isSelected ? YHColor.primary : null;
+          final borderColor = showSelectedBorder && isSelected
+              ? YHColor.primary
+              : YHColor.transparent;
 
           return YHCard(
             cornerRadius: 8,
