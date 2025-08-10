@@ -35,7 +35,7 @@ final class HorizontalImageCollection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: itemHeight, // 이미지 높이 설정
+      height: itemHeight, // 컬렉션 높이
       child: ListView.builder(
         padding: contentInsets,
         scrollDirection: Axis.horizontal, // 가로 스크롤 설정

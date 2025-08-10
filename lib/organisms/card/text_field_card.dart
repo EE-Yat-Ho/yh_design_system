@@ -30,7 +30,7 @@ final class YHTextFieldCard extends StatelessWidget {
     // 색 관련
     this.textColor = YHColor.textDefault,
     this.enabledBackgroundColor = YHColor.white,
-    this.disabledBackgroundColor = YHColor.surfaceDisabled,
+    this.disabledBackgroundColor = YHColor.surfaceDisabledStrong,
     this.borderColor = YHColor.strokeDefault,
     this.disabledBorderColor = YHColor.surfaceDisabledStrong,
     this.enabledBorderColor = YHColor.strokeDefault,
@@ -39,9 +39,9 @@ final class YHTextFieldCard extends StatelessWidget {
     this.useShadow = false,
     this.boxShadow,
     this.shadowColor,
-    this.shadowSpreadRadius = 2,
-    this.shadowBlurRadius = 3,
-    this.shadowOffset = const Offset(0, 4),
+    this.shadowSpreadRadius = 1,
+    this.shadowBlurRadius = 2,
+    this.shadowOffset = const Offset(0, 2),
   });
 
   final String? labelText;
