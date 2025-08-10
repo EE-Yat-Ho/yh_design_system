@@ -41,16 +41,13 @@ final class HorizontalImageCollection extends StatelessWidget {
         itemCount: images.length,
         itemBuilder: (context, index) {
           final isSelected = index == selectedIndex;
-          final borderColor = showSelectedBorder && isSelected
-              ? YHColor.primary
-              : YHColor.transparent;
+          final isLast = index == images.length - 1;
 
           return YHCard(
-            cornerRadius: 8,
-            borderColor: borderColor,
-            borderWidth: 2,
-            margin: EdgeInsets.only(
-                right: index == images.length - 1 ? 0 : spacing),
+            cornerRadius: 4,
+            borderColor: YHColor.primary,
+            borderWidth: showSelectedBorder && isSelected ? 2 : 0,
+            margin: EdgeInsets.only(right: isLast ? 0 : spacing),
             onTap: () => onTap?.call(index),
             useShadow: false,
             child: Stack(
