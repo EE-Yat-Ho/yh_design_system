@@ -9,8 +9,8 @@ Future<dynamic> showTesterLoginDialog(
       builder: (BuildContext innerContext) {
         return YHTextFieldDialog(
           onConfirm: onConfirm,
-          title: 'dialog.tester_login.title'.tr(),
-          hintText: 'dialog.tester_login.hint'.tr(),
+          title: 'yh_design_system.dialog.tester_login.title'.tr(),
+          hintText: 'yh_design_system.dialog.tester_login.hint'.tr(),
         );
       });
 }

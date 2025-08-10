@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
@@ -50,7 +51,7 @@ final class ImageDetailPageState extends State<ImageDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: YHAppBar(
-        title: "상세 이미지",
+        title: "yh_design_system.image_detail_page.detail_image".tr(),
         showBack: false,
         showClose: true,
         rightPadding: 16,

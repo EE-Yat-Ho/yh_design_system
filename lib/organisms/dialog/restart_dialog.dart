@@ -14,13 +14,13 @@ Future<dynamic> showRestartDialog(BuildContext context) async {
         return PopScope(
             canPop: false, // 뒤로가기 물리버튼 방지
             child: YHDialog(
-                text: 'dialog.restart.message'.tr(),
-                confirmText: 'dialog.restart.exit_app'.tr(),
+                text: 'yh_design_system.dialog.restart.message'.tr(),
+                confirmText: 'yh_design_system.dialog.restart.exit_app'.tr(),
                 onConfirm: () async {
                   await showLocalNotification(
                       1,
-                      'dialog.restart.notification_title'.tr(),
-                      'dialog.restart.notification_body'.tr());
+                      'yh_design_system.dialog.restart.notification_title'.tr(),
+                      'yh_design_system.dialog.restart.notification_body'.tr());
                   exit(0);
                 }));
       });

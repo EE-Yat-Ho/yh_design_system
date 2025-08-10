@@ -9,7 +9,6 @@ enum SnackBarVariant { defaults, success, warning, error }
 final class YHSnackBar extends StatelessWidget {
   static const moveDuration = Duration(milliseconds: 250);
   static const waitDuration = Duration(milliseconds: 3000);
-
   // 토스트를 보여주는 함수
   static void show(
     BuildContext context,

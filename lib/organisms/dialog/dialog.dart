@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
@@ -20,7 +21,7 @@ final class YHDialog extends StatelessWidget {
     required this.text,
     this.subText,
     this.image,
-    this.confirmText = "확인",
+    this.confirmText,
     required this.onConfirm,
     this.cancelText,
     this.onCancel,
@@ -57,7 +58,7 @@ final class YHDialog extends StatelessWidget {
   final TextAlign subTextAlign;
   final Color? confirmButtonBackgroundColor;
 
-  final String confirmText;
+  final String? confirmText;
   final void Function() onConfirm;
 
   final String? cancelText;
@@ -140,8 +141,10 @@ final class YHDialog extends StatelessWidget {
         YHButton(
           cornerRadius: buttonCornerRadius ?? 8,
           expands: true,
-          text:
-              YHText(text: confirmText, font: buttonFont, color: YHColor.white),
+          text: YHText(
+              text: confirmText ?? 'common.confirm'.tr(),
+              font: buttonFont,
+              color: YHColor.white),
           height: 48,
           backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
           onTap: () {
@@ -176,8 +179,10 @@ final class YHDialog extends StatelessWidget {
           ),
         YHButton(
           cornerRadius: buttonCornerRadius ?? 24,
-          text:
-              YHText(text: confirmText, font: buttonFont, color: YHColor.white),
+          text: YHText(
+              text: confirmText ?? 'common.confirm'.tr(),
+              font: buttonFont,
+              color: YHColor.white),
           height: 48,
           width: double.infinity,
           backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,

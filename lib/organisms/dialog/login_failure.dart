@@ -8,7 +8,8 @@ Future<dynamic> showLoginFailureDialog(
       context: context,
       builder: (BuildContext innerContext) {
         return YHDialog(
-          text: 'dialog.login_failure'.tr(args: [exception.toString()]),
+          text: 'yh_design_system.dialog.login_failure'
+              .tr(args: [exception.toString()]),
           onConfirm: () {},
         );
       });
