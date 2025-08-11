@@ -35,7 +35,7 @@ final class HorizontalImageCollection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: itemHeight + (showSelectedBorder ? borderWidth * 2 : 0), // 컬렉션 높이
+      height: itemHeight, // 컬렉션 높이
       child: ListView.builder(
         padding: contentInsets,
         scrollDirection: Axis.horizontal, // 가로 스크롤 설정
@@ -46,7 +46,7 @@ final class HorizontalImageCollection extends StatelessWidget {
           final isLast = index == images.length - 1;
 
           return YHCard(
-            cornerRadius: 8,
+            // cornerRadius: 8,
             borderColor: YHColor.primary,
             borderWidth: showBorder ? borderWidth : 0,
             margin: EdgeInsets.only(right: isLast ? 0 : spacing),
