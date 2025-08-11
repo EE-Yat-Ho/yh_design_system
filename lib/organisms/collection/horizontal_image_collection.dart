@@ -35,7 +35,7 @@ final class HorizontalImageCollection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: itemHeight, // 컬렉션 높이
+      height: itemHeight + (showSelectedBorder ? borderWidth * 2 : 0), // 컬렉션 높이
       child: ListView.builder(
         padding: contentInsets,
         scrollDirection: Axis.horizontal, // 가로 스크롤 설정
@@ -67,19 +67,20 @@ final class HorizontalImageCollection extends StatelessWidget {
   }
 
   Widget _image(ImageEntity image, int index, bool showBorder) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(showBorder ? 8 : 0),
-      child: Image.file(
-        image.file,
-        fit: image.fit,
-        width: itemWidth,
-        height: itemHeight,
-        errorBuilder: (context, error, stackTrace) {
-          debugPrint("🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
-          // 이미지 표시 실패 시 대체 이미지
-          return YHImage.icon_photo_48.iconWithOff();
-        },
-      ),
+    return Image.file(
+      image.file,
+      fit: image.fit,
+      width: itemWidth,
+      height: itemHeight,
+      errorBuilder: (context, error, stackTrace) {
+        debugPrint("🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
+        // 이미지 표시 실패 시 대체 이미지
+        return SizedBox(
+          width: itemWidth,
+          height: itemHeight,
+          child: YHImage.icon_photo_48.iconWithOff(),
+        );
+      },
     );
   }
 
