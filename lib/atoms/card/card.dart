@@ -56,17 +56,14 @@ final class YHCard extends StatelessWidget {
           )
         ];
     return Container(
-      margin: margin,
       // padding: padding, 터치 애니메이션에 포함되어야 해서, YHInkWell에 배치.
+      margin: margin, // 마진은 밖이라서 괜찮음
       decoration: BoxDecoration(
         color: backgroundColor,
         boxShadow: useShadow ? bs : [],
         borderRadius: BorderRadius.circular(cornerRadius),
         border: borderColor != null && borderWidth != null
-            ? Border.all(
-                color: borderColor!,
-                width: borderWidth!,
-              )
+            ? Border.all(color: borderColor!, width: borderWidth!)
             : null,
       ),
       child: YHInkWell(

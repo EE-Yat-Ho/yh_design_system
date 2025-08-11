@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/organisms/collection/horizontal_image_collection.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/organisms/appbar/appbar.dart';
-import 'package:yh_design_system/organisms/collection/horizontal_image_collection.dart';
+
 import 'package:yh_util/entities/image_entity.dart';
 
 final class ImageDetailPage extends StatefulWidget {

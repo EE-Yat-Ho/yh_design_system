@@ -46,11 +46,8 @@ final class HorizontalImageCollection extends StatelessWidget {
           final isLast = index == images.length - 1;
 
           return YHCard(
-            width: itemWidth,
-            height: itemHeight,
-            cornerRadius: 8,
-            borderColor: YHColor.primary,
-            borderWidth: showBorder ? borderWidth : 0,
+            backgroundColor: YHColor.transparent,
+            cornerRadius: 0,
             margin: EdgeInsets.only(right: isLast ? 0 : spacing),
             onTap: () => onTap?.call(index),
             useShadow: false,
@@ -69,20 +66,33 @@ final class HorizontalImageCollection extends StatelessWidget {
   }
 
   Widget _image(ImageEntity image, int index, bool showBorder) {
-    return Image.file(
-      image.file,
-      fit: image.fit,
-      width: itemWidth,
-      height: itemHeight,
-      errorBuilder: (context, error, stackTrace) {
-        debugPrint("🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
-        // 이미지 표시 실패 시 대체 이미지
-        return SizedBox(
+    // 둥근 모서리 + 테두리 + 이미지를 사용하면, 모서리가 꽉 차지않는 버그 발생하여
+    // ClipRRect를 중간에 넣은 아래 코드를 사용해야함
+    return Container(
+      padding: const EdgeInsets.all(borderWidth),
+      decoration: showBorder
+          ? BoxDecoration(
+              color: YHColor.primary, borderRadius: BorderRadius.circular(8))
+          : null,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.file(
+          image.file,
+          fit: image.fit,
           width: itemWidth,
           height: itemHeight,
-          child: YHImage.icon_photo_48.iconWithOff(),
-        );
-      },
+          errorBuilder: (context, error, stackTrace) {
+            debugPrint(
+                "🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
+            // 이미지 표시 실패 시 대체 이미지
+            return SizedBox(
+              width: itemWidth,
+              height: itemHeight,
+              child: YHImage.icon_photo_48.iconWithOff(),
+            );
+          },
+        ),
+      ),
     );
   }
 
