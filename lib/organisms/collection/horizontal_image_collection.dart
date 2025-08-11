@@ -46,7 +46,7 @@ final class HorizontalImageCollection extends StatelessWidget {
           final isLast = index == images.length - 1;
 
           return YHCard(
-            // cornerRadius: 8,
+            cornerRadius: 0,
             borderColor: YHColor.primary,
             borderWidth: showBorder ? borderWidth : 0,
             margin: EdgeInsets.only(right: isLast ? 0 : spacing),
@@ -70,8 +70,8 @@ final class HorizontalImageCollection extends StatelessWidget {
     return Image.file(
       image.file,
       fit: image.fit,
-      width: itemWidth, // - (showBorder ? borderWidth * 2 : 0),
-      height: itemHeight, //- (showBorder ? borderWidth * 2 : 0),
+      width: itemWidth - (showBorder ? borderWidth * 2 : 0),
+      height: itemHeight - (showBorder ? borderWidth * 2 : 0),
       errorBuilder: (context, error, stackTrace) {
         debugPrint("🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
         // 이미지 표시 실패 시 대체 이미지
