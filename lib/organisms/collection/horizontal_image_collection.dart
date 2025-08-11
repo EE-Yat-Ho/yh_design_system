@@ -46,6 +46,8 @@ final class HorizontalImageCollection extends StatelessWidget {
           final isLast = index == images.length - 1;
 
           return YHCard(
+            width: itemWidth,
+            height: itemHeight,
             cornerRadius: 8,
             borderColor: YHColor.primary,
             borderWidth: showBorder ? borderWidth : 0,
