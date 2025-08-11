@@ -46,7 +46,7 @@ final class HorizontalImageCollection extends StatelessWidget {
           final isLast = index == images.length - 1;
 
           return YHCard(
-            cornerRadius: 0,
+            cornerRadius: 8,
             borderColor: YHColor.primary,
             borderWidth: showBorder ? borderWidth : 0,
             margin: EdgeInsets.only(right: isLast ? 0 : spacing),
@@ -67,16 +67,27 @@ final class HorizontalImageCollection extends StatelessWidget {
   }
 
   Widget _image(ImageEntity image, int index, bool showBorder) {
-    return Image.file(
-      image.file,
-      fit: image.fit,
-      width: itemWidth - (showBorder ? borderWidth * 2 : 0),
-      height: itemHeight - (showBorder ? borderWidth * 2 : 0),
-      errorBuilder: (context, error, stackTrace) {
-        debugPrint("🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
-        // 이미지 표시 실패 시 대체 이미지
-        return YHImage.icon_photo_48.iconWithOff();
-      },
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(showBorder ? 8 : 0),
+      child: Image.file(
+        image.file,
+        fit: image.fit,
+        width: itemWidth,
+        height: itemHeight,
+        errorBuilder: (context, error, stackTrace) {
+          debugPrint("🚨🏞️ 이미지 표시 실패 error: $error, stackTrace: $stackTrace");
+          // 이미지 표시 실패 시 대체 이미지
+          return YHImage.icon_photo_48.iconWithOff();
+        },
+      ),
+    );
+  }
+
+  Widget _dim(bool showBorder) {
+    return Container(
+      width: itemWidth,
+      height: itemHeight,
+      color: Colors.black.withValues(alpha: dim),
     );
   }
 
@@ -86,14 +97,6 @@ final class HorizontalImageCollection extends StatelessWidget {
       backgroundColor: YHColor.transparent,
       onTap: () => onDelete?.call(index),
       image: YHImage.icon_close_24.icon(color: YHColor.white),
-    );
-  }
-
-  Widget _dim(bool showBorder) {
-    return Container(
-      width: itemWidth - (showBorder ? borderWidth * 2 : 0),
-      height: itemHeight + (showBorder ? borderWidth * 2 : 0),
-      color: Colors.black.withValues(alpha: dim),
     );
   }
 }
