@@ -29,9 +29,12 @@ final class YHButton extends StatelessWidget {
     this.horizontalAlignment = MainAxisAlignment.center,
     this.useShadow = true,
     this.expands = false,
+    // 레드닷
     this.redDot = false,
     this.redDotSize = 6,
     this.redDotInset = 4,
+    // 물결 애니메이션 사용여부
+    this.useRippleEffect = true,
   });
 
   final bool autoResize;
@@ -60,6 +63,8 @@ final class YHButton extends StatelessWidget {
 
   final MainAxisAlignment horizontalAlignment;
   final bool expands;
+
+  final bool useRippleEffect;
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +115,9 @@ final class YHButton extends StatelessWidget {
             : BorderSide.none,
         borderRadius: BorderRadius.all(Radius.circular(cornerRadius)),
       ),
+      // 물결 애니메이션 사용 여부
+      splashColor: useRippleEffect ? null : Colors.transparent,
+      highlightColor: useRippleEffect ? null : Colors.transparent,
       child: row,
     );
 
