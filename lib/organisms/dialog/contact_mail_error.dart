@@ -21,7 +21,7 @@ Future<dynamic> showContactMailErrorDialog(
             Clipboard.setData(
                 ClipboardData(text: 'common.developer_email'.tr()));
           },
-          confirmText: 'yh_design_system.contact_mail.copy_mail'.tr(),
+          confirmText: 'yh_design_system.dialog.contact_mail.copy_mail'.tr(),
           cancelText: 'common.confirm'.tr(),
         );
       });
