@@ -20,13 +20,12 @@ Future<dynamic> showForceUpdateDialog(
         return PopScope(
             canPop: false, // 뒤로가기 물리버튼 방지
             child: YHDialog(
-              text: 'yh_design_system.dialog.force_update.message'.tr(),
+              text: 'component.dialog.force_update.message'.tr(),
               onConfirm: () async {
                 await moveToStore(appStoreId, packageName);
                 exit(0);
               },
-              confirmText:
-                  'yh_design_system.dialog.force_update.go_to_store'.tr(),
+              confirmText: 'component.dialog.force_update.go_to_store'.tr(),
             ));
       });
 }
