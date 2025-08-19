@@ -131,7 +131,7 @@ final class YHSnackBar extends StatelessWidget {
                     const SizedBox(width: 4),
                     YHText(
                       text: message,
-                      font: YHFont.regular16,
+                      font: YHFont.regular14,
                       color: YHColor.textWhite,
                     ),
                   ],
