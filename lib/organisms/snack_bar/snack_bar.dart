@@ -112,7 +112,7 @@ final class YHSnackBar extends StatelessWidget {
                   top: 16,
                 ),
                 decoration: BoxDecoration(
-                  color: YHColor.surfaceOverlay,
+                  color: YHColor.surfaceOverlayStrong,
                   borderRadius: BorderRadius.circular(6),
                   boxShadow: [
                     BoxShadow(
