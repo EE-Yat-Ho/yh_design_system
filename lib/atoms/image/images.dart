@@ -9,6 +9,9 @@ abstract interface class YHImageInterface {
 
   // enum 타입의 name 사용
   String get fileName;
+
+  // 다크 모드 이미지 사용 여부
+  bool get checkDarkMode;
 }
 
 enum YHImage implements YHImageInterface {
@@ -79,6 +82,9 @@ enum YHImage implements YHImageInterface {
 
   @override
   String get fileName => name;
+
+  @override
+  bool get checkDarkMode => false;
 }
 
 extension YHImageImage on YHImageInterface {
@@ -87,7 +93,6 @@ extension YHImageImage on YHImageInterface {
       double height = 24,
       Color? color,
       BoxFit fit = BoxFit.fitHeight,
-      bool checkDarkMode = false,
       String? package}) {
     final fileName = checkDarkMode ? "${this.fileName}_dark" : this.fileName;
     return Image.asset(
@@ -119,7 +124,7 @@ extension YHImageImage on YHImageInterface {
     );
   }
 
-  ImageProvider get imageProvider {
-    return AssetImage('assets/images/$fileName.png');
-  }
+  // ImageProvider get imageProvider {
+  //   return AssetImage('assets/images/$fileName.png');
+  // }
 }
