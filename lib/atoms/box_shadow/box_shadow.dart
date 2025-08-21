@@ -12,11 +12,11 @@ final class YHBoxShadow {
   }) {
     final shadowColor = color ??
         (YHTheme.isDarkMode
-            ? YHColor.black.withValues(alpha: 0.3)
+            ? YHColor.transparent
             : YHColor.gray500.withValues(alpha: 0.5));
 
     final shadowOffset = offset ??
-        (YHTheme.isDarkMode ? const Offset(0, 1) : const Offset(0, 3));
+        (YHTheme.isDarkMode ? const Offset(0, 0) : const Offset(0, 3));
     return BoxShadow(
       color: shadowColor,
       spreadRadius: spreadRadius,
