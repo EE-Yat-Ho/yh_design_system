@@ -18,7 +18,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? rightPadding;
   final double? height;
   final Color backgroundColor;
-  final Color foregroundColor;
+  final Color? foregroundColor;
   final void Function()? backButtonOnTap;
   final void Function()? titleOnTap;
 
@@ -35,7 +35,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.rightPadding,
     this.height = kToolbarHeight,
     this.backgroundColor = YHColor.transparent,
-    this.foregroundColor = YHColor.textDefault,
+    this.foregroundColor,
     this.backButtonOnTap,
     this.titleOnTap,
   });
@@ -53,14 +53,14 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: YHText(
             text: title!,
             font: titleFont,
-            color: foregroundColor,
+            color: foregroundColor ?? YHColor.textDefault,
           ),
         );
       } else {
         titleWidget = YHText(
           text: title!,
           font: titleFont,
-          color: foregroundColor,
+          color: foregroundColor ?? YHColor.textDefault,
         );
       }
     }

@@ -57,15 +57,15 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
               controller: widget.textController,
               decoration: InputDecoration(
                 hintText: widget.hintText,
-                hintStyle: const TextStyle(color: YHColor.textPlaceholder),
-                enabledBorder: const UnderlineInputBorder(
+                hintStyle: TextStyle(color: YHColor.textPlaceholder),
+                enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: YHColor.surfaceSub),
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: YHColor.primary),
                 ),
               ),
-              style: const TextStyle(color: YHColor.textDefault),
+              style: TextStyle(color: YHColor.textDefault),
               maxLength: widget.maxLength,
               keyboardType: widget.keyboardType,
               autofocus: true,

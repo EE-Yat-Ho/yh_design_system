@@ -11,7 +11,7 @@ final class YHCheckbox extends StatefulWidget {
     this.checkIconSize = 12.0,
     this.checkColor = YHColor.white,
     this.activeColor,
-    this.borderColor = YHColor.strokeDefault,
+    this.borderColor,
     this.borderRadius = 2.0,
     this.borderWidth = 1.5,
     this.animationDuration = const Duration(milliseconds: 200),
@@ -24,7 +24,7 @@ final class YHCheckbox extends StatefulWidget {
   final double checkIconSize;
   final Color checkColor;
   final Color? activeColor;
-  final Color borderColor;
+  final Color? borderColor;
   final double borderRadius;
   final double borderWidth;
   final Duration animationDuration;
@@ -121,7 +121,9 @@ final class _YHCheckboxState extends State<YHCheckbox>
                 height: widget.checkboxSize,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: _borderColorAnimation.value ?? widget.borderColor,
+                    color: _borderColorAnimation.value ??
+                        widget.borderColor ??
+                        YHColor.strokeDefault,
                     width: widget.borderWidth,
                   ),
                   borderRadius: BorderRadius.circular(widget.borderRadius),

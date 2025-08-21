@@ -14,7 +14,7 @@ final class YHSolidButton extends StatefulWidget {
     this.padding = const EdgeInsets.fromLTRB(14, 10, 14, 10),
     this.fixedSize,
     this.isEnabled = true,
-    this.disableColor = YHColor.textDisabled,
+    this.disableColor,
     this.font = YHFont.bold18,
     required this.onTap,
   });
@@ -27,7 +27,7 @@ final class YHSolidButton extends StatefulWidget {
   final EdgeInsets padding;
   final Size? fixedSize;
   final bool isEnabled;
-  final Color disableColor;
+  final Color? disableColor;
   final YHFont font;
   @override
   State<YHSolidButton> createState() => _YHSolidButtonState();
@@ -49,8 +49,9 @@ class _YHSolidButtonState extends State<YHSolidButton> {
     return ElevatedButton(
       onPressed: widget.isEnabled ? widget.onTap : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor:
-            widget.isEnabled ? YHColor.primary : widget.disableColor,
+        backgroundColor: widget.isEnabled
+            ? YHColor.primary
+            : widget.disableColor ?? YHColor.textDisabled,
         padding: widget.padding,
         fixedSize: widget.fixedSize,
         shape: RoundedRectangleBorder(

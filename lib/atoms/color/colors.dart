@@ -1,67 +1,46 @@
 // ignore_for_file: type=lint
 
 import 'package:flutter/material.dart';
+import 'color_scheme.dart';
 
 final class YHColor {
-  // static const YHColor disable =
-  //     YHColor(color: Color.fromARGB(255, 172, 172, 172));
-  // static const YHColor actionDisabled =
-  //     YHColor(color: Color.fromRGBO(191, 199, 212, 1));
+  /// 현재 컨텍스트의 테마에 따라 적절한 색상 스킴을 반환합니다.
+  static YHColorScheme _getColorScheme(BuildContext? context) {
+    if (context == null) return YHColorScheme.light;
 
-  // static const YHColor supportWarning =
-  //     YHColor(color: Color.fromRGBO(248, 87, 82, 1));
-  // static YHColor supportWarning_a20 =
-  //     YHColor(color: supportWarning.color.withAlpha((0.2 * 255).toInt()));
-  // static YHColor supportWarning_a30 =
-  //     YHColor(color: supportWarning.color.withAlpha((0.3 * 255).toInt()));
-  // static YHColor supportWarning_a40 =
-  //     YHColor(color: supportWarning.color.withAlpha((0.4 * 255).toInt()));
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? YHColorScheme.dark
+        : YHColorScheme.light;
+  }
 
-  // static const YHColor placeholder =
-  //     YHColor(color: Color.fromRGBO(191, 199, 212, 1));
-  // static const YHColor outline =
-  //     YHColor(color: Color.fromRGBO(213, 220, 229, 1));
-  // static const YHColor divider =
-  //     YHColor(color: Color.fromRGBO(213, 220, 229, 1));
-  // static const YHColor dividerWeak =
-  //     YHColor(color: Color.fromRGBO(234, 237, 242, 1));
+  /// 현재 컨텍스트 (위젯 트리에서 자동으로 감지)
+  static BuildContext? _currentContext;
 
-  // static const YHColor contentPrimary =
-  //     YHColor(color: Color.fromRGBO(14, 19, 27, 1));
-  // static const YHColor contentSecondary =
-  //     YHColor(color: Color.fromRGBO(123, 142, 163, 1));
-  // static const YHColor contentTertiary =
-  //     YHColor(color: Color.fromRGBO(255, 255, 255, 1));
+  /// 컨텍스트를 설정합니다. (앱 루트에서 호출)
+  static void setContext(BuildContext context) {
+    _currentContext = context;
+  }
 
-  // static const YHColor surface02 =
-  //     YHColor(color: Color.fromRGBO(234, 237, 242, 1));
-  // static const YHColor surface03 =
-  //     YHColor(color: Color.fromRGBO(246, 247, 249, 1));
-  // static const YHColor surface05 =
-  //     YHColor(color: Color.fromRGBO(255, 255, 255, 1));
-
-  // static const YHColor gray90 =
-  //     YHColor(color: Color.fromRGBO(213, 220, 229, 1));
-
-  // static const YHColor grayBG =
-  //     YHColor(color: Color.fromRGBO(244, 244, 246, 1));
+  /// 현재 색상 스킴을 반환합니다.
+  static YHColorScheme get _colorScheme => _getColorScheme(_currentContext);
 
   // MARK: - Custom
-  static const Color note = Color(0xFFF59E0B);
-  static const Color gold = Color(0xFFFFBB01);
-  static const Color textActionSheet = Color(0xFF485F85);
+  static Color get note => _colorScheme.note;
+  static Color get gold => _colorScheme.gold;
+  static Color get textActionSheet => _colorScheme.textActionSheet;
 
   // MARK: - Semantic
 
   // Semantic Colors - Text
-  static const Color textDefault = gray900;
-  static const Color textSub = gray500;
-  static const Color textDisabled = gray300;
-  static const Color textPlaceholder = gray400;
-  static const Color textWhite = white;
-  static Color textPrimary = primary;
-  static const Color textError = red500;
-  static const Color textWarning = orange500;
+  static Color get textDefault => _colorScheme.textDefault;
+  static Color get textSub => _colorScheme.textSub;
+  static Color get textDisabled => _colorScheme.textDisabled;
+  static Color get textPlaceholder => _colorScheme.textPlaceholder;
+  static Color get textWhite => _colorScheme.textWhite;
+  static Color get textPrimary => _colorScheme.textPrimary;
+  static Color get textError => _colorScheme.textError;
+  static Color get textWarning => _colorScheme.textWarning;
 
   // Semantic Colors - Text/Accent
   static const Color textAccentRed = red500;
@@ -79,14 +58,14 @@ final class YHColor {
   static const Color textAccentWhiteAlphaSub = white500;
 
   // Semantic Colors - Icon
-  static const Color iconDefault = gray900;
-  static const Color iconSub = gray500;
-  static const Color iconSubWeak = gray300;
-  static const Color iconDisabled = gray300;
-  static const Color iconWhite = white;
-  static Color iconPrimary = primary;
-  static const Color iconError = red500;
-  static const Color iconWarning = orange500;
+  static Color get iconDefault => _colorScheme.iconDefault;
+  static Color get iconSub => _colorScheme.iconSub;
+  static Color get iconSubWeak => _colorScheme.iconSubWeak;
+  static Color get iconDisabled => _colorScheme.iconDisabled;
+  static Color get iconWhite => _colorScheme.iconWhite;
+  static Color get iconPrimary => _colorScheme.iconPrimary;
+  static Color get iconError => _colorScheme.iconError;
+  static Color get iconWarning => _colorScheme.iconWarning;
 
   // Semantic Colors - Icon/Accent
   static const Color iconAccentRed = red500;
@@ -104,17 +83,17 @@ final class YHColor {
   static const Color iconAccentWhiteAlphaSub = white500;
 
   // Semantic Colors - Stroke
-  static const Color strokeDefault = gray200;
-  static const Color strokeWeak = gray100;
-  static const Color strokeStrong = gray300;
-  static const Color strokeNeutral = gray500;
-  static const Color strokeBlack = gray900;
-  static const Color strokeBlackWeak = gray700;
-  static const Color strokeWhite = white;
-  static Color strokePrimary = primary;
-  static const Color strokeError = red500;
-  static const Color strokeOverlay = gray100;
-  static const Color strokeTransparent = transparent;
+  static Color get strokeDefault => _colorScheme.strokeDefault;
+  static Color get strokeWeak => _colorScheme.strokeWeak;
+  static Color get strokeStrong => _colorScheme.strokeStrong;
+  static Color get strokeNeutral => _colorScheme.strokeNeutral;
+  static Color get strokeBlack => _colorScheme.strokeBlack;
+  static Color get strokeBlackWeak => _colorScheme.strokeBlackWeak;
+  static Color get strokeWhite => _colorScheme.strokeWhite;
+  static Color get strokePrimary => _colorScheme.strokePrimary;
+  static Color get strokeError => _colorScheme.strokeError;
+  static Color get strokeOverlay => _colorScheme.strokeOverlay;
+  static Color get strokeTransparent => _colorScheme.strokeTransparent;
 
   // Semantic Colors - Stroke/Accent
   static const Color strokeAccentRed = red500;
@@ -128,30 +107,32 @@ final class YHColor {
   static const Color strokeAccentPink = pink500;
 
   // Semantic Colors - Background
-  static const Color backgroundBasement = gray100;
-  static const Color backgroundDefault = white;
-  static const Color backgroundBasementBlack = gray950;
-  static const Color backgroundDefaultBlack = gray800;
+  static Color get backgroundBasement => _colorScheme.backgroundBasement;
+  static Color get backgroundDefault => _colorScheme.backgroundDefault;
+  static Color get backgroundBasementBlack =>
+      _colorScheme.backgroundBasementBlack;
+  static Color get backgroundDefaultBlack =>
+      _colorScheme.backgroundDefaultBlack;
 
   // Semantic Colors - Surface
-  static const Color surfaceDefault = white;
-  static const Color surfaceSubWeak = gray50;
-  static const Color surfaceSub = gray100;
-  static const Color surfaceSubStrong = gray200;
-  static const Color surfaceBlack = gray900;
-  static const Color surfaceBlackWeak = gray700;
-  static const Color surfaceNeutral = gray500;
-  static const Color surfaceDisabled = gray100;
-  static const Color surfaceDisabledStrong = gray300;
-  static Color surfacePrimary = primary;
-  static const Color surfacePrimaryWeak = blue100;
-  static const Color surfacePrimaryWeaker = blue50;
-  static const Color surfaceError = red500;
-  static const Color surfaceErrorWeak = red100;
-  static const Color surfaceOverlayStrong = black800;
-  static const Color surfaceOverlay = black500;
-  static const Color surfaceOverlayWeak = black200;
-  static const Color surfaceOverlayWeaker = black100;
+  static Color get surfaceDefault => _colorScheme.surfaceDefault;
+  static Color get surfaceSubWeak => _colorScheme.surfaceSubWeak;
+  static Color get surfaceSub => _colorScheme.surfaceSub;
+  static Color get surfaceSubStrong => _colorScheme.surfaceSubStrong;
+  static Color get surfaceBlack => _colorScheme.surfaceBlack;
+  static Color get surfaceBlackWeak => _colorScheme.surfaceBlackWeak;
+  static Color get surfaceNeutral => _colorScheme.surfaceNeutral;
+  static Color get surfaceDisabled => _colorScheme.surfaceDisabled;
+  static Color get surfaceDisabledStrong => _colorScheme.surfaceDisabledStrong;
+  static Color get surfacePrimary => _colorScheme.surfacePrimary;
+  static Color get surfacePrimaryWeak => _colorScheme.surfacePrimaryWeak;
+  static Color get surfacePrimaryWeaker => _colorScheme.surfacePrimaryWeaker;
+  static Color get surfaceError => _colorScheme.surfaceError;
+  static Color get surfaceErrorWeak => _colorScheme.surfaceErrorWeak;
+  static Color get surfaceOverlayStrong => _colorScheme.surfaceOverlayStrong;
+  static Color get surfaceOverlay => _colorScheme.surfaceOverlay;
+  static Color get surfaceOverlayWeak => _colorScheme.surfaceOverlayWeak;
+  static Color get surfaceOverlayWeaker => _colorScheme.surfaceOverlayWeaker;
 
   // Semantic Colors - Surface/Accent
   static const Color surfaceAccentRed = red500;
@@ -176,7 +157,7 @@ final class YHColor {
   // MARK: - Base
 
   // Primary
-  static Color primary = Color.fromARGB(255, 75, 130, 255);
+  static Color get primary => _colorScheme.surfacePrimary;
 
   // Shades
   static const Color white = Color(0xFFFFFFFF);

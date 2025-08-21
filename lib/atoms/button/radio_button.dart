@@ -17,7 +17,7 @@ final class YHRadioButton extends StatelessWidget {
     this.contentPadding,
     this.dense = true,
     this.font = YHFont.regular16,
-    this.textColor = YHColor.textDefault,
+    this.textColor,
   });
 
   final String text;
@@ -31,7 +31,7 @@ final class YHRadioButton extends StatelessWidget {
   final EdgeInsets? contentPadding;
   final bool dense;
   final YHFont font;
-  final Color textColor;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ final class YHRadioButton extends StatelessWidget {
         title: YHText(
           text: text,
           font: font,
-          color: textColor,
+          color: textColor ?? YHColor.textDefault,
         ),
         contentPadding: contentPadding,
         value: value,

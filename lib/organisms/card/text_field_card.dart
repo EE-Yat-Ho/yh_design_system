@@ -28,12 +28,12 @@ final class YHTextFieldCard extends StatelessWidget {
     this.textAlignVertical,
     this.textDirection,
     // 색 관련
-    this.textColor = YHColor.textDefault,
+    this.textColor,
     this.enabledBackgroundColor = YHColor.white,
-    this.disabledBackgroundColor = YHColor.surfaceDisabledStrong,
-    this.borderColor = YHColor.strokeDefault,
-    this.disabledBorderColor = YHColor.surfaceDisabledStrong,
-    this.enabledBorderColor = YHColor.strokeDefault,
+    this.disabledBackgroundColor,
+    this.borderColor,
+    this.disabledBorderColor,
+    this.enabledBorderColor,
     this.focusedBorderColor, // = YHColor.primary
     // 그림자
     this.useShadow = false,
@@ -65,13 +65,13 @@ final class YHTextFieldCard extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
   // 색 관련
-  final Color textColor;
+  final Color? textColor;
   final Color enabledBackgroundColor;
-  final Color disabledBackgroundColor;
-  final Color borderColor;
-  final Color disabledBorderColor;
+  final Color? disabledBackgroundColor;
+  final Color? borderColor;
+  final Color? disabledBorderColor;
   final Color? focusedBorderColor;
-  final Color enabledBorderColor;
+  final Color? enabledBorderColor;
   // 그림자
   final bool useShadow;
   final List<BoxShadow>? boxShadow;
@@ -93,7 +93,7 @@ final class YHTextFieldCard extends StatelessWidget {
       child: YHTextField(
         labelText: labelText,
         font: font,
-        textColor: textColor,
+        textColor: textColor ?? YHColor.textDefault,
         padding: padding,
         controller: controller,
         obscureText: obscureText,
@@ -112,12 +112,14 @@ final class YHTextFieldCard extends StatelessWidget {
         textAlign: textAlign,
         textAlignVertical: textAlignVertical,
         textDirection: textDirection,
-        borderColor: borderColor,
-        disabledBorderColor: disabledBorderColor,
+        borderColor: borderColor ?? YHColor.strokeDefault,
+        disabledBorderColor:
+            disabledBorderColor ?? YHColor.surfaceDisabledStrong,
         focusedBorderColor: focusedBorderColor,
-        enabledBorderColor: enabledBorderColor,
+        enabledBorderColor: enabledBorderColor ?? YHColor.strokeDefault,
         enabledBackgroundColor: enabledBackgroundColor,
-        disabledBackgroundColor: disabledBackgroundColor,
+        disabledBackgroundColor:
+            disabledBackgroundColor ?? YHColor.surfaceDisabledStrong,
       ),
     );
   }

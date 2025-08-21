@@ -30,14 +30,14 @@ final class YHTextField extends StatelessWidget {
     this.textAlignVertical,
     this.textDirection,
     // 색 관련
-    this.textColor = YHColor.textDefault,
+    this.textColor,
     this.enabledBackgroundColor = YHColor.white,
-    this.disabledBackgroundColor = YHColor.surfaceDisabled,
-    this.borderColor = YHColor.strokeDefault, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
-    this.disabledBorderColor = YHColor.surfaceDisabled,
+    this.disabledBackgroundColor,
+    this.borderColor, // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
+    this.disabledBorderColor,
     this.focusedBorderColor, // = YHColor.primary
-    this.enabledBorderColor = YHColor.strokeDefault,
-    this.errorBorderColor = YHColor.surfaceError,
+    this.enabledBorderColor,
+    this.errorBorderColor,
   });
 
   final String? labelText;
@@ -62,14 +62,14 @@ final class YHTextField extends StatelessWidget {
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
   // 색 관련
-  final Color textColor;
+  final Color? textColor;
   final Color enabledBackgroundColor;
-  final Color disabledBackgroundColor;
-  final Color borderColor; // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
-  final Color disabledBorderColor;
+  final Color? disabledBackgroundColor;
+  final Color? borderColor; // 아래 색들이 선언되지 않았을 때 사용되는 기본색상
+  final Color? disabledBorderColor;
   final Color? focusedBorderColor;
-  final Color enabledBorderColor;
-  final Color errorBorderColor;
+  final Color? enabledBorderColor;
+  final Color? errorBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +92,9 @@ final class YHTextField extends StatelessWidget {
   }
 
   Widget _textField(BuildContext context) {
-    final bgColor = enabled ? enabledBackgroundColor : disabledBackgroundColor;
+    final bgColor = enabled
+        ? enabledBackgroundColor
+        : disabledBackgroundColor ?? YHColor.surfaceDisabled;
 
     InputBorder border;
     InputBorder enabledBorder;
@@ -100,11 +102,12 @@ final class YHTextField extends StatelessWidget {
     InputBorder disabledBorder;
     InputBorder errorBorder;
 
-    final borderColor = this.borderColor;
-    final enabledBorderColor = this.enabledBorderColor;
+    final borderColor = this.borderColor ?? YHColor.strokeDefault;
+    final enabledBorderColor = this.enabledBorderColor ?? YHColor.strokeDefault;
     final focusedBorderColor = this.focusedBorderColor ?? YHColor.primary;
-    final disabledBorderColor = this.disabledBorderColor;
-    final errorBorderColor = this.errorBorderColor;
+    final disabledBorderColor =
+        this.disabledBorderColor ?? YHColor.surfaceDisabled;
+    final errorBorderColor = this.errorBorderColor ?? YHColor.surfaceError;
 
     switch (borderType) {
       case BorderType.outline:
@@ -181,7 +184,7 @@ final class YHTextField extends StatelessWidget {
         errorBorder: errorBorder,
         contentPadding: padding,
       ),
-      style: font.style(color: textColor),
+      style: font.style(color: textColor ?? YHColor.textDefault),
       textAlign: textAlign,
       textAlignVertical: textAlignVertical,
       textDirection: textDirection,

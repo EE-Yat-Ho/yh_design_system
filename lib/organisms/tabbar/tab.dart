@@ -8,18 +8,23 @@ final class YHTab extends StatelessWidget {
     super.key,
     this.height = 40,
     required this.text,
-    this.color = YHColor.textSub,
+    this.color,
     this.font = YHFont.regular16,
   });
 
   final String text;
-  final Color color;
+  final Color? color;
   final YHFont font;
   final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Tab(
-        height: height, child: YHText(text: text, font: font, color: color));
+        height: height,
+        child: YHText(
+          text: text,
+          font: font,
+          color: color ?? YHColor.textSub,
+        ));
   }
 }

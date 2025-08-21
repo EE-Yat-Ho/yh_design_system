@@ -38,7 +38,7 @@ final class YHSearchBar extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.search, color: YHColor.iconSub),
+            Icon(Icons.search, color: YHColor.iconSub),
             const SizedBox(width: 8),
             Expanded(
               child: YHTextField(

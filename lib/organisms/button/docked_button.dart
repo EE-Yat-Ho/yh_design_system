@@ -13,26 +13,26 @@ class YHDockedButton extends StatelessWidget {
     required this.onTapRight,
     this.rightText = "확인",
     this.rightBackgroundColor,
-    this.rightTextColor = YHColor.textWhite,
+    this.rightTextColor,
     this.rightBorderColor,
     this.rightEnabled = true,
     this.onTapLeft,
     this.leftText = "취소",
-    this.leftBackgroundColor = YHColor.surfaceDefault,
-    this.leftTextColor = YHColor.textDefault,
-    this.leftBorderColor = YHColor.surfaceSub,
+    this.leftBackgroundColor,
+    this.leftTextColor,
+    this.leftBorderColor,
   });
 
   final void Function() onTapRight;
   final String? rightText;
   final Color? rightBackgroundColor;
-  final Color rightTextColor;
+  final Color? rightTextColor;
   final Color? rightBorderColor;
   final bool rightEnabled;
   final void Function()? onTapLeft;
   final String? leftText;
-  final Color leftBackgroundColor;
-  final Color leftTextColor;
+  final Color? leftBackgroundColor;
+  final Color? leftTextColor;
   final Color? leftBorderColor;
 
   @override
@@ -57,16 +57,16 @@ class YHDockedButton extends StatelessWidget {
           if (onTapLeft != null)
             YHButton(
               expands: true,
-              backgroundColor: leftBackgroundColor,
+              backgroundColor: leftBackgroundColor ?? YHColor.surfaceDefault,
               onTap: onTapLeft!,
-              borderColor: leftBorderColor,
+              borderColor: leftBorderColor ?? YHColor.surfaceSub,
               borderWidth: leftBorderColor != null ? 1 : 0,
               cornerRadius: 12,
               padding: const EdgeInsets.symmetric(vertical: 16),
               text: YHText(
                   text: leftText!,
                   font: YHFont.regular16,
-                  color: leftTextColor,
+                  color: leftTextColor ?? YHColor.textDefault,
                   align: TextAlign.center),
             ),
           YHButton(
@@ -80,7 +80,7 @@ class YHDockedButton extends StatelessWidget {
             text: YHText(
                 text: rightText!,
                 font: YHFont.regular16,
-                color: rightTextColor,
+                color: rightTextColor ?? YHColor.textWhite,
                 align: TextAlign.center),
           ),
         ],
