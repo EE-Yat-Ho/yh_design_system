@@ -258,10 +258,10 @@ final class YHColorScheme {
     backgroundDefaultBlack: _YHBaseColors.gray200,
 
     // Semantic Colors - Surface
-    surfaceDefault: _YHBaseColors.gray700,
-    surfaceSubWeak: _YHBaseColors.gray600,
-    surfaceSub: _YHBaseColors.gray500,
-    surfaceSubStrong: _YHBaseColors.gray400,
+    surfaceDefault: _YHBaseColors.gray900,
+    surfaceSubWeak: _YHBaseColors.gray800,
+    surfaceSub: _YHBaseColors.gray700,
+    surfaceSubStrong: _YHBaseColors.gray600,
     surfaceBlack: _YHBaseColors.gray100,
     surfaceBlackWeak: _YHBaseColors.gray300,
     surfaceNeutral: _YHBaseColors.gray500,
