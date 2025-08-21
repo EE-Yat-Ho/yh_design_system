@@ -87,7 +87,9 @@ extension YHImageImage on YHImageInterface {
       double height = 24,
       Color? color,
       BoxFit fit = BoxFit.fitHeight,
+      bool checkDarkMode = false,
       String? package}) {
+    final fileName = checkDarkMode ? "${this.fileName}_dark" : this.fileName;
     return Image.asset(
       "assets/images/$fileName.png",
       width: width,
