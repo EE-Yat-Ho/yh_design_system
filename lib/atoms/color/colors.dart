@@ -4,26 +4,13 @@ import 'package:flutter/material.dart';
 import 'color_scheme.dart';
 
 final class YHColor {
-  /// 현재 컨텍스트의 테마에 따라 적절한 색상 스킴을 반환합니다.
-  static YHColorScheme _getColorScheme(BuildContext? context) {
-    if (context == null) return YHColorScheme.light;
+  static bool isDarkMode = false;
 
-    final brightness = Theme.of(context).brightness;
-    return brightness == Brightness.dark
-        ? YHColorScheme.dark
-        : YHColorScheme.light;
-  }
-
-  /// 현재 컨텍스트 (위젯 트리에서 자동으로 감지)
-  static BuildContext? _currentContext;
-
-  /// 컨텍스트를 설정합니다. (앱 루트에서 호출)
-  static void setContext(BuildContext context) {
-    _currentContext = context;
-  }
+  static void setDarkMode(bool isDarkMode) => YHColor.isDarkMode = isDarkMode;
 
   /// 현재 색상 스킴을 반환합니다.
-  static YHColorScheme get _colorScheme => _getColorScheme(_currentContext);
+  static YHColorScheme get _colorScheme =>
+      isDarkMode ? YHColorScheme.dark : YHColorScheme.light;
 
   // MARK: - Custom
   static Color get note => _colorScheme.note;

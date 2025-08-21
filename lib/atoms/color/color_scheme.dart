@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 /// YH 디자인 시스템의 색상 스킴
 /// 라이트 모드와 다크 모드에 대응하는 색상을 정의합니다.
 final class YHColorScheme {
+  // MARK: - 색 스킴 구성요소들
   const YHColorScheme._({
     required this.brightness,
 
@@ -139,7 +140,7 @@ final class YHColorScheme {
   final Color surfaceOverlayWeak;
   final Color surfaceOverlayWeaker;
 
-  /// 라이트 모드 색상 스킴
+  // MARK: - 밝은 색 스킴
   static const YHColorScheme light = YHColorScheme._(
     brightness: Brightness.light,
 
@@ -208,7 +209,7 @@ final class YHColorScheme {
     surfaceOverlayWeaker: _YHBaseColors.black100,
   );
 
-  /// 다크 모드 색상 스킴
+  // MARK: - 다크 모드 색상 스킴
   static const YHColorScheme dark = YHColorScheme._(
     brightness: Brightness.dark,
 
@@ -278,7 +279,7 @@ final class YHColorScheme {
   );
 }
 
-/// 기본 색상 정의 (라이트/다크 모드에서 공통으로 사용)
+// MARK: - 기본 색상 정의 (라이트/다크 모드에서 공통으로 사용)
 final class _YHBaseColors {
   // Primary
   static const Color primary = Color.fromARGB(255, 75, 130, 255);
