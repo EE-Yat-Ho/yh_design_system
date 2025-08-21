@@ -13,8 +13,8 @@ class YHSwitch extends StatefulWidget {
     this.onChanged,
     this.onBGColor,
     this.offBGColor,
-    this.onBallColor = YHColor.white,
-    this.offBallColor = YHColor.white,
+    this.onBallColor,
+    this.offBallColor,
     this.ballShadow = false,
     this.padding,
   });
@@ -28,8 +28,8 @@ class YHSwitch extends StatefulWidget {
   final void Function(bool)? onChanged;
   final Color? onBGColor;
   final Color? offBGColor;
-  final Color onBallColor;
-  final Color offBallColor;
+  final Color? onBallColor;
+  final Color? offBallColor;
   final bool ballShadow;
   final EdgeInsets? padding;
   @override
@@ -112,7 +112,9 @@ class YHSwitchState extends State<YHSwitch> {
                       )
                     ]
                   : [],
-              color: isOn ? widget.offBallColor : widget.onBallColor,
+              color: isOn
+                  ? widget.offBallColor ?? YHColor.iconWhite
+                  : widget.onBallColor ?? YHColor.iconWhite,
             ),
           ),
         ),

@@ -42,12 +42,12 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       icon: widget.icon,
-      backgroundColor: YHColor.white,
+      backgroundColor: YHColor.surfaceDefault,
       title: widget.title != null
           ? YHText(
               text: widget.title!,
               font: YHFont.regular18,
-              color: YHColor.black,
+              color: YHColor.textDefault,
             )
           : widget.titleWidget,
       content: SingleChildScrollView(

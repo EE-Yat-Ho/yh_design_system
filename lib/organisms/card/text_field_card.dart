@@ -29,7 +29,7 @@ final class YHTextFieldCard extends StatelessWidget {
     this.textDirection,
     // 색 관련
     this.textColor,
-    this.enabledBackgroundColor = YHColor.white,
+    this.enabledBackgroundColor,
     this.disabledBackgroundColor,
     this.borderColor,
     this.disabledBorderColor,
@@ -66,7 +66,7 @@ final class YHTextFieldCard extends StatelessWidget {
   final TextDirection? textDirection;
   // 색 관련
   final Color? textColor;
-  final Color enabledBackgroundColor;
+  final Color? enabledBackgroundColor;
   final Color? disabledBackgroundColor;
   final Color? borderColor;
   final Color? disabledBorderColor;
@@ -117,7 +117,8 @@ final class YHTextFieldCard extends StatelessWidget {
             disabledBorderColor ?? YHColor.surfaceDisabledStrong,
         focusedBorderColor: focusedBorderColor,
         enabledBorderColor: enabledBorderColor ?? YHColor.strokeDefault,
-        enabledBackgroundColor: enabledBackgroundColor,
+        enabledBackgroundColor:
+            enabledBackgroundColor ?? YHColor.surfaceDefault,
         disabledBackgroundColor:
             disabledBackgroundColor ?? YHColor.surfaceDisabledStrong,
       ),

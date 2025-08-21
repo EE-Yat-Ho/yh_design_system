@@ -12,7 +12,7 @@ final class YHOptionButton extends StatelessWidget {
     required this.isOn,
     required this.image,
     required this.onTap,
-    this.backgroundColor = YHColor.white,
+    this.backgroundColor,
     this.elevation = 3,
   });
 
@@ -21,18 +21,18 @@ final class YHOptionButton extends StatelessWidget {
   final String title;
   final String description;
   final YHImageInterface image;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final double elevation;
 
   @override
   Widget build(BuildContext context) {
-    var textColor = isOn ? YHColor.primary : YHColor.black;
+    var textColor = isOn ? YHColor.primary : YHColor.textDefault;
 
     return ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
-          backgroundColor: backgroundColor,
+          backgroundColor: backgroundColor ?? YHColor.surfaceDefault,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10), // <-- Radius
           ),

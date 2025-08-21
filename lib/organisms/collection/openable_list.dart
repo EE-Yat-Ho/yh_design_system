@@ -69,8 +69,8 @@ final class OpenableList extends StatelessWidget {
     if (objects.isEmpty) {
       return Expanded(
           child: Center(
-        child:
-            YHText(text: emptyText, font: YHFont.bold18, color: YHColor.black),
+        child: YHText(
+            text: emptyText, font: YHFont.bold18, color: YHColor.textDefault),
       ));
     }
 

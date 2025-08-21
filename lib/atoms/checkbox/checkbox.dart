@@ -9,7 +9,7 @@ final class YHCheckbox extends StatefulWidget {
     this.tapTargetSize = 24.0,
     this.checkboxSize = 16.5,
     this.checkIconSize = 12.0,
-    this.checkColor = YHColor.white,
+    this.checkColor,
     this.activeColor,
     this.borderColor,
     this.borderRadius = 2.0,
@@ -22,7 +22,7 @@ final class YHCheckbox extends StatefulWidget {
   final double tapTargetSize;
   final double checkboxSize;
   final double checkIconSize;
-  final Color checkColor;
+  final Color? checkColor;
   final Color? activeColor;
   final Color? borderColor;
   final double borderRadius;
@@ -132,7 +132,7 @@ final class _YHCheckboxState extends State<YHCheckbox>
                 child: CustomPaint(
                   painter: _CheckMarkPainter(
                     progress: _checkAnimation,
-                    color: widget.checkColor,
+                    color: widget.checkColor ?? YHColor.iconWhite,
                   ),
                   size: Size(widget.checkIconSize, widget.checkIconSize),
                 ),

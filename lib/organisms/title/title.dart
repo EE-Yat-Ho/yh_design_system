@@ -22,7 +22,7 @@ final class YHTitle extends StatelessWidget {
         child: YHText(
           text: title,
           font: YHFont.bold24,
-          color: YHColor.black,
+          color: YHColor.textDefault,
         ),
       ),
     );

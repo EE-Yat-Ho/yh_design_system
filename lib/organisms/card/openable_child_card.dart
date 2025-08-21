@@ -86,7 +86,7 @@ final class YHOpenableChildCard extends StatelessWidget {
         title: YHText(
           text: object.text,
           font: YHFont.regular16,
-          color: YHColor.black,
+          color: YHColor.textDefault,
           maxLines: 2,
         ),
         horizontalTitleGap: horizontalTitleGap,

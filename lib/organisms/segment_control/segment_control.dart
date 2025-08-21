@@ -87,7 +87,7 @@ final class _YHSegmentControlState extends State<YHSegmentControl>
                         width: segmentWidth,
                         height: 40, // 세그먼트 높이와 맞춤
                         decoration: BoxDecoration(
-                          color: YHColor.white,
+                          color: YHColor.surfaceDefault,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: YHColor.surfaceSub),
                           boxShadow: [

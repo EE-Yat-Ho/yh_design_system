@@ -109,7 +109,7 @@ final class HorizontalImageCollection extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       backgroundColor: YHColor.transparent,
       onTap: () => onDelete?.call(index),
-      image: YHImage.icon_close_24.icon(color: YHColor.white),
+      image: YHImage.icon_close_24.icon(color: YHColor.iconWhite),
     );
   }
 }

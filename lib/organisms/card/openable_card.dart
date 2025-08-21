@@ -96,7 +96,7 @@ final class YHOpenableCard extends StatelessWidget {
         title: YHText(
           text: object.text,
           font: YHFont.regular18,
-          color: YHColor.black,
+          color: YHColor.textDefault,
         ),
         onTap: () => onTap(object.id),
         onLongPress: () => onLongPress?.call(object.id),

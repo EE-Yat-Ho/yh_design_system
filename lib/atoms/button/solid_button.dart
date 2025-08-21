@@ -78,7 +78,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
       list.add(YHText(
         text: widget.title ?? "",
         font: widget.font,
-        color: YHColor.white,
+        color: YHColor.textWhite,
       ));
     }
     return list;

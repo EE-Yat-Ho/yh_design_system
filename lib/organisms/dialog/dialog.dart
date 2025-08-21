@@ -128,9 +128,11 @@ final class YHDialog extends StatelessWidget {
             borderWidth: 1,
             expands: true,
             text: YHText(
-                text: cancelText!, font: buttonFont, color: YHColor.black),
+                text: cancelText!,
+                font: buttonFont,
+                color: YHColor.textDefault),
             height: 48,
-            backgroundColor: YHColor.white,
+            backgroundColor: YHColor.surfaceDefault,
             onTap: () {
               Navigator.pop(context);
               if (onCancel != null) {
@@ -144,7 +146,7 @@ final class YHDialog extends StatelessWidget {
           text: YHText(
               text: confirmText ?? 'common.confirm'.tr(),
               font: buttonFont,
-              color: YHColor.white),
+              color: YHColor.textWhite),
           height: 48,
           backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
           onTap: () {
@@ -166,10 +168,12 @@ final class YHDialog extends StatelessWidget {
             borderColor: YHColor.surfaceSub,
             borderWidth: 1,
             text: YHText(
-                text: cancelText!, font: buttonFont, color: YHColor.black),
+                text: cancelText!,
+                font: buttonFont,
+                color: YHColor.textDefault),
             height: 48,
             width: double.infinity,
-            backgroundColor: YHColor.white,
+            backgroundColor: YHColor.surfaceDefault,
             onTap: () {
               Navigator.pop(context);
               if (onCancel != null) {
@@ -182,7 +186,7 @@ final class YHDialog extends StatelessWidget {
           text: YHText(
               text: confirmText ?? 'common.confirm'.tr(),
               font: buttonFont,
-              color: YHColor.white),
+              color: YHColor.textWhite),
           height: 48,
           width: double.infinity,
           backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
