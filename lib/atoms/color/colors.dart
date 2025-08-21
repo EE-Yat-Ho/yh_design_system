@@ -1,16 +1,13 @@
 // ignore_for_file: type=lint
 
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/utils/theme.dart';
 import 'color_scheme.dart';
 
 final class YHColor {
-  static bool isDarkMode = false;
-
-  static void setDarkMode(bool isDarkMode) => YHColor.isDarkMode = isDarkMode;
-
   /// 현재 색상 스킴을 반환합니다.
   static YHColorScheme get _colorScheme =>
-      isDarkMode ? YHColorScheme.dark : YHColorScheme.light;
+      YHTheme.isDarkMode ? YHColorScheme.dark : YHColorScheme.light;
 
   // MARK: - Custom
   static Color get note => _colorScheme.note;
