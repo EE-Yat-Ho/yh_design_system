@@ -157,7 +157,7 @@ final class YHColor {
   // MARK: - Base
 
   // Primary
-  static Color get primary => _colorScheme.surfacePrimary;
+  static Color primary = Color.fromARGB(255, 75, 130, 255);
 
   // Shades
   static const Color white = Color(0xFFFFFFFF);
