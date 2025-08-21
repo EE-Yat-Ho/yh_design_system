@@ -14,9 +14,11 @@ void showActionSheet(BuildContext context, List<YHActionSheetAction> actions) {
   }).toList();
 
   showCupertinoModalPopup<void>(
-      context: context,
-      builder: (BuildContext context) =>
-          CupertinoActionSheet(actions: cupertinoActions));
+    context: context,
+    builder: (BuildContext context) => CupertinoActionSheet(
+      actions: cupertinoActions,
+    ),
+  );
 }
 
 final class YHActionSheetAction {
