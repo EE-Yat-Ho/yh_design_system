@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/box_shadow/box_shadow.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
@@ -114,13 +115,7 @@ final class YHSnackBar extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: YHColor.surfaceOverlayStrong,
                   borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.16),
-                      blurRadius: 16,
-                      offset: const Offset(0, 6),
-                    ),
-                  ],
+                  boxShadow: [YHBoxShadow.defaultShadow()],
                 ),
                 child: Row(
                   children: [

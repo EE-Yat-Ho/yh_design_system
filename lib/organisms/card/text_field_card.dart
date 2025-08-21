@@ -37,11 +37,7 @@ final class YHTextFieldCard extends StatelessWidget {
     this.focusedBorderColor, // = YHColor.primary
     // 그림자
     this.useShadow = false,
-    this.boxShadow,
-    this.shadowColor,
-    this.shadowSpreadRadius = 1,
-    this.shadowBlurRadius = 2,
-    this.shadowOffset = const Offset(0, 2),
+    this.shadow,
   });
 
   final String? labelText;
@@ -74,22 +70,14 @@ final class YHTextFieldCard extends StatelessWidget {
   final Color? enabledBorderColor;
   // 그림자
   final bool useShadow;
-  final List<BoxShadow>? boxShadow;
-  final Color? shadowColor;
-  final double shadowSpreadRadius;
-  final double shadowBlurRadius;
-  final Offset shadowOffset;
+  final List<BoxShadow>? shadow;
 
   @override
   Widget build(BuildContext context) {
     return YHCard(
       cornerRadius: cornerRadius,
       useShadow: useShadow,
-      boxShadow: boxShadow,
-      shadowColor: shadowColor,
-      shadowSpreadRadius: shadowSpreadRadius,
-      shadowBlurRadius: shadowBlurRadius,
-      shadowOffset: shadowOffset,
+      shadow: shadow,
       child: YHTextField(
         labelText: labelText,
         font: font,

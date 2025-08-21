@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/box_shadow/box_shadow.dart';
 import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
@@ -18,11 +19,7 @@ final class YHCard extends StatelessWidget {
     this.height,
     // 그림자
     this.useShadow = true, // 그림자 사용 여부
-    this.boxShadow, // boxShadow 통째로 넣을 경우
-    this.shadowColor, // 그림자 색상
-    this.shadowSpreadRadius = 1, // 그림자 확산 반경
-    this.shadowBlurRadius = 2, // 그림자 흐림 정도
-    this.shadowOffset = const Offset(0, 3), // 그림자 오프셋
+    this.shadow, // boxShadow 통째로 넣을 경우
   });
 
   final EdgeInsets margin;
@@ -38,23 +35,11 @@ final class YHCard extends StatelessWidget {
   final double? height;
   // 그림자
   final bool useShadow;
-  final List<BoxShadow>? boxShadow;
-  final Color? shadowColor;
-  final double shadowSpreadRadius;
-  final double shadowBlurRadius;
-  final Offset shadowOffset;
+  final List<BoxShadow>? shadow;
 
   @override
   Widget build(BuildContext context) {
-    final bs = boxShadow ??
-        [
-          BoxShadow(
-            color: shadowColor ?? Colors.grey.withValues(alpha: 0.5),
-            spreadRadius: shadowSpreadRadius,
-            blurRadius: shadowBlurRadius,
-            offset: shadowOffset,
-          )
-        ];
+    final bs = shadow ?? [YHBoxShadow.defaultShadow()];
     return Container(
       // padding: padding, 터치 애니메이션에 포함되어야 해서, YHInkWell에 배치.
       margin: margin, // 마진은 밖이라서 괜찮음

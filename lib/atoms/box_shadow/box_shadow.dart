@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/utils/theme.dart';
 
-class YHBoxShadow {
-  static BoxShadow create({
+final class YHBoxShadow {
+  // 기본 그림자 생성. (매개변수로 커스텀 가능)
+  static BoxShadow defaultShadow({
     Color? color,
-    double spreadRadius = 0,
-    double blurRadius = 3,
-    Offset offset = Offset.zero,
+    double spreadRadius = 1,
+    double blurRadius = 2,
+    Offset? offset,
   }) {
+    final shadowColor = color ??
+        (YHTheme.isDarkMode
+            ? YHColor.gray500.withValues(alpha: 0.3)
+            : YHColor.gray500.withValues(alpha: 0.5));
+
+    final shadowOffset = offset ??
+        (YHTheme.isDarkMode ? const Offset(0, -3) : const Offset(0, 3));
     return BoxShadow(
-      color: color ?? Colors.black.withAlpha(54), // 그림자 색상 및 투명도
-      spreadRadius: spreadRadius, // 그림자의 퍼짐 정도
-      blurRadius: blurRadius, // 그림자의 흐림 정도
-      offset: offset, // X, Y 축으로 그림자 이동
+      color: shadowColor,
+      spreadRadius: spreadRadius,
+      blurRadius: blurRadius,
+      offset: shadowOffset,
     );
   }
 }

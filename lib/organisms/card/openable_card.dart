@@ -42,10 +42,7 @@ final class YHOpenableCard extends StatelessWidget {
     this.showAddButton = true,
     this.showArrow = true,
     // 그림자
-    this.shadowColor,
-    this.shadowSpreadRadius = 1,
-    this.shadowBlurRadius = 2,
-    this.shadowOffset = const Offset(0, 2),
+    this.shadow,
     // 이벤트
     required this.onTap,
     this.onLongPress,
@@ -64,10 +61,7 @@ final class YHOpenableCard extends StatelessWidget {
   final bool showAddButton;
   final bool showArrow;
   // 그림자
-  final Color? shadowColor;
-  final double shadowSpreadRadius;
-  final double shadowBlurRadius;
-  final Offset shadowOffset;
+  final List<BoxShadow>? shadow;
   // 이벤트
   final void Function(String id) onTap;
   final void Function(String id)? onLongPress;
@@ -143,10 +137,7 @@ final class YHOpenableCard extends StatelessWidget {
     return YHCard(
       cornerRadius: cornerRadius,
       margin: margin,
-      shadowColor: shadowColor,
-      shadowSpreadRadius: shadowSpreadRadius,
-      shadowBlurRadius: shadowBlurRadius,
-      shadowOffset: shadowOffset,
+      shadow: shadow,
       child: Stack(children: stackList),
     );
   }
