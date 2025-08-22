@@ -266,7 +266,7 @@ final class YHColorScheme {
     surfaceBlackWeak: _YHBaseColors.gray300,
     surfaceNeutral: _YHBaseColors.gray500,
     surfaceDisabled: _YHBaseColors.gray800,
-    surfaceDisabledStrong: _YHBaseColors.gray600,
+    surfaceDisabledStrong: _YHBaseColors.gray900,
     surfacePrimary: _YHBaseColors.blue600,
     surfacePrimaryWeak: _YHBaseColors.blue900,
     surfacePrimaryWeaker: _YHBaseColors.blue950,
