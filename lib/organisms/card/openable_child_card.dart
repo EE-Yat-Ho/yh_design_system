@@ -159,7 +159,8 @@ final class YHOpenableChildCard extends StatelessWidget {
     if (showRightArrow) {
       list.addAll([
         const SizedBox(width: 4),
-        YHImage.icon_right_216.icon(width: 24, height: 24)
+        YHImage.icon_right_216
+            .icon(width: 24, height: 24, color: YHColor.iconDefault)
       ]);
     }
 
