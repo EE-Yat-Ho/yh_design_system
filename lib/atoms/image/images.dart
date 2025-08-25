@@ -60,6 +60,7 @@ enum YHImage implements YHImageInterface {
   icon_bookmark_off_48,
   icon_check_24,
   icon_close_24,
+  icon_copy_72,
   icon_down_216,
   icon_drag_72,
   icon_hamburger_72,
