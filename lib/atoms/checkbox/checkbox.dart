@@ -156,6 +156,11 @@ final class _CheckMarkPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // 진행도가 0 이하일 때는 아무것도 그리지 않음
+    if (progress.value <= 0.0) {
+      return;
+    }
+
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
