@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/utils/theme.dart';
 
 // 앱 프로젝트에서 특화된 이미지가 필요할 경우, 해당 인터페이스 구현하여 사용
 abstract interface class YHImageInterface {
@@ -95,7 +96,12 @@ extension YHImageImage on YHImageInterface {
       Color? color,
       BoxFit fit = BoxFit.fitHeight,
       String? package}) {
-    final fileName = checkDarkMode ? "${this.fileName}_dark" : this.fileName;
+    var fileName = this.fileName;
+
+    // 다크모드 체크가 필요한 이미지이고, 다크모드라면 다크모드 이미지 사용 (ㅋㅋ;)
+    if (checkDarkMode && YHTheme.isDarkMode) {
+      fileName = "${this.fileName}_dark";
+    }
     return Image.asset(
       "assets/images/$fileName.png",
       width: width,
