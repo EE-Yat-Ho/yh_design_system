@@ -134,7 +134,7 @@ final class YHDialog extends StatelessWidget {
             height: 48,
             backgroundColor: YHColor.surfaceDefault,
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pop(context, false);
               if (onCancel != null) {
                 onCancel!();
               }
@@ -150,7 +150,7 @@ final class YHDialog extends StatelessWidget {
           height: 48,
           backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(context, true);
             onConfirm();
           },
         )
@@ -175,7 +175,7 @@ final class YHDialog extends StatelessWidget {
             width: double.infinity,
             backgroundColor: YHColor.surfaceDefault,
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pop(context, false);
               if (onCancel != null) {
                 onCancel!();
               }
@@ -191,7 +191,7 @@ final class YHDialog extends StatelessWidget {
           width: double.infinity,
           backgroundColor: confirmButtonBackgroundColor ?? YHColor.primary,
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pop(context, true);
             onConfirm();
           },
         )
