@@ -71,30 +71,35 @@ final class YHDialog extends StatelessWidget {
     return Dialog(
       backgroundColor: YHColor.surfaceDefault,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: YHColumn(
-        padding: EdgeInsets.fromLTRB(20, topPadding, 20, 20),
-        crossAxisAlignment: columnCrossAxisAlignment,
-        mainAxisAlignment: columnMainAxisAlignment,
-        mainAxisSize: columnMainAxisSize,
-        children: [
-          if (image != null) ...[
-            image!.icon(
-              width: imageWidth ?? double.infinity,
-              height: imageHeight ?? 100,
-            ),
-            SizedBox(height: imageBottomPadding ?? 16),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxWidth: 400, // 패드나 노트에서 너무 넓어지지 않게
+        ),
+        child: YHColumn(
+          padding: EdgeInsets.fromLTRB(20, topPadding, 20, 20),
+          crossAxisAlignment: columnCrossAxisAlignment,
+          mainAxisAlignment: columnMainAxisAlignment,
+          mainAxisSize: columnMainAxisSize,
+          children: [
+            if (image != null) ...[
+              image!.icon(
+                width: imageWidth ?? double.infinity,
+                height: imageHeight ?? 100,
+              ),
+              SizedBox(height: imageBottomPadding ?? 16),
+            ],
+            _title(),
+            if (subText != null) ...[
+              const SizedBox(height: 8),
+              _subText(),
+            ],
+            SizedBox(height: buttonTopPadding ?? 24),
+            if (buttonDirection == ButtonDirection.horizontal)
+              _rowButtons(context)
+            else
+              _columnButtons(context)
           ],
-          _title(),
-          if (subText != null) ...[
-            const SizedBox(height: 8),
-            _subText(),
-          ],
-          SizedBox(height: buttonTopPadding ?? 24),
-          if (buttonDirection == ButtonDirection.horizontal)
-            _rowButtons(context)
-          else
-            _columnButtons(context)
-        ],
+        ),
       ),
     );
   }
