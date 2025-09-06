@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:yh_design_system/organisms/dialog/dialog.dart';
-import 'package:yh_util/local_notification.dart';
+import 'package:yh_util/local_noti_service.dart';
 
 // shorebird 강제 업데이트
 Future<dynamic> showRestartDialog(BuildContext context) async {
@@ -17,7 +17,7 @@ Future<dynamic> showRestartDialog(BuildContext context) async {
                 text: 'component.dialog.restart.message'.tr(),
                 confirmText: 'component.dialog.restart.exit_app'.tr(),
                 onConfirm: () async {
-                  await showLocalNotification(
+                  LocalNotiService.instance.showLocalNotification(
                       1,
                       'component.dialog.restart.notification_title'.tr(),
                       'component.dialog.restart.notification_body'.tr());
