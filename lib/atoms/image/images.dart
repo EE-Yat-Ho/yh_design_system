@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/utils/theme.dart';
+import 'package:yh_util/entities/app_user.dart';
 
 // 앱 프로젝트에서 특화된 이미지가 필요할 경우, 해당 인터페이스 구현하여 사용
 abstract interface class YHImageInterface {
@@ -19,6 +20,10 @@ enum YHImage implements YHImageInterface {
   // 로그인
   icon_apple_216,
   icon_google_216,
+
+  // 프로필 사진
+  profile_rabbit_128,
+  profile_bear_128,
 
   // 기능
   icon_camera_48,
@@ -130,8 +135,20 @@ extension YHImageImage on YHImageInterface {
       ],
     );
   }
+}
 
-  // ImageProvider get imageProvider {
-  //   return AssetImage('assets/images/$fileName.png');
-  // }
+extension YHProfileImage on ProfileImageType {
+  Image image(double width, double height) {
+    switch (this) {
+      case ProfileImageType.bear:
+        return YHImage.profile_bear_128.icon(width: width, height: height);
+      case ProfileImageType.rabbit:
+        return YHImage.profile_rabbit_128
+            .icon(width: width * 1.25, height: height * 1.25);
+      case ProfileImageType.none:
+        return YHImage.icon_photo_48.icon(width: width, height: height);
+      case ProfileImageType.custom:
+        return YHImage.icon_photo_48.icon(width: width, height: height);
+    }
+  }
 }
