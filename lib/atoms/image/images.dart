@@ -62,6 +62,7 @@ enum YHImage implements YHImageInterface {
   // 기본 아이콘들
   icon_add_24,
   icon_back_24,
+  icon_backup_72,
   icon_bookmark_on_48,
   icon_bookmark_off_48,
   icon_check_24,
