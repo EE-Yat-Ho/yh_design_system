@@ -71,7 +71,7 @@ final class YHIndicator {
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    indicatorWidget ?? _defaultIndicatorWidget,
+                    indicatorWidget ?? defaultIndicatorWidget,
                     if (_currentMessage != null) ...[
                       const SizedBox(height: 8),
                       YHText(
@@ -98,12 +98,16 @@ final class YHIndicator {
 
   // 기본적인 인디케이터 위젯 설정하기
   static void setCommonIndicator(Widget child) {
-    _defaultIndicatorWidget = child;
+    defaultIndicatorWidget = child;
   }
 
   // 기본 인디케이터 위젯
-  static Widget _defaultIndicatorWidget = SizedBox(
+  static Widget defaultIndicatorWidget = SizedBox(
       width: 40,
       height: 40,
       child: CircularProgressIndicator(color: YHColor.primary));
+
+  // 일반적으로 Scaffold 바디에 사용할 인디케이터 위젯
+  static Widget defaultScaffoldIndicatorWidget =
+      Center(child: defaultIndicatorWidget);
 }
