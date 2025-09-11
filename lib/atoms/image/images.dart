@@ -71,7 +71,7 @@ enum YHImage implements YHImageInterface {
   icon_down_216,
   icon_drag_72,
   icon_hamburger_72,
-  icon_move_48,
+  icon_move_144,
   icon_sissor_48,
   icon_setting_216,
   icon_save_24,
