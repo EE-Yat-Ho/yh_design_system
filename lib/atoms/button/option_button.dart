@@ -12,6 +12,7 @@ final class YHOptionButton extends StatelessWidget {
     required this.isOn,
     required this.image,
     required this.onTap,
+    this.imageColor,
     this.backgroundColor,
     this.elevation = 3,
   });
@@ -23,7 +24,7 @@ final class YHOptionButton extends StatelessWidget {
   final YHImageInterface image;
   final Color? backgroundColor;
   final double elevation;
-
+  final Color? imageColor;
   @override
   Widget build(BuildContext context) {
     var textColor = isOn ? YHColor.primary : YHColor.textDefault;
@@ -41,7 +42,9 @@ final class YHOptionButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            iconStack(),
+            isOn
+                ? image.icon(color: imageColor)
+                : image.iconWithOff(color: imageColor),
             const SizedBox(width: 10),
             YHText(
               text: title,
@@ -56,18 +59,5 @@ final class YHOptionButton extends StatelessWidget {
             ),
           ],
         ));
-  }
-
-  Stack iconStack() {
-    return Stack(
-      children: isOn
-          ? [
-              image.icon(),
-            ]
-          : [
-              image.icon(),
-              YHImage.icon_off_22.icon(),
-            ],
-    );
   }
 }
