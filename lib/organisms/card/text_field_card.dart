@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/text_field/text_field.dart';
@@ -38,6 +39,10 @@ final class YHTextFieldCard extends StatelessWidget {
     // 그림자
     this.useShadow = false,
     this.shadow,
+    // 키보드 done 버튼 관련
+    this.textInputAction,
+    this.onSubmitted,
+    this.inputFormatters,
   });
 
   final String? labelText;
@@ -71,6 +76,10 @@ final class YHTextFieldCard extends StatelessWidget {
   // 그림자
   final bool useShadow;
   final List<BoxShadow>? shadow;
+  // 키보드 done 버튼 관련
+  final TextInputAction? textInputAction;
+  final void Function(String)? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +118,9 @@ final class YHTextFieldCard extends StatelessWidget {
             enabledBackgroundColor ?? YHColor.surfaceDefault,
         disabledBackgroundColor:
             disabledBackgroundColor ?? YHColor.surfaceDisabledStrong,
+        textInputAction: textInputAction,
+        onSubmitted: onSubmitted,
+        inputFormatters: inputFormatters,
       ),
     );
   }

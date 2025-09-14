@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
@@ -38,6 +39,10 @@ final class YHTextField extends StatelessWidget {
     this.focusedBorderColor, // = YHColor.primary
     this.enabledBorderColor,
     this.errorBorderColor,
+    // 키보드 done 버튼 관련
+    this.textInputAction,
+    this.onSubmitted,
+    this.inputFormatters,
   });
 
   final String? labelText;
@@ -70,6 +75,10 @@ final class YHTextField extends StatelessWidget {
   final Color? focusedBorderColor;
   final Color? enabledBorderColor;
   final Color? errorBorderColor;
+  // 키보드 done 버튼 관련
+  final TextInputAction? textInputAction;
+  final void Function(String)? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -188,6 +197,10 @@ final class YHTextField extends StatelessWidget {
       textAlign: textAlign,
       textAlignVertical: textAlignVertical,
       textDirection: textDirection,
+      // 키보드 done 버튼 관련
+      textInputAction: textInputAction,
+      onSubmitted: (value) => onSubmitted?.call(value),
+      inputFormatters: inputFormatters,
     );
   }
 
