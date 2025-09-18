@@ -27,6 +27,7 @@ final class YHTextField extends StatelessWidget {
     this.right,
     this.hideClear = true,
     this.expands = false,
+    this.suffix,
     this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.textDirection,
@@ -63,6 +64,7 @@ final class YHTextField extends StatelessWidget {
   final Widget? right;
   final bool hideClear;
   final bool expands;
+  final Widget? suffix;
   final TextAlign textAlign;
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
@@ -180,6 +182,7 @@ final class YHTextField extends StatelessWidget {
       focusNode: focusNode,
       enabled: enabled,
       decoration: InputDecoration(
+        suffix: suffix,
         labelText: labelText,
         isDense: isDense,
         hintText: placeholder,
