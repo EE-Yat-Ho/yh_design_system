@@ -27,7 +27,6 @@ final class YHTextField extends StatelessWidget {
     this.right,
     this.hideClear = true,
     this.expands = false,
-    this.suffix,
     this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.textDirection,
@@ -44,6 +43,15 @@ final class YHTextField extends StatelessWidget {
     this.textInputAction,
     this.onSubmitted,
     this.inputFormatters,
+    // suffix, prefix icon 관련
+    this.suffix,
+    this.prefix,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.suffixIconColor,
+    this.prefixIconColor,
+    this.suffixIconConstraints,
+    this.prefixIconConstraints,
   });
 
   final String? labelText;
@@ -64,7 +72,6 @@ final class YHTextField extends StatelessWidget {
   final Widget? right;
   final bool hideClear;
   final bool expands;
-  final Widget? suffix;
   final TextAlign textAlign;
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
@@ -81,6 +88,15 @@ final class YHTextField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final void Function(String)? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
+  // suffix, prefix
+  final Widget? suffix;
+  final Widget? prefix;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final Color? suffixIconColor;
+  final Color? prefixIconColor;
+  final BoxConstraints? suffixIconConstraints;
+  final BoxConstraints? prefixIconConstraints;
 
   @override
   Widget build(BuildContext context) {
@@ -183,6 +199,13 @@ final class YHTextField extends StatelessWidget {
       enabled: enabled,
       decoration: InputDecoration(
         suffix: suffix,
+        prefix: prefix,
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+        suffixIconColor: suffixIconColor,
+        prefixIconColor: prefixIconColor,
+        suffixIconConstraints: suffixIconConstraints,
+        prefixIconConstraints: prefixIconConstraints,
         labelText: labelText,
         isDense: isDense,
         hintText: placeholder,
