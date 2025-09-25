@@ -50,12 +50,9 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   // 기본 앱바 설정
   static YHAppBar get defaultAppBar => YHAppBar(
-        showBack: false,
-        height: 0,
-        systemOverlayStyle: YHTheme.isDarkMode
-            ? SystemUiOverlayStyle.light
-            : SystemUiOverlayStyle.dark,
-      );
+      showBack: false,
+      height: 0,
+      systemOverlayStyle: YHTheme.systemOverlayStyle);
 
   @override
   Widget build(BuildContext context) {
