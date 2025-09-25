@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yh_design_system/organisms/appbar/appbar.dart';
 import 'package:yh_design_system/organisms/background/paper_background.dart';
 
 final class YHScaffold extends StatelessWidget {
@@ -101,7 +102,7 @@ final class YHScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       backgroundColor: scaffoldBackgroundColor,
-      appBar: appBar,
+      appBar: appBar ?? YHAppBar.defaultAppBar,
       bottomNavigationBar: bottomNavigationBar,
       body: child,
       floatingActionButton: floatingActionButton,
