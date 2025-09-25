@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/organisms/appbar/appbar.dart';
 import 'package:yh_design_system/organisms/dialog/app_exit_dialog.dart';
 import 'package:yh_design_system/organisms/scaffold/scaffold.dart';
-import 'package:yh_design_system/utils/theme.dart';
 
 final class YHBottomNavigationBar extends StatefulWidget {
   const YHBottomNavigationBar({
@@ -28,13 +26,6 @@ final class _BottomNavigationBarState extends State<YHBottomNavigationBar> {
     debugPrint("🏗️ $this build");
     return YHScaffold(
       canPop: false,
-      appBar: YHAppBar(
-        showBack: false,
-        height: 0,
-        systemOverlayStyle: YHTheme.isDarkMode
-            ? SystemUiOverlayStyle.light
-            : SystemUiOverlayStyle.dark,
-      ),
       onPopInvokedWithResult: (didPop, result) {
         if (!didPop) {
           showAppExitDialog(context, () => SystemNavigator.pop());
