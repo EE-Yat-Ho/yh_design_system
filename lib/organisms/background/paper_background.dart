@@ -16,8 +16,10 @@ final class YHPaperBackground extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: YHTheme.isDarkMode
-                ? const AssetImage('assets/images/image_paper_dark.png')
-                : const AssetImage('assets/images/image_paper.png'), // 배경 이미지
+                ? const AssetImage('assets/images/image_paper_dark.png',
+                    package: 'yh_design_system')
+                : const AssetImage('assets/images/image_paper.png',
+                    package: 'yh_design_system'), // 배경 이미지
           ),
         ),
         child: child);
