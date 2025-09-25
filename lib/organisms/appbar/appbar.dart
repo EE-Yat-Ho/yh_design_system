@@ -82,7 +82,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (right != null) right!,
         if (rightPadding != null) SizedBox(width: rightPadding!),
       ],
-      systemOverlayStyle: systemOverlayStyle,
+      systemOverlayStyle: systemOverlayStyle ?? YHTheme.systemOverlayStyle,
       scrolledUnderElevation: 0,
       toolbarHeight: preferredSize.height,
       leading: Row(children: [
