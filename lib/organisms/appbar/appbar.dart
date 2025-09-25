@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/button/ink_well.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
@@ -19,6 +20,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
   final Color backgroundColor;
   final Color? foregroundColor;
+  final SystemUiOverlayStyle? systemOverlayStyle;
   final void Function()? backButtonOnTap;
   final void Function()? titleOnTap;
 
@@ -36,6 +38,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.height = kToolbarHeight,
     this.backgroundColor = YHColor.transparent,
     this.foregroundColor,
+    this.systemOverlayStyle,
     this.backButtonOnTap,
     this.titleOnTap,
   });
@@ -71,6 +74,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (right != null) right!,
         if (rightPadding != null) SizedBox(width: rightPadding!),
       ],
+      systemOverlayStyle: systemOverlayStyle,
       scrolledUnderElevation: 0,
       toolbarHeight: preferredSize.height,
       leading: Row(children: [
