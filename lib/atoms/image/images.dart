@@ -17,6 +17,14 @@ abstract interface class YHImageInterface {
 }
 
 enum YHImage implements YHImageInterface {
+  // 캐릭터
+  char_question_mark,
+  char_really,
+  char_write,
+
+  // 배경
+  image_paper,
+
   // 로그인
   icon_apple_216,
   icon_google_216,
@@ -94,7 +102,17 @@ enum YHImage implements YHImageInterface {
   String get fileName => name;
 
   @override
-  bool get checkDarkMode => false;
+  bool get checkDarkMode {
+    switch (this) {
+      case YHImage.char_question_mark:
+      case YHImage.char_really:
+      case YHImage.char_write:
+      case YHImage.image_paper:
+        return true;
+      default:
+        return false;
+    }
+  }
 }
 
 extension YHImageImage on YHImageInterface {
