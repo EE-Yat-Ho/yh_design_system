@@ -77,7 +77,7 @@ class SettingCellCard extends StatelessWidget {
           color: YHColor.textDefault,
           maxLines: 2,
         ),
-        contentPadding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+        contentPadding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: rightRowChildren,

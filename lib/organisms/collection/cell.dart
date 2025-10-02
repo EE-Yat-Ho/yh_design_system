@@ -65,7 +65,10 @@ class YHCell extends StatelessWidget {
 
   Widget _cell() {
     final title = YHText(
-        text: this.title, font: YHFont.regular22, color: YHColor.primary);
+      text: this.title,
+      font: YHFont.regular22,
+      color: YHColor.textDefault,
+    );
 
     Widget? row;
     if (redDot) {

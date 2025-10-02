@@ -20,7 +20,7 @@ final class SettingSectionCard extends StatelessWidget {
     return ListTile(
       dense: true,
       leading: text,
-      contentPadding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+      contentPadding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
     );
   }
 }
