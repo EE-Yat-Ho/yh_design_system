@@ -51,6 +51,8 @@ final class YHCard extends StatelessWidget {
             ? Border.all(color: borderColor!, width: borderWidth!)
             : null,
       ),
+      width: width,
+      height: height,
       child: YHInkWell(
         onTap: onTap,
         onLongPress: onLongPress,
