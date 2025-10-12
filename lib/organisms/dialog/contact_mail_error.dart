@@ -14,13 +14,14 @@ Future<dynamic> showContactMailErrorDialog(
       builder: (BuildContext innerContext) {
         return YHDialog(
           image: image,
-          text: text ?? 'component.dialog.contact_mail.error_message'.tr(),
+          text:
+              text ?? 'yh_design_system.dialog.contact_mail.error_message'.tr(),
           subText: 'common.developer_email'.tr(),
           onConfirm: () {
             Clipboard.setData(
                 ClipboardData(text: 'common.developer_email'.tr()));
           },
-          confirmText: 'component.dialog.contact_mail.copy_mail'.tr(),
+          confirmText: 'yh_design_system.dialog.contact_mail.copy_mail'.tr(),
           cancelText: 'common.confirm'.tr(),
         );
       });

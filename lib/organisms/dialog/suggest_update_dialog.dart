@@ -15,10 +15,11 @@ Future<dynamic> showSuggestUpdateDialog(
       context: context,
       builder: (BuildContext innerContext) {
         return YHDialog(
-          text: 'component.dialog.suggest_update.message'.tr(),
+          text: 'yh_design_system.dialog.suggest_update.message'.tr(),
           onConfirm: () async => await moveToStore(appStoreId, packageName),
-          confirmText: 'component.dialog.suggest_update.go_to_store'.tr(),
-          cancelText: 'component.dialog.suggest_update.later'.tr(),
+          confirmText:
+              'yh_design_system.dialog.suggest_update.go_to_store'.tr(),
+          cancelText: 'yh_design_system.dialog.suggest_update.later'.tr(),
         );
       });
 }

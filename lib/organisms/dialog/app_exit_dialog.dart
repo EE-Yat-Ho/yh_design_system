@@ -12,11 +12,11 @@ Future<dynamic> showAppExitDialog(
           image: YHImage.char_question_mark,
           buttonDirection: ButtonDirection.vertical,
           columnCrossAxisAlignment: CrossAxisAlignment.center,
-          text: "component.dialog.app_exit.title".tr(),
+          text: "yh_design_system.dialog.app_exit.title".tr(),
           titleAlign: TextAlign.center,
           onConfirm: onConfirm,
-          confirmText: "component.dialog.app_exit.confirmText".tr(),
-          cancelText: "component.dialog.app_exit.cancelText".tr(),
+          confirmText: "yh_design_system.dialog.app_exit.confirmText".tr(),
+          cancelText: "yh_design_system.dialog.app_exit.cancelText".tr(),
         );
       });
 }
