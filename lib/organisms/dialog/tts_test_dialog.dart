@@ -15,14 +15,14 @@ Future<dynamic> showTTSTestDialog(
           onConfirm: (message) => onConfirm(message),
           titleWidget: Row(children: [
             YHText(
-              text: "component.dialog.tts_test.title".tr(),
+              text: "yh_design_system.dialog.tts_test.title".tr(),
               font: YHFont.regular18,
               color: YHColor.textDefault,
             ),
             const SizedBox(width: 4),
             YHImage.icon_speaker_96.icon(width: 18, height: 18),
           ]),
-          hintText: "component.dialog.tts_test.hint".tr(),
+          hintText: "yh_design_system.dialog.tts_test.hint".tr(),
         );
       });
 }
