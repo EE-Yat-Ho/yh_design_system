@@ -63,6 +63,7 @@ enum YHImage implements YHImageInterface {
   icon_email_128,
   icon_language_128,
   icon_copy_right_48,
+  icon_speaker_96,
 
   // 옵션 끄기
   icon_off_22,
