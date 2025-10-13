@@ -201,77 +201,10 @@ final class YHCell extends StatelessWidget {
                     font: YHFont.regular16,
                     color: rightTextColor ?? YHColor.textSub);
               }),
-        if (showArrow) YHImage.icon_right_216.icon(width: 24, height: 24),
+        if (showArrow)
+          YHImage.icon_right_216
+              .icon(width: 24, height: 24, color: YHColor.iconDefault),
       ],
     );
   }
-
-  //   Widget? row;
-  //   if (redDot) {
-  //     row = Row(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         title,
-  //         Container(
-  //           margin: const EdgeInsets.fromLTRB(2, 4, 0, 0),
-  //           width: redDotSize,
-  //           height: redDotSize,
-  //           decoration: redDotDecoration,
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //   return Container(
-  //     margin: margin,
-  //     padding: padding,
-  //     decoration: BoxDecoration(
-  //       color: backgroundColor,
-  //       border: borderColor != null
-  //           ? Border.all(color: borderColor!, width: borderWidth ?? 1)
-  //           : null,
-  //       borderRadius:
-  //           cornerRadius != null ? BorderRadius.circular(cornerRadius!) : null,
-  //     ),
-  //     child: Row(
-  //       children: [
-  //         // 왼쪽 이미지
-  //         if (leftImage != null) ...[
-  //           leftImage!.icon(width: 48, height: 48),
-  //           const SizedBox(width: 8),
-  //         ],
-
-  //         // 타이틀, 서브타이틀
-  //         Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           spacing: 2,
-  //           children: [
-  //             if (redDot) row! else title,
-  //             if (subtitle != null)
-  //               YHText(
-  //                   text: subtitle!,
-  //                   font: YHFont.regular14,
-  //                   color: YHColor.gray700),
-  //           ],
-  //         ),
-
-  //         const Spacer(),
-
-  //         // 오른쪽 타입에 따라 다른 위젯 표시
-  //         switch (rightType) {
-  //           YHCellRightType.arrow => YHImage.icon_right_216
-  //               .icon(width: 24, height: 24, color: YHColor.iconDefault),
-  //           YHCellRightType.toggle => YHSwitch(
-  //               initialValue: initialToggleValue ?? false,
-  //               onChanged: onToggle!),
-  //           YHCellRightType.none => const SizedBox.shrink(),
-  //           YHCellRightType.text => YHText(
-  //               text: rightText!,
-  //               font: YHFont.regular16,
-  //               color: YHColor.gray700,
-  //             ),
-  //         },
-  //       ],
-  //     ),
-  //   );
-  // }
 }
