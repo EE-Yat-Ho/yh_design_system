@@ -52,7 +52,7 @@ final class ImageDetailPageState extends State<ImageDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: YHAppBar(
-        title: "page.image_detail.detail_image".tr(),
+        title: "yh_design_system.page.image_detail.detail_image".tr(),
         showBack: false,
         showClose: true,
         rightPadding: 16,
