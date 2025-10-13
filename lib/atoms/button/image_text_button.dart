@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 
-class YHImageTextButton extends StatelessWidget {
+final class YHImageTextButton extends StatelessWidget {
   const YHImageTextButton({
     super.key,
     required this.text,
@@ -15,6 +15,7 @@ class YHImageTextButton extends StatelessWidget {
     this.minHeight,
     this.minWidth,
     required this.onTap,
+    this.imageColor,
   });
 
   final VoidCallback? onTap;
@@ -22,6 +23,7 @@ class YHImageTextButton extends StatelessWidget {
   final IconData? iconData;
   final YHImageInterface? image;
   final Color? textColor;
+  final Color? imageColor;
   final Color? borderColor;
   final double? borderWidth;
   final double? cornerRadius;
@@ -54,7 +56,7 @@ class YHImageTextButton extends StatelessWidget {
 
     Widget? imageWidget;
     if (image != null) {
-      imageWidget = image!.icon(width: 24, height: 24);
+      imageWidget = image!.icon(width: 24, height: 24, color: imageColor);
     } else if (iconData != null) {
       imageWidget = Icon(iconData);
     }
