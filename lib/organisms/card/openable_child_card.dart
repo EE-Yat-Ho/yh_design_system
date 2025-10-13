@@ -5,7 +5,7 @@ import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
-import 'package:yh_util/entities/image_entity.dart';
+import 'package:yh_util/domain/entities/image_entity.dart';
 
 final class ChildObject {
   final Object object;

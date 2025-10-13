@@ -3,7 +3,7 @@ import 'package:yh_design_system/atoms/button/button.dart';
 import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
-import 'package:yh_util/entities/image_entity.dart';
+import 'package:yh_util/domain/entities/image_entity.dart';
 
 final class HorizontalImageCollection extends StatelessWidget {
   final List<ImageEntity> images;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/utils/theme.dart';
+import 'package:yh_util/common/theme.dart';
 
 final class YHPaperBackground extends StatelessWidget {
   const YHPaperBackground({

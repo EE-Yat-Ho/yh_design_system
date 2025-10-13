@@ -1,7 +1,7 @@
 // ignore_for_file: type=lint
 
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/utils/theme.dart';
+import 'package:yh_util/common/theme.dart';
 import 'color_scheme.dart';
 
 final class YHColor {

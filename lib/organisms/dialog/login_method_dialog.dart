@@ -8,7 +8,7 @@ import 'package:yh_design_system/atoms/column/column.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
-import 'package:yh_util/entities/yh_user.dart';
+import 'package:yh_util/domain/entities/yh_user.dart';
 
 // 로그인 방법 선택 팝업
 // iOS 일때 애플 로그인 버튼 제공

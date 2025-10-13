@@ -1,8 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/utils/theme.dart';
-import 'package:yh_util/entities/app_user.dart';
+import 'package:yh_util/common/theme.dart';
+import 'package:yh_util/domain/entities/app_user.dart';
 
 // 앱 프로젝트에서 특화된 이미지가 필요할 경우, 해당 인터페이스 구현하여 사용
 abstract interface class YHImageInterface {

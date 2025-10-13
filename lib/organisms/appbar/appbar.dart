@@ -6,7 +6,7 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
-import 'package:yh_design_system/utils/theme.dart';
+import 'package:yh_util/common/theme.dart';
 
 final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
