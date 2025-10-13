@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yh_design_system/organisms/setting_page/setting_cell_card.dart';
-import 'package:yh_design_system/organisms/setting_page/setting_section_card.dart';
+import 'package:yh_design_system/organisms/collection/setting_list/setting_cell_card.dart';
+import 'package:yh_design_system/organisms/collection/setting_list/setting_section_card.dart';
 import 'package:yh_design_system/utils/yh_expansion_panel_list.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
 

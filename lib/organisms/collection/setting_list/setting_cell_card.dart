@@ -4,7 +4,7 @@ import 'package:yh_design_system/atoms/card/card.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/image/images.dart';
-import 'package:yh_design_system/organisms/setting_page/setting_list.dart';
+import 'package:yh_design_system/organisms/collection/setting_list/setting_list.dart';
 
 class SettingCellCard extends StatelessWidget {
   const SettingCellCard({

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
-import 'package:yh_design_system/organisms/setting_page/setting_list.dart';
+import 'package:yh_design_system/organisms/collection/setting_list/setting_list.dart';
 
 final class SettingSectionCard extends StatelessWidget {
   const SettingSectionCard({super.key, required this.section});
