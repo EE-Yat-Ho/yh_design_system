@@ -30,8 +30,10 @@ enum YHImage implements YHImageInterface {
   icon_google_216,
 
   // 프로필 사진
-  profile_rabbit_128,
-  profile_bear_128,
+  // profile_rabbit_128,
+  // profile_bear_128,
+  profile_cat_head_512,
+  profile_dog_head_512,
 
   // 기능
   icon_camera_48,
@@ -163,10 +165,12 @@ extension YHProfileImage on ProfileImageType {
   Image image(double width, double height) {
     switch (this) {
       case ProfileImageType.bear:
-        return YHImage.profile_bear_128.icon(width: width, height: height);
+        // return YHImage.profile_bear_128.icon(width: width, height: height);
+        return YHImage.profile_dog_head_512.icon(width: width, height: height);
       case ProfileImageType.rabbit:
-        return YHImage.profile_rabbit_128
-            .icon(width: width * 1.25, height: height * 1.25);
+        // return YHImage.profile_rabbit_128
+        //     .icon(width: width * 1.25, height: height * 1.25);
+        return YHImage.profile_cat_head_512.icon(width: width, height: height);
       case ProfileImageType.none:
         return YHImage.icon_photo_48.icon(width: width, height: height);
       case ProfileImageType.custom:
