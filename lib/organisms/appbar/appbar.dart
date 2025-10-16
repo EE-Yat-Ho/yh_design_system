@@ -11,8 +11,6 @@ import 'package:yh_util/common/theme.dart';
 final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final YHFont titleFont;
-  final bool showBack;
-  final bool showClose;
   final Widget? left;
   final double leftPadding;
   final double? leftWidth;
@@ -21,6 +19,10 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
   final Color backgroundColor;
   final Color? foregroundColor;
+  // 백버튼, 닫기버튼
+  final bool showBack;
+  final bool showClose;
+  final Color? iconColor;
   // 라이트/다크 모드에 따라 시스템 오버레이 스타일 설정(상태바 색상)
   final SystemUiOverlayStyle? systemOverlayStyle;
   final void Function()? backButtonOnTap;
@@ -32,6 +34,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.titleFont = YHFont.regular16,
     this.showBack = true,
     this.showClose = false,
+    this.iconColor,
     this.left,
     this.leftPadding = 8,
     this.leftWidth,
@@ -103,7 +106,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
-      image: YHImage.icon_back_24.icon(color: YHColor.iconDefault),
+      image: YHImage.icon_back_24.icon(color: iconColor ?? YHColor.iconDefault),
       width: 40,
       height: 40,
       backgroundColor: YHColor.opacity,
@@ -116,7 +119,8 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       onTap: backButtonOnTap != null
           ? backButtonOnTap!
           : () => Navigator.pop(context),
-      image: YHImage.icon_close_24.icon(color: YHColor.iconDefault),
+      image:
+          YHImage.icon_close_24.icon(color: iconColor ?? YHColor.iconDefault),
       width: 40,
       height: 40,
       backgroundColor: YHColor.opacity,
