@@ -55,6 +55,7 @@ final class ImageDetailPageState extends State<ImageDetailPage> {
         title: "yh_design_system.page.image_detail.detail_image".tr(),
         showBack: false,
         showClose: true,
+        iconColor: YHColor.white,
         rightPadding: 16,
         foregroundColor: YHColor.textWhite,
         backgroundColor: YHColor.transparent,
