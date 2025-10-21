@@ -6,6 +6,7 @@ import 'package:yh_design_system/atoms/image/images.dart';
 import 'package:yh_design_system/atoms/decoration/yh_red_dot.dart';
 import 'package:yh_design_system/atoms/switch/switch.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
+import 'package:yh_util/common/theme.dart';
 
 final class YHCell extends StatelessWidget {
   const YHCell({
@@ -91,23 +92,15 @@ final class YHCell extends StatelessWidget {
 
     final canTap = onTap != null;
 
-    // List<Widget> list = [
-    //   ListTile(
-    //     dense: true,
-    //     leading: _left(),
-    //     title: _title(),
-    //     subtitle: _subtitle(),
-    //     contentPadding: contentPadding,
-    //     trailing: _right(),
-    //     onTap: canTap ? () => onTap!(id) : null,
-    //   ),
-    // ];
-
     return YHCard(
       cornerRadius: 8,
       margin: const EdgeInsets.fromLTRB(4, 0, 4, 8),
       useShadow: canTap,
-      borderColor: canTap ? null : YHColor.strokeDefault,
+      borderColor: canTap
+          ? null
+          : YHTheme.isDarkMode
+              ? null
+              : YHColor.strokeDefault,
       borderWidth: canTap ? 0 : 1,
       child: ListTile(
         dense: true,
