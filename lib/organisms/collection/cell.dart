@@ -82,7 +82,7 @@ final class YHCell extends StatelessWidget {
   final double? borderWidth;
   final double? cornerRadius;
   // 이벤트
-  final void Function(int)? onTap;
+  final void Function()? onTap;
   final void Function(bool)? onToggle;
 
   @override
@@ -116,7 +116,7 @@ final class YHCell extends StatelessWidget {
         subtitle: _subtitle(),
         contentPadding: contentPadding,
         trailing: _right(),
-        onTap: canTap ? () => onTap!(id) : null,
+        onTap: onTap,
       ),
     );
   }
