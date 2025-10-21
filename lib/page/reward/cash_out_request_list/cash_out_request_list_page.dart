@@ -21,7 +21,7 @@ final class CashOutRequestListPage extends StatelessWidget {
     return YHScaffold(
       appBar: YHAppBar(
         backgroundColor: YHColor.transparent,
-        title: "page.cash_out_request_list.title".tr(),
+        title: "yh_design_system.page.cash_out_request_list.title".tr(),
         titleFont: YHFont.regular20,
       ),
       body: SafeArea(
@@ -40,7 +40,8 @@ final class CashOutRequestListPage extends StatelessWidget {
     if (bloc.state.type == CashOutRequestListType.failure) {
       return Center(
         child: YHText(
-          text: "page.cash_out_request_list.loading_failed".tr(),
+          text:
+              "yh_design_system.page.cash_out_request_list.loading_failed".tr(),
           font: YHFont.regular16,
           color: YHColor.textDefault,
         ),
@@ -50,7 +51,7 @@ final class CashOutRequestListPage extends StatelessWidget {
     if (bloc.state.cashOutRequests.isEmpty) {
       return Center(
         child: YHText(
-          text: "page.cash_out_request_list.empty_list".tr(),
+          text: "yh_design_system.page.cash_out_request_list.empty_list".tr(),
           font: YHFont.regular18,
           color: YHColor.textDefault,
         ),
@@ -96,7 +97,7 @@ final class CashOutRequestListPage extends StatelessWidget {
           const SizedBox(height: 4),
           YHText(
             text:
-                "🪙 ${request.amount.toString()}${"page.cash_out_request_list.cash_suffix".tr()}",
+                "🪙 ${request.amount.toString()}${"yh_design_system.page.cash_out_request_list.cash_suffix".tr()}",
             font: YHFont.regular16,
             color: YHColor.textDefault,
           ),

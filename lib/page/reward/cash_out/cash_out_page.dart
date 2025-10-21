@@ -45,14 +45,14 @@ final class _CashOutPageState extends State<CashOutPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             children: [
               YHText(
-                text: "page.cash_out.title".tr(),
+                text: "yh_design_system.page.cash_out.title".tr(),
                 font: YHFont.regular22,
                 color: YHColor.textDefault,
                 align: TextAlign.center,
               ),
               const SizedBox(height: 4),
               YHText(
-                text: "page.cash_out.subtitle".tr(),
+                text: "yh_design_system.page.cash_out.subtitle".tr(),
                 font: YHFont.regular20,
                 color: YHColor.textSub,
               ),
@@ -64,15 +64,15 @@ final class _CashOutPageState extends State<CashOutPage> {
               ),
               const SizedBox(height: 40),
               YHText(
-                text: "page.cash_out.coming_soon".tr(),
+                text: "yh_design_system.page.cash_out.coming_soon".tr(),
                 font: YHFont.regular20,
                 color: YHColor.textSub,
               ),
               YHSolidButton(
                   isEnabled: bloc.state.canCashOut,
                   title: bloc.state.canCashOut
-                      ? "page.cash_out.cash_out_button".tr()
-                      : "page.cash_out.insufficient_cash".tr(),
+                      ? "yh_design_system.page.cash_out.cash_out_button".tr()
+                      : "yh_design_system.page.cash_out.insufficient_cash".tr(),
                   font: YHFont.regular20,
                   margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
                   onTap: () => bloc.add(CashOutDidTap())),
@@ -97,7 +97,7 @@ final class _CashOutPageState extends State<CashOutPage> {
       child: Row(
         children: [
           YHText(
-              text: "page.cash_out.my_cash".tr(),
+              text: "yh_design_system.page.cash_out.my_cash".tr(),
               font: YHFont.regular20,
               color: YHColor.textDefault),
           const Spacer(),

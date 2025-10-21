@@ -25,14 +25,15 @@ final class RewardResultPage extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
               YHText(
-                text: "page.reward_result.title".tr(args: [reward.toString()]),
+                text: "yh_design_system.page.reward_result.title"
+                    .tr(args: [reward.toString()]),
                 font: YHFont.regular30,
                 color: YHColor.black,
                 align: TextAlign.center,
               ),
               YHImage.image_coin_216.icon(width: 250, height: 250),
               YHText(
-                text: "page.reward_result.subtitle".tr(),
+                text: "yh_design_system.page.reward_result.subtitle".tr(),
                 font: YHFont.regular20,
                 color: YHColor.textSub,
                 align: TextAlign.center,

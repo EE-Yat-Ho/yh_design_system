@@ -24,7 +24,7 @@ final class CashOutResultPage extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
               YHText(
-                text: "page.cash_out_result.title".tr(),
+                text: "yh_design_system.page.cash_out_result.title".tr(),
                 font: YHFont.regular30,
                 color: YHColor.black,
                 align: TextAlign.center,
@@ -32,13 +32,13 @@ final class CashOutResultPage extends StatelessWidget {
               YHImage.image_coin_216.icon(width: 250, height: 250),
               const SizedBox(height: 4),
               YHText(
-                text: "page.cash_out_result.subtitle".tr(),
+                text: "yh_design_system.page.cash_out_result.subtitle".tr(),
                 font: YHFont.regular18,
                 color: YHColor.textSub,
               ),
               const SizedBox(height: 4),
               YHText(
-                text: "page.cash_out_result.thank_you".tr(),
+                text: "yh_design_system.page.cash_out_result.thank_you".tr(),
                 font: YHFont.regular18,
                 color: YHColor.textSub,
               ),

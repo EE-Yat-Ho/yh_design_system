@@ -40,7 +40,7 @@ final class _CashOutInputAccountPageState
             children: [
               Center(
                   child: YHText(
-                text: "page.cash_out_input_account.title".tr(),
+                text: "yh_design_system.page.cash_out_input_account.title".tr(),
                 font: YHFont.regular22,
                 color: YHColor.textDefault,
                 align: TextAlign.center,
@@ -65,7 +65,9 @@ final class _CashOutInputAccountPageState
                   isEnabled: accountController.text.isNotEmpty &&
                       nameController.text.isNotEmpty &&
                       bankController.text.isNotEmpty,
-                  title: "page.cash_out_input_account.cash_out_button".tr(),
+                  title:
+                      "yh_design_system.page.cash_out_input_account.cash_out_button"
+                          .tr(),
                   font: YHFont.regular20,
                   margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
                   onTap: () => bloc.add(CashOutOnTap(
@@ -83,7 +85,8 @@ final class _CashOutInputAccountPageState
   Widget _inputAccountNumber() {
     return Row(children: [
       YHText(
-        text: "page.cash_out_input_account.account_number".tr(),
+        text:
+            "yh_design_system.page.cash_out_input_account.account_number".tr(),
         font: YHFont.regular20,
         color: YHColor.black,
       ),
@@ -94,7 +97,8 @@ final class _CashOutInputAccountPageState
           onChanged: (value) => {setState(() {})},
           cornerRadius: 0,
           placeholder:
-              "page.cash_out_input_account.account_number_placeholder".tr(),
+              "yh_design_system.page.cash_out_input_account.account_number_placeholder"
+                  .tr(),
           textInputType: TextInputType.number,
         ),
       ),
@@ -104,7 +108,7 @@ final class _CashOutInputAccountPageState
   Widget _inputBankName() {
     return Row(children: [
       YHText(
-        text: "page.cash_out_input_account.bank_name".tr(),
+        text: "yh_design_system.page.cash_out_input_account.bank_name".tr(),
         font: YHFont.regular20,
         color: YHColor.black,
       ),
@@ -114,7 +118,9 @@ final class _CashOutInputAccountPageState
           controller: bankController,
           onChanged: (value) => {setState(() {})},
           cornerRadius: 0,
-          placeholder: "page.cash_out_input_account.bank_name_placeholder".tr(),
+          placeholder:
+              "yh_design_system.page.cash_out_input_account.bank_name_placeholder"
+                  .tr(),
           textInputType: TextInputType.name,
         ),
       ),
@@ -124,7 +130,8 @@ final class _CashOutInputAccountPageState
   Widget _inputAccountHolder() {
     return Row(children: [
       YHText(
-        text: "page.cash_out_input_account.account_holder".tr(),
+        text:
+            "yh_design_system.page.cash_out_input_account.account_holder".tr(),
         font: YHFont.regular20,
         color: YHColor.black,
       ),
@@ -135,7 +142,8 @@ final class _CashOutInputAccountPageState
           onChanged: (value) => {setState(() {})},
           cornerRadius: 0,
           placeholder:
-              "page.cash_out_input_account.account_holder_placeholder".tr(),
+              "yh_design_system.page.cash_out_input_account.account_holder_placeholder"
+                  .tr(),
           textInputType: TextInputType.name,
         ),
       ),
@@ -147,13 +155,13 @@ final class _CashOutInputAccountPageState
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         YHText(
-          text: "page.cash_out_input_account.notice".tr(),
+          text: "yh_design_system.page.cash_out_input_account.notice".tr(),
           font: YHFont.regular20,
           color: YHColor.textDefault,
         ),
         const SizedBox(height: 4),
         YHText(
-          text: "page.cash_out_input_account.notice_1".tr(),
+          text: "yh_design_system.page.cash_out_input_account.notice_1".tr(),
           font: YHFont.regular18,
           color: YHColor.textDefault,
         ),
@@ -171,7 +179,7 @@ final class _CashOutInputAccountPageState
         // ),
         const SizedBox(height: 4),
         YHText(
-          text: "page.cash_out_input_account.notice_2".tr(),
+          text: "yh_design_system.page.cash_out_input_account.notice_2".tr(),
           font: YHFont.regular18,
           color: YHColor.textDefault,
         ),

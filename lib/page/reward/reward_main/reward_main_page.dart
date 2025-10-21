@@ -22,7 +22,7 @@ final class RewardMainPage extends StatelessWidget {
     final bloc = context.watch<RewardMainBloc>();
     return YHScaffold(
       appBar: YHAppBar(
-        title: "page.reward_main.title".tr(),
+        title: "yh_design_system.page.reward_main.title".tr(),
         titleFont: YHFont.regular22,
       ),
       body: SafeArea(
@@ -32,7 +32,7 @@ final class RewardMainPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               YHText(
-                  text: "page.reward_main.subtitle".tr(),
+                  text: "yh_design_system.page.reward_main.subtitle".tr(),
                   font: YHFont.regular16,
                   color: YHColor.textSub),
               const SizedBox(height: 32),
@@ -61,7 +61,7 @@ final class RewardMainPage extends StatelessWidget {
       child: Row(
         children: [
           YHText(
-              text: "page.reward_main.my_cash".tr(),
+              text: "yh_design_system.page.reward_main.my_cash".tr(),
               font: YHFont.regular20,
               color: YHColor.textDefault),
           const Spacer(),
@@ -82,16 +82,17 @@ final class RewardMainPage extends StatelessWidget {
         YHCell(
             id: 0,
             margin: const EdgeInsets.symmetric(vertical: 12),
-            title: "page.reward_main.mission_title".tr(),
-            subtitle: "page.reward_main.mission_subtitle".tr(),
+            title: "yh_design_system.page.reward_main.mission_title".tr(),
+            subtitle: "yh_design_system.page.reward_main.mission_subtitle".tr(),
             redDot: bloc.state.showRedDot,
             onTap: () => navigatorKey.currentContext!
                 .pushNamed(YHRouteNames.missionList)),
         YHCell(
             id: 1,
             margin: const EdgeInsets.symmetric(vertical: 12),
-            title: "page.reward_main.cash_out_title".tr(),
-            subtitle: "page.reward_main.cash_out_subtitle".tr(),
+            title: "yh_design_system.page.reward_main.cash_out_title".tr(),
+            subtitle:
+                "yh_design_system.page.reward_main.cash_out_subtitle".tr(),
             onTap: () =>
                 navigatorKey.currentContext!.pushNamed(YHRouteNames.cashOut)),
       ],

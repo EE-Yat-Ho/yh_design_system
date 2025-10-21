@@ -17,7 +17,7 @@ final class MissionListPage extends StatelessWidget {
     final bloc = context.watch<MissionListBloc>();
     return YHScaffold(
       appBar: YHAppBar(
-        title: "page.mission_list.title".tr(),
+        title: "yh_design_system.page.mission_list.title".tr(),
         titleFont: YHFont.regular22,
       ),
       body: SafeArea(
@@ -43,16 +43,17 @@ final class MissionListPage extends StatelessWidget {
           YHCell(
               id: 0,
               margin: const EdgeInsets.symmetric(vertical: 12),
-              title: "page.mission_list.attend_title".tr(),
-              subtitle: "page.mission_list.attend_subtitle".tr(),
+              title: "yh_design_system.page.mission_list.attend_title".tr(),
+              subtitle:
+                  "yh_design_system.page.mission_list.attend_subtitle".tr(),
               showArrow: false,
               redDot: bloc.state.canAttend,
               onTap: () => context.pushNamed(YHRouteNames.attend)),
           YHCell(
               id: 1,
               margin: const EdgeInsets.symmetric(vertical: 12),
-              title: "page.mission_list.ad_title".tr(),
-              subtitle: "page.mission_list.ad_subtitle".tr(),
+              title: "yh_design_system.page.mission_list.ad_title".tr(),
+              subtitle: "yh_design_system.page.mission_list.ad_subtitle".tr(),
               showArrow: false,
               redDot: bloc.state.canWatchAD,
               onTap: () => context.pushNamed(YHRouteNames.ad)),
@@ -72,7 +73,8 @@ final class MissionListPage extends StatelessWidget {
             id: 2,
             margin: const EdgeInsets.symmetric(vertical: 12),
             title: "🛠️",
-            subtitle: "page.mission_list.coming_soon_subtitle".tr(),
+            subtitle:
+                "yh_design_system.page.mission_list.coming_soon_subtitle".tr(),
             showArrow: false,
           ),
         ],

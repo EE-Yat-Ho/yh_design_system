@@ -31,7 +31,7 @@ final class MissionAdPage extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
               YHText(
-                text: "page.mission_ad.title".tr(),
+                text: "yh_design_system.page.mission_ad.title".tr(),
                 font: YHFont.regular30,
                 color: YHColor.textDefault,
                 align: TextAlign.center,
@@ -41,9 +41,9 @@ final class MissionAdPage extends StatelessWidget {
                 offset: const Offset(0, -30),
                 child: YHText(
                   text: bloc.state.remainADWatchCount > 0
-                      ? "page.mission_ad.remaining_count"
+                      ? "yh_design_system.page.mission_ad.remaining_count"
                           .tr(args: [bloc.state.remainADWatchCount.toString()])
-                      : "page.mission_ad.all_watched"
+                      : "yh_design_system.page.mission_ad.all_watched"
                           .tr(args: [RewardUtil.DAILY_AD_THRESHOLD.toString()]),
                   font: YHFont.regular20,
                   color: YHColor.textSub,
@@ -54,8 +54,8 @@ final class MissionAdPage extends StatelessWidget {
               YHSolidButton(
                   isEnabled: bloc.state.remainADWatchCount > 0,
                   title: bloc.state.remainADWatchCount > 0
-                      ? "page.mission_ad.watch_ad".tr()
-                      : "page.mission_ad.thank_you".tr(),
+                      ? "yh_design_system.page.mission_ad.watch_ad".tr()
+                      : "yh_design_system.page.mission_ad.thank_you".tr(),
                   font: YHFont.regular20,
                   margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                   onTap: () => bloc.add(SeeAdDidTap())),
