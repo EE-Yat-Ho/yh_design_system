@@ -16,7 +16,7 @@ final class YHCell extends StatelessWidget {
     this.leftEmoji,
     // 타이틀
     required this.title,
-    this.titleFont = YHFont.regular18,
+    this.titleFont = YHFont.regular16,
     this.titleColor,
     this.titleMaxLines = 2,
     // 서브타이틀
