@@ -46,14 +46,14 @@ final class _CashOutPageState extends State<CashOutPage> {
             children: [
               YHText(
                 text: "yh_design_system.page.cash_out.title".tr(),
-                font: YHFont.regular22,
+                font: YHFont.regular18,
                 color: YHColor.textDefault,
                 align: TextAlign.center,
               ),
               const SizedBox(height: 4),
               YHText(
                 text: "yh_design_system.page.cash_out.subtitle".tr(),
-                font: YHFont.regular20,
+                font: YHFont.regular16,
                 color: YHColor.textSub,
               ),
               const SizedBox(height: 16),
@@ -65,7 +65,7 @@ final class _CashOutPageState extends State<CashOutPage> {
               const SizedBox(height: 40),
               YHText(
                 text: "yh_design_system.page.cash_out.coming_soon".tr(),
-                font: YHFont.regular20,
+                font: YHFont.regular18,
                 color: YHColor.textSub,
               ),
               YHSolidButton(
@@ -73,7 +73,7 @@ final class _CashOutPageState extends State<CashOutPage> {
                   title: bloc.state.canCashOut
                       ? "yh_design_system.page.cash_out.cash_out_button".tr()
                       : "yh_design_system.page.cash_out.insufficient_cash".tr(),
-                  font: YHFont.regular20,
+                  font: YHFont.regular18,
                   margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
                   onTap: () => bloc.add(CashOutDidTap())),
             ],
@@ -98,12 +98,12 @@ final class _CashOutPageState extends State<CashOutPage> {
         children: [
           YHText(
               text: "yh_design_system.page.cash_out.my_cash".tr(),
-              font: YHFont.regular20,
+              font: YHFont.regular18,
               color: YHColor.textDefault),
           const Spacer(),
           YHText(
               text: "$formatted 🪙",
-              font: YHFont.regular22,
+              font: YHFont.regular18,
               color: YHColor.textDefault),
           const SizedBox(width: 4),
         ],

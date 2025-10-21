@@ -44,6 +44,7 @@ final class MissionListPage extends StatelessWidget {
               id: 0,
               margin: const EdgeInsets.symmetric(vertical: 12),
               title: "yh_design_system.page.mission_list.attend_title".tr(),
+              leftEmoji: "🖐️",
               subtitle:
                   "yh_design_system.page.mission_list.attend_subtitle".tr(),
               showArrow: false,
@@ -53,6 +54,7 @@ final class MissionListPage extends StatelessWidget {
               id: 1,
               margin: const EdgeInsets.symmetric(vertical: 12),
               title: "yh_design_system.page.mission_list.ad_title".tr(),
+              leftEmoji: "🎥",
               subtitle: "yh_design_system.page.mission_list.ad_subtitle".tr(),
               showArrow: false,
               redDot: bloc.state.canWatchAD,

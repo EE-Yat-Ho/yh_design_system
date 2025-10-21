@@ -83,6 +83,7 @@ final class RewardMainPage extends StatelessWidget {
             id: 0,
             margin: const EdgeInsets.symmetric(vertical: 12),
             title: "yh_design_system.page.reward_main.mission_title".tr(),
+            leftEmoji: "📋",
             subtitle: "yh_design_system.page.reward_main.mission_subtitle".tr(),
             redDot: bloc.state.showRedDot,
             onTap: () => navigatorKey.currentContext!
@@ -91,6 +92,7 @@ final class RewardMainPage extends StatelessWidget {
             id: 1,
             margin: const EdgeInsets.symmetric(vertical: 12),
             title: "yh_design_system.page.reward_main.cash_out_title".tr(),
+            leftEmoji: "✨",
             subtitle:
                 "yh_design_system.page.reward_main.cash_out_subtitle".tr(),
             onTap: () =>
