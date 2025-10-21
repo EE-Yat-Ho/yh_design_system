@@ -18,7 +18,7 @@ final class MissionListPage extends StatelessWidget {
     return YHScaffold(
       appBar: YHAppBar(
         title: "yh_design_system.page.mission_list.title".tr(),
-        titleFont: YHFont.regular22,
+        titleFont: YHFont.regular18,
       ),
       body: SafeArea(
         child: SingleChildScrollView(

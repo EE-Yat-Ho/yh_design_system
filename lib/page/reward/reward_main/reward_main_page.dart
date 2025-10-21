@@ -23,7 +23,7 @@ final class RewardMainPage extends StatelessWidget {
     return YHScaffold(
       appBar: YHAppBar(
         title: "yh_design_system.page.reward_main.title".tr(),
-        titleFont: YHFont.regular22,
+        titleFont: YHFont.regular18,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -62,12 +62,12 @@ final class RewardMainPage extends StatelessWidget {
         children: [
           YHText(
               text: "yh_design_system.page.reward_main.my_cash".tr(),
-              font: YHFont.regular20,
+              font: YHFont.regular18,
               color: YHColor.textDefault),
           const Spacer(),
           YHText(
               text: "$formatted 🪙",
-              font: YHFont.regular22,
+              font: YHFont.regular18,
               color: YHColor.textDefault),
           const SizedBox(width: 4),
         ],

@@ -22,7 +22,7 @@ final class CashOutRequestListPage extends StatelessWidget {
       appBar: YHAppBar(
         backgroundColor: YHColor.transparent,
         title: "yh_design_system.page.cash_out_request_list.title".tr(),
-        titleFont: YHFont.regular20,
+        titleFont: YHFont.regular18,
       ),
       body: SafeArea(
         bottom: false,
