@@ -27,6 +27,7 @@ final class YHCell extends StatelessWidget {
     this.subtitleMaxLines = 2,
     // 오른쪽
     this.showArrow = true,
+    this.right,
     this.rightText,
     this.rightFutureText,
     this.rightTextFont = YHFont.regular16,
@@ -65,6 +66,7 @@ final class YHCell extends StatelessWidget {
   final int subtitleMaxLines;
   // 오른쪽
   final bool showArrow;
+  final Widget? right;
   final bool? initialToggleValue;
   final String? rightText;
   final Future<String>? rightFutureText;
@@ -176,6 +178,7 @@ final class YHCell extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
+        if (right != null) right!,
         if (rightImage != null) rightImage!.icon(width: 24, height: 24),
         if (initialToggleValue != null)
           YHSwitch(
