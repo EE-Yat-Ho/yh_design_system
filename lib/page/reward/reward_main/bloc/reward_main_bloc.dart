@@ -1,4 +1,6 @@
 import "package:bloc/bloc.dart";
+import "package:yh_design_system/di.dart";
+import "package:yh_util/data/database/shared_preference/shared_preference.dart";
 import "package:yh_util/data/repository/reward_info_repository.dart";
 import 'dart:async';
 import "package:yh_util/data/repository/yh_user_repository.dart";
@@ -46,10 +48,12 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
     });
 
     // 리워드 정보 업데이트 이벤트 처리
-    on<UpdateRewardInfo>((event, emit) {
+    on<UpdateRewardInfo>((event, emit) async {
+      final canShowAnyRedDot = await RewardUtil.canShowAnyRedDot(
+          event.rewardInfo, getIt<SPService>());
       emit(state.copyWith(
         type: RewardMainType.success,
-        showRedDot: RewardUtil.canAnyReward(event.rewardInfo),
+        showRedDot: canShowAnyRedDot,
       ));
     });
   }

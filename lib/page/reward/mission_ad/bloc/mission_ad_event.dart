@@ -9,3 +9,5 @@ final class InitMissionAd extends MissionAdEvent {}
 final class SeeAdDidTap extends MissionAdEvent {}
 
 final class EarnedReward extends MissionAdEvent {}
+
+final class ToggleReddot extends MissionAdEvent {}

@@ -1,4 +1,6 @@
 import "package:bloc/bloc.dart";
+import "package:yh_design_system/di.dart";
+import "package:yh_util/data/database/shared_preference/shared_preference.dart";
 import "package:yh_util/data/repository/reward_info_repository.dart";
 import "package:yh_util/domain/entities/reward_info.dart";
 import "package:yh_util/common/reward_util.dart";
@@ -28,9 +30,15 @@ final class MissionListBloc extends Bloc<MissionListEvent, MissionListState> {
     });
 
     on<UpdateRewardInfo>((event, emit) async {
+      final spService = getIt<SPService>();
+      final canShowAttendRedDot =
+          await RewardUtil.canShowAttendRedDot(event.rewardInfo, spService);
+      final canShowADWatchRedDot =
+          await RewardUtil.canShowADWatchRedDot(event.rewardInfo, spService);
+
       emit(state.copyWith(
-        canAttend: RewardUtil.canAttend(event.rewardInfo),
-        canWatchAD: RewardUtil.canADWatch(event.rewardInfo),
+        canAttend: canShowAttendRedDot,
+        canWatchAD: canShowADWatchRedDot,
       ));
     });
   }

@@ -1,5 +1,7 @@
 import "package:bloc/bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:yh_design_system/di.dart";
+import "package:yh_util/data/database/shared_preference/shared_preference.dart";
 import "package:yh_util/data/repository/reward_info_repository.dart";
 import "package:yh_util/data/repository/yh_user_repository.dart";
 import "package:yh_util/domain/entities/reward_info.dart";
@@ -14,6 +16,7 @@ part "mission_ad_state.dart";
 final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
   final YHUserRepository _yhUserRepository;
   final RewardInfoRepository _rewardInfoRepository;
+  final SPService _spService = getIt<SPService>();
 
   MissionAdBloc(this._yhUserRepository, this._rewardInfoRepository)
       : super(const MissionAdState()) {
@@ -22,6 +25,10 @@ final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
       try {
         final rewardInfo = _rewardInfoRepository.lastRewardInfo;
         _checkAndUpdateCanWatchAD(rewardInfo, emit);
+
+        final enableReddot =
+            await _spService.getBool(SPKey.enableADWatchReddot);
+        emit(state.copyWith(enableReddot: enableReddot ?? true));
       } finally {
         YHIndicator.hide();
       }
@@ -85,6 +92,12 @@ final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
       } finally {
         YHIndicator.hide();
       }
+    });
+
+    on<ToggleReddot>((event, emit) async {
+      final enableReddot = state.enableReddot;
+      await _spService.setBool(SPKey.enableADWatchReddot, !enableReddot);
+      emit(state.copyWith(enableReddot: !enableReddot));
     });
   }
 

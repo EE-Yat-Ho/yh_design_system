@@ -1,6 +1,8 @@
 import "package:bloc/bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:yh_design_system/di.dart";
 import "package:yh_design_system/router.dart";
+import "package:yh_util/data/database/shared_preference/shared_preference.dart";
 import "package:yh_util/data/repository/reward_info_repository.dart";
 import "package:yh_util/domain/entities/reward_info.dart";
 import "package:yh_design_system/organisms/indicator/yh_indicator.dart";
@@ -13,12 +15,16 @@ part "attend_state.dart";
 final class AttendBloc extends Bloc<AttendEvent, AttendState> {
   final YHUserRepository _yhUserRepository;
   final RewardInfoRepository _rewardInfoRepository;
+  final SPService _spService = getIt<SPService>();
 
   AttendBloc(this._yhUserRepository, this._rewardInfoRepository)
       : super(const AttendState()) {
     on<InitAttend>((event, emit) async {
       final rewardInfo = _rewardInfoRepository.lastRewardInfo;
       _checkAndUpdateCanAttend(rewardInfo, emit);
+
+      final enableReddot = await _spService.getBool(SPKey.enableAttendReddot);
+      emit(state.copyWith(enableReddot: enableReddot ?? true));
     });
 
     on<AttendDidTap>((event, emit) async {
@@ -51,6 +57,12 @@ final class AttendBloc extends Bloc<AttendEvent, AttendState> {
       } finally {
         YHIndicator.hide();
       }
+    });
+
+    on<ToggleReddot>((event, emit) async {
+      final enableReddot = state.enableReddot;
+      await _spService.setBool(SPKey.enableAttendReddot, !enableReddot);
+      emit(state.copyWith(enableReddot: !enableReddot));
     });
   }
 

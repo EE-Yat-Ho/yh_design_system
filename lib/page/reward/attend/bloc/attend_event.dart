@@ -4,6 +4,8 @@ abstract class AttendEvent {
   const AttendEvent();
 }
 
-class InitAttend extends AttendEvent {}
+final class InitAttend extends AttendEvent {}
 
-class AttendDidTap extends AttendEvent {}
+final class AttendDidTap extends AttendEvent {}
+
+final class ToggleReddot extends AttendEvent {}
