@@ -47,6 +47,9 @@ final class YHCell extends StatelessWidget {
     this.borderColor,
     this.borderWidth,
     this.cornerRadius,
+    // 그림자
+    this.useShadow,
+    this.shadow,
     // 이벤트
     this.onTap,
     this.onToggle,
@@ -88,6 +91,9 @@ final class YHCell extends StatelessWidget {
   final Color? borderColor;
   final double? borderWidth;
   final double? cornerRadius;
+  // 그림자
+  final bool? useShadow;
+  final List<BoxShadow>? shadow;
   // 이벤트
   final void Function()? onTap;
   final void Function(bool)? onToggle;
@@ -101,7 +107,8 @@ final class YHCell extends StatelessWidget {
     return YHCard(
       cornerRadius: 8,
       margin: const EdgeInsets.fromLTRB(4, 0, 4, 8),
-      useShadow: canTap,
+      useShadow: useShadow ?? canTap,
+      shadow: shadow,
       borderColor: borderColor ??
           (canTap
               ? null
