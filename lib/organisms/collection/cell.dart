@@ -21,6 +21,7 @@ final class YHCell extends StatelessWidget {
     this.titleColor,
     this.titleMaxLines = 2,
     // 서브타이틀
+    this.subtitleWidget,
     this.subtitle,
     this.subtitleFont = YHFont.regular14,
     this.subtitleColor,
@@ -60,6 +61,7 @@ final class YHCell extends StatelessWidget {
   final Color? titleColor;
   final int titleMaxLines;
   // 서브타이틀
+  final Widget? subtitleWidget;
   final String? subtitle;
   final YHFont subtitleFont;
   final Color? subtitleColor;
@@ -98,12 +100,13 @@ final class YHCell extends StatelessWidget {
       cornerRadius: 8,
       margin: const EdgeInsets.fromLTRB(4, 0, 4, 8),
       useShadow: canTap,
-      borderColor: canTap
-          ? null
-          : YHTheme.isDarkMode
+      borderColor: borderColor ??
+          (canTap
               ? null
-              : YHColor.strokeDefault,
-      borderWidth: canTap ? 0 : 1,
+              : YHTheme.isDarkMode
+                  ? null
+                  : YHColor.strokeDefault),
+      borderWidth: borderWidth ?? (canTap ? 0 : 1),
       child: ListTile(
         dense: true,
         leading: _left(),
@@ -161,7 +164,9 @@ final class YHCell extends StatelessWidget {
 
   // MARK: 서브타이틀
   Widget? _subtitle() {
-    if (subtitle != null) {
+    if (subtitleWidget != null) {
+      return subtitleWidget!;
+    } else if (subtitle != null) {
       return YHText(
         text: subtitle ?? "",
         font: subtitleFont,
