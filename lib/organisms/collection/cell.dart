@@ -16,7 +16,8 @@ final class YHCell extends StatelessWidget {
     this.leftImage,
     this.leftEmoji,
     // 타이틀
-    required this.title,
+    this.titleWidget,
+    this.title,
     this.titleFont = YHFont.regular16,
     this.titleColor,
     this.titleMaxLines = 2,
@@ -56,7 +57,8 @@ final class YHCell extends StatelessWidget {
   final YHImageInterface? leftImage;
   final String? leftEmoji;
   // 타이틀
-  final String title;
+  final Widget? titleWidget;
+  final String? title;
   final YHFont titleFont;
   final Color? titleColor;
   final int titleMaxLines;
@@ -142,12 +144,15 @@ final class YHCell extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // ㅡㅡㅡㅡㅡ 타이틀 ㅡㅡㅡㅡㅡ
-        YHText(
-          text: title,
-          font: titleFont,
-          color: titleColor ?? YHColor.textDefault,
-          maxLines: titleMaxLines,
-        ),
+        if (titleWidget != null)
+          titleWidget!
+        else
+          YHText(
+            text: title ?? "",
+            font: titleFont,
+            color: titleColor ?? YHColor.textDefault,
+            maxLines: titleMaxLines,
+          ),
         // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         // ㅡㅡㅡㅡㅡ 레드 닷 ㅡㅡㅡㅡㅡ
         if (redDot)
