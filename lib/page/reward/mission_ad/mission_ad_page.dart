@@ -32,7 +32,7 @@ final class MissionAdPage extends StatelessWidget {
               const Spacer(flex: 2),
               YHText(
                 text: "yh_design_system.page.mission_ad.title".tr(),
-                font: YHFont.regular30,
+                font: YHFont.regular24,
                 color: YHColor.textDefault,
                 align: TextAlign.center,
               ),
@@ -45,7 +45,7 @@ final class MissionAdPage extends StatelessWidget {
                           .tr(args: [bloc.state.remainADWatchCount.toString()])
                       : "yh_design_system.page.mission_ad.all_watched"
                           .tr(args: [RewardUtil.DAILY_AD_THRESHOLD.toString()]),
-                  font: YHFont.regular20,
+                  font: YHFont.regular18,
                   color: YHColor.textSub,
                   align: TextAlign.center,
                 ),
@@ -56,7 +56,7 @@ final class MissionAdPage extends StatelessWidget {
                   title: bloc.state.remainADWatchCount > 0
                       ? "yh_design_system.page.mission_ad.watch_ad".tr()
                       : "yh_design_system.page.mission_ad.thank_you".tr(),
-                  font: YHFont.regular20,
+                  font: YHFont.regular18,
                   margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                   onTap: () => bloc.add(SeeAdDidTap())),
             ],

@@ -25,7 +25,7 @@ final class CashOutResultPage extends StatelessWidget {
               const Spacer(flex: 2),
               YHText(
                 text: "yh_design_system.page.cash_out_result.title".tr(),
-                font: YHFont.regular30,
+                font: YHFont.regular24,
                 color: YHColor.black,
                 align: TextAlign.center,
               ),

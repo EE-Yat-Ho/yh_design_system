@@ -27,14 +27,14 @@ final class RewardResultPage extends StatelessWidget {
               YHText(
                 text: "yh_design_system.page.reward_result.title"
                     .tr(args: [reward.toString()]),
-                font: YHFont.regular30,
+                font: YHFont.regular24,
                 color: YHColor.black,
                 align: TextAlign.center,
               ),
               YHImage.image_coin_216.icon(width: 250, height: 250),
               YHText(
                 text: "yh_design_system.page.reward_result.subtitle".tr(),
-                font: YHFont.regular20,
+                font: YHFont.regular18,
                 color: YHColor.textSub,
                 align: TextAlign.center,
               ),

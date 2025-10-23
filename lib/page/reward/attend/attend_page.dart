@@ -29,7 +29,7 @@ final class AttendPage extends StatelessWidget {
               const Spacer(flex: 2),
               YHText(
                 text: "yh_design_system.page.attend.title".tr(),
-                font: YHFont.regular30,
+                font: YHFont.regular24,
                 color: YHColor.black,
                 align: TextAlign.center,
               ),
@@ -38,7 +38,7 @@ final class AttendPage extends StatelessWidget {
                 offset: const Offset(0, -35),
                 child: YHText(
                   text: title,
-                  font: YHFont.regular20,
+                  font: YHFont.regular18,
                   color: YHColor.textSub,
                   align: TextAlign.center,
                 ),
@@ -49,7 +49,7 @@ final class AttendPage extends StatelessWidget {
                   title: bloc.state.canAttend
                       ? "yh_design_system.page.attend.attend_button".tr()
                       : "yh_design_system.page.attend.already_attended".tr(),
-                  font: YHFont.regular20,
+                  font: YHFont.regular18,
                   margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                   onTap: () => bloc.add(AttendDidTap())),
             ],
