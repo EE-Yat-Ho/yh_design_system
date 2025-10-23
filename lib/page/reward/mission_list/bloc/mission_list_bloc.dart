@@ -12,20 +12,32 @@ final class MissionListBloc extends Bloc<MissionListEvent, MissionListState> {
   final RewardInfoRepository _rewardInfoRepository;
 
   StreamSubscription<RewardInfo>? _rewardInfoSubscription;
+  StreamSubscription<void>? _rewardReddotSubscription;
+  final SPService _spService = getIt<SPService>();
 
   @override
   Future<void> close() {
     _rewardInfoSubscription?.cancel();
+    _rewardReddotSubscription?.cancel();
     return super.close();
   }
 
   MissionListBloc(this._rewardInfoRepository)
       : super(const MissionListState()) {
     on<InitMissionList>((event, emit) async {
+      // rewardInfo 스트림 구독 시작
       _rewardInfoSubscription =
           _rewardInfoRepository.rewardInfoStream.listen((rewardInfo) {
         add(UpdateRewardInfo(rewardInfo));
       });
+
+      // rewardReddot 스트림 구독 시작
+      _rewardReddotSubscription =
+          _spService.stream(RewardSPKey).listen((enableReddot) {
+        final rewardInfo = _rewardInfoRepository.lastRewardInfo;
+        add(UpdateRewardInfo(rewardInfo));
+      });
+
       add(UpdateRewardInfo(_rewardInfoRepository.lastRewardInfo));
     });
 

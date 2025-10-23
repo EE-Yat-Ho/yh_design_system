@@ -1,7 +1,7 @@
 import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:yh_design_system/atoms/button/ink_well.dart";
+import "package:yh_design_system/atoms/button/button.dart";
 import "package:yh_util/common/reward_util.dart";
 import "package:yh_design_system/atoms/button/solid_button.dart";
 import "package:yh_design_system/atoms/color/colors.dart";
@@ -69,12 +69,17 @@ final class MissionAdPage extends StatelessWidget {
 
   PreferredSizeWidget _appbar(BuildContext context, MissionAdBloc bloc) {
     return YHAppBar(
-      right: YHInkWell(
+      right: YHButton(
+        width: 40,
+        height: 40,
         onTap: () => bloc.add(ToggleReddot()),
-        child: bloc.state.enableReddot
+        image: bloc.state.enableReddot
             ? YHImage.icon_alarm_128.icon(width: 24, height: 24)
             : YHImage.icon_alarm_128.iconWithOff(width: 24, height: 24),
+        backgroundColor: YHColor.transparent,
+        useShadow: false,
       ),
+      rightPadding: 10,
     );
   }
 }

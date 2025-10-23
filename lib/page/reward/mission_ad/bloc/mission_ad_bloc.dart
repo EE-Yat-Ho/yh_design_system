@@ -27,7 +27,7 @@ final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
         _checkAndUpdateCanWatchAD(rewardInfo, emit);
 
         final enableReddot =
-            await _spService.getBool(SPKey.enableADWatchReddot);
+            await _spService.getBool(RewardSPKey.enableADWatchReddot);
         emit(state.copyWith(enableReddot: enableReddot ?? true));
       } finally {
         YHIndicator.hide();
@@ -96,7 +96,7 @@ final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
 
     on<ToggleReddot>((event, emit) async {
       final enableReddot = state.enableReddot;
-      await _spService.setBool(SPKey.enableADWatchReddot, !enableReddot);
+      await _spService.setBool(RewardSPKey.enableADWatchReddot, !enableReddot);
       emit(state.copyWith(enableReddot: !enableReddot));
     });
   }

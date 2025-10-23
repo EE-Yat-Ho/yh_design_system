@@ -23,7 +23,8 @@ final class AttendBloc extends Bloc<AttendEvent, AttendState> {
       final rewardInfo = _rewardInfoRepository.lastRewardInfo;
       _checkAndUpdateCanAttend(rewardInfo, emit);
 
-      final enableReddot = await _spService.getBool(SPKey.enableAttendReddot);
+      final enableReddot =
+          await _spService.getBool(RewardSPKey.enableAttendReddot);
       emit(state.copyWith(enableReddot: enableReddot ?? true));
     });
 
@@ -61,7 +62,7 @@ final class AttendBloc extends Bloc<AttendEvent, AttendState> {
 
     on<ToggleReddot>((event, emit) async {
       final enableReddot = state.enableReddot;
-      await _spService.setBool(SPKey.enableAttendReddot, !enableReddot);
+      await _spService.setBool(RewardSPKey.enableAttendReddot, !enableReddot);
       emit(state.copyWith(enableReddot: !enableReddot));
     });
   }
