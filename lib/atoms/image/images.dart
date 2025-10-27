@@ -61,6 +61,11 @@ enum YHImage implements YHImageInterface {
   icon_salad_128,
   icon_steak_128,
 
+  // 프리미엄
+  icon_premium_menu_128,
+  icon_premium_month_128,
+  icon_premium_year_128,
+
   // 기타 기능
   icon_email_128,
   icon_language_128,
