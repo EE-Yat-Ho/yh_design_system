@@ -15,9 +15,8 @@ Future<bool> showSuggestLoginDialog(
               columnCrossAxisAlignment: CrossAxisAlignment.center,
               text: "yh_design_system.dialog.suggest_login.title".tr(),
               titleAlign: TextAlign.center,
-              onConfirm: () => Navigator.pop(innerContext, true),
+              onConfirm: () {},
               confirmText: "yh_design_system.dialog.suggest_login.confirm".tr(),
-              onCancel: () => Navigator.pop(innerContext, false),
               cancelText: "yh_design_system.dialog.suggest_login.cancel".tr(),
             );
           }) ??
