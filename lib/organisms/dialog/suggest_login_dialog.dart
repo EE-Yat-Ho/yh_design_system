@@ -10,7 +10,7 @@ Future<bool> showSuggestLoginDialog(
           context: context,
           builder: (BuildContext innerContext) {
             return YHDialog(
-              image: YHImage.char_question_mark,
+              image: YHImage.char_really,
               buttonDirection: ButtonDirection.vertical,
               columnCrossAxisAlignment: CrossAxisAlignment.center,
               text: "yh_design_system.dialog.suggest_login.title".tr(),
