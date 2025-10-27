@@ -43,7 +43,7 @@ final class YHCell extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     this.padding = EdgeInsets.zero,
     this.contentPadding = const EdgeInsets.fromLTRB(16, 0, 16, 0),
-    this.backgroundColor = YHColor.transparent,
+    this.backgroundColor,
     this.borderColor,
     this.borderWidth,
     this.cornerRadius,
@@ -87,7 +87,7 @@ final class YHCell extends StatelessWidget {
   final EdgeInsets margin;
   final EdgeInsets padding;
   final EdgeInsets contentPadding;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Color? borderColor;
   final double? borderWidth;
   final double? cornerRadius;
@@ -109,6 +109,7 @@ final class YHCell extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(4, 0, 4, 8),
       useShadow: useShadow ?? canTap,
       shadow: shadow,
+      backgroundColor: backgroundColor,
       borderColor: borderColor ??
           (canTap
               ? null
