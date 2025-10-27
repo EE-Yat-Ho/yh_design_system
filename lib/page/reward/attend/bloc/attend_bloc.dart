@@ -6,19 +6,20 @@ import "package:yh_util/data/database/shared_preference/shared_preference.dart";
 import "package:yh_util/data/repository/reward_info_repository.dart";
 import "package:yh_util/domain/entities/reward_info.dart";
 import "package:yh_design_system/organisms/indicator/yh_indicator.dart";
-import "package:yh_util/data/repository/yh_user_repository.dart";
 import "package:yh_util/date_service.dart";
+import "package:yh_util/domain/entities/reward_type.dart";
+import "package:yh_util/domain/usecases/reward_earn_usecase.dart";
 
 part "attend_event.dart";
 part "attend_state.dart";
 
 final class AttendBloc extends Bloc<AttendEvent, AttendState> {
-  final YHUserRepository _yhUserRepository;
-  final RewardInfoRepository _rewardInfoRepository;
+  final RewardInfoRepository _rewardInfoRepository =
+      getIt<RewardInfoRepository>();
   final SPService _spService = getIt<SPService>();
+  final RewardEarnUseCase _rewardEarnUseCase = getIt<RewardEarnUseCase>();
 
-  AttendBloc(this._yhUserRepository, this._rewardInfoRepository)
-      : super(const AttendState()) {
+  AttendBloc() : super(const AttendState()) {
     on<InitAttend>((event, emit) async {
       final rewardInfo = _rewardInfoRepository.lastRewardInfo;
       _checkAndUpdateCanAttend(rewardInfo, emit);
@@ -29,32 +30,15 @@ final class AttendBloc extends Bloc<AttendEvent, AttendState> {
     });
 
     on<AttendDidTap>((event, emit) async {
-      const reward = 2;
       YHIndicator.show(context: navigatorKey.currentContext!);
       try {
-        final localUser = await _yhUserRepository.localMe();
-        final rewardInfo =
-            await _rewardInfoRepository.remoteRewardInfo(localUser.id);
-        final canAttend = _checkAndUpdateCanAttend(rewardInfo, emit);
+        await _rewardEarnUseCase.call(rewardType: RewardType.ATTEND);
 
-        if (canAttend) {
-          final newRewardInfo = rewardInfo.copyWith(attendDate: DateTime.now());
-          await _rewardInfoRepository.createRemoteRewardInfo(newRewardInfo);
-
-          final remoteUser = await _yhUserRepository.remoteUser(localUser.id);
-          final newUser = remoteUser.copyWith(
-            point: remoteUser.point + reward,
-            me: true,
-          );
-
-          // 포인트는 굳이 파트너한테 동기화할 필요 없음
-          await _yhUserRepository.createRemoteUser(newUser);
-          await _yhUserRepository.createLocalUser(newUser);
-
-          navigatorKey.currentContext!.pop();
-          navigatorKey.currentContext!
-              .pushNamed(YHRouteNames.rewardResult, extra: reward);
-        }
+        navigatorKey.currentContext!.pop();
+        navigatorKey.currentContext!.pushNamed(
+          YHRouteNames.rewardResult,
+          extra: RewardType.ATTEND.rewardPoint,
+        );
       } finally {
         YHIndicator.hide();
       }

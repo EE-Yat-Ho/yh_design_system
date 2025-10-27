@@ -2,7 +2,6 @@ import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:yh_design_system/atoms/button/button.dart";
-import "package:yh_util/common/reward_util.dart";
 import "package:yh_design_system/atoms/button/solid_button.dart";
 import "package:yh_design_system/atoms/color/colors.dart";
 import "package:yh_design_system/atoms/font/fonts.dart";
@@ -11,6 +10,7 @@ import "package:yh_design_system/atoms/text/text.dart";
 import "package:yh_design_system/atoms/transform/transform.dart";
 import "package:yh_design_system/organisms/appbar/appbar.dart";
 import "package:yh_design_system/organisms/scaffold/scaffold.dart";
+import "package:yh_util/domain/entities/reward_type.dart";
 import "bloc/mission_ad_bloc.dart";
 
 final class MissionAdPage extends StatelessWidget {
@@ -32,7 +32,7 @@ final class MissionAdPage extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
               YHText(
-                text: "yh_design_system.page.mission_ad.title".tr(),
+                text: "yh_design_system.page.mission_ad.title".tr(args: [RewardType.AD_WATCH.rewardPoint.toString()]),
                 font: YHFont.regular24,
                 color: YHColor.textDefault,
                 align: TextAlign.center,
@@ -45,7 +45,7 @@ final class MissionAdPage extends StatelessWidget {
                       ? "yh_design_system.page.mission_ad.remaining_count"
                           .tr(args: [bloc.state.remainADWatchCount.toString()])
                       : "yh_design_system.page.mission_ad.all_watched"
-                          .tr(args: [RewardUtil.DAILY_AD_THRESHOLD.toString()]),
+                          .tr(args: [RewardType.AD_WATCH.threshold.toString()]),
                   font: YHFont.regular18,
                   color: YHColor.textSub,
                   align: TextAlign.center,

@@ -11,6 +11,7 @@ import "package:yh_design_system/atoms/transform/transform.dart";
 import "package:yh_design_system/organisms/appbar/appbar.dart";
 import "package:yh_design_system/organisms/scaffold/scaffold.dart";
 import "package:yh_util/date_service.dart";
+import "package:yh_util/domain/entities/reward_type.dart";
 import "bloc/attend_bloc.dart";
 
 final class AttendPage extends StatelessWidget {
@@ -29,7 +30,8 @@ final class AttendPage extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
               YHText(
-                text: "yh_design_system.page.attend.title".tr(),
+                text: "yh_design_system.page.attend.title"
+                    .tr(args: [RewardType.ATTEND.rewardPoint.toString()]),
                 font: YHFont.regular24,
                 color: YHColor.black,
                 align: TextAlign.center,

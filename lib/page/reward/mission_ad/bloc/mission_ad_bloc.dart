@@ -3,10 +3,10 @@ import "package:go_router/go_router.dart";
 import "package:yh_design_system/di.dart";
 import "package:yh_util/data/database/shared_preference/shared_preference.dart";
 import "package:yh_util/data/repository/reward_info_repository.dart";
-import "package:yh_util/data/repository/yh_user_repository.dart";
 import "package:yh_util/domain/entities/reward_info.dart";
 import "package:yh_design_system/router.dart";
-import "package:yh_util/firebase/cloud_functions_service.dart";
+import "package:yh_util/domain/entities/reward_type.dart";
+import "package:yh_util/domain/usecases/reward_earn_usecase.dart";
 import "package:yh_util/common/reward_util.dart";
 import "package:yh_design_system/organisms/indicator/yh_indicator.dart";
 import "package:yh_util/admob_manager.dart";
@@ -14,12 +14,12 @@ part "mission_ad_event.dart";
 part "mission_ad_state.dart";
 
 final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
-  final YHUserRepository _yhUserRepository;
-  final RewardInfoRepository _rewardInfoRepository;
+  final RewardInfoRepository _rewardInfoRepository =
+      getIt<RewardInfoRepository>();
   final SPService _spService = getIt<SPService>();
+  final RewardEarnUseCase _rewardEarnUseCase = getIt<RewardEarnUseCase>();
 
-  MissionAdBloc(this._yhUserRepository, this._rewardInfoRepository)
-      : super(const MissionAdState()) {
+  MissionAdBloc() : super(const MissionAdState()) {
     on<InitMissionAd>((event, emit) async {
       YHIndicator.show(context: navigatorKey.currentContext!);
       try {
@@ -57,38 +57,15 @@ final class MissionAdBloc extends Bloc<MissionAdEvent, MissionAdState> {
     });
 
     on<EarnedReward>((event, emit) async {
-      const reward = 5;
       YHIndicator.show(context: navigatorKey.currentContext!);
       try {
-        // 리워드 정보 수정
-        final rewardInfo = _rewardInfoRepository.lastRewardInfo;
-        final newLastThreeADDate = rewardInfo.lastThreeADDate;
-        newLastThreeADDate.add(DateTime.now());
-        newLastThreeADDate.removeAt(0);
-
-        final newRewardInfo =
-            rewardInfo.copyWith(lastThreeADDate: newLastThreeADDate);
-        await _rewardInfoRepository.createRemoteRewardInfo(newRewardInfo);
-
-        // 유저 정보 수정 (포인트 추가)
-        final localUser = await _yhUserRepository.localMe();
-        final remoteUser = await _yhUserRepository.remoteUser(localUser.id);
-        final newUser = remoteUser.copyWith(
-          point: remoteUser.point + reward,
-          me: true,
-        );
-
-        // 포인트는 굳이 파트너한테 동기화할 필요 없음
-        await _yhUserRepository.createRemoteUser(newUser);
-        await _yhUserRepository.createLocalUser(newUser);
-
-        // 광고 시청 알림
-        await CloudFunctionsService.instance
-            .adWatched(userId: localUser.id, email: localUser.email);
+        await _rewardEarnUseCase.call(rewardType: RewardType.AD_WATCH);
 
         navigatorKey.currentContext!.pop();
-        navigatorKey.currentContext!
-            .pushNamed(YHRouteNames.rewardResult, extra: reward);
+        navigatorKey.currentContext!.pushNamed(
+          YHRouteNames.rewardResult,
+          extra: RewardType.AD_WATCH.rewardPoint,
+        );
       } finally {
         YHIndicator.hide();
       }

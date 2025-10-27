@@ -28,7 +28,7 @@ final class CashOutInputAccountBloc
         final canCashOut = _checkAndUpdateCanCashOut(localUser, emit);
 
         if (canCashOut) {
-          await CloudFunctionsService.instance.cashOut(
+          CloudFunctionsService.instance.cashOut(
             userId: localUser.id,
             account: event.account,
             name: event.name,
