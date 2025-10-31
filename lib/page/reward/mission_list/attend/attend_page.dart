@@ -36,7 +36,7 @@ final class AttendPage extends StatelessWidget {
                 color: YHColor.black,
                 align: TextAlign.center,
               ),
-              YHImage.image_calender_216.icon(width: 250, height: 250),
+              YHImage.image_calender_750.icon(width: 250, height: 250),
               YHTransform(
                 offset: const Offset(0, -35),
                 child: YHText(

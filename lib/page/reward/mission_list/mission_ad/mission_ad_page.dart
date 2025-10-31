@@ -38,7 +38,7 @@ final class MissionAdPage extends StatelessWidget {
                 color: YHColor.textDefault,
                 align: TextAlign.center,
               ),
-              YHImage.image_tv_216.icon(width: 250, height: 250),
+              YHImage.image_tv_750.icon(width: 250, height: 250),
               YHTransform(
                 offset: const Offset(0, -30),
                 child: YHText(

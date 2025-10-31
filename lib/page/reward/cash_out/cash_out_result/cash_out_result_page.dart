@@ -29,7 +29,7 @@ final class CashOutResultPage extends StatelessWidget {
                 color: YHColor.black,
                 align: TextAlign.center,
               ),
-              YHImage.image_coin_216.icon(width: 250, height: 250),
+              YHImage.image_coin_750.icon(width: 250, height: 250),
               const SizedBox(height: 4),
               YHText(
                 text: "yh_design_system.page.cash_out_result.subtitle".tr(),

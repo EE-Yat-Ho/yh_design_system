@@ -49,7 +49,7 @@ final class _CashOutInputAccountPageState
               Center(
                   child: Transform.scale(
                 scale: 1.25,
-                child: YHImage.image_coin_216.icon(width: 175, height: 175),
+                child: YHImage.image_coin_750.icon(width: 175, height: 175),
               )),
               _inputAccountNumber(),
               const SizedBox(height: 8),

@@ -60,7 +60,7 @@ final class _CashOutPageState extends State<CashOutPage> {
               _point(bloc),
               Transform.scale(
                 scale: 1.25,
-                child: YHImage.image_coin_216.icon(width: 175, height: 175),
+                child: YHImage.image_coin_750.icon(width: 175, height: 175),
               ),
               const SizedBox(height: 40),
               YHText(

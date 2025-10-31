@@ -50,10 +50,10 @@ enum YHImage implements YHImageInterface {
   icon_check_red_130,
 
   // 혜택
-  image_calender_216,
-  image_coin_216,
-  image_nemo_study_216,
-  image_tv_216,
+  image_calender_750,
+  image_coin_750,
+  image_nemo_study_500,
+  image_tv_750,
 
   // 후원
   icon_bus_128,
