@@ -53,6 +53,16 @@ final class MissionListPage extends StatelessWidget {
           YHCell(
               id: 1,
               margin: const EdgeInsets.symmetric(vertical: 12),
+              title: "yh_design_system.page.mission_list.nemo_study_title".tr(),
+              leftEmoji: "🧠",
+              subtitle:
+                  "yh_design_system.page.mission_list.nemo_study_subtitle".tr(),
+              showArrow: false,
+              redDot: bloc.state.canNemoStudy,
+              onTap: () => context.pushNamed(YHRouteNames.nemoStudy)),
+          YHCell(
+              id: 2,
+              margin: const EdgeInsets.symmetric(vertical: 12),
               title: "yh_design_system.page.mission_list.ad_title".tr(),
               leftEmoji: "🎥",
               subtitle: "yh_design_system.page.mission_list.ad_subtitle".tr(),

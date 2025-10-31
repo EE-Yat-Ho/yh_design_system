@@ -47,10 +47,13 @@ final class MissionListBloc extends Bloc<MissionListEvent, MissionListState> {
           await RewardUtil.canShowAttendRedDot(event.rewardInfo, spService);
       final canShowADWatchRedDot =
           await RewardUtil.canShowADWatchRedDot(event.rewardInfo, spService);
+      final canShowNemoStudyRedDot =
+          await RewardUtil.canShowNemoStudyRedDot(event.rewardInfo, spService);
 
       emit(state.copyWith(
         canAttend: canShowAttendRedDot,
         canWatchAD: canShowADWatchRedDot,
+        canNemoStudy: canShowNemoStudyRedDot,
       ));
     });
   }
