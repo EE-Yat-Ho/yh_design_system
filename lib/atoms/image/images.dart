@@ -52,6 +52,7 @@ enum YHImage implements YHImageInterface {
   // 혜택
   image_calender_216,
   image_coin_216,
+  image_nemo_study_216,
   image_tv_216,
 
   // 후원

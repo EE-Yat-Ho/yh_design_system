@@ -38,14 +38,14 @@ final class NemoStudyPage extends StatelessWidget {
                 color: YHColor.textDefault,
                 align: TextAlign.center,
               ),
-              YHImage.image_tv_216.icon(width: 250, height: 250),
+              YHImage.image_nemo_study_216.icon(width: 250, height: 250),
               YHTransform(
                 offset: const Offset(0, -30),
                 child: YHText(
                   text: bloc.state.remainNemoStudyCount > 0
                       ? "yh_design_system.page.nemo_study.remaining_count".tr(
                           args: [bloc.state.remainNemoStudyCount.toString()])
-                      : "yh_design_system.page.nemo_study.all_watched".tr(
+                      : "yh_design_system.page.nemo_study.no_chance".tr(
                           args: [RewardType.NEMO_STUDY.threshold.toString()]),
                   font: YHFont.regular18,
                   color: YHColor.textSub,
@@ -56,7 +56,7 @@ final class NemoStudyPage extends StatelessWidget {
               YHSolidButton(
                   isEnabled: bloc.state.remainNemoStudyCount > 0,
                   title: bloc.state.remainNemoStudyCount > 0
-                      ? "yh_design_system.page.nemo_study.watch_ad".tr()
+                      ? "yh_design_system.page.nemo_study.action".tr()
                       : "yh_design_system.page.nemo_study.thank_you".tr(),
                   font: YHFont.regular18,
                   margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
