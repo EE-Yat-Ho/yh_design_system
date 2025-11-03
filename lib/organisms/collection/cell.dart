@@ -40,7 +40,7 @@ final class YHCell extends StatelessWidget {
     this.redDot = false,
     this.redDotSize = 6,
     // 레이아웃
-    this.margin = EdgeInsets.zero,
+    this.margin = const EdgeInsets.fromLTRB(4, 0, 4, 8),
     this.padding = EdgeInsets.zero,
     this.contentPadding = const EdgeInsets.fromLTRB(16, 0, 16, 0),
     this.backgroundColor,
@@ -106,7 +106,8 @@ final class YHCell extends StatelessWidget {
 
     return YHCard(
       cornerRadius: 8,
-      margin: const EdgeInsets.fromLTRB(4, 0, 4, 8),
+      margin: margin,
+      padding: padding,
       useShadow: useShadow ?? canTap,
       shadow: shadow,
       backgroundColor: backgroundColor,
