@@ -10,7 +10,8 @@ import 'package:yh_util/domain/entities/image_entity.dart';
 final class ChildObject {
   final Object object;
   final String id;
-  final YHImageInterface leadingImage;
+  final YHImageInterface? leadingImage;
+  final String? leadingEmoji;
   final String text;
   final bool isSelect;
   final bool isBookmark;
@@ -20,7 +21,8 @@ final class ChildObject {
   const ChildObject({
     required this.object,
     required this.id,
-    required this.leadingImage,
+    this.leadingImage,
+    this.leadingEmoji,
     required this.text,
     required this.isSelect,
     required this.isBookmark,
@@ -76,7 +78,7 @@ final class YHOpenableChildCard extends StatelessWidget {
     List<Widget> list = [
       ListTile(
         dense: dense,
-        leading: object.leadingImage.icon(width: 22, height: 22),
+        leading: _leading(),
         title: YHText(
           text: object.text,
           font: YHFont.regular16,
@@ -85,7 +87,7 @@ final class YHOpenableChildCard extends StatelessWidget {
         ),
         horizontalTitleGap: horizontalTitleGap,
         contentPadding: contentPadding,
-        trailing: trailing(context),
+        trailing: _trailing(context),
         onTap: () => onTap(object.id),
         onLongPress: () => onLongPress?.call(object.id),
         minTileHeight: 40,
@@ -109,7 +111,27 @@ final class YHOpenableChildCard extends StatelessWidget {
     );
   }
 
-  Widget trailing(BuildContext context) {
+  // MARK: 왼쪽 아이콘
+  Widget? _leading() {
+    if (object.leadingImage != null) {
+      return SizedBox(
+          width: 22,
+          height: 22,
+          child: object.leadingImage!.icon(width: 22, height: 22));
+    } else if (object.leadingEmoji != null) {
+      return SizedBox(
+          width: 22,
+          child: YHText(
+              text: object.leadingEmoji!,
+              font: YHFont.regular22,
+              color: YHColor.textDefault));
+    } else {
+      return null;
+    }
+  }
+
+  // MARK: 오른쪽
+  Widget _trailing(BuildContext context) {
     List<Widget> list = [
       YHText(
         text: object.rightText ?? "",

@@ -139,7 +139,7 @@ final class YHCell extends StatelessWidget {
       return SizedBox(
           width: 24,
           child: YHText(
-              text: leftEmoji ?? "",
+              text: leftEmoji!,
               font: YHFont.regular24,
               color: YHColor.textDefault));
     } else {
