@@ -81,7 +81,6 @@ final class RewardMainPage extends StatelessWidget {
       children: [
         YHCell(
             id: 0,
-            margin: const EdgeInsets.symmetric(vertical: 12),
             title: "yh_design_system.page.reward_main.mission_title".tr(),
             leftEmoji: "📋",
             subtitle: "yh_design_system.page.reward_main.mission_subtitle".tr(),
@@ -90,7 +89,6 @@ final class RewardMainPage extends StatelessWidget {
                 .pushNamed(YHRouteNames.missionList)),
         YHCell(
             id: 1,
-            margin: const EdgeInsets.symmetric(vertical: 12),
             title: "yh_design_system.page.reward_main.cash_out_title".tr(),
             leftEmoji: "✨",
             subtitle:
