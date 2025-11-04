@@ -65,7 +65,7 @@ final class _CashOutPageState extends State<CashOutPage> {
               const SizedBox(height: 40),
               YHText(
                 text: "yh_design_system.page.cash_out.coming_soon".tr(),
-                font: YHFont.regular18,
+                font: YHFont.regular16,
                 color: YHColor.textSub,
               ),
               YHSolidButton(
