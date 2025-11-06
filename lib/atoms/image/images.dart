@@ -80,6 +80,7 @@ enum YHImage implements YHImageInterface {
   icon_add_24,
   icon_back_24,
   icon_backup_72,
+  icon_banner_144,
   icon_bookmark_on_48,
   icon_bookmark_off_48,
   icon_check_24,
