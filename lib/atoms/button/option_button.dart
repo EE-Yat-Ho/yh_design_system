@@ -42,8 +42,8 @@ final class YHOptionButton extends StatelessWidget {
         cornerRadius: cornerRadius,
         onTap: enable ? onTap : null,
         useShadow: enable,
-        borderColor: enable ? YHColor.strokeDefault : null,
-        borderWidth: enable ? 1 : 0,
+        borderColor: enable ? null : YHColor.strokeDefault,
+        borderWidth: enable ? 0 : 1,
         padding: padding,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
