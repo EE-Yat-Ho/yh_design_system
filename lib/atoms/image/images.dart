@@ -94,6 +94,7 @@ enum YHImage implements YHImageInterface {
   icon_save_24,
   icon_send_48,
   icon_left_216,
+  icon_reddot_144,
   icon_remove_216,
   icon_return_48,
   icon_right_216,
