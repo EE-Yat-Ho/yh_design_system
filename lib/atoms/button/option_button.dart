@@ -62,7 +62,7 @@ final class YHOptionButton extends StatelessWidget {
                     color: textColor,
                     align: TextAlign.center,
                   ),
-                  YHImage.icon_off_22.icon(width: 18, height: 18),
+                  if (!isOn) YHImage.icon_off_22.icon(width: 18, height: 18),
                 ],
               ),
             const SizedBox(width: 10),
