@@ -3,10 +3,12 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/organisms/tabbar/tab.dart';
 
-final class YHTabbar extends StatefulWidget {
+/// 외부에서 TabController를 통해 완전히 제어되는 탭바 컴포넌트
+/// TabController는 반드시 외부에서 생성하여 전달해야 합니다.
+final class YHTabbar extends StatelessWidget {
   const YHTabbar({
     super.key,
-    required this.initIndex,
+    required this.controller,
     required this.texts,
     this.height = 40,
     this.font = YHFont.regular16,
@@ -20,10 +22,13 @@ final class YHTabbar extends StatefulWidget {
     this.dividerColor,
     this.indicatorSize = TabBarIndicatorSize.label,
     this.tabAlignment,
-    required this.onTap,
+    this.onTap,
   });
 
-  final int initIndex;
+  /// 외부에서 생성한 TabController
+  /// 이를 통해 탭 인덱스를 완전히 제어할 수 있습니다.
+  final TabController controller;
+
   final ValueChanged<int>? onTap;
   final List<String> texts;
   final double height;
@@ -40,69 +45,33 @@ final class YHTabbar extends StatefulWidget {
   final TabAlignment? tabAlignment;
 
   @override
-  YHTabbarState createState() => YHTabbarState();
-}
-
-final class YHTabbarState extends State<YHTabbar>
-    with TickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: widget.texts.length, vsync: this);
-    _tabController.index = widget.initIndex;
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(YHTabbar oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    // 탭 개수가 변경된 경우 TabController 재생성
-    if (oldWidget.texts.length != widget.texts.length) {
-      final oldIndex = _tabController.index;
-      _tabController.dispose();
-      _tabController = TabController(length: widget.texts.length, vsync: this);
-
-      // 기존 인덱스가 새로운 탭 범위 내에 있으면 유지, 그렇지 않으면 0으로 설정
-      _tabController.index = oldIndex < widget.texts.length ? oldIndex : 0;
-    }
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.backgroundColor,
+      color: backgroundColor,
       child: TabBar(
-        controller: _tabController,
-        isScrollable: widget.isScrollable,
-        tabAlignment: widget.tabAlignment,
-        padding: widget.padding,
-        labelPadding: widget.labelPadding,
-        tabs: widget.texts
+        controller: controller,
+        isScrollable: isScrollable,
+        tabAlignment: tabAlignment,
+        padding: padding,
+        labelPadding: labelPadding,
+        tabs: texts
             .asMap()
             .entries
             .map((entry) => YHTab(
-                  height: widget.height,
+                  height: height,
                   text: entry.value,
-                  color: _tabController.index == entry.key
-                      ? widget.selectedColor ?? YHColor.primary
-                      : widget.unselectedColor ?? YHColor.textSub,
-                  font: widget.font,
+                  color: controller.index == entry.key
+                      ? selectedColor ?? YHColor.primary
+                      : unselectedColor ?? YHColor.textSub,
+                  font: font,
                 ))
             .toList(),
-        dividerColor: widget.dividerColor ?? YHColor.strokeStrong,
-        indicatorSize: widget.indicatorSize,
+        dividerColor: dividerColor ?? YHColor.strokeStrong,
+        indicatorSize: indicatorSize,
         indicator: UnderlineTabIndicator(
-            borderSide: BorderSide(
-                color: widget.indicatorColor ?? YHColor.primary, width: 2)),
-        onTap: widget.onTap,
+            borderSide:
+                BorderSide(color: indicatorColor ?? YHColor.primary, width: 2)),
+        onTap: onTap,
       ),
     );
   }
