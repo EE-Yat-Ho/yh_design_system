@@ -22,7 +22,7 @@ final class NemoStudyBloc extends Bloc<NemoStudyEvent, NemoStudyState> {
         _checkAndUpdateCanNemoStudy(rewardInfo, emit);
 
         final enableReddot =
-            await _spService.getBool(RewardSPKey.enableADWatchReddot);
+            await _spService.getBool(RewardSPKey.enableNemoStudyReddot);
         emit(state.copyWith(enableReddot: enableReddot ?? true));
       } finally {
         YHIndicator.hide();
