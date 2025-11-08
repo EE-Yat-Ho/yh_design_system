@@ -153,15 +153,16 @@ final class YHCell extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // ㅡㅡㅡㅡㅡ 타이틀 ㅡㅡㅡㅡㅡ
-        if (titleWidget != null)
-          titleWidget!
-        else
-          YHText(
-            text: title ?? "",
-            font: titleFont,
-            color: titleColor ?? YHColor.textDefault,
-            maxLines: titleMaxLines,
-          ),
+        Flexible(
+          child: titleWidget ??
+              YHText(
+                text: title ?? "",
+                font: titleFont,
+                color: titleColor ?? YHColor.textDefault,
+                maxLines: titleMaxLines,
+                overflow: TextOverflow.ellipsis,
+              ),
+        ),
         // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         // ㅡㅡㅡㅡㅡ 레드 닷 ㅡㅡㅡㅡㅡ
         if (redDot)
