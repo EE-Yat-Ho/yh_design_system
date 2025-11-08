@@ -22,7 +22,7 @@ Future<dynamic> showYHBottomSheet(
     builder: (context) => YHPaperBackground(
       child: Container(
         height: height,
-        padding: const EdgeInsets.fromLTRB(24, 24, 24, 40),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
         child: child,
       ),
     ),
