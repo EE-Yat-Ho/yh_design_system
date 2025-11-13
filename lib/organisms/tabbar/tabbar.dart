@@ -27,6 +27,10 @@ final class YHTabbar extends StatefulWidget {
     this.unselectedColor,
     this.indicatorColor,
     this.dividerColor,
+    // red dot
+    this.redIndex = const [],
+    this.redDotInset = 4,
+    this.redDotSize = 6,
     // call back
     required this.onTap,
   });
@@ -47,6 +51,9 @@ final class YHTabbar extends StatefulWidget {
   final Color? dividerColor;
   final TabBarIndicatorSize indicatorSize;
   final TabAlignment? tabAlignment;
+  final List<int> redIndex;
+  final double redDotInset;
+  final double redDotSize;
 
   @override
   YHTabbarState createState() => YHTabbarState();
@@ -103,14 +110,19 @@ final class YHTabbarState extends State<YHTabbar>
         tabs: widget.texts
             .asMap()
             .entries
-            .map((entry) => YHTab(
-                  height: widget.height,
-                  text: entry.value,
-                  color: _tabController.index == entry.key
-                      ? widget.selectedColor ?? YHColor.primary
-                      : widget.unselectedColor ?? YHColor.textSub,
-                  font: widget.font,
-                ))
+            .map(
+              (entry) => YHTab(
+                height: widget.height,
+                redDot: widget.redIndex.contains(entry.key),
+                redDotInset: widget.redDotInset,
+                redDotSize: widget.redDotSize,
+                text: entry.value,
+                color: _tabController.index == entry.key
+                    ? widget.selectedColor ?? YHColor.primary
+                    : widget.unselectedColor ?? YHColor.textSub,
+                font: widget.font,
+              ),
+            )
             .toList(),
         dividerColor: widget.dividerColor ?? YHColor.strokeStrong,
         indicatorSize: widget.indicatorSize,
