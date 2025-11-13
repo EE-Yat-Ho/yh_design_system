@@ -69,8 +69,8 @@ final class AttendPage extends StatelessWidget {
         height: 40,
         onTap: () => bloc.add(ToggleReddot()),
         image: bloc.state.enableReddot
-            ? YHImage.icon_alarm_128.icon(width: 24, height: 24)
-            : YHImage.icon_alarm_128.iconWithOff(width: 24, height: 24),
+            ? YHImage.icon_reddot_144.icon(width: 24, height: 24)
+            : YHImage.icon_reddot_144.iconWithOff(width: 24, height: 24),
         backgroundColor: YHColor.transparent,
         useShadow: false,
       ),
