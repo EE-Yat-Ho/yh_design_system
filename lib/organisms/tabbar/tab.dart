@@ -39,6 +39,7 @@ final class YHTab extends StatelessWidget {
           Container(
             width: 6,
             height: 6,
+            margin: const EdgeInsets.only(top: 4),
             decoration: redDotDecoration,
           ),
         ],
