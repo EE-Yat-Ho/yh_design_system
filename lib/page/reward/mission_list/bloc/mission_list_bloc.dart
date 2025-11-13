@@ -11,7 +11,7 @@ part "mission_list_state.dart";
 final class MissionListBloc extends Bloc<MissionListEvent, MissionListState> {
   final RewardInfoRepository _rewardInfoRepository;
 
-  StreamSubscription<RewardInfo>? _rewardInfoSubscription;
+  StreamSubscription<(RewardInfo, RewardInfo)>? _rewardInfoSubscription;
   StreamSubscription<void>? _rewardReddotSubscription;
   final SPService _spService = getIt<SPService>();
 
@@ -27,8 +27,8 @@ final class MissionListBloc extends Bloc<MissionListEvent, MissionListState> {
     on<InitMissionList>((event, emit) async {
       // rewardInfo 스트림 구독 시작
       _rewardInfoSubscription =
-          _rewardInfoRepository.rewardInfoStream.listen((rewardInfo) {
-        add(UpdateRewardInfo(rewardInfo));
+          _rewardInfoRepository.rewardInfoStream.listen((tuple) {
+        add(UpdateRewardInfo(tuple.$2));
       });
 
       // rewardReddot 스트림 구독 시작

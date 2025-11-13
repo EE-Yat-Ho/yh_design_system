@@ -16,7 +16,7 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
   final RewardInfoRepository _rewardInfoRepository;
 
   StreamSubscription<YHUser>? _localMeSubscription;
-  StreamSubscription<RewardInfo>? _rewardInfoSubscription;
+  StreamSubscription<(RewardInfo, RewardInfo)>? _rewardInfoSubscription;
   StreamSubscription<void>? _rewardReddotSubscription;
   final SPService _spService = getIt<SPService>();
 
@@ -39,8 +39,8 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
 
       // rewardInfo 스트림 구독 시작
       _rewardInfoSubscription =
-          _rewardInfoRepository.rewardInfoStream.listen((rewardInfo) {
-        add(UpdateRewardInfo(rewardInfo));
+          _rewardInfoRepository.rewardInfoStream.listen((tuple) {
+        add(UpdateRewardInfo(tuple.$2));
       });
 
       // rewardReddot 스트림 구독 시작
