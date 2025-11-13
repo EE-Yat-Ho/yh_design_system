@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
-import 'package:yh_design_system/atoms/decoration/yh_red_dot.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
@@ -12,8 +11,6 @@ final class YHTab extends StatelessWidget {
     this.color,
     this.font = YHFont.regular16,
     this.redDot = false,
-    this.redDotInset = 4,
-    this.redDotSize = 6,
   });
 
   final String text;
@@ -21,8 +18,6 @@ final class YHTab extends StatelessWidget {
   final YHFont font;
   final double? height;
   final bool redDot;
-  final double redDotInset;
-  final double redDotSize;
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +31,9 @@ final class YHTab extends StatelessWidget {
     );
 
     if (redDot) {
-      return Stack(
-        children: [
-          tab,
-          Positioned(
-            top: redDotInset,
-            right: redDotInset,
-            child: Container(
-              width: redDotSize,
-              height: redDotSize,
-              decoration: redDotDecoration,
-            ),
-          ),
-        ],
+      return Badge(
+        backgroundColor: Colors.red,
+        child: tab,
       );
     } else {
       return tab;

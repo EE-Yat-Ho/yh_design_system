@@ -40,6 +40,7 @@ final class YHText extends StatelessWidget {
               ? TextOverflow.visible // 줄 제한 없으면 다 보여줘야함
               : TextOverflow.ellipsis), // 넘치면 ...처리
     );
+    
 
     if (withFlexible) {
       // Row 내에서 Text가 길 때 오버플로우 되지 않게 넓이를 지정하기 위해 Flexible로 감쌈
