@@ -34,6 +34,7 @@ final class YHTab extends StatelessWidget {
     if (redDot) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 4,
         children: [
           tab,
           Container(
