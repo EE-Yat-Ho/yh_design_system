@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/decoration/yh_red_dot.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 
@@ -31,9 +32,16 @@ final class YHTab extends StatelessWidget {
     );
 
     if (redDot) {
-      return Badge(
-        backgroundColor: Colors.red,
-        child: tab,
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          tab,
+          Container(
+            width: 6,
+            height: 6,
+            decoration: redDotDecoration,
+          ),
+        ],
       );
     } else {
       return tab;
