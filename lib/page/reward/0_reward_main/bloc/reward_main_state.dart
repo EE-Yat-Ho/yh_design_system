@@ -8,6 +8,9 @@ final class RewardMainState {
   final bool showAttendRedDot;
   final bool showWatchADRedDot;
   final bool showNemoStudyRedDot;
+  final int remainAttendCash;
+  final int remainWatchADCash;
+  final int remainNemoStudyCash;
   const RewardMainState({
     this.user,
     this.canAttend = false,
@@ -16,6 +19,9 @@ final class RewardMainState {
     this.showAttendRedDot = false,
     this.showWatchADRedDot = false,
     this.showNemoStudyRedDot = false,
+    this.remainAttendCash = 0,
+    this.remainWatchADCash = 0,
+    this.remainNemoStudyCash = 0,
   });
 
   RewardMainState copyWith({
@@ -26,6 +32,9 @@ final class RewardMainState {
     bool? showAttendRedDot,
     bool? showWatchADRedDot,
     bool? showNemoStudyRedDot,
+    int? remainAttendCash,
+    int? remainWatchADCash,
+    int? remainNemoStudyCash,
   }) {
     return RewardMainState(
       user: user ?? this.user,
@@ -35,6 +44,9 @@ final class RewardMainState {
       showAttendRedDot: showAttendRedDot ?? this.showAttendRedDot,
       showWatchADRedDot: showWatchADRedDot ?? this.showWatchADRedDot,
       showNemoStudyRedDot: showNemoStudyRedDot ?? this.showNemoStudyRedDot,
+      remainAttendCash: remainAttendCash ?? this.remainAttendCash,
+      remainWatchADCash: remainWatchADCash ?? this.remainWatchADCash,
+      remainNemoStudyCash: remainNemoStudyCash ?? this.remainNemoStudyCash,
     );
   }
 }

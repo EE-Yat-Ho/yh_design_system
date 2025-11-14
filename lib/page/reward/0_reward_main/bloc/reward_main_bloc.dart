@@ -75,6 +75,11 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
       final showNemoStudyRedDot =
           await RewardUtil.canShowNemoStudyRedDot(event.rewardInfo, spService);
 
+      final remainAttendCash = RewardUtil.remainAttendPoint(event.rewardInfo);
+      final remainWatchADCash = RewardUtil.remainADWatchPoint(event.rewardInfo);
+      final remainNemoStudyCash =
+          RewardUtil.remainNemoStudyPoint(event.rewardInfo);
+
       emit(state.copyWith(
         canAttend: canAttend,
         canWatchAD: canWatchAD,
@@ -82,6 +87,9 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
         showAttendRedDot: showAttendRedDot,
         showWatchADRedDot: showWatchADRedDot,
         showNemoStudyRedDot: showNemoStudyRedDot,
+        remainAttendCash: remainAttendCash,
+        remainWatchADCash: remainWatchADCash,
+        remainNemoStudyCash: remainNemoStudyCash,
       ));
     });
   }
