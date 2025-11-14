@@ -35,7 +35,6 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
       _localMeSubscription = _yhUserRepository.localMeStream.listen((user) {
         add(_UpdateUser(user));
       });
-      emit(state.copyWith(user: await _yhUserRepository.localMe()));
 
       // ㅡㅡㅡㅡㅡ 리워드 정보 구독 ㅡㅡㅡㅡㅡ
       _rewardInfoSubscription =
@@ -52,12 +51,13 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
       });
       // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
+      emit(state.copyWith(user: await _yhUserRepository.localMe()));
       add(UpdateRewardInfo(_rewardInfoRepository.lastRewardInfo));
     });
 
     // 유저 정보 업데이트 이벤트 처리
     on<_UpdateUser>((event, emit) {
-      emit(state.copyWith(type: RewardMainType.success, user: event.user));
+      emit(state.copyWith(user: event.user));
     });
 
     // 리워드 정보 업데이트 이벤트 처리

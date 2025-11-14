@@ -110,7 +110,7 @@ final class RewardMainPage extends StatelessWidget {
   }
 
   Widget _point(RewardMainBloc bloc) {
-    if (bloc.state.type == RewardMainType.initial) {
+    if (bloc.state.user == null) {
       return CircularProgressIndicator(color: YHColor.primary);
     }
 
