@@ -63,6 +63,11 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
     // 리워드 정보 업데이트 이벤트 처리
     on<UpdateRewardInfo>((event, emit) async {
       final spService = getIt<SPService>();
+
+      final canAttend = RewardUtil.canAttend(event.rewardInfo);
+      final canWatchAD = RewardUtil.canADWatch(event.rewardInfo);
+      final canNemoStudy = RewardUtil.canNemoStudy(event.rewardInfo);
+
       final showAttendRedDot =
           await RewardUtil.canShowAttendRedDot(event.rewardInfo, spService);
       final showWatchADRedDot =
@@ -71,6 +76,9 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
           await RewardUtil.canShowNemoStudyRedDot(event.rewardInfo, spService);
 
       emit(state.copyWith(
+        canAttend: canAttend,
+        canWatchAD: canWatchAD,
+        canNemoStudy: canNemoStudy,
         showAttendRedDot: showAttendRedDot,
         showWatchADRedDot: showWatchADRedDot,
         showNemoStudyRedDot: showNemoStudyRedDot,

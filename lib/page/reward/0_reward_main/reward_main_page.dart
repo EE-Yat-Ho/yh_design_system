@@ -2,7 +2,6 @@ import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
-import "package:yh_design_system/atoms/image/images.dart";
 import "package:yh_design_system/page/reward/0_reward_main/bloc/reward_main_bloc.dart";
 import "package:yh_design_system/router.dart";
 import "package:yh_design_system/atoms/card/card.dart";
@@ -58,34 +57,44 @@ final class RewardMainPage extends StatelessWidget {
               id: 0,
               title: "yh_design_system.page.reward_main.attend_title"
                   .tr(args: [RewardType.ATTEND.maxDailyPoint.toString()]),
-              leftEmoji: "🖐️",
+              leftEmoji: "🥠",
               subtitle: "yh_design_system.page.reward_main.attend_subtitle"
                   .tr(args: [RewardType.ATTEND.maxDailyPoint.toString()]),
               showArrow: false,
+              rightText: "${RewardType.ATTEND.maxDailyPoint} 🪙",
               redDot: bloc.state.showAttendRedDot,
-              onTap: () => context.pushNamed(YHRouteNames.attend)),
-          // 네모 공부
-          YHCell(
-              id: 1,
-              title: "yh_design_system.page.reward_main.nemo_study_title"
-                  .tr(args: [RewardType.NEMO_STUDY.maxDailyPoint.toString()]),
-              leftImage: YHImage.icon_check_blue_100,
-              subtitle: "yh_design_system.page.reward_main.nemo_study_subtitle"
-                  .tr(args: [RewardType.NEMO_STUDY.maxDailyPoint.toString()]),
-              showArrow: false,
-              redDot: bloc.state.showNemoStudyRedDot,
-              onTap: () => context.pushNamed(YHRouteNames.nemoStudy)),
+              onTap: bloc.state.canAttend
+                  ? () => context.pushNamed(YHRouteNames.attend)
+                  : null),
           // 광고 시청
           YHCell(
               id: 2,
               title: "yh_design_system.page.reward_main.ad_title"
                   .tr(args: [RewardType.AD_WATCH.maxDailyPoint.toString()]),
-              leftEmoji: "🎥",
+              leftEmoji: "💰",
               subtitle: "yh_design_system.page.reward_main.ad_subtitle"
                   .tr(args: [RewardType.AD_WATCH.maxDailyPoint.toString()]),
               showArrow: false,
+              rightText: "${RewardType.AD_WATCH.maxDailyPoint} 🪙",
               redDot: bloc.state.showWatchADRedDot,
-              onTap: () => context.pushNamed(YHRouteNames.ad)),
+              onTap: bloc.state.canWatchAD
+                  ? () => context.pushNamed(YHRouteNames.ad)
+                  : null),
+          // 네모 공부
+          YHCell(
+              id: 1,
+              title: "yh_design_system.page.reward_main.nemo_study_title"
+                  .tr(args: [RewardType.NEMO_STUDY.maxDailyPoint.toString()]),
+              // leftImage: YHImage.icon_check_blue_100,
+              leftEmoji: "🎯",
+              subtitle: "yh_design_system.page.reward_main.nemo_study_subtitle"
+                  .tr(args: [RewardType.NEMO_STUDY.maxDailyPoint.toString()]),
+              showArrow: false,
+              rightText: "${RewardType.NEMO_STUDY.maxDailyPoint} 🪙",
+              redDot: bloc.state.showNemoStudyRedDot,
+              onTap: bloc.state.canNemoStudy
+                  ? () => context.pushNamed(YHRouteNames.nemoStudy)
+                  : null),
           // YHCell(
           //     title: "👟 만보기",
           //     subtitle: "매일 출석하면 캐시를 얻을 수 있어요",
