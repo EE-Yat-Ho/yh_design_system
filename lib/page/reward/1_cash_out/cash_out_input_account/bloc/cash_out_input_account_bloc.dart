@@ -1,6 +1,7 @@
 import "package:bloc/bloc.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:yh_util/common/constants.dart";
 import "package:yh_util/data/repository/update_history/update_history_repository.dart";
 import "package:yh_util/data/repository/yh_user_repository.dart";
 import "package:yh_util/domain/entities/yh_user.dart";
@@ -34,7 +35,7 @@ final class CashOutInputAccountBloc
             name: event.name,
             bank: event.bank,
             email: localUser.email,
-            amount: 500,
+            amount: YHUtilConstants.rewardCashOutAmount,
           );
           final remoteUser = await _yhUserRepository.remoteUser(localUser.id);
           final newUser = remoteUser.copyWith(me: true);
@@ -59,7 +60,7 @@ final class CashOutInputAccountBloc
   }
 
   bool _checkAndUpdateCanCashOut(YHUser user, emit) {
-    final canCashOut = user.point >= 500;
+    final canCashOut = user.point >= YHUtilConstants.rewardCashOutAmount;
     emit(state.copyWith(
         type: CashOutInputAccountType.success,
         user: user.copyWith(me: true),

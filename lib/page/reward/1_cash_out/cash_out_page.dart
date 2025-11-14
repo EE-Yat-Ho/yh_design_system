@@ -13,6 +13,7 @@ import "package:yh_design_system/atoms/image/images.dart";
 import "package:yh_design_system/atoms/text/text.dart";
 import "package:yh_design_system/organisms/appbar/appbar.dart";
 import "package:yh_design_system/organisms/scaffold/scaffold.dart";
+import "package:yh_util/common/constants.dart";
 import "package:yh_util/int_util.dart";
 import "bloc/cash_out_bloc.dart";
 
@@ -45,7 +46,10 @@ final class _CashOutPageState extends State<CashOutPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             children: [
               YHText(
-                text: "yh_design_system.page.cash_out.title".tr(),
+                text: "yh_design_system.page.cash_out.title".tr(args: [
+                  YHUtilConstants.rewardCashOutAmount.toString(),
+                  YHUtilConstants.rewardCashOutAmount.toString()
+                ]),
                 font: YHFont.regular18,
                 color: YHColor.textDefault,
                 align: TextAlign.center,

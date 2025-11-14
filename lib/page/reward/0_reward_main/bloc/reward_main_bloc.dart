@@ -37,18 +37,20 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
       });
       emit(state.copyWith(user: await _yhUserRepository.localMe()));
 
-      // rewardInfo 스트림 구독 시작
+      // ㅡㅡㅡㅡㅡ 리워드 정보 구독 ㅡㅡㅡㅡㅡ
       _rewardInfoSubscription =
           _rewardInfoRepository.rewardInfoStream.listen((tuple) {
         add(UpdateRewardInfo(tuple.$2));
       });
+      // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-      // rewardReddot 스트림 구독 시작
+      // ㅡㅡㅡㅡㅡ 리워드 레드닷 설정 구독 ㅡㅡㅡㅡㅡ
       _rewardReddotSubscription =
           _spService.stream(RewardSPKey).listen((enableReddot) {
         final rewardInfo = _rewardInfoRepository.lastRewardInfo;
         add(UpdateRewardInfo(rewardInfo));
       });
+      // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
       add(UpdateRewardInfo(_rewardInfoRepository.lastRewardInfo));
     });
@@ -60,11 +62,18 @@ final class RewardMainBloc extends Bloc<RewardMainEvent, RewardMainState> {
 
     // 리워드 정보 업데이트 이벤트 처리
     on<UpdateRewardInfo>((event, emit) async {
-      final canShowAnyRedDot =
-          await RewardUtil.canShowAnyRedDot(event.rewardInfo, _spService);
+      final spService = getIt<SPService>();
+      final showAttendRedDot =
+          await RewardUtil.canShowAttendRedDot(event.rewardInfo, spService);
+      final showWatchADRedDot =
+          await RewardUtil.canShowADWatchRedDot(event.rewardInfo, spService);
+      final showNemoStudyRedDot =
+          await RewardUtil.canShowNemoStudyRedDot(event.rewardInfo, spService);
+
       emit(state.copyWith(
-        type: RewardMainType.success,
-        showRedDot: canShowAnyRedDot,
+        showAttendRedDot: showAttendRedDot,
+        showWatchADRedDot: showWatchADRedDot,
+        showNemoStudyRedDot: showNemoStudyRedDot,
       ));
     });
   }

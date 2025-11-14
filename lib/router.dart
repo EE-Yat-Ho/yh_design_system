@@ -3,33 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yh_design_system/di.dart';
-import 'package:yh_design_system/page/reward/cash_out/bloc/cash_out_bloc.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_page.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_input_account/bloc/cash_out_input_account_bloc.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_input_account/cash_out_input_account_page.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_request_list/bloc/cash_out_request_list_bloc.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_request_list/cash_out_request_list_page.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_result/bloc/cash_out_result_bloc.dart';
-import 'package:yh_design_system/page/reward/cash_out/cash_out_result/cash_out_result_page.dart';
-import 'package:yh_design_system/page/reward/mission_list/attend/bloc/attend_bloc.dart';
-import 'package:yh_design_system/page/reward/mission_list/attend/attend_page.dart';
-import 'package:yh_design_system/page/reward/mission_list/nemo_study/bloc/nemo_study_bloc.dart';
-import 'package:yh_design_system/page/reward/mission_list/nemo_study/nemo_study_page.dart';
-import 'package:yh_design_system/page/reward/reward_result/bloc/reward_result_bloc.dart';
-import 'package:yh_design_system/page/reward/reward_result/reward_result_page.dart';
-import 'package:yh_design_system/page/reward/mission_list/bloc/mission_list_bloc.dart';
-import 'package:yh_design_system/page/reward/mission_list/mission_list_page.dart';
-import 'package:yh_design_system/page/reward/mission_list/mission_ad/bloc/mission_ad_bloc.dart';
-import 'package:yh_design_system/page/reward/mission_list/mission_ad/mission_ad_page.dart';
-import 'package:yh_design_system/page/reward/bloc/reward_main_bloc.dart';
-import 'package:yh_design_system/page/reward/reward_main_page.dart';
+import 'package:yh_design_system/page/reward/0_reward_main/bloc/reward_main_bloc.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/bloc/cash_out_bloc.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_page.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_input_account/bloc/cash_out_input_account_bloc.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_input_account/cash_out_input_account_page.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_request_list/bloc/cash_out_request_list_bloc.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_request_list/cash_out_request_list_page.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_result/bloc/cash_out_result_bloc.dart';
+import 'package:yh_design_system/page/reward/1_cash_out/cash_out_result/cash_out_result_page.dart';
+import 'package:yh_design_system/page/reward/1_attend/bloc/attend_bloc.dart';
+import 'package:yh_design_system/page/reward/1_attend/attend_page.dart';
+import 'package:yh_design_system/page/reward/1_nemo_study/bloc/nemo_study_bloc.dart';
+import 'package:yh_design_system/page/reward/1_nemo_study/nemo_study_page.dart';
+import 'package:yh_design_system/page/reward/2_reward_result/bloc/reward_result_bloc.dart';
+import 'package:yh_design_system/page/reward/2_reward_result/reward_result_page.dart';
+import 'package:yh_design_system/page/reward/1_mission_ad/bloc/mission_ad_bloc.dart';
+import 'package:yh_design_system/page/reward/1_mission_ad/mission_ad_page.dart';
+import 'package:yh_design_system/page/reward/0_reward_main/reward_main_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 final class YHRouteNames {
   // ㅡㅡㅡㅡㅡ reward ㅡㅡㅡㅡㅡ
   static const String reward = "/reward"; // 리워드
-  static const String missionList = "/reward/mission"; // 미션 목록
   static const String cashOut = "/reward/cash-out"; // 현금 출금
   static const String cashOutInputAccount =
       "/reward/cash-out/input-account"; // 현금 출금 계좌 입력
@@ -57,19 +54,6 @@ GoRoute rewardRoute(List<RouteBase> routes) => GoRoute(
           BlocProvider<RewardMainBloc>(create: (_) => getIt<RewardMainBloc>()),
         ],
         child: const RewardMainPage(),
-      ),
-      routes: routes,
-    );
-
-GoRoute missionListRoute(List<RouteBase> routes) => GoRoute(
-      name: YHRouteNames.missionList,
-      path: YHRouteNames.missionList,
-      builder: (context, state) => MultiBlocProvider(
-        providers: [
-          BlocProvider<MissionListBloc>(
-              create: (_) => getIt<MissionListBloc>()),
-        ],
-        child: const MissionListPage(),
       ),
       routes: routes,
     );

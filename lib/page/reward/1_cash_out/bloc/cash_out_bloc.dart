@@ -1,5 +1,6 @@
 import "package:bloc/bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:yh_util/common/constants.dart";
 import "package:yh_util/data/repository/yh_user_repository.dart";
 import "package:yh_util/domain/entities/yh_user.dart";
 import "package:yh_design_system/router.dart";
@@ -35,7 +36,7 @@ final class CashOutBloc extends Bloc<CashOutEvent, CashOutState> {
   }
 
   bool _checkAndUpdateCanCashOut(YHUser user, emit) {
-    final canCashOut = user.point >= 500;
+    final canCashOut = user.point >= YHUtilConstants.rewardCashOutAmount;
     emit(state.copyWith(
         type: CashOutType.success,
         user: user.copyWith(me: true),

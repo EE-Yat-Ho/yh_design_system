@@ -7,6 +7,7 @@ import "package:yh_design_system/atoms/image/images.dart";
 import "package:yh_design_system/atoms/text/text.dart";
 import "package:yh_design_system/organisms/appbar/appbar.dart";
 import "package:yh_design_system/organisms/scaffold/scaffold.dart";
+import "package:yh_util/common/constants.dart";
 import "bloc/cash_out_result_bloc.dart";
 
 final class CashOutResultPage extends StatelessWidget {
@@ -24,7 +25,8 @@ final class CashOutResultPage extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
               YHText(
-                text: "yh_design_system.page.cash_out_result.title".tr(),
+                text: "yh_design_system.page.cash_out_result.title"
+                    .tr(args: [YHUtilConstants.rewardCashOutAmount.toString()]),
                 font: YHFont.regular24,
                 color: YHColor.black,
                 align: TextAlign.center,
