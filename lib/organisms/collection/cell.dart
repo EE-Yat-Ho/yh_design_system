@@ -105,7 +105,7 @@ final class YHCell extends StatelessWidget {
     final canTap = onTap != null;
 
     return YHCard(
-      cornerRadius: 8,
+      cornerRadius: cornerRadius ?? 8,
       margin: margin,
       padding: padding,
       useShadow: useShadow ?? canTap,
