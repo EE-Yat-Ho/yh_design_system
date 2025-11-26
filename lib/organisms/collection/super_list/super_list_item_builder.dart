@@ -65,6 +65,7 @@ final class SuperListItemBuilder {
           openable.children.isNotEmpty,
       margin: openableCardMargin,
       showAddButton: showAddButton,
+      showAddButtonRedDot: openable.showAddButtonRedDot,
       showArrow: showOpenableArrow,
       cornerRadius: openableCardCornerRadius,
     );

@@ -15,6 +15,7 @@ final class OpenableObject {
   final String text;
   final String? rightText;
   final bool isOpened;
+  final bool showAddButtonRedDot;
 
   const OpenableObject({
     required this.object,
@@ -24,6 +25,7 @@ final class OpenableObject {
     required this.text,
     this.rightText,
     required this.isOpened,
+    this.showAddButtonRedDot = false,
   });
 }
 
@@ -40,6 +42,7 @@ final class YHOpenableCard extends StatelessWidget {
     this.isSelected = false,
     // 보여줄지 여부들
     this.showAddButton = true,
+    this.showAddButtonRedDot = false,
     this.showArrow = true,
     // 그림자
     this.shadow,
@@ -59,6 +62,7 @@ final class YHOpenableCard extends StatelessWidget {
   final EdgeInsets contentPadding;
   // 보여줄지 여부들
   final bool showAddButton;
+  final bool showAddButtonRedDot;
   final bool showArrow;
   // 그림자
   final List<BoxShadow>? shadow;
@@ -108,6 +112,7 @@ final class YHOpenableCard extends StatelessWidget {
         YHButton(
           width: 24,
           height: 24,
+          redDot: showAddButtonRedDot,
           onTap: () {
             if (onTapAddButton != null) {
               onTapAddButton!(object.id);
