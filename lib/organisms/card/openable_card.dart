@@ -113,6 +113,7 @@ final class YHOpenableCard extends StatelessWidget {
           width: 24,
           height: 24,
           redDot: showAddButtonRedDot,
+          redDotInset: 0,
           onTap: () {
             if (onTapAddButton != null) {
               onTapAddButton!(object.id);
