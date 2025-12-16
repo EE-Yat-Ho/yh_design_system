@@ -16,7 +16,9 @@ final class YHDialog extends StatelessWidget {
   const YHDialog({
     super.key,
     this.titleFont = YHFont.regular16,
+    this.titleColor,
     this.subTextFont = YHFont.regular14,
+    this.subTextColor,
     this.buttonFont = YHFont.regular14,
     required this.text,
     this.subText,
@@ -42,7 +44,9 @@ final class YHDialog extends StatelessWidget {
   final String text;
   final String? subText;
   final YHFont titleFont;
+  final Color? titleColor;
   final YHFont subTextFont;
+  final Color? subTextColor;
   final YHFont buttonFont;
   final YHImageInterface? image;
   final double? imageWidth;
@@ -108,7 +112,7 @@ final class YHDialog extends StatelessWidget {
     return YHText(
         text: text,
         font: titleFont,
-        color: YHColor.textDefault,
+        color: titleColor ?? YHColor.textDefault,
         maxLines: 15,
         align: titleAlign);
   }
@@ -117,7 +121,7 @@ final class YHDialog extends StatelessWidget {
     return YHText(
         text: subText!,
         font: subTextFont,
-        color: YHColor.textSub,
+        color: subTextColor ?? YHColor.textSub,
         maxLines: 15,
         align: subTextAlign);
   }
