@@ -19,6 +19,8 @@ final class YHScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.floatingActionButtonLocation,
     this.floatingActionButtonAnimator,
+    // RefreshIndicator
+    this.onRefresh,
     // SingleChildScrollView
     this.scrollable = false, // 스크롤 가능 여부
     this.scrollController, // 스크롤 컨트롤러
@@ -41,6 +43,8 @@ final class YHScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
   final FloatingActionButtonAnimator? floatingActionButtonAnimator;
+  // RefreshIndicator
+  final RefreshCallback? onRefresh;
   // SingleChildScrollView
   final bool scrollable;
   final ScrollController? scrollController;
@@ -55,8 +59,10 @@ final class YHScaffold extends StatelessWidget {
       _buildOutsideSafeArea(
         _buildPaperBackground(
           _buildScaffold(
-            _buildSingleChildScrollView(
-              _buildInsideSafeArea(body),
+            _buildRefreshIndicator(
+              _buildSingleChildScrollView(
+                _buildInsideSafeArea(body),
+              ),
             ),
           ),
         ),
@@ -109,6 +115,13 @@ final class YHScaffold extends StatelessWidget {
       floatingActionButtonLocation: floatingActionButtonLocation,
       floatingActionButtonAnimator: floatingActionButtonAnimator,
     );
+  }
+
+  Widget _buildRefreshIndicator(Widget child) {
+    if (onRefresh != null) {
+      return RefreshIndicator(onRefresh: onRefresh!, child: child);
+    }
+    return child;
   }
 
   Widget _buildSingleChildScrollView(Widget child) {
