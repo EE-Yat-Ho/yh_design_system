@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/organisms/dialog/app_exit_dialog.dart';
 import 'package:yh_design_system/organisms/scaffold/scaffold.dart';
 
@@ -58,6 +59,8 @@ final class YHBottomNavigationBar extends StatelessWidget {
           backgroundColor: Colors.transparent, // Container 색상을 사용
           onTap: onIndexChanged,
           items: items,
+          selectedLabelStyle: YHFont.regular14.style(),
+          unselectedLabelStyle: YHFont.regular12.style(),
         ),
         // ),
       ),
