@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHFontFamily {
-  SpoqaHanSansNeo, // 기본 폰트 (nemo)
-  SANGJUDajungdagam // 필기체 (memory_log)
+  GangwonEduAll, // 강원교육모두 << 20260105 이걸 기본으로 ㄱ 
+  SpoqaHanSansNeo, // 기본 폰트
+  SANGJUDajungdagam, // 필기체
+  ;
 }
 
 enum YHFont {
