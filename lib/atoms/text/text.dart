@@ -13,6 +13,7 @@ final class YHText extends StatelessWidget {
     this.withFlexible = false,
     this.decoration,
     this.overflow,
+    this.fontFamily,
   });
 
   final String text;
@@ -27,11 +28,14 @@ final class YHText extends StatelessWidget {
   final bool withFlexible;
   // 고정 width를 설정하기 위한 값
   final double? fixWidth;
+  // 폰트 패밀리 고정용
+  final YHFontFamily? fontFamily;
 
   @override
   Widget build(BuildContext context) {
     Text text = Text(
-      style: font.style(color: color, decoration: decoration),
+      style: font.style(
+          color: color, decoration: decoration, fontFamily: fontFamily),
       this.text,
       maxLines: maxLines,
       textAlign: align,
@@ -40,7 +44,6 @@ final class YHText extends StatelessWidget {
               ? TextOverflow.visible // 줄 제한 없으면 다 보여줘야함
               : TextOverflow.ellipsis), // 넘치면 ...처리
     );
-    
 
     if (withFlexible) {
       // Row 내에서 Text가 길 때 오버플로우 되지 않게 넓이를 지정하기 위해 Flexible로 감쌈

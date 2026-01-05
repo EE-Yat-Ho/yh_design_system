@@ -21,6 +21,42 @@ enum YHFontFamily {
         return 1.2; // SANGJUDajungdagam이 제일 작게 보이므로 더 많이 키움
     }
   }
+
+  // 코드에서 사용할 폰트 패밀리 이름
+  String get fontFamilyName {
+    switch (this) {
+      case YHFontFamily.GangwonEduAll:
+        return "GangwonEduAll";
+      case YHFontFamily.SpoqaHanSansNeo:
+        return "SpoqaHanSansNeo";
+      case YHFontFamily.SANGJUDajungdagam:
+        return "SANGJUDajungdagam";
+    }
+  }
+
+  // 한국어 폰트 이름
+  String get koreanName {
+    switch (this) {
+      case YHFontFamily.GangwonEduAll:
+        return "강원교육모두";
+      case YHFontFamily.SpoqaHanSansNeo:
+        return "SpoqaHanSansNeo";
+      case YHFontFamily.SANGJUDajungdagam:
+        return "상주다정다감";
+    }
+  }
+
+  // 한국어 외 폰트 이름
+  String get englishName {
+    switch (this) {
+      case YHFontFamily.GangwonEduAll:
+        return "GangwonEduAll";
+      case YHFontFamily.SpoqaHanSansNeo:
+        return "SpoqaHanSansNeo";
+      case YHFontFamily.SANGJUDajungdagam:
+        return "SANGJUDajungdagam";
+    }
+  }
 }
 
 enum YHFont {
@@ -123,12 +159,14 @@ enum YHFont {
 }
 
 extension YHFontEx on YHFont {
-  TextStyle style({Color? color, TextDecoration? decoration}) {
+  TextStyle style(
+      {Color? color, TextDecoration? decoration, YHFontFamily? fontFamily}) {
+    final ff = fontFamily ?? YHFont.fontFamily;
     // 폰트 패밀리별 스케일 팩터를 적용하여 실제 렌더링 크기를 일치시킴
-    final adjustedFontSize = fontSize * YHFont.fontFamily.sizeScaleFactor;
+    final adjustedFontSize = fontSize * ff.sizeScaleFactor;
 
     return TextStyle(
-      fontFamily: YHFont.fontFamily.name, // enum의 폰트 이름 사용
+      fontFamily: ff.fontFamilyName, // enum의 폰트 이름 사용
       fontSize: adjustedFontSize,
       fontWeight: fontWeight,
       height: 1.4,
