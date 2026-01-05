@@ -14,7 +14,7 @@ enum YHFontFamily {
   double get sizeScaleFactor {
     switch (this) {
       case YHFontFamily.GangwonEduAll:
-        return 1.1; // GangwonEduAll은 작게 보이므로 키움
+        return 1.15; // GangwonEduAll은 작게 보이므로 키움
       case YHFontFamily.SpoqaHanSansNeo:
         return 1.0; // 기준 폰트
       case YHFontFamily.SANGJUDajungdagam:
@@ -164,12 +164,14 @@ extension YHFontEx on YHFont {
     final ff = fontFamily ?? YHFont.fontFamily;
     // 폰트 패밀리별 스케일 팩터를 적용하여 실제 렌더링 크기를 일치시킴
     final adjustedFontSize = fontSize * ff.sizeScaleFactor;
+    // 폰트가 커진만큼 height는 낮추기
+    final adjustedHeight = 1.4 / ff.sizeScaleFactor;
 
     return TextStyle(
       fontFamily: ff.fontFamilyName, // enum의 폰트 이름 사용
       fontSize: adjustedFontSize,
       fontWeight: fontWeight,
-      height: 1.4,
+      height: adjustedHeight,
       color: color ?? YHColor.textDefault,
       decorationColor: color ?? YHColor.textDefault,
       decoration: decoration,
