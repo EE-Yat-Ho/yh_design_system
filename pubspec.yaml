@@ -54,9 +54,9 @@ flutter:
         weight: 500
   - family: GangwonEduAll
     fonts:
-      - asset: assets/fonts/GangwonEduAll-Bold.ttf
+      - asset: assets/fonts/GangwonEduAll-Bold.otf
         weight: 700
-      - asset: assets/fonts/GangwonEduAll-Light.ttf
+      - asset: assets/fonts/GangwonEduAll-Light.otf
         weight: 300
   - family: SANGJUDajungdagam
     fonts:
