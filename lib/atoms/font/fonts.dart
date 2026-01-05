@@ -4,10 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:yh_design_system/atoms/color/colors.dart';
 
 enum YHFontFamily {
-  GangwonEduAll, // 강원교육모두 << 20260105 이걸 기본으로 ㄱ 
+  GangwonEduAll, // 강원교육모두 << 20260105 이걸 기본으로 ㄱ
   SpoqaHanSansNeo, // 기본 폰트
   SANGJUDajungdagam, // 필기체
   ;
+
+  /// 폰트별 크기 조정 스케일 팩터
+  /// 기준 폰트(SpoqaHanSansNeo)를 1.0으로 하여 다른 폰트들의 실제 렌더링 크기를 일치시킴
+  double get sizeScaleFactor {
+    switch (this) {
+      case YHFontFamily.GangwonEduAll:
+        return 1.1; // GangwonEduAll은 작게 보이므로 키움
+      case YHFontFamily.SpoqaHanSansNeo:
+        return 1.0; // 기준 폰트
+      case YHFontFamily.SANGJUDajungdagam:
+        return 1.2; // SANGJUDajungdagam이 제일 작게 보이므로 더 많이 키움
+    }
+  }
 }
 
 enum YHFont {
@@ -111,9 +124,12 @@ enum YHFont {
 
 extension YHFontEx on YHFont {
   TextStyle style({Color? color, TextDecoration? decoration}) {
+    // 폰트 패밀리별 스케일 팩터를 적용하여 실제 렌더링 크기를 일치시킴
+    final adjustedFontSize = fontSize * YHFont.fontFamily.sizeScaleFactor;
+
     return TextStyle(
       fontFamily: YHFont.fontFamily.name, // enum의 폰트 이름 사용
-      fontSize: fontSize,
+      fontSize: adjustedFontSize,
       fontWeight: fontWeight,
       height: 1.4,
       color: color ?? YHColor.textDefault,

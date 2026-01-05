@@ -122,14 +122,10 @@ final class _YHSegmentControlState extends State<YHSegmentControl>
                             child: AnimatedDefaultTextStyle(
                               duration: widget.animationDuration,
                               curve: Curves.easeInOut,
-                              style: TextStyle(
-                                color: isSelected
-                                    ? YHColor.textDefault
-                                    : YHColor.textSub,
-                                fontSize: YHFont.regular14.fontSize,
-                                fontWeight: YHFont.regular14.fontWeight,
-                                fontFamily: YHFont.fontFamily.name,
-                              ),
+                              style: YHFont.regular14.style(
+                                  color: isSelected
+                                      ? YHColor.textDefault
+                                      : YHColor.textSub),
                               child: Text(
                                 segment,
                                 textAlign: TextAlign.center,
