@@ -37,6 +37,7 @@ enum YHImage implements YHImageInterface {
 
   // 기능
   icon_camera_48,
+  icon_books_128,
   icon_pencil_24,
   icon_photo_48,
   icon_alarm_128,
