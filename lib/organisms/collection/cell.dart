@@ -14,8 +14,11 @@ final class YHCell extends StatelessWidget {
     required this.id,
     // 왼쪽 아이콘
     this.leftImage,
-    this.leftImageSize = 28,
+    this.leftImageSize = 26,
     this.leftEmoji,
+    this.leftEmojiSize = 24,
+    this.leftEmojiFont = YHFont.regular24,
+    this.minLeadingWidth = 10,
     // 타이틀
     this.titleWidget,
     this.title,
@@ -61,6 +64,9 @@ final class YHCell extends StatelessWidget {
   final YHImageInterface? leftImage;
   final double leftImageSize;
   final String? leftEmoji;
+  final double leftEmojiSize;
+  final YHFont leftEmojiFont;
+  final double minLeadingWidth;
   // 타이틀
   final Widget? titleWidget;
   final String? title;
@@ -123,6 +129,7 @@ final class YHCell extends StatelessWidget {
       child: ListTile(
         dense: true,
         leading: _left(),
+        minLeadingWidth: minLeadingWidth,
         title: _title(),
         subtitle: _subtitle(),
         contentPadding: contentPadding,
@@ -141,10 +148,10 @@ final class YHCell extends StatelessWidget {
           child: leftImage!.icon(width: leftImageSize, height: leftImageSize));
     } else if (leftEmoji != null) {
       return SizedBox(
-          width: 24,
+          width: leftEmojiSize,
           child: YHText(
               text: leftEmoji!,
-              font: YHFont.regular24,
+              font: leftEmojiFont,
               color: YHColor.textDefault));
     } else {
       return null;
