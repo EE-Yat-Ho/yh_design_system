@@ -14,6 +14,7 @@ final class YHCell extends StatelessWidget {
     required this.id,
     // 왼쪽 아이콘
     this.leftImage,
+    this.leftImageSize = 28,
     this.leftEmoji,
     // 타이틀
     this.titleWidget,
@@ -58,6 +59,7 @@ final class YHCell extends StatelessWidget {
   final int id;
   // 왼쪽 아이콘
   final YHImageInterface? leftImage;
+  final double leftImageSize;
   final String? leftEmoji;
   // 타이틀
   final Widget? titleWidget;
@@ -134,7 +136,9 @@ final class YHCell extends StatelessWidget {
   Widget? _left() {
     if (leftImage != null) {
       return SizedBox(
-          width: 24, height: 24, child: leftImage!.icon(width: 24, height: 24));
+          width: leftImageSize,
+          height: leftImageSize,
+          child: leftImage!.icon(width: leftImageSize, height: leftImageSize));
     } else if (leftEmoji != null) {
       return SizedBox(
           width: 24,
