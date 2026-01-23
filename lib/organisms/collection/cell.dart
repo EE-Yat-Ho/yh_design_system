@@ -14,12 +14,13 @@ final class YHCell extends StatelessWidget {
     required this.id,
     // 왼쪽 아이콘
     this.leftImage,
-    this.leftImageSize = 24,
+    this.leftImageSize = 26,
     this.leftEmoji,
     this.leftEmojiWidth = 24,
     this.leftEmojiFont = YHFont.regular22,
     this.minLeadingWidth,
-    this.horizontalTitleGap = 10,
+    this.horizontalTitleGapForImage = 12,
+    this.horizontalTitleGapForEmoji = 14,
     // 타이틀
     this.titleWidget,
     this.title,
@@ -68,7 +69,8 @@ final class YHCell extends StatelessWidget {
   final double leftEmojiWidth;
   final YHFont leftEmojiFont;
   final double? minLeadingWidth;
-  final double? horizontalTitleGap;
+  final double horizontalTitleGapForImage;
+  final double horizontalTitleGapForEmoji;
   // 타이틀
   final Widget? titleWidget;
   final String? title;
@@ -132,7 +134,7 @@ final class YHCell extends StatelessWidget {
         dense: true,
         leading: _left(),
         minLeadingWidth: minLeadingWidth,
-        horizontalTitleGap: horizontalTitleGap,
+        horizontalTitleGap: _horizontalTitleGap(),
         title: _title(),
         subtitle: _subtitle(),
         contentPadding: contentPadding,
@@ -156,6 +158,17 @@ final class YHCell extends StatelessWidget {
               text: leftEmoji!,
               font: leftEmojiFont,
               color: YHColor.textDefault));
+    } else {
+      return null;
+    }
+  }
+
+  // MARK: Leading과 타이틀 간격
+  double? _horizontalTitleGap() {
+    if (leftImage != null) {
+      return horizontalTitleGapForImage;
+    } else if (leftEmoji != null) {
+      return horizontalTitleGapForEmoji;
     } else {
       return null;
     }
