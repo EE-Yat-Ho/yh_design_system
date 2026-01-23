@@ -160,7 +160,7 @@ class _YHDialogState extends State<YHDialog> {
         text: widget.text,
         font: widget.titleFont,
         color: widget.titleColor ?? YHColor.textDefault,
-        maxLines: 20,
+        maxLines: 30,
         align: widget.titleAlign);
   }
 
@@ -169,7 +169,7 @@ class _YHDialogState extends State<YHDialog> {
         text: widget.subText!,
         font: widget.subTextFont,
         color: widget.subTextColor ?? YHColor.textSub,
-        maxLines: 20,
+        maxLines: 30,
         align: widget.subTextAlign);
   }
 
