@@ -16,10 +16,10 @@ final class YHCell extends StatelessWidget {
     this.leftImage,
     this.leftImageSize = 24,
     this.leftEmoji,
-    this.leftEmojiSize = 24,
+    this.leftEmojiWidth = 24,
     this.leftEmojiFont = YHFont.regular22,
     this.minLeadingWidth,
-    this.horizontalTitleGap,
+    this.horizontalTitleGap = 10,
     // 타이틀
     this.titleWidget,
     this.title,
@@ -65,7 +65,7 @@ final class YHCell extends StatelessWidget {
   final YHImageInterface? leftImage;
   final double leftImageSize;
   final String? leftEmoji;
-  final double leftEmojiSize;
+  final double leftEmojiWidth;
   final YHFont leftEmojiFont;
   final double? minLeadingWidth;
   final double? horizontalTitleGap;
@@ -151,7 +151,7 @@ final class YHCell extends StatelessWidget {
           child: leftImage!.icon(width: leftImageSize, height: leftImageSize));
     } else if (leftEmoji != null) {
       return SizedBox(
-          width: leftEmojiSize,
+          width: leftEmojiWidth,
           child: YHText(
               text: leftEmoji!,
               font: leftEmojiFont,
