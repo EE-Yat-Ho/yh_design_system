@@ -14,11 +14,12 @@ final class YHCell extends StatelessWidget {
     required this.id,
     // 왼쪽 아이콘
     this.leftImage,
-    this.leftImageSize = 26,
+    this.leftImageSize = 24,
     this.leftEmoji,
     this.leftEmojiSize = 24,
-    this.leftEmojiFont = YHFont.regular24,
-    this.minLeadingWidth = 10,
+    this.leftEmojiFont = YHFont.regular22,
+    this.minLeadingWidth,
+    this.horizontalTitleGap,
     // 타이틀
     this.titleWidget,
     this.title,
@@ -66,7 +67,8 @@ final class YHCell extends StatelessWidget {
   final String? leftEmoji;
   final double leftEmojiSize;
   final YHFont leftEmojiFont;
-  final double minLeadingWidth;
+  final double? minLeadingWidth;
+  final double? horizontalTitleGap;
   // 타이틀
   final Widget? titleWidget;
   final String? title;
@@ -130,6 +132,7 @@ final class YHCell extends StatelessWidget {
         dense: true,
         leading: _left(),
         minLeadingWidth: minLeadingWidth,
+        horizontalTitleGap: horizontalTitleGap,
         title: _title(),
         subtitle: _subtitle(),
         contentPadding: contentPadding,
