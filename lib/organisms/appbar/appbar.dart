@@ -11,9 +11,13 @@ import 'package:yh_util/common/theme.dart';
 final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final YHFont titleFont;
+  // 왼쪽 버튼
   final Widget? left;
   final double leftPadding;
   final double? leftWidth;
+  final bool showLeftDrawerButton;
+  final void Function()? drawerButtonOnTap;
+  // 오른쪽 버튼
   final Widget? right;
   final double? rightPadding;
   final double? height;
@@ -38,6 +42,8 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.left,
     this.leftPadding = 8,
     this.leftWidth,
+    this.showLeftDrawerButton = false,
+    this.drawerButtonOnTap,
     this.right,
     this.rightPadding,
     this.height = kToolbarHeight,
@@ -90,6 +96,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: preferredSize.height,
       leading: Row(children: [
         SizedBox(width: leftPadding),
+        if (showLeftDrawerButton) _drawerButton(context),
         if (showBack) _backButton(context),
         if (left != null) left!,
       ]),
@@ -98,6 +105,20 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       centerTitle: true,
+    );
+  }
+
+  Widget _drawerButton(BuildContext context) {
+    return YHButton(
+      onTap: drawerButtonOnTap != null
+          ? drawerButtonOnTap!
+          : () => Scaffold.of(context).openDrawer(),
+      image: YHImage.icon_hamburger_72
+          .icon(color: iconColor ?? YHColor.iconDefault),
+      width: 40,
+      height: 40,
+      backgroundColor: YHColor.opacity,
+      useShadow: false,
     );
   }
 

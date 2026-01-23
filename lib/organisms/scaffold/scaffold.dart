@@ -27,6 +27,8 @@ final class YHScaffold extends StatelessWidget {
     // SafeArea
     this.outsideSafeAreaFromLTRB, // safeArea. null이면 설정안함
     this.insideSafeAreaFromLTRB, // safeArea. null이면 설정안함
+    // Drawer
+    this.drawer,
   });
 
   // PopScope
@@ -51,6 +53,8 @@ final class YHScaffold extends StatelessWidget {
   // SafeArea
   final List<bool>? outsideSafeAreaFromLTRB;
   final List<bool>? insideSafeAreaFromLTRB;
+  // Drawer
+  final Widget? drawer;
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +118,7 @@ final class YHScaffold extends StatelessWidget {
       floatingActionButton: floatingActionButton,
       floatingActionButtonLocation: floatingActionButtonLocation,
       floatingActionButtonAnimator: floatingActionButtonAnimator,
+      drawer: drawer,
     );
   }
 
