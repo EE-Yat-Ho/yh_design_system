@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:yh_design_system/atoms/color/colors.dart';
+import 'package:yh_design_system/atoms/font/fonts.dart';
+import 'package:yh_design_system/atoms/text/text.dart';
 
 void showActionSheet(BuildContext context, List<YHActionSheetAction> actions) {
   List<CupertinoActionSheetAction> cupertinoActions = actions.map((e) {
@@ -9,7 +12,13 @@ void showActionSheet(BuildContext context, List<YHActionSheetAction> actions) {
         Navigator.pop(context);
         e.onTap(e.id);
       },
-      child: e.title != null ? Text(e.title!) : e.customWidget!,
+      child: e.title != null
+          ? YHText(
+              text: e.title!,
+              font: YHFont.regular20,
+              color:
+                  e.isDestructive ? YHColor.textError : YHColor.textActionSheet)
+          : e.customWidget!,
     );
   }).toList();
 
