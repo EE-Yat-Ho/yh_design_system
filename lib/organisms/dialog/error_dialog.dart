@@ -13,6 +13,7 @@ Future<dynamic> showErrorDialog(
         return YHDialog(
           text: 'yh_design_system.dialog.error.title'.tr(),
           subText: exception.toString(),
+          confirmText: 'yh_design_system.dialog.error.confirm'.tr(),
           onConfirm: onConfirm,
         );
       });
