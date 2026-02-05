@@ -23,7 +23,7 @@ final class YHTextField extends StatelessWidget {
     this.placeholder,
     this.borderType = BorderType.outline,
     this.cornerRadius = 8,
-    this.padding = const EdgeInsets.fromLTRB(16, 4, 32, 4),
+    this.padding,
     this.right,
     this.hideClear = true,
     this.expands = false,
@@ -57,7 +57,7 @@ final class YHTextField extends StatelessWidget {
 
   final String? labelText;
   final YHFont font;
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
   final TextEditingController? controller;
   final bool obscureText;
   final void Function(String) onChanged;
@@ -138,6 +138,8 @@ final class YHTextField extends StatelessWidget {
         this.disabledBorderColor ?? YHColor.surfaceDisabled;
     final errorBorderColor = this.errorBorderColor ?? YHColor.surfaceError;
 
+    final EdgeInsets contentPadding;
+
     switch (borderType) {
       case BorderType.outline:
         final borderRadius = BorderRadius.circular(cornerRadius);
@@ -161,6 +163,7 @@ final class YHTextField extends StatelessWidget {
           borderSide: BorderSide(color: errorBorderColor, width: 1),
           borderRadius: borderRadius,
         );
+        contentPadding = padding ?? const EdgeInsets.fromLTRB(16, 4, 32, 4);
         break;
       case BorderType.underline:
         border = UnderlineInputBorder(
@@ -178,6 +181,7 @@ final class YHTextField extends StatelessWidget {
         errorBorder = UnderlineInputBorder(
           borderSide: BorderSide(color: errorBorderColor, width: 1),
         );
+        contentPadding = padding ?? const EdgeInsets.fromLTRB(8, 4, 24, 4);
         break;
       case BorderType.none:
         border = InputBorder.none;
@@ -185,6 +189,7 @@ final class YHTextField extends StatelessWidget {
         focusedBorder = InputBorder.none;
         disabledBorder = InputBorder.none;
         errorBorder = InputBorder.none;
+        contentPadding = padding ?? const EdgeInsets.fromLTRB(8, 4, 24, 4);
         break;
     }
 
@@ -219,7 +224,7 @@ final class YHTextField extends StatelessWidget {
         focusedBorder: focusedBorder,
         disabledBorder: disabledBorder,
         errorBorder: errorBorder,
-        contentPadding: padding,
+        contentPadding: contentPadding,
       ),
       style: font.style(color: textColor ?? YHColor.textDefault),
       textAlign: textAlign,
