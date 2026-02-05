@@ -4,6 +4,7 @@ import 'package:yh_design_system/atoms/color/colors.dart';
 import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_design_system/atoms/font/fonts.dart';
 import 'package:yh_design_system/atoms/text_field/text_editing_controller.dart';
+import 'package:yh_design_system/atoms/text_field/text_field.dart';
 
 final class YHTextFieldDialog extends StatefulWidget {
   YHTextFieldDialog({
@@ -53,22 +54,16 @@ class _YHTextFieldDialogState extends State<YHTextFieldDialog> {
       content: SingleChildScrollView(
         child: Column(
           children: [
-            TextField(
+            YHTextField(
               controller: widget.textController,
-              decoration: InputDecoration(
-                hintText: widget.hintText,
-                hintStyle: TextStyle(color: YHColor.textPlaceholder),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: YHColor.surfaceSub),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: YHColor.primary),
-                ),
-              ),
-              style: TextStyle(color: YHColor.textDefault),
+              placeholder: widget.hintText,
+              borderType: BorderType.underline,
+              enabledBorderColor: YHColor.surfaceSub,
+              focusedBorderColor: YHColor.primary,
               maxLength: widget.maxLength,
-              keyboardType: widget.keyboardType,
-              autofocus: true,
+              textInputType: widget.keyboardType,
+              autoFocus: true,
+              onChanged: (value) => {},
             ),
           ],
         ),

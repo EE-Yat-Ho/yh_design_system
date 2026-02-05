@@ -30,6 +30,7 @@ final class YHTextField extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.textAlignVertical,
     this.textDirection,
+    this.maxLength,
     // 색 관련
     this.textColor,
     this.enabledBackgroundColor,
@@ -75,6 +76,7 @@ final class YHTextField extends StatelessWidget {
   final TextAlign textAlign;
   final TextAlignVertical? textAlignVertical;
   final TextDirection? textDirection;
+  final int? maxLength;
   // 색 관련
   final Color? textColor;
   final Color? enabledBackgroundColor;
@@ -223,6 +225,7 @@ final class YHTextField extends StatelessWidget {
       textAlign: textAlign,
       textAlignVertical: textAlignVertical,
       textDirection: textDirection,
+      maxLength: maxLength,
       // 키보드 done 버튼 관련
       textInputAction: textInputAction,
       onSubmitted: (value) => onSubmitted?.call(value),
