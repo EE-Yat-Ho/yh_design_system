@@ -43,6 +43,7 @@ final class YHDialog extends StatefulWidget {
     this.confirmButtonBackgroundColor,
     this.enableConfirmDelay = false,
     this.delaySeconds = 5,
+    this.customChildren,
   });
 
   final String text;
@@ -67,6 +68,7 @@ final class YHDialog extends StatefulWidget {
   final Color? confirmButtonBackgroundColor;
   final bool enableConfirmDelay;
   final int delaySeconds;
+  final List<Widget>? customChildren;
 
   final String? confirmText;
   final void Function() onConfirm;
@@ -131,25 +133,26 @@ class _YHDialogState extends State<YHDialog> {
           crossAxisAlignment: widget.columnCrossAxisAlignment,
           mainAxisAlignment: widget.columnMainAxisAlignment,
           mainAxisSize: widget.columnMainAxisSize,
-          children: [
-            if (widget.image != null) ...[
-              widget.image!.icon(
-                width: widget.imageWidth ?? double.infinity,
-                height: widget.imageHeight ?? 100,
-              ),
-              SizedBox(height: widget.imageBottomPadding ?? 16),
-            ],
-            _title(),
-            if (widget.subText != null) ...[
-              const SizedBox(height: 8),
-              _subText(),
-            ],
-            SizedBox(height: widget.buttonTopPadding ?? 24),
-            if (widget.buttonDirection == ButtonDirection.horizontal)
-              _rowButtons(context)
-            else
-              _columnButtons(context)
-          ],
+          children: widget.customChildren ??
+              [
+                if (widget.image != null) ...[
+                  widget.image!.icon(
+                    width: widget.imageWidth ?? double.infinity,
+                    height: widget.imageHeight ?? 100,
+                  ),
+                  SizedBox(height: widget.imageBottomPadding ?? 16),
+                ],
+                _title(),
+                if (widget.subText != null) ...[
+                  const SizedBox(height: 8),
+                  _subText(),
+                ],
+                SizedBox(height: widget.buttonTopPadding ?? 24),
+                if (widget.buttonDirection == ButtonDirection.horizontal)
+                  _rowButtons(context)
+                else
+                  _columnButtons(context)
+              ],
         ),
       ),
     );
