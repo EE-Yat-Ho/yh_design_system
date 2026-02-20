@@ -16,6 +16,7 @@ final class YHSolidButton extends StatefulWidget {
     this.isEnabled = true,
     this.disableColor,
     this.font = YHFont.bold18,
+    this.throttleDuration,
     required this.onTap,
   });
 
@@ -29,11 +30,28 @@ final class YHSolidButton extends StatefulWidget {
   final bool isEnabled;
   final Color? disableColor;
   final YHFont font;
+
+  /// 연속 탭 방지: 이 시간이 지나야 다음 onTap이 호출됩니다. null이면 쓰로틀링 없음.
+  final Duration? throttleDuration;
   @override
   State<YHSolidButton> createState() => _YHSolidButtonState();
 }
 
 class _YHSolidButtonState extends State<YHSolidButton> {
+  DateTime? _lastTapTime;
+
+  void _onTap() {
+    final duration = widget.throttleDuration;
+    if (duration != null) {
+      final now = DateTime.now();
+      if (_lastTapTime != null && now.difference(_lastTapTime!) < duration) {
+        return;
+      }
+      _lastTapTime = now;
+    }
+    widget.onTap?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.margin != null) {
@@ -47,7 +65,7 @@ class _YHSolidButtonState extends State<YHSolidButton> {
 
   Widget _button() {
     return ElevatedButton(
-      onPressed: widget.isEnabled ? widget.onTap : null,
+      onPressed: widget.isEnabled ? _onTap : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: widget.isEnabled
             ? YHColor.primary
