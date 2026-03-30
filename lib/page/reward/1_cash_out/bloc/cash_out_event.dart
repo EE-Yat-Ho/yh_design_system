@@ -7,3 +7,9 @@ abstract class CashOutEvent {
 class InitCashOut extends CashOutEvent {}
 
 class CashOutDidTap extends CashOutEvent {}
+
+class PurchasePremiumDidTap extends CashOutEvent {
+  final int days;
+  final int point;
+  const PurchasePremiumDidTap({required this.days, required this.point});
+}

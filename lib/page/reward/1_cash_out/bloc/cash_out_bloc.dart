@@ -33,6 +33,37 @@ final class CashOutBloc extends Bloc<CashOutEvent, CashOutState> {
         YHIndicator.hide();
       }
     });
+
+    on<PurchasePremiumDidTap>((event, emit) async {
+      final user = state.user;
+      if (user == null || user.point < event.point) return;
+
+      YHIndicator.show(context: navigatorKey.currentContext!);
+      try {
+        final now = DateTime.now();
+        final currentEndDate = user.premiumEndDate;
+        final baseDate =
+            (currentEndDate != null && currentEndDate.isAfter(now))
+                ? currentEndDate
+                : now;
+        final newEndDate = baseDate.add(Duration(days: event.days));
+
+        final updatedUser = user.copyWith(
+          point: user.point - event.point,
+          premiumEndDate: newEndDate,
+          monthCount: event.days == 30 ? user.monthCount + 1 : user.monthCount,
+          yearCount: event.days == 365 ? user.yearCount + 1 : user.yearCount,
+          totalSpent: user.totalSpent + event.point,
+        );
+
+        await _yhUserRepository.createRemoteUser(updatedUser);
+        await _yhUserRepository.createLocalUser(updatedUser.copyWith(me: true));
+
+        emit(state.copyWith(user: updatedUser));
+      } finally {
+        YHIndicator.hide();
+      }
+    });
   }
 
   bool _checkAndUpdateCanCashOut(YHUser user, emit) {
