@@ -226,9 +226,12 @@ final class _CashOutPageState extends State<CashOutPage> {
       context: context,
       builder: (context) => AlertDialog(
         title: YHText(
-            text: "교환하시겠습니까?", font: YHFont.bold18, color: YHColor.textDefault),
+            text: "yh_design_system.page.cash_out.purchase_dialog_title".tr(),
+            font: YHFont.bold18,
+            color: YHColor.textDefault),
         content: YHText(
-          text: "$point 캐시를 사용하여 프리미엄 $days일을 활성화합니다.",
+          text: "yh_design_system.page.cash_out.purchase_dialog_content"
+              .tr(args: [point.toString(), days.toString()]),
           font: YHFont.regular16,
           color: YHColor.textDefault,
         ),
@@ -236,7 +239,9 @@ final class _CashOutPageState extends State<CashOutPage> {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: YHText(
-                text: "취소", font: YHFont.regular16, color: YHColor.textSub),
+                text: "common.cancel".tr(),
+                font: YHFont.regular16,
+                color: YHColor.textSub),
           ),
           TextButton(
             onPressed: () {
@@ -248,8 +253,10 @@ final class _CashOutPageState extends State<CashOutPage> {
                 variant: SnackBarVariant.success,
               );
             },
-            child:
-                YHText(text: "교환", font: YHFont.bold16, color: YHColor.blue500),
+            child: YHText(
+                text: "yh_design_system.page.cash_out.purchase_button".tr(),
+                font: YHFont.bold16,
+                color: YHColor.blue500),
           ),
         ],
       ),
