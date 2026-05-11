@@ -64,3 +64,9 @@ flutter:
     fonts:
       - asset: assets/fonts/SANGJUDajungdagam.otf
         weight: 400
+  - family: NotoSerif
+    fonts:
+      - asset: assets/fonts/NotoSerif-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/NotoSerif-Bold.ttf
+        weight: 700
