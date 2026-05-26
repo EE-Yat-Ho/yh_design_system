@@ -11,7 +11,9 @@ import 'package:yh_design_system/atoms/text/text.dart';
 import 'package:yh_util/domain/entities/yh_user.dart';
 
 // 로그인 방법 선택 팝업
-// iOS 일때 애플 로그인 버튼 제공
+// iOS·Android 모두 애플 로그인 버튼 제공
+//  - iOS: 네이티브 Apple 로그인 시트
+//  - Android: Firebase signInWithProvider 웹 OAuth (별도 서버 불필요)
 Future<YHUser?> showLoginMethodDialog(
   BuildContext context, {
   required Future<YHUser?> Function() onGoogleLogin,
@@ -66,7 +68,7 @@ Future<YHUser?> showLoginMethodDialog(
                     }
                   },
                 ),
-                if (Platform.isIOS) ...[
+                if (Platform.isIOS || Platform.isAndroid) ...[
                   const SizedBox(height: 8),
                   YHButton(
                     cornerRadius: 22,
