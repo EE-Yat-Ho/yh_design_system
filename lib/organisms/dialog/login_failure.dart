@@ -14,3 +14,16 @@ Future<dynamic> showLoginFailureDialog(
         );
       });
 }
+
+// 자동 로그인 시 인증 기간 만료(토큰 폐기·계정 비활성 등)로 로그아웃되었음을 안내.
+Future<dynamic> showSessionExpiredDialog(BuildContext context) async {
+  return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext innerContext) {
+        return YHDialog(
+          text: 'yh_design_system.dialog.session_expired'.tr(),
+          onConfirm: () {},
+        );
+      });
+}
