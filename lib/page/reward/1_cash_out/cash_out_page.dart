@@ -5,14 +5,11 @@ import "package:yh_design_system/atoms/card/card.dart";
 import "package:yh_design_system/atoms/color/colors.dart";
 import "package:yh_design_system/atoms/column/column.dart";
 import "package:yh_design_system/atoms/font/fonts.dart";
-import "package:yh_design_system/atoms/image/images.dart";
 import "package:yh_design_system/atoms/text/text.dart";
 import "package:yh_design_system/organisms/appbar/appbar.dart";
 import "package:yh_design_system/organisms/collection/cell.dart";
 import "package:yh_design_system/organisms/scaffold/scaffold.dart";
-import "package:yh_design_system/organisms/snack_bar/snack_bar.dart";
 import "package:yh_util/common/theme.dart";
-import "package:yh_util/domain/entities/yh_user.dart";
 import "package:yh_util/int_util.dart";
 import "bloc/cash_out_bloc.dart";
 
@@ -27,7 +24,6 @@ final class _CashOutPageState extends State<CashOutPage> {
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<CashOutBloc>();
-    final user = bloc.state.user;
 
     return YHScaffold(
       paperBackground: true,
@@ -72,41 +68,7 @@ final class _CashOutPageState extends State<CashOutPage> {
                 _point(bloc),
                 const SizedBox(height: 24),
 
-                // 프리미엄 옵션
-                if (user != null) ...[
-                  _purchaseCell(
-                    context,
-                    bloc,
-                    user,
-                    titleKey:
-                        "yh_design_system.page.cash_out.premium_30days_title",
-                    subtitleKey:
-                        "yh_design_system.page.cash_out.premium_30days_subtitle",
-                    days: 30,
-                    point: 2200,
-                    image: YHImage.icon_premium_month_128,
-                    borderColor: YHColor.blue500,
-                    borderWidth: 2,
-                    count: user.monthCount,
-                  ),
-                  _purchaseCell(
-                    context,
-                    bloc,
-                    user,
-                    titleKey:
-                        "yh_design_system.page.cash_out.premium_365days_title",
-                    subtitleKey:
-                        "yh_design_system.page.cash_out.premium_365days_subtitle",
-                    days: 365,
-                    point: 22000,
-                    image: YHImage.icon_premium_year_128,
-                    borderColor: YHColor.gold,
-                    borderWidth: 3,
-                    count: user.yearCount,
-                  ),
-                ],
-
-                // 프리미엄 혜택 셀 (premium_page.dart 코드 참고)
+                // 프리미엄 혜택 셀
                 YHCell(
                   id: 1,
                   backgroundColor:
@@ -138,7 +100,7 @@ final class _CashOutPageState extends State<CashOutPage> {
                   ),
                 ),
 
-                // 더 나은 서비스와 지속가능한 발전 셀 (premium_page.dart 코드 참고)
+                // 더 나은 서비스와 지속가능한 발전 셀
                 YHCell(
                   id: 1,
                   showArrow: false,
@@ -180,85 +142,6 @@ final class _CashOutPageState extends State<CashOutPage> {
         text: "• $text",
         font: YHFont.regular14,
         color: YHColor.textDefault,
-      ),
-    );
-  }
-
-  Widget _purchaseCell(
-    BuildContext context,
-    CashOutBloc bloc,
-    YHUser user, {
-    required String titleKey,
-    required String subtitleKey,
-    required int days,
-    required int point,
-    required YHImage image,
-    required Color borderColor,
-    required double borderWidth,
-    required int count,
-  }) {
-    return YHCell(
-      id: days,
-      title: titleKey.tr(),
-      subtitle: subtitleKey.tr(),
-      leftImage: image,
-      showArrow: false,
-      borderColor: borderColor,
-      borderWidth: borderWidth,
-      rightText: count.toString(), // 스크린샷 0 표시 위치
-      onTap: () {
-        if (user.point >= point) {
-          _showPurchaseDialog(context, bloc, days, point);
-        } else {
-          YHSnackBar.show(
-            context,
-            "yh_design_system.page.cash_out.insufficient_cash".tr(),
-            variant: SnackBarVariant.error,
-          );
-        }
-      },
-    );
-  }
-
-  void _showPurchaseDialog(
-      BuildContext context, CashOutBloc bloc, int days, int point) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: YHText(
-            text: "yh_design_system.page.cash_out.purchase_dialog_title".tr(),
-            font: YHFont.bold18,
-            color: YHColor.textDefault),
-        content: YHText(
-          text: "yh_design_system.page.cash_out.purchase_dialog_content"
-              .tr(args: [point.toString(), days.toString()]),
-          font: YHFont.regular16,
-          color: YHColor.textDefault,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: YHText(
-                text: "common.cancel".tr(),
-                font: YHFont.regular16,
-                color: YHColor.textSub),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              bloc.add(PurchasePremiumDidTap(days: days, point: point));
-              YHSnackBar.show(
-                context,
-                "yh_design_system.page.cash_out.purchase_success".tr(),
-                variant: SnackBarVariant.success,
-              );
-            },
-            child: YHText(
-                text: "yh_design_system.page.cash_out.purchase_button".tr(),
-                font: YHFont.bold16,
-                color: YHColor.blue500),
-          ),
-        ],
       ),
     );
   }
