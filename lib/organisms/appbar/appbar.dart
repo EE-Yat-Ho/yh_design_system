@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +16,35 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
   static const double _macTrafficLightPadding = 78;
   static bool get _isMacOsDesktop =>
       !kIsWeb && defaultTargetPlatform == TargetPlatform.macOS;
+
+  // iPad 스테이지 매니저 창모드일 때 좌상단 창 컨트롤(신호등) 영역 회피 폭.
+  // macOS보다 컨트롤이 작아 폭을 줄인다.
+  static const double _iPadStageManagerPadding = 56;
+
+  // iPad 스테이지 매니저 창모드 감지(근사).
+  // 스테이지 매니저 전용 API가 없어, iOS에서 앱 창이 디스플레이 전체를
+  // 채우지 않으면(= 전체화면이 아니면) 창모드로 간주한다.
+  // Split View/Slide Over도 걸릴 수 있으나, 그 경우 여분 여백이 생길 뿐 겹침은 없다.
+  //
+  // 주의: Display.size는 디바이스 물리 해상도 고정값이라 회전해도 값이 바뀌지
+  // 않는다. 반면 MediaQuery.sizeOf(창 크기)는 회전을 반영한다. 그래서 폭끼리
+  // 직접 비교하면 가로 모드에서 오판한다. 방향 무관하게 긴 변/짧은 변끼리 비교한다.
+  static bool _isIPadStageManager(BuildContext context) {
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.iOS) return false;
+    final view = View.of(context);
+    // Display.size는 물리 픽셀 → 논리 픽셀로 환산.
+    final dpr = view.devicePixelRatio;
+    final displayW = view.display.size.width / dpr;
+    final displayH = view.display.size.height / dpr;
+    final displayLong = math.max(displayW, displayH);
+    final displayShort = math.min(displayW, displayH);
+
+    final window = MediaQuery.sizeOf(context);
+    final windowLong = math.max(window.width, window.height);
+    final windowShort = math.min(window.width, window.height);
+
+    return windowLong < displayLong - 1.0 || windowShort < displayShort - 1.0;
+  }
 
   final String? title;
   final YHFont titleFont;
@@ -98,8 +129,12 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       }
     }
 
-    final macPadding = _isMacOsDesktop ? _macTrafficLightPadding : 0.0;
-    final effectiveLeftPadding = leftPadding + macPadding;
+    // 좌상단 창 컨트롤(traffic light) 회피 폭. macOS 데스크탑 우선,
+    // 아니면 iPad 스테이지 매니저 창모드 여부로 결정.
+    final double windowControlPadding = _isMacOsDesktop
+        ? _macTrafficLightPadding
+        : (_isIPadStageManager(context) ? _iPadStageManagerPadding : 0.0);
+    final effectiveLeftPadding = leftPadding + windowControlPadding;
 
     // Material AppBar처럼 pop 불가한 컨텍스트에선 back 버튼을 그리지 않는다.
     final showBackResolved = showBack && Navigator.canPop(context);
@@ -122,7 +157,7 @@ final class YHAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: leftWidth ??
           (resolvedTitle == null
               ? double.infinity
-              : (macPadding > 0 ? 56.0 + macPadding : null)),
+              : (windowControlPadding > 0 ? 56.0 + windowControlPadding : null)),
       title: resolvedTitle,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
