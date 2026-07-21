@@ -16,7 +16,7 @@ final class YHCell extends StatelessWidget {
     this.leftImage,
     this.leftImageSize = 26,
     this.leftEmoji,
-    this.leftEmojiWidth = 24,
+    // this.leftEmojiWidth = 24,
     this.leftEmojiFont = YHFont.regular22,
     this.minLeadingWidth,
     this.horizontalTitleGapForImage = 12,
@@ -66,7 +66,7 @@ final class YHCell extends StatelessWidget {
   final YHImageInterface? leftImage;
   final double leftImageSize;
   final String? leftEmoji;
-  final double leftEmojiWidth;
+  // final double leftEmojiWidth; 이 넓이가 이모지 텍스트 보다 작으면, 이모지가 올라가버리는 버그 발생..
   final YHFont leftEmojiFont;
   final double? minLeadingWidth;
   final double horizontalTitleGapForImage;
@@ -153,7 +153,7 @@ final class YHCell extends StatelessWidget {
           child: leftImage!.icon(width: leftImageSize, height: leftImageSize));
     } else if (leftEmoji != null) {
       return SizedBox(
-          width: leftEmojiWidth,
+          // width: leftEmojiWidth,
           child: YHText(
               text: leftEmoji!,
               font: leftEmojiFont,
