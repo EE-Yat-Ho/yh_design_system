@@ -63,24 +63,27 @@ final class YHIndicator {
           _indicatorOverlay == null) {
         debugPrint('🌀 인디케이터 노출');
         _indicatorOverlay = OverlayEntry(
-            builder: (_) => Container(
-                color: Colors.black.withValues(alpha: 0.01),
-                width: double.infinity, // 터치를 막기위함
-                height: double.infinity,
-                child: Center(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    indicatorWidget ?? defaultIndicatorWidget,
-                    if (_currentMessage != null) ...[
-                      const SizedBox(height: 8),
-                      YHText(
-                          text: _currentMessage!,
-                          font: YHFont.regular16,
-                          color: YHColor.primary)
-                    ],
-                  ],
-                ))));
+            // Material 조상이 없으면 텍스트에 노란 밑줄이 생기므로 Material로 감싼다
+            builder: (_) => Material(
+                type: MaterialType.transparency,
+                child: Container(
+                    color: Colors.black.withValues(alpha: 0.01),
+                    width: double.infinity, // 터치를 막기위함
+                    height: double.infinity,
+                    child: Center(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        indicatorWidget ?? defaultIndicatorWidget,
+                        if (_currentMessage != null) ...[
+                          const SizedBox(height: 8),
+                          YHText(
+                              text: _currentMessage!,
+                              font: YHFont.regular16,
+                              color: YHColor.primary)
+                        ],
+                      ],
+                    )))));
         Overlay.of(context).insert(_indicatorOverlay!);
       } else if (_isShowing &&
           context != null &&
