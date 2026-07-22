@@ -16,11 +16,11 @@ final class YHCell extends StatelessWidget {
     this.leftImage,
     this.leftImageSize = 26,
     this.leftEmoji,
-    // this.leftEmojiWidth = 24,
+    this.leftEmojiWidth = 26,
     this.leftEmojiFont = YHFont.regular22,
     this.minLeadingWidth,
     this.horizontalTitleGapForImage = 12,
-    this.horizontalTitleGapForEmoji = 14,
+    this.horizontalTitleGapForEmoji = 12,
     // 타이틀
     this.titleWidget,
     this.title,
@@ -66,7 +66,8 @@ final class YHCell extends StatelessWidget {
   final YHImageInterface? leftImage;
   final double leftImageSize;
   final String? leftEmoji;
-  // final double leftEmojiWidth; 이 넓이가 이모지 텍스트 보다 작으면, 이모지가 올라가버리는 버그 발생..
+  // 이모지 글리프가 이 폭보다 크면 FittedBox가 축소해 넣는다 (플랫폼별 이모지 폭 차이 흡수)
+  final double leftEmojiWidth;
   final YHFont leftEmojiFont;
   final double? minLeadingWidth;
   final double horizontalTitleGapForImage;
@@ -153,11 +154,13 @@ final class YHCell extends StatelessWidget {
           child: leftImage!.icon(width: leftImageSize, height: leftImageSize));
     } else if (leftEmoji != null) {
       return SizedBox(
-          // width: leftEmojiWidth,
-          child: YHText(
-              text: leftEmoji!,
-              font: leftEmojiFont,
-              color: YHColor.textDefault));
+          width: leftEmojiWidth,
+          child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: YHText(
+                  text: leftEmoji!,
+                  font: leftEmojiFont,
+                  color: YHColor.textDefault)));
     } else {
       return null;
     }
