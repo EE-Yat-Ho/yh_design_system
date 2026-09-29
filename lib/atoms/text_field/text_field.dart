@@ -248,7 +248,7 @@ final class YHTextField extends StatelessWidget {
       backgroundColor: YHColor.transparent,
       useShadow: false,
       image: Image.asset(
-        "assets/images/text_field_clear_icon.png",
+        "assets/images/icon_text_field_clear_24.png",
         width: 24,
         height: 24,
         fit: BoxFit.fitHeight,
